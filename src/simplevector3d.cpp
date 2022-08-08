@@ -46,7 +46,7 @@ Vector3D::Vector3D(const Vector3D &other) {
  *
  * @returns string form of vector
  */
-inline std::string Vector3D::toString() {
+std::string Vector3D::toString() {
   std::string s{"<"};
   s = s + std::to_string(this->m_x) + ", " + std::to_string(this->m_y) + ", " +
       std::to_string(this->m_z) + ">";
@@ -56,7 +56,7 @@ inline std::string Vector3D::toString() {
 /**
  * Adds two vectors
  */
-inline Vector3D Vector3D::operator+(const Vector3D &other) const {
+Vector3D Vector3D::operator+(const Vector3D &other) const {
   return Vector3D{this->m_x + other.x(), this->m_y + other.y(),
                   this->m_z + other.z()};
 }
@@ -64,7 +64,7 @@ inline Vector3D Vector3D::operator+(const Vector3D &other) const {
 /**
  * Subtracts two vectors
  */
-inline Vector3D Vector3D::operator-(const Vector3D &other) const {
+Vector3D Vector3D::operator-(const Vector3D &other) const {
   return Vector3D{this->m_x - other.x(), this->m_y - other.y(),
                   this->m_z - other.z()};
 }
@@ -72,28 +72,28 @@ inline Vector3D Vector3D::operator-(const Vector3D &other) const {
 /**
  * Flips direction of vector
  */
-inline Vector3D Vector3D::operator-() const {
+Vector3D Vector3D::operator-() const {
   return Vector3D{-this->m_x, -this->m_y, -this->m_z};
 }
 
 /**
  * Scalar multiplication of vector
  */
-inline Vector3D Vector3D::operator*(const double other) const {
+Vector3D Vector3D::operator*(const double other) const {
   return Vector3D{this->m_x * other, this->m_y * other, this->m_z * other};
 }
 
 /**
  * Dot product of two vectors
  */
-inline double Vector3D::operator*(const Vector3D &other) const {
+double Vector3D::operator*(const Vector3D &other) const {
   return this->m_x * other.x() + this->m_y * other.y() + this->m_z + other.z();
 }
 
 /**
  * Cross product of two vectors
  */
-inline Vector3D Vector3D::operator^(const Vector3D &other) const {
+Vector3D Vector3D::operator^(const Vector3D &other) const {
   double newx = this->m_y * other.z() - this->m_z * other.y();
   double newy = this->m_z * other.x() - this->m_x * other.z();
   double newz = this->m_x * other.y() - this->m_y * other.x();
@@ -104,14 +104,14 @@ inline Vector3D Vector3D::operator^(const Vector3D &other) const {
 /**
  * Scalar division of vector
  */
-inline Vector3D Vector3D::operator/(const double other) const {
+Vector3D Vector3D::operator/(const double other) const {
   return Vector3D{this->m_x / other, this->m_y / other, this->m_z / other};
 }
 
 /**
  * Equality
  */
-inline bool Vector3D::operator==(const Vector3D &other) const {
+bool Vector3D::operator==(const Vector3D &other) const {
   return this->m_x == other.x() && this->m_y == other.y() &&
          this->m_z == other.z();
 }
@@ -119,7 +119,7 @@ inline bool Vector3D::operator==(const Vector3D &other) const {
 /**
  * Inequality
  */
-inline bool Vector3D::operator!=(const Vector3D &other) const {
+bool Vector3D::operator!=(const Vector3D &other) const {
   return !(this->m_x == other.x() && this->m_y == other.y() &&
            this->m_z == other.z());
 }
@@ -127,7 +127,7 @@ inline bool Vector3D::operator!=(const Vector3D &other) const {
 /**
  * Adds another vector object to self
  */
-inline Vector3D &Vector3D::operator+=(const Vector3D &other) {
+Vector3D &Vector3D::operator+=(const Vector3D &other) {
   this->m_x += other.x();
   this->m_y += other.y();
   this->m_z += other.z();
@@ -137,7 +137,7 @@ inline Vector3D &Vector3D::operator+=(const Vector3D &other) {
 /**
  * Subtracts another vector object from self
  */
-inline Vector3D &Vector3D::operator-=(const Vector3D &other) {
+Vector3D &Vector3D::operator-=(const Vector3D &other) {
   this->m_x -= other.x();
   this->m_y -= other.y();
   this->m_z -= other.z();
@@ -147,7 +147,7 @@ inline Vector3D &Vector3D::operator-=(const Vector3D &other) {
 /**
  * Multiplies vector by a number
  */
-inline Vector3D &Vector3D::operator*=(const double &other) {
+Vector3D &Vector3D::operator*=(const double &other) {
   this->m_x *= other;
   this->m_y *= other;
   this->m_z *= other;
@@ -157,7 +157,7 @@ inline Vector3D &Vector3D::operator*=(const double &other) {
 /**
  * Divides vector by a number
  */
-inline Vector3D &Vector3D::operator/=(const double &other) {
+Vector3D &Vector3D::operator/=(const double &other) {
   this->m_x /= other;
   this->m_y /= other;
   this->m_z /= other;
@@ -169,28 +169,28 @@ inline Vector3D &Vector3D::operator/=(const double &other) {
  *
  * @returns x-component of vector
  */
-inline double Vector3D::x() const { return this->m_x; }
+double Vector3D::x() const { return this->m_x; }
 
 /**
  * Gets the y-component of the vector
  *
  * @returns y-component of vector
  */
-inline double Vector3D::y() const { return this->m_y; }
+double Vector3D::y() const { return this->m_y; }
 
 /**
  * Gets the z-component of the vector
  *
  * @returns z-component of vector
  */
-inline double Vector3D::z() const { return this->m_z; }
+double Vector3D::z() const { return this->m_z; }
 
 /**
  * Gets the magnitude of the vector
  *
  * @returns magnitude of vector
  */
-inline double Vector3D::magn() const {
+double Vector3D::magn() const {
   return std::sqrt(this->m_x * this->m_x + this->m_y * this->m_y +
                    this->m_z * this->m_z);
 }
@@ -203,7 +203,7 @@ inline double Vector3D::magn() const {
  *
  * @param D The angle direction to return
  */
-template <AngleDir D> inline double Vector3D::angle() const {
+template <AngleDir D> double Vector3D::angle() const {
   if (D == ALPHA)
     return this->getAlpha();
   else if (D == BETA)
@@ -222,7 +222,7 @@ template <AngleDir D> inline double Vector3D::angle() const {
  *
  * @returns Converted value
  */
-template <typename T> inline T Vector3D::componentsAs() const {
+template <typename T> T Vector3D::componentsAs() const {
   return T{this->m_x, this->m_y, this->m_z};
 }
 
@@ -236,7 +236,7 @@ template <typename T> inline T Vector3D::componentsAs() const {
  *
  * @returns Converted value
  */
-template <typename T> inline T Vector3D::anglesAs() const {
+template <typename T> T Vector3D::anglesAs() const {
   return T{this->getAlpha(), this->getBeta(), this->getGamma()};
 }
 
@@ -247,7 +247,7 @@ template <typename T> inline T Vector3D::anglesAs() const {
  *
  * @returns Normalized vector
  */
-inline Vector3D Vector3D::normalize() const {
+Vector3D Vector3D::normalize() const {
   Vector3D tmp(*this);
   return tmp / this->magn();
 }
@@ -267,8 +267,7 @@ inline Vector3D Vector3D::normalize() const {
  *
  * @returns a new, rotated vector
  */
-template <AngleDir D>
-inline Vector3D Vector3D::rotate(const double &ang) const {
+template <AngleDir D> Vector3D Vector3D::rotate(const double &ang) const {
   if (D == ALPHA)
     return this->rotateAlpha(ang);
   else if (D == BETA)
@@ -284,7 +283,7 @@ inline Vector3D Vector3D::rotate(const double &ang) const {
  *
  * @returns α
  */
-inline double Vector3D::getAlpha() const {
+double Vector3D::getAlpha() const {
   return std::acos(this->m_x / this->magn());
 }
 
@@ -295,9 +294,7 @@ inline double Vector3D::getAlpha() const {
  *
  * @returns β
  */
-inline double Vector3D::getBeta() const {
-  return std::acos(this->m_y / this->magn());
-}
+double Vector3D::getBeta() const { return std::acos(this->m_y / this->magn()); }
 
 /**
  * Gets γ angle
@@ -306,14 +303,14 @@ inline double Vector3D::getBeta() const {
  *
  * @returns γ
  */
-inline double Vector3D::getGamma() const {
+double Vector3D::getGamma() const {
   return std::acos(this->m_z / this->magn());
 }
 
 /**
  * Rotates around x-axis
  */
-inline Vector3D Vector3D::rotateAlpha(const double &ang) const {
+Vector3D Vector3D::rotateAlpha(const double &ang) const {
   /**
    * Rotation matrix:
    *
@@ -332,7 +329,7 @@ inline Vector3D Vector3D::rotateAlpha(const double &ang) const {
 /**
  * Rotates around y-axis
  */
-inline Vector3D Vector3D::rotateBeta(const double &ang) const {
+Vector3D Vector3D::rotateBeta(const double &ang) const {
   /**
    * Rotation matrix:
    *
@@ -351,7 +348,7 @@ inline Vector3D Vector3D::rotateBeta(const double &ang) const {
 /**
  * Rotates around z-axis
  */
-inline Vector3D Vector3D::rotateGamma(const double &ang) const {
+Vector3D Vector3D::rotateGamma(const double &ang) const {
   /**
    * Rotation matrix:
    *

@@ -42,7 +42,7 @@ Vector2D::Vector2D(const Vector2D &other) {
  *
  * @returns string form of vector
  */
-inline std::string Vector2D::toString() {
+std::string Vector2D::toString() {
   std::string s{"<"};
   s = s + std::to_string(this->m_x) + ", " + std::to_string(this->m_y) + ">";
   return s;
@@ -51,63 +51,63 @@ inline std::string Vector2D::toString() {
 /**
  * Adds two vectors
  */
-inline Vector2D Vector2D::operator+(const Vector2D &other) const {
+Vector2D Vector2D::operator+(const Vector2D &other) const {
   return Vector2D{this->m_x + other.x(), this->m_y + other.y()};
 }
 
 /**
  * Subtracts two vectors
  */
-inline Vector2D Vector2D::operator-(const Vector2D &other) const {
+Vector2D Vector2D::operator-(const Vector2D &other) const {
   return Vector2D{this->m_x - other.x(), this->m_y - other.y()};
 }
 
 /**
  * Flips direction of vector
  */
-inline Vector2D Vector2D::operator-() const {
+Vector2D Vector2D::operator-() const {
   return Vector2D{-this->m_x, -this->m_y};
 }
 
 /**
  * Scalar multiplication of vector
  */
-inline Vector2D Vector2D::operator*(const double other) const {
+Vector2D Vector2D::operator*(const double other) const {
   return Vector2D{this->m_x * other, this->m_y * other};
 }
 
 /**
  * Dot product of two vectors
  */
-inline double Vector2D::operator*(const Vector2D &other) const {
+double Vector2D::operator*(const Vector2D &other) const {
   return this->m_x * other.x() + this->m_y * other.y();
 }
 
 /**
  * Scalar division of vector
  */
-inline Vector2D Vector2D::operator/(const double other) const {
+Vector2D Vector2D::operator/(const double other) const {
   return Vector2D{this->m_x / other, this->m_y / other};
 }
 
 /**
  * Equality
  */
-inline bool Vector2D::operator==(const Vector2D &other) const {
+bool Vector2D::operator==(const Vector2D &other) const {
   return this->m_x == other.x() && this->m_y == other.y();
 }
 
 /**
  * Inequality
  */
-inline bool Vector2D::operator!=(const Vector2D &other) const {
+bool Vector2D::operator!=(const Vector2D &other) const {
   return !(this->m_x == other.x() && this->m_y == other.y());
 }
 
 /**
  * Adds another vector object to self
  */
-inline Vector2D &Vector2D::operator+=(const Vector2D &other) {
+Vector2D &Vector2D::operator+=(const Vector2D &other) {
   this->m_x += other.x();
   this->m_y += other.y();
   return *this;
@@ -116,7 +116,7 @@ inline Vector2D &Vector2D::operator+=(const Vector2D &other) {
 /**
  * Subtracts another vector object from self
  */
-inline Vector2D &Vector2D::operator-=(const Vector2D &other) {
+Vector2D &Vector2D::operator-=(const Vector2D &other) {
   this->m_x -= other.x();
   this->m_y -= other.y();
   return *this;
@@ -125,7 +125,7 @@ inline Vector2D &Vector2D::operator-=(const Vector2D &other) {
 /**
  * Multiplies vector by a number
  */
-inline Vector2D &Vector2D::operator*=(const double &other) {
+Vector2D &Vector2D::operator*=(const double &other) {
   this->m_x *= other;
   this->m_y *= other;
   return *this;
@@ -134,7 +134,7 @@ inline Vector2D &Vector2D::operator*=(const double &other) {
 /**
  * Divides vector by a number
  */
-inline Vector2D &Vector2D::operator/=(const double &other) {
+Vector2D &Vector2D::operator/=(const double &other) {
   this->m_x /= other;
   this->m_y /= other;
   return *this;
@@ -145,21 +145,21 @@ inline Vector2D &Vector2D::operator/=(const double &other) {
  *
  * @returns x-component of vector
  */
-inline double Vector2D::x() const { return this->m_x; }
+double Vector2D::x() const { return this->m_x; }
 
 /**
  * Gets the y-component of the vector
  *
  * @returns y-component of vector
  */
-inline double Vector2D::y() const { return this->m_y; }
+double Vector2D::y() const { return this->m_y; }
 
 /**
  * Gets the magnitude of the vector
  *
  * @returns magnitude of vector
  */
-inline double Vector2D::magn() const {
+double Vector2D::magn() const {
   return std::sqrt(this->m_x * this->m_x + this->m_y * this->m_y);
 }
 
@@ -170,9 +170,7 @@ inline double Vector2D::magn() const {
  *
  * @returns angle of the vector
  */
-inline double Vector2D::angle() const {
-  return std::atan2(this->m_y, this->m_x);
-}
+double Vector2D::angle() const { return std::atan2(this->m_y, this->m_x); }
 
 /**
  * Converts components of vector to an object with a constructor
@@ -184,7 +182,7 @@ inline double Vector2D::angle() const {
  *
  * @returns Converted value
  */
-template <typename T> inline T Vector2D::componentsAs() const {
+template <typename T> T Vector2D::componentsAs() const {
   return T{this->m_x, this->m_y};
 }
 
@@ -195,7 +193,7 @@ template <typename T> inline T Vector2D::componentsAs() const {
  *
  * @returns Normalized vector
  */
-inline Vector2D Vector2D::normalize() const {
+Vector2D Vector2D::normalize() const {
   Vector2D tmp(*this);
   return tmp / this->magn();
 }
@@ -211,7 +209,7 @@ inline Vector2D Vector2D::normalize() const {
  *
  * @returns a new, rotated vector
  */
-inline Vector2D Vector2D::rotate(const double ang) const {
+Vector2D Vector2D::rotate(const double ang) const {
   /**
    * Rotation matrix:
    *
