@@ -196,37 +196,6 @@ double Vector3D::magn() const {
 }
 
 /**
- * Gets a specific angle of the vector.
- *
- * Can get angle to x-axis (svector::ALPHA), to y-axis
- * (svector::BETA),or to z-axis (svector::GAMMA).
- *
- * @param D The angle direction to return
- */
-template <AngleDir D> double Vector3D::angle() const {
-  if (D == ALPHA)
-    return this->getAlpha();
-  else if (D == BETA)
-    return this->getBeta();
-  else
-    return this->getGamma();
-}
-
-/**
- * Converts angles of vector to an object with a constructor that
- * has three parameters.
- *
- * For example, this method can be used to convert the angles
- * of a 3D vector into a struct with three variables and a
- * constructor for those three variables.
- *
- * @returns Converted value
- */
-template <typename T> T Vector3D::anglesAs() const {
-  return T{this->getAlpha(), this->getBeta(), this->getGamma()};
-}
-
-/**
  * Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
@@ -237,30 +206,6 @@ Vector3D Vector3D::normalize() const {
   Vector3D tmp(*this);
   return tmp / this->magn();
 }
-
-/**
- * Rotates vector around a certain axis by a certain angle.
- *
- * When given template is ALPHA, rotates around x-axis,
- * when given template is BETA, rotates around y-axis,
- * and when given template is GAMMA, rotates around z-axis.
- *
- * The angle should be given in radians. The vector rotates
- * counterclockwise when the angle is positive and clockwise
- * when the angle is negative.
- *
- * @param angle the angle to rotate the vector, in radians
- *
- * @returns a new, rotated vector
- */
-template <AngleDir D> Vector3D Vector3D::rotate(const double &ang) const {
-  if (D == ALPHA)
-    return this->rotateAlpha(ang);
-  else if (D == BETA)
-    return this->rotateBeta(ang);
-  else
-    return this->rotateGamma(ang);
-};
 
 /**
  * Gets α angle
