@@ -58,5 +58,6 @@ install(FILES ${CMAKE_BINARY_DIR}/simplevectors.pc
 
 # add tests if set
 if (BUILD_TEST)
+    enable_testing()
     add_subdirectory(test)
 endif()

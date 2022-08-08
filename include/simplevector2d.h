@@ -53,6 +53,20 @@ private:
   double m_x;
   double m_y;
 };
+
+/**
+ * Converts components of vector to an object with a constructor
+ * that has two parameters.
+ *
+ * For example, this method can be used to convert the components of
+ * a 2D vector into a `pair<double, double>`, or a struct with two
+ * variables and a constructor for those two variables.
+ *
+ * @returns Converted value
+ */
+template <typename T> T Vector2D::componentsAs() const {
+  return T{this->m_x, this->m_y};
+}
 } // namespace svector
 
 #endif

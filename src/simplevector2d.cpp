@@ -173,20 +173,6 @@ double Vector2D::magn() const {
 double Vector2D::angle() const { return std::atan2(this->m_y, this->m_x); }
 
 /**
- * Converts components of vector to an object with a constructor
- * that has two parameters.
- *
- * For example, this method can be used to convert the components of
- * a 2D vector into a `pair<double, double>`, or a struct with two
- * variables and a constructor for those two variables.
- *
- * @returns Converted value
- */
-template <typename T> T Vector2D::componentsAs() const {
-  return T{this->m_x, this->m_y};
-}
-
-/**
  * Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.

@@ -65,6 +65,20 @@ private:
   Vector3D rotateBeta(const double &ang) const;
   Vector3D rotateGamma(const double &ang) const;
 };
+
+/**
+ * Converts components of vector to an object with a constructor that
+ * has three parameters.
+ *
+ * For example, this method can be used to convert the components
+ * of a 3D vector into a struct with three variables and a
+ * constructor for those three variables.
+ *
+ * @returns Converted value
+ */
+template <typename T> T Vector3D::componentsAs() const {
+  return T{this->m_x, this->m_y, this->m_z};
+}
 } // namespace svector
 
 #endif
