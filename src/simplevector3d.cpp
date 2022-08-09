@@ -87,7 +87,7 @@ Vector3D Vector3D::operator*(const double other) const {
  * Dot product of two vectors
  */
 double Vector3D::operator*(const Vector3D &other) const {
-  return this->m_x * other.x() + this->m_y * other.y() + this->m_z + other.z();
+  return this->m_x * other.x() + this->m_y * other.y() + this->m_z * other.z();
 }
 
 /**
@@ -252,7 +252,7 @@ Vector3D Vector3D::rotateAlpha(const double &ang) const {
 
   double xPrime = this->m_x;
   double yPrime = this->m_y * std::cos(ang) - this->m_z * std::sin(ang);
-  double zPrime = this->m_z * std::sin(ang) + this->m_z * std::cos(ang);
+  double zPrime = this->m_y * std::sin(ang) + this->m_z * std::cos(ang);
 
   return Vector3D{xPrime, yPrime, zPrime};
 }

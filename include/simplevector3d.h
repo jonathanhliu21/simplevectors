@@ -100,7 +100,7 @@ template <typename T> T Vector3D::anglesAs() const {
  * Can get angle to x-axis (svector::ALPHA), to y-axis
  * (svector::BETA),or to z-axis (svector::GAMMA).
  *
- * Each angle is in the range [0, π].
+ * Each angle is in the range [0, π]. Angle will be in radians.
  *
  * @param D The angle direction to return
  */
@@ -120,9 +120,8 @@ template <AngleDir D> double Vector3D::angle() const {
  * when given template is BETA, rotates around y-axis,
  * and when given template is GAMMA, rotates around z-axis.
  *
- * The angle should be given in radians. The vector rotates
- * counterclockwise when the angle is positive and clockwise
- * when the angle is negative.
+ * Uses the basic gimbal-like 3D rotation matrices for the
+ * x-axis, y-axis, and the z-axis.
  *
  * @param angle the angle to rotate the vector, in radians
  *
