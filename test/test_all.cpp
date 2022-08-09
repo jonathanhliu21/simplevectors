@@ -1,6 +1,6 @@
-#include "simplevector2d.h"
-#include "simplevector3d.h"
-#include "units.h"
+#include "simplevectors/simplevector2d.h"
+#include "simplevectors/simplevector3d.h"
+#include "simplevectors/units.h"
 
 #include <gtest/gtest.h>
 

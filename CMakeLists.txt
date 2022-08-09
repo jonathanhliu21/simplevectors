@@ -13,22 +13,24 @@ set(CMAKE_CXX_STANDARD 14)
 
 # add headers and sources
 set(svector_SOURCES src/simplevector3d.cpp src/simplevector2d.cpp)
-set(svector_HEADERS include/simplevector3d.h include/simplevector2d.h
-    include/units.h)
+set(svector_HEADERS include/simplevectors/simplevector3d.h 
+    include/simplevectors/simplevector2d.h include/simplevectors/units.h)
 
 # compile
 add_library(simplevectors SHARED ${svector_SOURCES} ${svector_HEADERS})
 set_target_properties(simplevectors PROPERTIES
     VERSION ${PROJECT_VERSION})
 
-target_include_directories(simplevectors PRIVATE include/)
+target_include_directories(simplevectors PUBLIC 
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include/>)
 
 # install library & public header
 install(TARGETS simplevectors
     EXPORT simplevectorsTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES ${svector_HEADERS} 
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_PROJECT_NAME})
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # configure & install CMake package
 include(CMakePackageConfigHelpers)

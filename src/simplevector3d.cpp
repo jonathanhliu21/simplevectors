@@ -5,7 +5,7 @@
  * MIT License
  */
 
-#include "simplevector3d.h"
+#include "simplevectors/simplevector3d.h"
 
 namespace svector {
 // COMBINER_PY_STARTCPP_2
