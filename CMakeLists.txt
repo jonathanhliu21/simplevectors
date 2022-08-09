@@ -60,6 +60,8 @@ install(FILES ${CMAKE_BINARY_DIR}/simplevectors.pc
 
 # add tests if set
 if (BUILD_TEST)
+    # don't install gtest when running `make install`
+    set(INSTALL_GTEST OFF CACHE BOOL "Disable installation of googletest." FORCE)
     enable_testing()
     add_subdirectory(test)
 endif()
