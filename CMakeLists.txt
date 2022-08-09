@@ -29,7 +29,7 @@ target_include_directories(simplevectors PUBLIC
 install(TARGETS simplevectors
     EXPORT simplevectorsTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES ${svector_HEADERS} 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # configure & install CMake package
