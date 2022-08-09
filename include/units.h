@@ -9,7 +9,9 @@
 #define UNITS_H
 
 namespace svector {
+// COMBINER_PY_STARTH_3
 enum AngleDir { ALPHA, BETA, GAMMA };
+// COMBINER_PY_ENDH_3
 }
 
 #endif

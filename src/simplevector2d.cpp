@@ -8,6 +8,7 @@
 #include "simplevector2d.h"
 
 namespace svector {
+// COMBINER_PY_STARTCPP_1
 /**
  * No-argument constructor
  *
@@ -208,4 +209,5 @@ Vector2D Vector2D::rotate(const double ang) const {
 
   return Vector2D{xPrime, yPrime};
 }
+// COMBINER_PY_ENDCPP_1
 } // namespace svector

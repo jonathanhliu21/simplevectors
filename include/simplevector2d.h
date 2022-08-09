@@ -14,6 +14,7 @@
 #include "units.h"
 
 namespace svector {
+// COMBINER_PY_STARTH_1
 /**
  * A simple 2D vector representation
  */
@@ -67,6 +68,7 @@ private:
 template <typename T> T Vector2D::componentsAs() const {
   return T{this->m_x, this->m_y};
 }
+// COMBINER_PY_ENDH_1
 } // namespace svector
 
 #endif

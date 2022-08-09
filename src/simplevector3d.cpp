@@ -8,6 +8,7 @@
 #include "simplevector3d.h"
 
 namespace svector {
+// COMBINER_PY_STARTCPP_2
 /**
  * No-argument constructor
  *
@@ -294,4 +295,5 @@ Vector3D Vector3D::rotateGamma(const double &ang) const {
 
   return Vector3D{xPrime, yPrime, zPrime};
 }
+// COMBINER_PY_ENDCPP_2
 } // namespace svector

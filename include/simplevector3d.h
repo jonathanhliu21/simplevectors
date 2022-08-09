@@ -14,6 +14,7 @@
 #include "units.h"
 
 namespace svector {
+// COMBINER_PY_STARTH_2
 /**
  * A simple 3D vector representation
  */
@@ -135,6 +136,7 @@ template <AngleDir D> Vector3D Vector3D::rotate(const double &ang) const {
   else
     return this->rotateGamma(ang);
 };
+// COMBINER_PY_ENDH_2
 } // namespace svector
 
 #endif
