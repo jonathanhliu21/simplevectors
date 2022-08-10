@@ -52,13 +52,13 @@ def combine():
     simplevector3d_cpp_str = ""
     units_h_str = ""
 
-    with open(os.path.join("include", "simplevector2d.h")) as f:
+    with open(os.path.join("include", "simplevectors", "simplevector2d.h")) as f:
         simplevector2d_h_str = f.read()
 
-    with open(os.path.join("include", "simplevector3d.h")) as f:
+    with open(os.path.join("include", "simplevectors", "simplevector3d.h")) as f:
         simplevector3d_h_str = f.read()
 
-    with open(os.path.join("include", "units.h")) as f:
+    with open(os.path.join("include", "simplevectors", "units.h")) as f:
         units_h_str = f.read()
 
     with open(os.path.join("src", "simplevector2d.cpp")) as f:
