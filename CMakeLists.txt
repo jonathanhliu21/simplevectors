@@ -7,6 +7,7 @@ include(GNUInstallDirs)
 
 # test options
 option(BUILD_TEST "Build tests" OFF)
+option(BUILD_EXAMPLE "Build examples" OFF)
 
 # C++ standard
 set(CMAKE_CXX_STANDARD 14)
@@ -64,4 +65,9 @@ if (BUILD_TEST)
     set(INSTALL_GTEST OFF CACHE BOOL "Disable installation of googletest." FORCE)
     enable_testing()
     add_subdirectory(test)
+endif()
+
+# add examples
+if (BUILD_EXAMPLE)
+    add_subdirectory(example)
 endif()
