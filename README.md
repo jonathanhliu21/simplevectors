@@ -141,6 +141,16 @@ bool equal3 = lhs2 == rhs2;  // true
 bool equal4 = lhs2 != rhs2;  // false
 ```
 
+### Normalization
+
+```cpp
+svector::Vector2D unnorm2D(3, 4);
+svector::Vector3D unnorm3D(3, 4, 5);
+
+svector::Vector2D norm2D = unnorm2D.normalize(); // <0.6, 0.8>
+svector::Vector3D norm3D = unnorm3D.normalize(); // <0.424, 0.566, 0.707>
+```
+
 ### Rotation 2D
 
 For 2D vectors, the `rotate` method requires one argument, `ang`, which is the angle to rotate in radians. A positive angle indicates counterclockwise rotation, and a negative angle indicates clockwise rotation. The method returns a new vector.

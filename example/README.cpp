@@ -86,6 +86,16 @@ int main() {
   std::cout << (equal3 ? "true" : "false") << std::endl;
   std::cout << (equal4 ? "true" : "false") << std::endl;
 
+  std::cout << "NORMALIZATION TEST" << std::endl;
+  svector::Vector2D unnorm2D(3, 4);
+  svector::Vector3D unnorm3D(3, 4, 5);
+
+  svector::Vector2D norm2D = unnorm2D.normalize(); // <0.6, 0.8>
+  svector::Vector3D norm3D = unnorm3D.normalize(); // <0.424, 0.566, 0.707>
+
+  std::cout << norm2D.toString() << std::endl;
+  std::cout << norm3D.toString() << std::endl;
+
   std::cout << "ROTATION 2D TEST" << std::endl;
   svector::Vector2D v1(1, 0);
   svector::Vector2D v2(1, 0);
