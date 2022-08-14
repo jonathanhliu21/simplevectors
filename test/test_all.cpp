@@ -150,8 +150,10 @@ TEST(OperatorTest2D, DotProduct) {
   Vector2D lhs(2, 5);
   Vector2D rhs(-3, -4);
 
-  double product = lhs * rhs;
+  double product = lhs.dot(rhs);
+  double product2 = rhs.dot(lhs);
   EXPECT_EQ(product, -26);
+  EXPECT_EQ(product2, product);
 }
 
 TEST(OperatorTest2D, ScalarMultiplyInPlace) {
