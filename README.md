@@ -101,7 +101,7 @@ svector::Vector2D sum = lhs + rhs;        // <5, 1>
 svector::Vector2D difference = lhs - rhs; // <-1, 9>
 svector::Vector2D product = lhs * 3;      // <6, 15>
 svector::Vector2D quotient = lhs / 3;     // <0.667, 1.667>
-double dot_product = lhs * rhs;           // -14
+double dot_product = lhs.dot(rhs);        // -14
 svector::Vector2D neg = -lhs;             // <-2, -5>
 ```
 
@@ -111,7 +111,7 @@ Cross products only work on 3D vectors.
 svector::Vector3D lhs3d(2, 5, -3);
 svector::Vector3D rhs3d(6, 5, 9);
 
-svector::Vector3D cross = lhs3d ^ rhs3d; // <60, -36, -20>
+svector::Vector3D cross = lhs3d.cross(rhs3d); // <60, -36, -20>
 ```
 
 Vectors can be added, subtracted, multiplied, or divided in place.

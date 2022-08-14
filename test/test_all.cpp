@@ -150,8 +150,10 @@ TEST(OperatorTest2D, DotProduct) {
   Vector2D lhs(2, 5);
   Vector2D rhs(-3, -4);
 
-  double product = lhs * rhs;
+  double product = lhs.dot(rhs);
+  double product2 = rhs.dot(lhs);
   EXPECT_EQ(product, -26);
+  EXPECT_EQ(product2, product);
 }
 
 TEST(OperatorTest2D, ScalarMultiplyInPlace) {
@@ -468,8 +470,10 @@ TEST(OperatorTest3D, DotProduct) {
   Vector3D lhs(2, 5, 6);
   Vector3D rhs(-3, -4, 2);
 
-  double product = lhs * rhs;
+  double product = lhs.dot(rhs);
+  double product2 = rhs.dot(lhs);
   EXPECT_EQ(product, -14);
+  EXPECT_EQ(product, product2);
 }
 
 TEST(OperatorTest3D, ScalarMultiplyInPlace) {
@@ -485,8 +489,8 @@ TEST(OperatorTest3D, CrossProduct) {
   Vector3D v2(1, 2, 3);
   Vector3D res(-1, -1, 1);
 
-  EXPECT_EQ(v1 ^ v2, res);
-  EXPECT_EQ(v2 ^ v1, -res);
+  EXPECT_EQ(v1.cross(v2), res);
+  EXPECT_EQ(v2.cross(v1), -res);
 }
 
 TEST(OperatorTest3D, ScalarDivision) {

@@ -78,13 +78,6 @@ Vector2D Vector2D::operator*(const double other) const {
 }
 
 /**
- * Dot product of two vectors
- */
-double Vector2D::operator*(const Vector2D &other) const {
-  return this->m_x * other.x() + this->m_y * other.y();
-}
-
-/**
  * Scalar division of vector
  */
 Vector2D Vector2D::operator/(const double other) const {
@@ -139,6 +132,13 @@ Vector2D &Vector2D::operator/=(const double &other) {
   this->m_x /= other;
   this->m_y /= other;
   return *this;
+}
+
+/**
+ * Dot product of two vectors
+ */
+double Vector2D::dot(const Vector2D &other) const {
+  return this->m_x * other.x() + this->m_y * other.y();
 }
 
 /**

@@ -30,10 +30,11 @@ public:
   Vector2D operator-() const;
   Vector2D operator-(const Vector2D &other) const;
   Vector2D operator*(const double other) const;
-  double operator*(const Vector2D &other) const;
   Vector2D operator/(const double other) const;
   bool operator==(const Vector2D &other) const;
   bool operator!=(const Vector2D &other) const;
+
+  double dot(const Vector2D &other) const;
 
   Vector2D &operator+=(const Vector2D &other);
   Vector2D &operator-=(const Vector2D &other);
