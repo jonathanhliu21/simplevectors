@@ -30,11 +30,12 @@ public:
   Vector3D operator-() const;
   Vector3D operator-(const Vector3D &other) const;
   Vector3D operator*(const double other) const;
-  double operator*(const Vector3D &other) const;
-  Vector3D operator^(const Vector3D &other) const;
   Vector3D operator/(const double other) const;
   bool operator==(const Vector3D &other) const;
   bool operator!=(const Vector3D &other) const;
+
+  double dot(const Vector3D &other) const;
+  Vector3D cross(const Vector3D &other) const;
 
   Vector3D &operator+=(const Vector3D &other);
   Vector3D &operator-=(const Vector3D &other);

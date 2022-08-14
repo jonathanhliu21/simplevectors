@@ -85,24 +85,6 @@ Vector3D Vector3D::operator*(const double other) const {
 }
 
 /**
- * Dot product of two vectors
- */
-double Vector3D::operator*(const Vector3D &other) const {
-  return this->m_x * other.x() + this->m_y * other.y() + this->m_z * other.z();
-}
-
-/**
- * Cross product of two vectors
- */
-Vector3D Vector3D::operator^(const Vector3D &other) const {
-  double newx = this->m_y * other.z() - this->m_z * other.y();
-  double newy = this->m_z * other.x() - this->m_x * other.z();
-  double newz = this->m_x * other.y() - this->m_y * other.x();
-
-  return Vector3D{newx, newy, newz};
-}
-
-/**
  * Scalar division of vector
  */
 Vector3D Vector3D::operator/(const double other) const {
@@ -163,6 +145,24 @@ Vector3D &Vector3D::operator/=(const double &other) {
   this->m_y /= other;
   this->m_z /= other;
   return *this;
+}
+
+/**
+ * Dot product of two vectors
+ */
+double Vector3D::dot(const Vector3D &other) const {
+  return this->m_x * other.x() + this->m_y * other.y() + this->m_z * other.z();
+}
+
+/**
+ * Cross product of two vectors
+ */
+Vector3D Vector3D::cross(const Vector3D &other) const {
+  double newx = this->m_y * other.z() - this->m_z * other.y();
+  double newy = this->m_z * other.x() - this->m_x * other.z();
+  double newz = this->m_x * other.y() - this->m_y * other.x();
+
+  return Vector3D{newx, newy, newz};
 }
 
 /**
