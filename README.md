@@ -27,7 +27,7 @@ add_executable(main main.cpp)
 target_link_libraries(main PRIVATE simplevectors)
 ```
 
-If you do this, the include paths will be slightly different:
+If you do this, the include path will be slightly different:
 
 ```cpp
 #include <simplevectors/vectors.hpp>
