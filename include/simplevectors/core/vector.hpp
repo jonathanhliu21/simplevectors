@@ -228,13 +228,34 @@ public:
   double normalize() const { return (*this) / this->magn(); }
 
   /**
+   * Gets number of dimensions
+   *
+   * @returns Number of dimensions
+   */
+  size_t numDimensions() const { return dimensions; }
+
+  /**
    * Gets a certain component of the vector given the dimension number
    *
    * @returns Dimension number
    */
   double &operator[](size_t index) const { return this->m_components[index]; }
 
-  template <typename T> T componentsAs() const;
+  /**
+   * Converts the components in each dimension to a certain type
+   * by putting the component into the type's constructor
+   *
+   * @returns std::array of converted components
+   */
+  template <typename T> std::array<T, dimensions> eachComponentAs() const {
+    std::array<T, dimensions> result;
+
+    for (size_t i = 0; i < dimensions; i++) {
+      result[i] = T{this->m_components[i]};
+    }
+
+    return result;
+  };
 
 protected:
   std::array<double, dimensions> m_components;
