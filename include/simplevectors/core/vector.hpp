@@ -161,6 +161,8 @@ public:
     for (size_t i = 0; i < dimensions; i++) {
       this->m_components[i] += other[i];
     }
+
+    return *this;
   }
 
   /**
@@ -170,6 +172,8 @@ public:
     for (size_t i = 0; i < dimensions; i++) {
       this->m_components[i] -= other[i];
     }
+
+    return *this;
   }
 
   /**
@@ -179,6 +183,8 @@ public:
     for (size_t i = 0; i < dimensions; i++) {
       this->m_components[i] *= other;
     }
+
+    return *this;
   }
 
   /**
@@ -188,6 +194,8 @@ public:
     for (size_t i = 0; i < dimensions; i++) {
       this->m_components[i] /= other;
     }
+
+    return *this;
   }
 
   /**
@@ -235,6 +243,13 @@ public:
 
   /**
    * Gets a certain component of the vector given the dimension number
+   *
+   * @returns Dimension number
+   */
+  double operator[](size_t index) const { return this->m_components[index]; }
+
+  /**
+   * Sets a certain component of the vector given the dimension number
    *
    * @returns Dimension number
    */
