@@ -8,6 +8,7 @@
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
 #define INCLUDE_SVECTOR_BASEVECTOR_HPP_
 
+#include <array>
 #include <cmath>
 #include <initializer_list>
 #include <string>
@@ -159,7 +160,7 @@ public:
    */
   Vector<dimensions> &operator+=(const Vector<dimensions> &other) {
     for (size_t i = 0; i < dimensions; i++) {
-      m_components[i] += other[i];
+      this->m_components[i] += other[i];
     }
   }
 
@@ -168,7 +169,7 @@ public:
    */
   Vector<dimensions> &operator-=(const Vector<dimensions> &other) {
     for (size_t i = 0; i < dimensions; i++) {
-      m_components[i] -= other[i];
+      this->m_components[i] -= other[i];
     }
   }
 
@@ -177,7 +178,7 @@ public:
    */
   Vector<dimensions> &operator*=(const double other) {
     for (size_t i = 0; i < dimensions; i++) {
-      m_components[i] *= other;
+      this->m_components[i] *= other;
     }
   }
 
@@ -186,8 +187,21 @@ public:
    */
   Vector<dimensions> &operator/=(const double other) {
     for (size_t i = 0; i < dimensions; i++) {
-      m_components[i] /= other;
+      this->m_components[i] /= other;
     }
+  }
+
+  /**
+   * Dot product of two vectors
+   */
+  double dot(const Vector<dimensions> &other) const {
+    double result = 0;
+
+    for (size_t i = 0; i < dimensions; i++) {
+      result += this->m_components[i] * other[i];
+    }
+
+    return result;
   }
 
   /**
@@ -196,8 +210,8 @@ public:
    * @returns magnitude of vector
    */
   double magn() const {
-    double sum_of_squares;
-    for (auto i : m_components) {
+    double sum_of_squares = 0;
+    for (auto i : this->m_components) {
       sum_of_squares += i * i;
     }
 
@@ -218,7 +232,7 @@ public:
    *
    * @returns Dimension number
    */
-  double &operator[](size_t index) const { return m_components[index]; }
+  double &operator[](size_t index) const { return this->m_components[index]; }
 
   template <typename T> T componentsAs() const;
 
