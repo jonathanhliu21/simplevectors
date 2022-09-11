@@ -225,7 +225,7 @@ public:
    *
    * @returns Normalized vector
    */
-  double normalize() const { return (*this) / this->magn(); }
+  Vector<dimensions> normalize() const { return (*this) / this->magn(); }
 
   /**
    * Gets number of dimensions
