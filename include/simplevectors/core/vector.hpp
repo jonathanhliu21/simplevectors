@@ -238,7 +238,7 @@ public:
    *
    * @returns Dimension number
    */
-  double &operator[](size_t index) const { return this->m_components[index]; }
+  double &operator[](size_t index) { return this->m_components[index]; }
 
   /**
    * Converts the components in each dimension to a certain type
