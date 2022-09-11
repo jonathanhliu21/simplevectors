@@ -251,7 +251,7 @@ public:
    *
    * @returns Dimension number
    */
-  double operator[](std::size_t index) const {
+  double operator[](const std::size_t index) const {
     return this->m_components[index];
   }
 
@@ -260,7 +260,9 @@ public:
    *
    * @returns Dimension number
    */
-  double &operator[](std::size_t index) { return this->m_components[index]; }
+  double &operator[](const std::size_t index) {
+    return this->m_components[index];
+  }
 
   /**
    * Converts the components in each dimension to a certain type
