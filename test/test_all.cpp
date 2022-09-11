@@ -5,10 +5,8 @@
 #include <regex>
 #include <utility>
 
-using namespace svector;
-
 TEST(ConstructorTest2D, ZeroConstructorTest) {
-  Vector2D vector;
+  svector::Vector2D vector;
   EXPECT_EQ(vector.x(), 0);
   EXPECT_EQ(vector.y(), 0);
   EXPECT_EQ(vector.magn(), 0);
@@ -16,19 +14,19 @@ TEST(ConstructorTest2D, ZeroConstructorTest) {
 }
 
 TEST(ConstructorTest2D, XYConstructorTest) {
-  Vector2D vector(5, -2);
+  svector::Vector2D vector(5, -2);
   EXPECT_EQ(vector.x(), 5);
   EXPECT_EQ(vector.y(), -2);
 }
 
 TEST(ConstructorTest2D, CopyConstructorTest) {
-  Vector2D vector1(3, 6);
-  Vector2D vector2(vector1);
+  svector::Vector2D vector1(3, 6);
+  svector::Vector2D vector2(vector1);
 
   EXPECT_EQ(vector2.x(), 3);
   EXPECT_EQ(vector2.y(), 6);
 
-  Vector2D vector3;
+  svector::Vector2D vector3;
   vector2 = vector3;
 
   EXPECT_EQ(vector2.x(), 0);
@@ -36,7 +34,7 @@ TEST(ConstructorTest2D, CopyConstructorTest) {
 }
 
 TEST(StringTest2D, StringTest) {
-  Vector2D vector(3.52, -5.6);
+  svector::Vector2D vector(3.52, -5.6);
 
   std::regex r("<3\.520*, -5\.60*>");
 
@@ -50,30 +48,30 @@ TEST(OperatorTest2D, AddTest) {
   };
 
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
-    Vector2D rhs(testcase[1].first, testcase[1].second);
-    Vector2D res(testcase[2].first, testcase[2].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D rhs(testcase[1].first, testcase[1].second);
+    svector::Vector2D res(testcase[2].first, testcase[2].second);
 
-    Vector2D sum = lhs + rhs;
+    svector::Vector2D sum = lhs + rhs;
     EXPECT_EQ(sum, res);
   }
 }
 
 TEST(OperatorTest2D, AddChain) {
-  Vector2D v1(3, -5);
-  Vector2D v2(4, -6);
-  Vector2D v3(2, 1);
-  Vector2D v4(-3, 6);
-  Vector2D res(6, -4);
+  svector::Vector2D v1(3, -5);
+  svector::Vector2D v2(4, -6);
+  svector::Vector2D v3(2, 1);
+  svector::Vector2D v4(-3, 6);
+  svector::Vector2D res(6, -4);
 
-  Vector2D sum = v1 + v2 + v3 + v4;
+  svector::Vector2D sum = v1 + v2 + v3 + v4;
   EXPECT_EQ(sum, res);
 }
 
 TEST(OperatorTest2D, AddInPlace) {
-  Vector2D v1(2, 5);
-  v1 += Vector2D(-3, 4);
-  Vector2D res(-1, 9);
+  svector::Vector2D v1(2, 5);
+  v1 += svector::Vector2D(-3, 4);
+  svector::Vector2D res(-1, 9);
 
   EXPECT_EQ(v1, res);
 }
@@ -85,30 +83,30 @@ TEST(OperatorTest2D, SubtractTest) {
   };
 
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
-    Vector2D rhs(testcase[1].first, testcase[1].second);
-    Vector2D res(testcase[2].first, testcase[2].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D rhs(testcase[1].first, testcase[1].second);
+    svector::Vector2D res(testcase[2].first, testcase[2].second);
 
-    Vector2D difference = lhs - rhs;
+    svector::Vector2D difference = lhs - rhs;
     EXPECT_EQ(difference, res);
   }
 }
 
 TEST(OperatorTest2D, SubtractChain) {
-  Vector2D v1(3, -5);
-  Vector2D v2(4, -6);
-  Vector2D v3(2, 1);
-  Vector2D v4(-3, 6);
-  Vector2D res(0, -6);
+  svector::Vector2D v1(3, -5);
+  svector::Vector2D v2(4, -6);
+  svector::Vector2D v3(2, 1);
+  svector::Vector2D v4(-3, 6);
+  svector::Vector2D res(0, -6);
 
-  Vector2D difference = v1 - v2 - v3 - v4;
+  svector::Vector2D difference = v1 - v2 - v3 - v4;
   EXPECT_EQ(difference, res);
 }
 
 TEST(OperatorTest2D, SubtractInPlace) {
-  Vector2D v1(2, 5);
-  v1 -= Vector2D(-3, 4);
-  Vector2D res(5, 1);
+  svector::Vector2D v1(2, 5);
+  v1 -= svector::Vector2D(-3, 4);
+  svector::Vector2D res(5, 1);
 
   EXPECT_EQ(v1, res);
 }
@@ -122,8 +120,8 @@ TEST(OperatorTest2D, NegativeOfAVector) {
   };
 
   for (auto testcase : tests) {
-    Vector2D num(testcase[0].first, testcase[0].second);
-    Vector2D res(testcase[1].first, testcase[1].second);
+    svector::Vector2D num(testcase[0].first, testcase[0].second);
+    svector::Vector2D res(testcase[1].first, testcase[1].second);
 
     EXPECT_EQ(-num, res);
   }
@@ -135,18 +133,18 @@ TEST(OperatorTest2D, ScalarMultiplication) {
       {{3, 4.5}, {2.5, -1}, {7.5, 11.25}},
   };
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
-    Vector2D res(testcase[2].first, testcase[2].second);
+    svector::Vector2D res(testcase[2].first, testcase[2].second);
 
-    Vector2D product = lhs * rhs;
+    svector::Vector2D product = lhs * rhs;
     EXPECT_EQ(product, res);
   }
 }
 
 TEST(OperatorTest2D, DotProduct) {
-  Vector2D lhs(2, 5);
-  Vector2D rhs(-3, -4);
+  svector::Vector2D lhs(2, 5);
+  svector::Vector2D rhs(-3, -4);
 
   double product = lhs.dot(rhs);
   double product2 = rhs.dot(lhs);
@@ -155,9 +153,9 @@ TEST(OperatorTest2D, DotProduct) {
 }
 
 TEST(OperatorTest2D, ScalarMultiplyInPlace) {
-  Vector2D v1(2, 5);
+  svector::Vector2D v1(2, 5);
   v1 *= 5;
-  Vector2D res(10, 25);
+  svector::Vector2D res(10, 25);
 
   EXPECT_EQ(v1, res);
 }
@@ -169,19 +167,19 @@ TEST(OperatorTest2D, ScalarDivision) {
   };
 
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
-    Vector2D res(testcase[2].first, testcase[2].second);
+    svector::Vector2D res(testcase[2].first, testcase[2].second);
 
-    Vector2D quotient = lhs / rhs;
+    svector::Vector2D quotient = lhs / rhs;
     EXPECT_EQ(quotient, res);
   }
 }
 
 TEST(OperatorTest2D, ScalarDivideInPlace) {
-  Vector2D v1(-3, -4);
+  svector::Vector2D v1(-3, -4);
   v1 /= 5;
-  Vector2D res(-0.6, -0.8);
+  svector::Vector2D res(-0.6, -0.8);
 
   EXPECT_EQ(v1, res);
 }
@@ -193,8 +191,8 @@ TEST(OperatorTest2D, EqualityTest) {
   };
 
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
-    Vector2D rhs(testcase[1].first, testcase[1].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D rhs(testcase[1].first, testcase[1].second);
 
     EXPECT_TRUE(lhs == rhs);
   }
@@ -207,15 +205,15 @@ TEST(OperatorTest2D, InequalityTest) {
   };
 
   for (auto testcase : tests) {
-    Vector2D lhs(testcase[0].first, testcase[0].second);
-    Vector2D rhs(testcase[1].first, testcase[1].second);
+    svector::Vector2D lhs(testcase[0].first, testcase[0].second);
+    svector::Vector2D rhs(testcase[1].first, testcase[1].second);
 
     EXPECT_TRUE(lhs != rhs);
   }
 }
 
 TEST(XYMagnitudeAngleMatchTest2D, TestMagnitudeGivenXY) {
-  Vector2D vector(4.612, -3.322);
+  svector::Vector2D vector(4.612, -3.322);
   double magn = vector.magn();
   double magn_r = std::round(magn * 1000.0) / 1000.0;
 
@@ -231,7 +229,7 @@ TEST(XYMagnitudeAngleMatchTest2D, TestAngleGivenXY) {
   };
 
   for (auto testcase : tests) {
-    Vector2D vector(testcase[0], testcase[1]);
+    svector::Vector2D vector(testcase[0], testcase[1]);
     double ang = vector.angle();
     double ang_r = std::round(ang * 1000.0) / 1000.0;
 
@@ -240,7 +238,7 @@ TEST(XYMagnitudeAngleMatchTest2D, TestAngleGivenXY) {
 }
 
 TEST(ToComponentTest2D, TestConvertToPair) {
-  Vector2D vector(3.5, -6.2);
+  svector::Vector2D vector(3.5, -6.2);
   std::pair<double, double> testPair =
       vector.componentsAs<std::pair<double, double>>();
 
@@ -248,7 +246,7 @@ TEST(ToComponentTest2D, TestConvertToPair) {
 }
 
 TEST(ToComponentTest2D, TestConvertToStruct) {
-  Vector2D vector(3.5, -6.2);
+  svector::Vector2D vector(3.5, -6.2);
 
   struct Pair2 {
     double x, y;
@@ -269,10 +267,10 @@ TEST(ToComponentTest2D, TestConvertToStruct) {
 }
 
 TEST(NormalizeTest2D, TestNormalize) {
-  Vector2D vector(3, 4);
+  svector::Vector2D vector(3, 4);
   vector = vector.normalize();
 
-  EXPECT_EQ(vector, Vector2D(0.6, 0.8));
+  EXPECT_EQ(vector, svector::Vector2D(0.6, 0.8));
 }
 
 TEST(RotationTest2D, CounterclockwiseRotation) {
@@ -284,10 +282,10 @@ TEST(RotationTest2D, CounterclockwiseRotation) {
   };
 
   for (auto testcase : tests) {
-    Vector2D vector(testcase[0], testcase[1]);
-    Vector2D vectorp(testcase[3], testcase[4]);
+    svector::Vector2D vector(testcase[0], testcase[1]);
+    svector::Vector2D vectorp(testcase[3], testcase[4]);
 
-    Vector2D rotated = vector.rotate(testcase[2]);
+    svector::Vector2D rotated = vector.rotate(testcase[2]);
 
     EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
               std::round(rotated.x() * 1000) / 1000);
@@ -305,10 +303,10 @@ TEST(RotationTest2D, ClockwiseRotation) {
   };
 
   for (auto testcase : tests) {
-    Vector2D vector(testcase[3], testcase[4]);
-    Vector2D vectorp(testcase[0], testcase[1]);
+    svector::Vector2D vector(testcase[3], testcase[4]);
+    svector::Vector2D vectorp(testcase[0], testcase[1]);
 
-    Vector2D rotated = vector.rotate(-testcase[2]);
+    svector::Vector2D rotated = vector.rotate(-testcase[2]);
 
     EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
               std::round(rotated.x() * 1000) / 1000);
@@ -324,7 +322,7 @@ TEST(RotationTest2D, ClockwiseRotation) {
  */
 
 TEST(ConstructorTest3D, ZeroConstructorTest) {
-  Vector3D vector;
+  svector::Vector3D vector;
   EXPECT_EQ(vector.x(), 0);
   EXPECT_EQ(vector.y(), 0);
   EXPECT_EQ(vector.z(), 0);
@@ -333,21 +331,21 @@ TEST(ConstructorTest3D, ZeroConstructorTest) {
 }
 
 TEST(ConstructorTest3D, XYZConstructorTest) {
-  Vector3D vector(5, -2, 7);
+  svector::Vector3D vector(5, -2, 7);
   EXPECT_EQ(vector.x(), 5);
   EXPECT_EQ(vector.y(), -2);
   EXPECT_EQ(vector.z(), 7);
 }
 
 TEST(ConstructorTest3D, CopyConstructorTest) {
-  Vector3D vector1(3, 6, 2);
-  Vector3D vector2(vector1);
+  svector::Vector3D vector1(3, 6, 2);
+  svector::Vector3D vector2(vector1);
 
   EXPECT_EQ(vector2.x(), 3);
   EXPECT_EQ(vector2.y(), 6);
   EXPECT_EQ(vector2.z(), 2);
 
-  Vector3D vector3;
+  svector::Vector3D vector3;
   vector2 = vector3;
 
   EXPECT_EQ(vector2.x(), 0);
@@ -356,7 +354,7 @@ TEST(ConstructorTest3D, CopyConstructorTest) {
 }
 
 TEST(StringTest3D, StringTest) {
-  Vector3D vector(3.52, -5.6, 2.2);
+  svector::Vector3D vector(3.52, -5.6, 2.2);
 
   std::regex r("<3\.520*, -5\.60*, 2\.20*>");
 
@@ -370,30 +368,30 @@ TEST(OperatorTest3D, AddTest) {
   };
 
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
-    Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
-    Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
+    svector::Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
 
-    Vector3D sum = lhs + rhs;
+    svector::Vector3D sum = lhs + rhs;
     EXPECT_EQ(sum, res);
   }
 }
 
 TEST(OperatorTest3D, AddChain) {
-  Vector3D v1(3, -5, 1);
-  Vector3D v2(4, -6, -1);
-  Vector3D v3(2, 1, 1);
-  Vector3D v4(-3, 6, -2);
-  Vector3D res(6, -4, -1);
+  svector::Vector3D v1(3, -5, 1);
+  svector::Vector3D v2(4, -6, -1);
+  svector::Vector3D v3(2, 1, 1);
+  svector::Vector3D v4(-3, 6, -2);
+  svector::Vector3D res(6, -4, -1);
 
-  Vector3D sum = v1 + v2 + v3 + v4;
+  svector::Vector3D sum = v1 + v2 + v3 + v4;
   EXPECT_EQ(sum, res);
 }
 
 TEST(OperatorTest3D, AddInPlace) {
-  Vector3D v1(2, 5, 8);
-  v1 += Vector3D(-3, 4, -2);
-  Vector3D res(-1, 9, 6);
+  svector::Vector3D v1(2, 5, 8);
+  v1 += svector::Vector3D(-3, 4, -2);
+  svector::Vector3D res(-1, 9, 6);
 
   EXPECT_EQ(v1, res);
 }
@@ -405,30 +403,30 @@ TEST(OperatorTest3D, SubtractTest) {
   };
 
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
-    Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
-    Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
+    svector::Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
 
-    Vector3D sum = lhs - rhs;
+    svector::Vector3D sum = lhs - rhs;
     EXPECT_EQ(sum, res);
   }
 }
 
 TEST(OperatorTest3D, SubtractChain) {
-  Vector3D v1(3, -5, 1);
-  Vector3D v2(4, -6, -1);
-  Vector3D v3(2, 1, 1);
-  Vector3D v4(-3, 6, -2);
-  Vector3D res(0, -6, 3);
+  svector::Vector3D v1(3, -5, 1);
+  svector::Vector3D v2(4, -6, -1);
+  svector::Vector3D v3(2, 1, 1);
+  svector::Vector3D v4(-3, 6, -2);
+  svector::Vector3D res(0, -6, 3);
 
-  Vector3D sum = v1 - v2 - v3 - v4;
+  svector::Vector3D sum = v1 - v2 - v3 - v4;
   EXPECT_EQ(sum, res);
 }
 
 TEST(OperatorTest3D, SubtractInPlace) {
-  Vector3D v1(2, 5, 8);
-  v1 -= Vector3D(-3, 4, -2);
-  Vector3D res(5, 1, 10);
+  svector::Vector3D v1(2, 5, 8);
+  v1 -= svector::Vector3D(-3, 4, -2);
+  svector::Vector3D res(5, 1, 10);
 
   EXPECT_EQ(v1, res);
 }
@@ -442,8 +440,8 @@ TEST(OperatorTest3D, NegativeOfAVector) {
   };
 
   for (auto testcase : tests) {
-    Vector3D num(testcase[0][0], testcase[0][1], testcase[0][2]);
-    Vector3D res(testcase[1][0], testcase[1][1], testcase[1][2]);
+    svector::Vector3D num(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D res(testcase[1][0], testcase[1][1], testcase[1][2]);
 
     EXPECT_EQ(-num, res);
   }
@@ -455,18 +453,18 @@ TEST(OperatorTest3D, ScalarMultiplication) {
       {{3, 4.5, 2}, {2.5, -1, -1}, {7.5, 11.25, 5.0}},
   };
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     double rhs = testcase[1][0];
-    Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
+    svector::Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
 
-    Vector3D product = lhs * rhs;
+    svector::Vector3D product = lhs * rhs;
     EXPECT_EQ(product, res);
   }
 }
 
 TEST(OperatorTest3D, DotProduct) {
-  Vector3D lhs(2, 5, 6);
-  Vector3D rhs(-3, -4, 2);
+  svector::Vector3D lhs(2, 5, 6);
+  svector::Vector3D rhs(-3, -4, 2);
 
   double product = lhs.dot(rhs);
   double product2 = rhs.dot(lhs);
@@ -475,17 +473,17 @@ TEST(OperatorTest3D, DotProduct) {
 }
 
 TEST(OperatorTest3D, ScalarMultiplyInPlace) {
-  Vector3D v1(2, 5, 8);
+  svector::Vector3D v1(2, 5, 8);
   v1 *= 3;
-  Vector3D res(6, 15, 24);
+  svector::Vector3D res(6, 15, 24);
 
   EXPECT_EQ(v1, res);
 }
 
 TEST(OperatorTest3D, CrossProduct) {
-  Vector3D v1(2, 3, 5);
-  Vector3D v2(1, 2, 3);
-  Vector3D res(-1, -1, 1);
+  svector::Vector3D v1(2, 3, 5);
+  svector::Vector3D v2(1, 2, 3);
+  svector::Vector3D res(-1, -1, 1);
 
   EXPECT_EQ(v1.cross(v2), res);
   EXPECT_EQ(v2.cross(v1), -res);
@@ -498,19 +496,19 @@ TEST(OperatorTest3D, ScalarDivision) {
   };
 
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     double rhs = testcase[1][0];
-    Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
+    svector::Vector3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
 
-    Vector3D quotient = lhs / rhs;
+    svector::Vector3D quotient = lhs / rhs;
     EXPECT_EQ(quotient, res);
   }
 }
 
 TEST(OperatorTest3D, ScalarDivideInPlace) {
-  Vector3D v1(-3, -4, 5);
+  svector::Vector3D v1(-3, -4, 5);
   v1 /= 5;
-  Vector3D res(-0.6, -0.8, 1);
+  svector::Vector3D res(-0.6, -0.8, 1);
 
   EXPECT_EQ(v1, res);
 }
@@ -522,8 +520,8 @@ TEST(OperatorTest3D, EqualityTest) {
   };
 
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
-    Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
 
     EXPECT_TRUE(lhs == rhs);
   }
@@ -536,15 +534,15 @@ TEST(OperatorTest3D, InequalityTest) {
   };
 
   for (auto testcase : tests) {
-    Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
-    Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
+    svector::Vector3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
+    svector::Vector3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
 
     EXPECT_TRUE(lhs != rhs);
   }
 }
 
 TEST(XYMagnitudeAngleMatchTest3D, TestMagnitudeGivenXYZ) {
-  Vector3D vector(4.612, -3.322, 2.552);
+  svector::Vector3D vector(4.612, -3.322, 2.552);
   double magn = vector.magn();
   double magn_r = std::round(magn * 1000.0) / 1000.0;
 
@@ -552,31 +550,31 @@ TEST(XYMagnitudeAngleMatchTest3D, TestMagnitudeGivenXYZ) {
 }
 
 TEST(XYMagnitudeAngleMatchTest3D, TestAlphaGivenXYZ) {
-  Vector3D vector(-3, 2, -6);
-  double ang = vector.angle<ALPHA>();
+  svector::Vector3D vector(-3, 2, -6);
+  double ang = vector.angle<svector::ALPHA>();
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 2.014);
 }
 
 TEST(XYMagnitudeAngleMatchTest3D, TestBetaGivenXYZ) {
-  Vector3D vector(-3, 2, -6);
-  double ang = vector.angle<BETA>();
+  svector::Vector3D vector(-3, 2, -6);
+  double ang = vector.angle<svector::BETA>();
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 1.281);
 }
 
 TEST(XYMagnitudeAngleMatchTest3D, TestGammaGivenXYZ) {
-  Vector3D vector(-3, 2, -6);
-  double ang = vector.angle<GAMMA>();
+  svector::Vector3D vector(-3, 2, -6);
+  double ang = vector.angle<svector::GAMMA>();
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 2.600);
 }
 
 TEST(ToComponentTest3D, TestConvertToStruct) {
-  Vector3D vector(3.5, -6.2, 2.4);
+  svector::Vector3D vector(3.5, -6.2, 2.4);
 
   struct Pair3 {
     double x, y, z;
@@ -598,7 +596,7 @@ TEST(ToComponentTest3D, TestConvertToStruct) {
 }
 
 TEST(ToAngleTest3D, TestConvertToStruct) {
-  Vector3D vector(-3, 2, -6);
+  svector::Vector3D vector(-3, 2, -6);
 
   struct Pair3 {
     double x, y, z;
@@ -618,10 +616,10 @@ TEST(ToAngleTest3D, TestConvertToStruct) {
 }
 
 TEST(NormalizeTest3D, TestNormalize) {
-  Vector3D vector(2, -3, -6);
+  svector::Vector3D vector(2, -3, -6);
   vector = vector.normalize();
 
-  EXPECT_EQ(vector, Vector3D(2 / 7.0, -3 / 7.0, -6 / 7.0));
+  EXPECT_EQ(vector, svector::Vector3D(2 / 7.0, -3 / 7.0, -6 / 7.0));
 }
 
 TEST(RotationTest3D, AlphaRotation) {
@@ -632,10 +630,10 @@ TEST(RotationTest3D, AlphaRotation) {
       {3, 2.8284, 2.8284, -M_PI / 4, 3, 4, 0}};
 
   for (auto testcase : tests) {
-    Vector3D vector(testcase[0], testcase[1], testcase[2]);
-    Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
+    svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
+    svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
-    Vector3D rotated = vector.rotate<ALPHA>(testcase[3]);
+    svector::Vector3D rotated = vector.rotate<svector::ALPHA>(testcase[3]);
 
     EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
               std::round(rotated.x() * 1000) / 1000);
@@ -654,10 +652,10 @@ TEST(RotationTest3D, BetaRotation) {
       {2.8284, 3, 2.8284, -M_PI / 4, 0, 3, 4}};
 
   for (auto testcase : tests) {
-    Vector3D vector(testcase[0], testcase[1], testcase[2]);
-    Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
+    svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
+    svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
-    Vector3D rotated = vector.rotate<BETA>(testcase[3]);
+    svector::Vector3D rotated = vector.rotate<svector::BETA>(testcase[3]);
 
     EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
               std::round(rotated.x() * 1000) / 1000);
@@ -681,10 +679,10 @@ TEST(RotationTest3D, GammaRotation) {
   };
 
   for (auto testcase : tests) {
-    Vector3D vector(testcase[0], testcase[1], testcase[2]);
-    Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
+    svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
+    svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
-    Vector3D rotated = vector.rotate<GAMMA>(testcase[3]);
+    svector::Vector3D rotated = vector.rotate<svector::GAMMA>(testcase[3]);
 
     EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
               std::round(rotated.x() * 1000) / 1000);
