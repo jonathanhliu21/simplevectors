@@ -7,7 +7,7 @@ Simple 2D and 3D vector implementations in C++.
 
 ## Installation
 
-The simplest way is to download the single-header `simplevectors.h` file from the releases page. To include the file, simply put the path to the header file.
+The simplest way is to download the single-header `simplevectors.hpp` file from the releases page. To include the file, simply put the path to the header file.
 
 ```cpp
 #include "path/to/simplevectors.hpp"
