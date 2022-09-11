@@ -63,7 +63,7 @@ public:
    *
    * @returns angle of the vector
    */
-  double angle() const { return std::atan2(this->x(), this->y()); }
+  double angle() const { return std::atan2(this->y(), this->x()); }
 
   /**
    * Rotates vector by a certain angle.

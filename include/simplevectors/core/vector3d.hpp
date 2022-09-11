@@ -41,6 +41,7 @@ public:
   Vector3D(const _Vec3 &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
+    this->m_components[2] = other[2];
   }
 
   /**
