@@ -13,12 +13,15 @@
 #include <cmath>
 
 namespace svector {
+
+typedef Vector<2> _Vec2;
+
 /**
  * A simple 2D vector representation
  */
-class Vector2D : public Vector<2> {
+class Vector2D : public _Vec2 {
 public:
-  using Vector<2>::Vector;
+  using _Vec2::Vector;
 
   /**
    * Initializes a vector given xy components
@@ -34,7 +37,7 @@ public:
   /**
    * Copy constructor for base class
    */
-  Vector2D(const Vector<2> &other) {
+  Vector2D(const _Vec2 &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
   }

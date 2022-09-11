@@ -138,11 +138,10 @@ public:
    */
   bool operator==(const Vector<dimensions> &other) const {
     for (size_t i = 0; i < dimensions; i++) {
-      if (this->m_components[i] == other[i]) {
+      if (this->m_components[i] == other[i])
         continue;
-      } else {
+      else
         return false;
-      }
     }
 
     return true;
