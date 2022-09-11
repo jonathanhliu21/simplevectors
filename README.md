@@ -7,10 +7,10 @@ Simple 2D and 3D vector implementations in C++.
 
 ## Installation
 
-The simplest way is to download the single-header `simplevectors.h` file from the releases page. To include the file, simply put the path to the header file.
+The simplest way is to download the single-header `simplevectors.hpp` file from the releases page. To include the file, simply put the path to the header file.
 
 ```cpp
-#include "path/to/simplevectors.h"
+#include "path/to/simplevectors.hpp"
 ```
 
 ### CMake
@@ -27,12 +27,10 @@ add_executable(main main.cpp)
 target_link_libraries(main PRIVATE simplevectors)
 ```
 
-If you do this, the include paths will be slightly different:
+If you do this, the include path will be slightly different:
 
 ```cpp
-#include <simplevectors/simplevector2d.h> // for 2D vector class
-#include <simplevectors/simplevector3d.h> // for 3D vector class
-#include <simplevectors/units.h> // for enum constants
+#include <simplevectors/vectors.hpp>
 ```
 
 ## Usage
@@ -85,7 +83,7 @@ std::cout << v2d.angle() << std::endl; // 1.107
 // Angles range from [0, π]
 std::cout << v3d.magn() << std::endl;                  // 6.708
 std::cout << v3d.angle<svector::ALPHA>() << std::endl; // 1.268
-std::cout << v3d.angle<svector::BETA>() << std::endl;  // 0.9322
+std::cout << v3d.angle<svector::BETA>() << std::endl;  // 0.932
 std::cout << v3d.angle<svector::GAMMA>() << std::endl; // 0.730
 ```
 

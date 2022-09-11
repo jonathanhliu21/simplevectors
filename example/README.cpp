@@ -1,6 +1,4 @@
-#include <simplevectors/simplevector2d.h> // for 2D vector class
-#include <simplevectors/simplevector3d.h> // for 3D vector class
-#include <simplevectors/units.h>          // for enum constants
+#include <simplevectors/vectors.hpp>
 
 #include <iostream>
 

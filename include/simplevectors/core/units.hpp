@@ -1,17 +1,17 @@
 /**
- * units.h
+ * units.hpp
  *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
 
-#ifndef UNITS_H
-#define UNITS_H
+#ifndef INCLUDE_SVECTOR_UNITS_HPP_
+#define INCLUDE_SVECTOR_UNITS_HPP_
 
 namespace svector {
-// COMBINER_PY_STARTH_3
+// COMBINER_PY_START
 enum AngleDir { ALPHA, BETA, GAMMA };
-// COMBINER_PY_ENDH_3
+// COMBINER_PY_END
 } // namespace svector
 
 #endif
