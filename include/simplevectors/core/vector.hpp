@@ -36,6 +36,9 @@ public:
    * @param args the initializer list
    */
   Vector(const std::initializer_list<double> args) {
+    // in case length of args < dimensions
+    this->m_components.fill(0);
+
     size_t counter = 0;
     for (auto num : args) {
       if (counter >= dimensions) {
