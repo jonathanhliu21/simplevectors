@@ -21,8 +21,6 @@ include_directories(../include/)
 add_executable(
   test_all
   test_all.cpp
-  ../src/simplevector2d.cpp
-  ../src/simplevector3d.cpp
 )
 target_link_libraries(
   test_all

@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
 project(simplevectors 
-    VERSION 0.1.0
-    DESCRIPTION "Simple vector implementations in C++")
+    VERSION 0.2.0
+    DESCRIPTION "Simple vector implementations in C++"
+    LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
@@ -13,30 +14,28 @@ option(BUILD_EXAMPLE "Build examples" OFF)
 set(CMAKE_CXX_STANDARD 14)
 
 # add headers and sources
-set(svector_HEADERS include/core/units.hpp include/core/vector.hpp
-    include/core/vector2d.hpp include/core/vector3d.hpp)
+set(svector_HEADERS
+  include/simplevectors/core/units.hpp 
+  include/simplevectors/core/vector.hpp
+  include/simplevectors/core/vector2d.hpp
+  include/simplevectors/core/vector3d.hpp
+  include/simplevectors/vectors.hpp)
 
 # compile
-add_library(simplevectors STATIC ${svector_HEADERS})
+add_library(simplevectors INTERFACE)
 set_target_properties(simplevectors PROPERTIES
-    VERSION ${PROJECT_VERSION})
+  VERSION ${PROJECT_VERSION})
 
-target_include_directories(simplevectors PUBLIC 
+target_include_directories(simplevectors INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include/>)
 
-# install library & public header
-install(TARGETS simplevectors
-    EXPORT simplevectorsTargets
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+# install public headers
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # configure & install CMake package
 include(CMakePackageConfigHelpers)
-install(EXPORT simplevectorsTargets
-    FILE simplevectorsTargets.cmake
-    DESTINATION lib/cmake/simplevectors)
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfig.cmake
     INSTALL_DESTINATION lib/cmake/simplevectors
