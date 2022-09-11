@@ -13,12 +13,11 @@ option(BUILD_EXAMPLE "Build examples" OFF)
 set(CMAKE_CXX_STANDARD 14)
 
 # add headers and sources
-set(svector_SOURCES src/simplevector3d.cpp src/simplevector2d.cpp)
-set(svector_HEADERS include/simplevectors/simplevector3d.h 
-    include/simplevectors/simplevector2d.h include/simplevectors/units.h)
+set(svector_HEADERS include/core/units.hpp include/core/vector.hpp
+    include/core/vector2d.hpp include/core/vector3d.hpp)
 
 # compile
-add_library(simplevectors SHARED ${svector_SOURCES} ${svector_HEADERS})
+add_library(simplevectors STATIC ${svector_HEADERS})
 set_target_properties(simplevectors PROPERTIES
     VERSION ${PROJECT_VERSION})
 
