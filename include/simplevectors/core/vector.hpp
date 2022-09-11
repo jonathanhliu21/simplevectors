@@ -14,6 +14,7 @@
 #include <string>
 
 namespace svector {
+// COMBINER_PY_START
 /**
  * A base vector representation
  */
@@ -274,6 +275,7 @@ public:
 protected:
   std::array<double, dimensions> m_components;
 };
+// COMBINER_PY_END
 } // namespace svector
 
 #endif

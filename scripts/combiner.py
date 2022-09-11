@@ -22,20 +22,24 @@ SIMPLEVECTOR3D_CPP_RSTR = (
 )
 UNITS_H_RSTR = r"/\/\ COMBINER_PY_STARTH_3\ *\n(.*)\/\/\ COMBINER_PY_ENDH_3"
 
+RE_STR = r"/\/\ COMBINER_PY_START\ *\n(.*)\/\/\ COMBINER_PY_END"
+
 FILE_BEGIN = """/**
- * simplevectors.h
+ * simplevectors.hpp
  *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
 
-#ifndef SIMPLEVECTORS_H
-#define SIMPLEVECTORS_H
+#ifndef INCLUDE_SVECTORS_SIMPLEVECTORS_HPP_
+#define INCLUDE_SVECTORS_SIMPLEVECTORS_HPP_
 
+#include <array>
 #include <cmath>
+#include <initializer_list>
 #include <string>
 
-namespace svector{
+namespace svector {
 """
 
 FILE_END = """}
@@ -46,50 +50,46 @@ FILE_END = """}
 
 def combine():
     # read files into strings
-    simplevector2d_h_str = ""
-    simplevector2d_cpp_str = ""
-    simplevector3d_h_str = ""
-    simplevector3d_cpp_str = ""
-    units_h_str = ""
+    units_str = ""
+    vector_str = ""
+    vector2d_str = ""
+    vector3d_str = ""
 
-    with open(os.path.join("include", "simplevectors", "simplevector2d.h")) as f:
-        simplevector2d_h_str = f.read()
+    with open(os.path.join("include", "simplevectors", "core", "units.hpp")) as f:
+        units_str = f.read()
 
-    with open(os.path.join("include", "simplevectors", "simplevector3d.h")) as f:
-        simplevector3d_h_str = f.read()
+    with open(os.path.join("include", "simplevectors", "core", "vector.hpp")) as f:
+        vector_str = f.read()
 
-    with open(os.path.join("include", "simplevectors", "units.h")) as f:
-        units_h_str = f.read()
+    with open(os.path.join("include", "simplevectors", "core", "vector2d.hpp")) as f:
+        vector2d_str = f.read()
 
-    with open(os.path.join("src", "simplevector2d.cpp")) as f:
-        simplevector2d_cpp_str = f.read()
-
-    with open(os.path.join("src", "simplevector3d.cpp")) as f:
-        simplevector3d_cpp_str = f.read()
+    with open(os.path.join("include", "simplevectors", "core", "vector3d.hpp")) as f:
+        vector3d_str = f.read()
 
     # get each "sandwiched" part of each file
-    sandwiched_units_h = re.search(UNITS_H_RSTR, units_h_str, flags=re.DOTALL).group(1)
-    sandwiched_simplevector2d_h = re.search(
-        SIMPLEVECTOR2D_H_RSTR, simplevector2d_h_str, flags=re.DOTALL
-    ).group(1)
-    sandwiched_simplevector2d_cpp = re.search(
-        SIMPLEVECTOR2D_CPP_RSTR, simplevector2d_cpp_str, flags=re.DOTALL
-    ).group(1)
-    sandwiched_simplevector3d_h = re.search(
-        SIMPLEVECTOR3D_H_RSTR, simplevector3d_h_str, flags=re.DOTALL
-    ).group(1)
-    sandwiched_simplevector3d_cpp = re.search(
-        SIMPLEVECTOR3D_CPP_RSTR, simplevector3d_cpp_str, flags=re.DOTALL
-    ).group(1)
+    sandwiched_units_groups = re.search(RE_STR, units_str, flags=re.DOTALL)
+    sandwiched_vector_groups = re.search(RE_STR, vector_str, flags=re.DOTALL)
+    sandwiched_vector2d_groups = re.search(RE_STR, vector2d_str, flags=re.DOTALL)
+    sandwiched_vector3d_groups = re.search(RE_STR, vector3d_str, flags=re.DOTALL)
+
+    assert sandwiched_units_groups is not None
+    assert sandwiched_vector_groups is not None
+    assert sandwiched_vector2d_groups is not None
+    assert sandwiched_vector3d_groups is not None
+
+    sandwiched_units = sandwiched_units_groups.group(1)
+    sandwiched_vector = sandwiched_vector_groups.group(1)
+    sandwiched_vector2d = sandwiched_vector2d_groups.group(1)
+    sandwiched_vector3d = sandwiched_vector3d_groups.group(1)
 
     # get final output file
     output_str = (
         FILE_BEGIN
-        + sandwiched_units_h
-        + sandwiched_simplevector2d_h
-        + sandwiched_simplevector3d_h
-        + sandwiched_simplevector2d_cpp
-        + sandwiched_simplevector3d_cpp
+        + sandwiched_units
+        + sandwiched_vector
+        + sandwiched_vector2d
+        + sandwiched_vector3d
         + FILE_END
     )
 

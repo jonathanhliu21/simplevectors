@@ -5,10 +5,13 @@
  * MIT License
  */
 
-#pragma once
+#ifndef INCLUDE_SVECTOR_UNITS_HPP_
+#define INCLUDE_SVECTOR_UNITS_HPP_
 
 namespace svector {
-// COMBINER_PY_STARTH_3
+// COMBINER_PY_START
 enum AngleDir { ALPHA, BETA, GAMMA };
-// COMBINER_PY_ENDH_3
+// COMBINER_PY_END
 } // namespace svector
+
+#endif

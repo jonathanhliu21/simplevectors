@@ -13,6 +13,7 @@
 #include <cmath>
 
 namespace svector {
+// COMBINER_PY_START
 
 typedef Vector<2> _Vec2;
 
@@ -104,7 +105,7 @@ public:
     return T{this->x(), this->y()};
   }
 };
-
+// COMBINER_PY_END
 } // namespace svector
 
 #endif

@@ -14,8 +14,10 @@
 #include <cmath>
 
 namespace svector {
+// COMBINER_PY_START
 
 typedef Vector<3> _Vec3;
+
 /**
  * A simple 3D vector representation
  */
@@ -230,7 +232,7 @@ private:
     return Vector3D{xPrime, yPrime, zPrime};
   }
 };
-
+// COMBINER_PY_END
 } // namespace svector
 
 #endif
