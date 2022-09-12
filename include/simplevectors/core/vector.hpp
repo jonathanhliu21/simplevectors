@@ -10,6 +10,7 @@
 
 #include <array>
 #include <cmath>
+#include <cstddef>
 #include <initializer_list>
 #include <string>
 
@@ -18,7 +19,7 @@ namespace svector {
 /**
  * A base vector representation
  */
-template <size_t dimensions> class Vector {
+template <std::size_t dimensions> class Vector {
 public:
   /**
    * No-argument constructor
@@ -36,7 +37,10 @@ public:
    * @param args the initializer list
    */
   Vector(const std::initializer_list<double> args) {
-    size_t counter = 0;
+    // in case length of args < dimensions
+    this->m_components.fill(0);
+
+    std::size_t counter = 0;
     for (auto num : args) {
       if (counter >= dimensions) {
         break;
@@ -51,7 +55,7 @@ public:
    * Copy constructor
    */
   Vector(const Vector<dimensions> &other) {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] = other[i];
     }
   }
@@ -63,7 +67,7 @@ public:
    */
   virtual std::string toString() const {
     std::string str = "<";
-    for (size_t i = 0; i < dimensions - 1; i++) {
+    for (std::size_t i = 0; i < dimensions - 1; i++) {
       str += std::to_string(this->m_components[i]);
       str += ", ";
     }
@@ -79,7 +83,7 @@ public:
    */
   Vector<dimensions> operator+(const Vector<dimensions> &other) const {
     Vector<dimensions> tmp;
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] + other[i];
     }
 
@@ -91,7 +95,7 @@ public:
    */
   Vector<dimensions> operator-(const Vector<dimensions> &other) const {
     Vector<dimensions> tmp;
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] - other[i];
     }
 
@@ -103,7 +107,7 @@ public:
    */
   Vector<dimensions> operator-() const {
     Vector<dimensions> tmp;
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = -this->m_components[i];
     }
 
@@ -115,7 +119,7 @@ public:
    */
   Vector<dimensions> operator*(const double other) const {
     Vector<dimensions> tmp;
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] * other;
     }
 
@@ -127,7 +131,7 @@ public:
    */
   Vector<dimensions> operator/(const double other) const {
     Vector<dimensions> tmp;
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] / other;
     }
 
@@ -138,7 +142,7 @@ public:
    * Equality
    */
   bool operator==(const Vector<dimensions> &other) const {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       if (this->m_components[i] == other[i])
         continue;
       else
@@ -159,7 +163,7 @@ public:
    * Adds another vector object to self
    */
   Vector<dimensions> &operator+=(const Vector<dimensions> &other) {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] += other[i];
     }
 
@@ -170,7 +174,7 @@ public:
    * Subtracts another vector object from self
    */
   Vector<dimensions> &operator-=(const Vector<dimensions> &other) {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] -= other[i];
     }
 
@@ -181,7 +185,7 @@ public:
    * Multiplies vector by a number
    */
   Vector<dimensions> &operator*=(const double other) {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] *= other;
     }
 
@@ -192,7 +196,7 @@ public:
    * Divides vector by a number
    */
   Vector<dimensions> &operator/=(const double other) {
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] /= other;
     }
 
@@ -205,7 +209,7 @@ public:
   double dot(const Vector<dimensions> &other) const {
     double result = 0;
 
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       result += this->m_components[i] * other[i];
     }
 
@@ -240,21 +244,29 @@ public:
    *
    * @returns Number of dimensions
    */
-  size_t numDimensions() const { return dimensions; }
+  std::size_t numDimensions() const { return dimensions; }
 
   /**
    * Gets a certain component of the vector given the dimension number
    *
-   * @returns Dimension number
+   * @param index The dimension number
+   *
+   * @returns That dimension's component of the vector
    */
-  double operator[](size_t index) const { return this->m_components[index]; }
+  double operator[](const std::size_t index) const {
+    return this->m_components[index];
+  }
 
   /**
    * Sets a certain component of the vector given the dimension number
    *
-   * @returns Dimension number
+   * @param index The dimension number
+   *
+   * @returns That dimension's component of the vector
    */
-  double &operator[](size_t index) { return this->m_components[index]; }
+  double &operator[](const std::size_t index) {
+    return this->m_components[index];
+  }
 
   /**
    * Converts the components in each dimension to a certain type
@@ -265,7 +277,7 @@ public:
   template <typename T> std::array<T, dimensions> eachComponentAs() const {
     std::array<T, dimensions> result;
 
-    for (size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < dimensions; i++) {
       result[i] = T{this->m_components[i]};
     }
 

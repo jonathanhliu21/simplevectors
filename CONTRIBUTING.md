@@ -19,4 +19,5 @@ Issues can be submitted in the GitHub issue tracker. For bugs and enhancements, 
 $ cmake .. -DBUILD_TEST=ON
 ```
 
-3. Run `ctest`
+3. Run `make` and `ctest`
+

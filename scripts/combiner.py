@@ -36,6 +36,7 @@ FILE_BEGIN = """/**
 
 #include <array>
 #include <cmath>
+#include <cstddef>
 #include <initializer_list>
 #include <string>
 
