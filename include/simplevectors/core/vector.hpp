@@ -249,7 +249,9 @@ public:
   /**
    * Gets a certain component of the vector given the dimension number
    *
-   * @returns Dimension number
+   * @param index The dimension number
+   *
+   * @returns That dimension's component of the vector
    */
   double operator[](const std::size_t index) const {
     return this->m_components[index];
@@ -258,7 +260,9 @@ public:
   /**
    * Sets a certain component of the vector given the dimension number
    *
-   * @returns Dimension number
+   * @param index The dimension number
+   *
+   * @returns That dimension's component of the vector
    */
   double &operator[](const std::size_t index) {
     return this->m_components[index];

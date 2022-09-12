@@ -83,7 +83,7 @@ TEST(NumDimensionTestV, NumDimensionTest) {
   EXPECT_EQ(v3.numDimensions(), 10);
 }
 
-TEST(EachComponentAsTestV, NumDimensionTest) {
+TEST(EachComponentAsTestV, EachComponentAsTest) {
   struct Test {
     int i;
 
