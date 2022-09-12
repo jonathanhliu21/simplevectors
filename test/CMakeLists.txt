@@ -22,6 +22,7 @@ add_executable(
   test_all
   test2d.cpp
   test3d.cpp
+  testbase.cpp
 )
 target_link_libraries(
   test_all
