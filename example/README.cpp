@@ -123,4 +123,13 @@ int main() {
           .rotate<svector::BETA>(M_PI_2)
           .rotate<svector::GAMMA>(M_PI_2); // <1, 0, -1>
   std::cout << v1_chained.toString() << std::endl;
+
+  class Quaternion : public svector::Vector<4> {
+    Quaternion(const svector::Vector<4> &other) {
+      this->m_components[0] = other[0];
+      this->m_components[1] = other[1];
+      this->m_components[2] = other[2];
+      this->m_components[3] = other[3];
+    };
+  };
 }
