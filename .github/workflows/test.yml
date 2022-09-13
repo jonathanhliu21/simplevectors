@@ -26,5 +26,5 @@ jobs:
       - name: Run Unit Tests
         run: |
           mkdir build && cd build
-          cmake .. -DBUILD_TEST=ON
+          cmake .. -DBUILD_TEST=ON -DBUILD_EXAMPLE=ON
           make && ctest
