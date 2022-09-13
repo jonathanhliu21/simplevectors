@@ -1,6 +1,8 @@
 # Simplevectors
 
-Simple 2D and 3D vector implementations in C++.
+Simple vector implementations in C++.
+
+**NOTE**: C++14 or higher is needed for this library.
 
 **NOTE**: This is mostly tested on MacOS 12.6 with C++14, clang  13.0.0, CMake  3.22.2, and GNU make 3.81
 
@@ -21,6 +23,9 @@ Alternatively, you can use CMake to install the library:
 cmake_minimum_required(VERSION 3.9)
 project(MyProject LANGUAGES CXX)
 
+# C++14 or higher is needed
+set(CMAKE_CXX_STANDARD 14)
+
 find_package(simplevectors REQUIRED)
 
 add_executable(main main.cpp)
@@ -35,7 +40,7 @@ If you do this, the include path will be slightly different:
 
 ## Usage
 
-This section covers basic usage. For more details, read the docstrings in the source code files.
+This section covers basic usage of 2D and 3D vectors. For more details, read the docstrings in the source code files.
 
 Everything is under the namespace `svector`. 
 
@@ -183,6 +188,14 @@ svector::Vector3D v1_chained =
     v1_3D.rotate<svector::ALPHA>(M_PI_2)
         .rotate<svector::BETA>(M_PI_2)
         .rotate<svector::GAMMA>(M_PI_2); // <1, 0, -1>
+```
+
+## Extending
+
+To go beyond only 2D and 3D, you can extend the `Vector` base class (the 2D and 3D vector classes extend this base class as well). `Vector` is a template class, where the template takes in the number of dimensions the vector has:
+
+```cpp
+
 ```
 
 ## License
