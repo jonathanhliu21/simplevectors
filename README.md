@@ -216,6 +216,8 @@ The `Vector` base class provides a protected variable, `m_components`, an `std::
 - `numDimensions()`: determines the number of dimensions in a vector
 - `operator[](index)`: returns dimension `index`'s component of a vector
 
+Note that the binary operations with another vector require vectors **that have the same dimension**.
+
 It provides these constructors:
 
 - `Vector()`: initializes a 0 vector (or a vector with 0s in every dimension)
