@@ -13,14 +13,6 @@ option(BUILD_EXAMPLE "Build examples" OFF)
 # C++ standard
 set(CMAKE_CXX_STANDARD 14)
 
-# add headers and sources
-set(svector_HEADERS
-  include/simplevectors/core/units.hpp 
-  include/simplevectors/core/vector.hpp
-  include/simplevectors/core/vector2d.hpp
-  include/simplevectors/core/vector3d.hpp
-  include/simplevectors/vectors.hpp)
-
 # compile
 add_library(simplevectors INTERFACE)
 set_target_properties(simplevectors PROPERTIES
