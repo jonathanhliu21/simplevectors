@@ -99,7 +99,7 @@ public:
   template <typename T> T componentsAs() const {
     return T{this->x(), this->y(), this->z()};
   }
-  
+
   /**
    * Converts angles of vector to an object with a constructor that
    * has three parameters.
