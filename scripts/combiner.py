@@ -3,7 +3,7 @@
 
 """Combines separate files into a single header file
 
-The header file should be named `simplevectors.h`, and everything
+The header file should be named `simplevectors.hpp`, and everything
 will be under the namespace `svector`.
 
 This program will process the files and print the result to stdout.
@@ -11,16 +11,6 @@ This program will process the files and print the result to stdout.
 
 import re
 import os
-
-SIMPLEVECTOR2D_H_RSTR = r"/\/\ COMBINER_PY_STARTH_1\ *\n(.*)\/\/\ COMBINER_PY_ENDH_1"
-SIMPLEVECTOR2D_CPP_RSTR = (
-    r"/\/\ COMBINER_PY_STARTCPP_1\ *\n(.*)\/\/\ COMBINER_PY_ENDCPP_1"
-)
-SIMPLEVECTOR3D_H_RSTR = r"/\/\ COMBINER_PY_STARTH_2\ *\n(.*)\/\/\ COMBINER_PY_ENDH_2"
-SIMPLEVECTOR3D_CPP_RSTR = (
-    r"/\/\ COMBINER_PY_STARTCPP_2\ *\n(.*)\/\/\ COMBINER_PY_ENDCPP_2"
-)
-UNITS_H_RSTR = r"/\/\ COMBINER_PY_STARTH_3\ *\n(.*)\/\/\ COMBINER_PY_ENDH_3"
 
 RE_STR = r"/\/\ COMBINER_PY_START\ *\n(.*)\/\/\ COMBINER_PY_END"
 
