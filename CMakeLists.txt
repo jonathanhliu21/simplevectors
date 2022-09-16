@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.16.3)  # lowest version that is tested on
 project(simplevectors 
     VERSION 0.2.0
     DESCRIPTION "Simple vector implementations in C++"
@@ -15,8 +15,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 # compile
 add_library(simplevectors INTERFACE)
-set_target_properties(simplevectors PROPERTIES
-  VERSION ${PROJECT_VERSION})
 
 target_include_directories(simplevectors INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
