@@ -17,24 +17,24 @@
 namespace svector {
 // COMBINER_PY_START
 /**
- * A base vector representation
+ * A base vector representation.
  */
 template <std::size_t dimensions> class Vector {
 public:
   /**
-   * No-argument constructor
+   * No-argument constructor.
    *
    * Initializes a zero vector.
    */
   Vector() { this->m_components.fill(0); }
 
   /**
-   * Initializes a vector given initializer list
+   * Initializes a vector given initializer list.
    *
    * The initializer list should represent the components
    * of the vector in each dimension.
    *
-   * @param args the initializer list
+   * @param args the initializer list.
    */
   Vector(const std::initializer_list<double> args) {
     // in case length of args < dimensions
@@ -52,7 +52,7 @@ public:
   }
 
   /**
-   * Copy constructor
+   * Copy constructor.
    */
   Vector(const Vector<dimensions> &other) {
     for (std::size_t i = 0; i < dimensions; i++) {
@@ -61,9 +61,9 @@ public:
   }
 
   /**
-   * String form; can be used for printing
+   * String form; can be used for printing.
    *
-   * @returns string form of vector
+   * @returns string form of vector.
    */
   virtual std::string toString() const {
     std::string str = "<";
@@ -79,7 +79,7 @@ public:
   }
 
   /**
-   * Adds two vectors
+   * Adds two vectors.
    */
   Vector<dimensions> operator+(const Vector<dimensions> &other) const {
     Vector<dimensions> tmp;
@@ -91,7 +91,7 @@ public:
   }
 
   /**
-   * Subtracts two vectors
+   * Subtracts two vectors.
    */
   Vector<dimensions> operator-(const Vector<dimensions> &other) const {
     Vector<dimensions> tmp;
@@ -103,7 +103,7 @@ public:
   }
 
   /**
-   * Flips direction of vector
+   * Flips direction of vector.
    */
   Vector<dimensions> operator-() const {
     Vector<dimensions> tmp;
@@ -115,7 +115,7 @@ public:
   }
 
   /**
-   * Scalar multiplication of vector
+   * Scalar multiplication of vector.
    */
   Vector<dimensions> operator*(const double other) const {
     Vector<dimensions> tmp;
@@ -127,7 +127,7 @@ public:
   }
 
   /**
-   * Scalar division of vector
+   * Scalar division of vector.
    */
   Vector<dimensions> operator/(const double other) const {
     Vector<dimensions> tmp;
@@ -160,7 +160,7 @@ public:
   }
 
   /**
-   * Adds another vector object to self
+   * Adds another vector object to self.
    */
   Vector<dimensions> &operator+=(const Vector<dimensions> &other) {
     for (std::size_t i = 0; i < dimensions; i++) {
@@ -171,7 +171,7 @@ public:
   }
 
   /**
-   * Subtracts another vector object from self
+   * Subtracts another vector object from self.
    */
   Vector<dimensions> &operator-=(const Vector<dimensions> &other) {
     for (std::size_t i = 0; i < dimensions; i++) {
@@ -182,7 +182,7 @@ public:
   }
 
   /**
-   * Multiplies vector by a number
+   * Multiplies vector by a number.
    */
   Vector<dimensions> &operator*=(const double other) {
     for (std::size_t i = 0; i < dimensions; i++) {
@@ -193,7 +193,7 @@ public:
   }
 
   /**
-   * Divides vector by a number
+   * Divides vector by a number.
    */
   Vector<dimensions> &operator/=(const double other) {
     for (std::size_t i = 0; i < dimensions; i++) {
@@ -204,7 +204,14 @@ public:
   }
 
   /**
-   * Dot product of two vectors
+   * Dot product of two vectors.
+   *
+   * Note that the dimensions of the other vector has the be the same
+   * as the current one.
+   *
+   * @param other The other vector to dot current vector with.
+   *
+   * @returns The dot product of the two vectors.
    */
   double dot(const Vector<dimensions> &other) const {
     double result = 0;
@@ -217,9 +224,9 @@ public:
   }
 
   /**
-   * Gets the magnitude of the vector
+   * Gets the magnitude of the vector.
    *
-   * @returns magnitude of vector
+   * @returns magnitude of vector.
    */
   double magn() const {
     double sum_of_squares = 0;
@@ -235,34 +242,34 @@ public:
    *
    * Finds the unit vector with the same direction angle as the current vector.
    *
-   * @returns Normalized vector
+   * @returns Normalized vector.
    */
   Vector<dimensions> normalize() const { return (*this) / this->magn(); }
 
   /**
-   * Gets number of dimensions
+   * Gets number of dimensions.
    *
-   * @returns Number of dimensions
+   * @returns Number of dimensions.
    */
   std::size_t numDimensions() const { return dimensions; }
 
   /**
-   * Gets a certain component of the vector given the dimension number
+   * Gets a certain component of the vector given the dimension number.
    *
-   * @param index The dimension number
+   * @param index The dimension number.
    *
-   * @returns That dimension's component of the vector
+   * @returns That dimension's component of the vector.
    */
   double operator[](const std::size_t index) const {
     return this->m_components[index];
   }
 
   /**
-   * Sets a certain component of the vector given the dimension number
+   * Sets a certain component of the vector given the dimension number.
    *
-   * @param index The dimension number
+   * @param index The dimension number.
    *
-   * @returns That dimension's component of the vector
+   * @returns That dimension's component of the vector.
    */
   double &operator[](const std::size_t index) {
     return this->m_components[index];
@@ -270,9 +277,9 @@ public:
 
   /**
    * Converts the components in each dimension to a certain type
-   * by putting the component into the type's constructor
+   * by putting the component into the type's constructor.
    *
-   * @returns std::array of converted components
+   * @returns std::array of converted components.
    */
   template <typename T> std::array<T, dimensions> eachComponentAs() const {
     std::array<T, dimensions> result;

@@ -19,17 +19,18 @@ namespace svector {
 typedef Vector<3> _Vec3;
 
 /**
- * A simple 3D vector representation
+ * A simple 3D vector representation.
  */
 class Vector3D : public _Vec3 {
 public:
   using _Vec3::Vector;
 
   /**
-   * Initializes a vector given xy components
+   * Initializes a vector given xyz components.
    *
-   * @param x The x-component
-   * @param y The y-component
+   * @param x The x-component.
+   * @param y The y-component.
+   * @param z The z-component.
    */
   Vector3D(const double x, const double y, const double z) {
     this->m_components[0] = x;
@@ -38,7 +39,7 @@ public:
   }
 
   /**
-   * Copy constructor for base class
+   * Copy constructor for base class.
    */
   Vector3D(const _Vec3 &other) {
     this->m_components[0] = other[0];
@@ -47,28 +48,35 @@ public:
   }
 
   /**
-   * Gets the x-component of the vector
+   * Gets the x-component of the vector.
    *
-   * @returns x-component of vector
+   * @returns x-component of vector.
    */
   double x() const { return this->m_components[0]; }
 
   /**
-   * Gets the y-component of the vector
+   * Gets the y-component of the vector.
    *
-   * @returns y-component of vector
+   * @returns y-component of vector.
    */
   double y() const { return this->m_components[1]; }
 
   /**
-   * Gets the z-component of the vector
+   * Gets the z-component of the vector.
    *
-   * @returns z-component of vector
+   * @returns z-component of vector.
    */
   double z() const { return this->m_components[2]; }
 
   /**
-   * Cross product of two vectors
+   * Cross product of two vectors.
+   *
+   * Note that the dimensions of the other vector has the be the same
+   * as the current one.
+   *
+   * @param other The other vector to cross current vector with.
+   *
+   * @returns The cross product of the two vectors.
    */
   Vector3D cross(const Vector3D &other) const {
     double newx = this->y() * other.z() - this->z() * other.y();
@@ -86,11 +94,12 @@ public:
    * a 2D vector into a `pair<double, double>`, or a struct with two
    * variables and a constructor for those two variables.
    *
-   * @returns Converted value
+   * @returns Converted value.
    */
   template <typename T> T componentsAs() const {
     return T{this->x(), this->y(), this->z()};
   }
+
   /**
    * Converts angles of vector to an object with a constructor that
    * has three parameters.
@@ -99,7 +108,7 @@ public:
    * of a 3D vector into a struct with three variables and a
    * constructor for those three variables.
    *
-   * @returns Converted value
+   * @returns Converted value.
    */
   template <typename T> T anglesAs() const {
     return T{this->getAlpha(), this->getBeta(), this->getGamma()};
@@ -113,7 +122,7 @@ public:
    *
    * Each angle is in the range [0, π]. Angle will be in radians.
    *
-   * @param D The angle direction to return
+   * @param D The angle direction to return.
    */
   template <AngleDir D> double angle() const {
     if (D == ALPHA)
@@ -134,9 +143,9 @@ public:
    * Uses the basic gimbal-like 3D rotation matrices for the
    * x-axis, y-axis, and the z-axis.
    *
-   * @param angle the angle to rotate the vector, in radians
+   * @param angle the angle to rotate the vector, in radians.
    *
-   * @returns a new, rotated vector
+   * @returns a new, rotated vector.
    */
   template <AngleDir D> Vector3D rotate(const double &ang) const {
     if (D == ALPHA)
@@ -149,34 +158,34 @@ public:
 
 private:
   /**
-   * Gets α angle
+   * Gets α angle.
    *
-   * α is the angle between the vector and the x-axis
+   * α is the angle between the vector and the x-axis.
    *
    * @returns α
    */
   double getAlpha() const { return std::acos(this->x() / this->magn()); }
 
   /**
-   * Gets β angle
+   * Gets β angle.
    *
-   * β is the angle between the vector and the y-axis
+   * β is the angle between the vector and the y-axis.
    *
    * @returns β
    */
   double getBeta() const { return std::acos(this->y() / this->magn()); }
 
   /**
-   * Gets γ angle
+   * Gets γ angle.
    *
-   * γ is the angle between the vector and the z-axis
+   * γ is the angle between the vector and the z-axis.
    *
    * @returns γ
    */
   double getGamma() const { return std::acos(this->z() / this->magn()); }
 
   /**
-   * Rotates around x-axis
+   * Rotates around x-axis.
    */
   Vector3D rotateAlpha(const double &ang) const {
     /**
@@ -195,7 +204,7 @@ private:
   }
 
   /**
-   * Rotates around y-axis
+   * Rotates around y-axis.
    */
   Vector3D rotateBeta(const double &ang) const {
     /**
@@ -214,7 +223,7 @@ private:
   }
 
   /**
-   * Rotates around z-axis
+   * Rotates around z-axis.
    */
   Vector3D rotateGamma(const double &ang) const {
     /**
