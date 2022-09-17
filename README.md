@@ -26,7 +26,7 @@ project(MyProject LANGUAGES CXX)
 find_package(simplevectors REQUIRED)
 
 add_executable(main main.cpp)
-target_link_libraries(main PRIVATE simplevectors)
+target_link_libraries(main PRIVATE simplevectors::simplevectors)
 ```
 
 If you do this, the include path will be slightly different:

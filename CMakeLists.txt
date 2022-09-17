@@ -41,6 +41,14 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfigVersion.cmake
     DESTINATION lib/cmake/simplevectors
     )
+install(TARGETS simplevectors
+    EXPORT simplevectorsTargets
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
+install(EXPORT simplevectorsTargets
+    NAMESPACE simplevectors::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/simplevectors
+    )
 
 # configure pc.in file
 configure_file(simplevectors.pc.in simplevectors.pc @ONLY)
