@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <regex>
 
 TEST(ConstructorTestV, ZeroConstructorTest) {
@@ -98,4 +99,89 @@ TEST(EachComponentAsTestV, EachComponentAsTest) {
   EXPECT_EQ(arr[0].i, 3);
   EXPECT_EQ(arr[1].i, -5);
   EXPECT_EQ(arr[2].i, 3);
+}
+
+TEST(IteratorTestV, FwdIterationTest) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (svector::Vector<10>::iterator it = v.begin(); it != v.end(); it++) {
+    arr.push_back(*it);
+  }
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, BkwdIterationTest) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (svector::Vector<10>::reverse_iterator it = v.rbegin(); it != v.rend();
+       it++) {
+    arr.push_back(*it);
+  }
+
+  std::reverse(arr.begin(), arr.end());
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, CopyTest) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  std::copy(v.begin(), v.end(), std::back_inserter(arr));
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, NonConstRangeLoopTest) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (double component : v) {
+    arr.push_back(component);
+  }
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, NonConstRangeLoopTestR) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (double &component : v) {
+    arr.push_back(component);
+  }
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, ConstRangeLoopTest) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (const double component : v) {
+    arr.push_back(component);
+  }
+
+  EXPECT_EQ(arr, res);
+}
+
+TEST(IteratorTestV, ConstRangeLoopTestR) {
+  std::vector<double> arr;
+  std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+  svector::Vector<10> v{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
+
+  for (const double &component : v) {
+    arr.push_back(component);
+  }
+
+  EXPECT_EQ(arr, res);
 }
