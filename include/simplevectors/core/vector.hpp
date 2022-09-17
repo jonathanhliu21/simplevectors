@@ -19,8 +19,14 @@ namespace svector {
 /**
  * A base vector representation.
  */
-template <std::size_t dimensions> class Vector {
+template <std::size_t dimensions, typename T = double> class Vector {
 public:
+  typedef typename std::array<T, dimensions>::iterator iterator;
+  typedef typename std::array<T, dimensions>::const_iterator const_iterator;
+  typedef typename std::array<T, dimensions>::reverse_iterator reverse_iterator;
+  typedef typename std::array<T, dimensions>::const_reverse_iterator
+      const_reverse_iterator;
+
   /**
    * No-argument constructor.
    *
@@ -36,7 +42,7 @@ public:
    *
    * @param args the initializer list.
    */
-  Vector(const std::initializer_list<double> args) {
+  Vector(const std::initializer_list<T> args) {
     // in case length of args < dimensions
     this->m_components.fill(0);
 
@@ -117,7 +123,7 @@ public:
   /**
    * Scalar multiplication of vector.
    */
-  Vector<dimensions> operator*(const double other) const {
+  Vector<dimensions> operator*(const T other) const {
     Vector<dimensions> tmp;
     for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] * other;
@@ -129,7 +135,7 @@ public:
   /**
    * Scalar division of vector.
    */
-  Vector<dimensions> operator/(const double other) const {
+  Vector<dimensions> operator/(const T other) const {
     Vector<dimensions> tmp;
     for (std::size_t i = 0; i < dimensions; i++) {
       tmp[i] = this->m_components[i] / other;
@@ -184,7 +190,7 @@ public:
   /**
    * Multiplies vector by a number.
    */
-  Vector<dimensions> &operator*=(const double other) {
+  Vector<dimensions> &operator*=(const T other) {
     for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] *= other;
     }
@@ -195,7 +201,7 @@ public:
   /**
    * Divides vector by a number.
    */
-  Vector<dimensions> &operator/=(const double other) {
+  Vector<dimensions> &operator/=(const T other) {
     for (std::size_t i = 0; i < dimensions; i++) {
       this->m_components[i] /= other;
     }
@@ -213,8 +219,8 @@ public:
    *
    * @returns The dot product of the two vectors.
    */
-  double dot(const Vector<dimensions> &other) const {
-    double result = 0;
+  T dot(const Vector<dimensions> &other) const {
+    T result = 0;
 
     for (std::size_t i = 0; i < dimensions; i++) {
       result += this->m_components[i] * other[i];
@@ -228,8 +234,8 @@ public:
    *
    * @returns magnitude of vector.
    */
-  double magn() const {
-    double sum_of_squares = 0;
+  T magn() const {
+    T sum_of_squares = 0;
     for (auto i : this->m_components) {
       sum_of_squares += i * i;
     }
@@ -260,7 +266,7 @@ public:
    *
    * @returns That dimension's component of the vector.
    */
-  double operator[](const std::size_t index) const {
+  const T &operator[](const std::size_t index) const {
     return this->m_components[index];
   }
 
@@ -271,9 +277,7 @@ public:
    *
    * @returns That dimension's component of the vector.
    */
-  double &operator[](const std::size_t index) {
-    return this->m_components[index];
-  }
+  T &operator[](const std::size_t index) { return this->m_components[index]; }
 
   /**
    * Converts the components in each dimension to a certain type
@@ -281,18 +285,40 @@ public:
    *
    * @returns std::array of converted components.
    */
-  template <typename T> std::array<T, dimensions> eachComponentAs() const {
-    std::array<T, dimensions> result;
+  template <typename cT> std::array<cT, dimensions> eachComponentAs() const {
+    std::array<cT, dimensions> result;
 
     for (std::size_t i = 0; i < dimensions; i++) {
-      result[i] = T{this->m_components[i]};
+      result[i] = cT{this->m_components[i]};
     }
 
     return result;
   };
 
+  iterator begin() noexcept { return iterator{this->m_components.begin()}; }
+  const_iterator begin() const noexcept {
+    return const_iterator{this->m_components.begin()};
+  }
+  iterator end() noexcept { return iterator{this->m_components.end()}; }
+  const_iterator end() const noexcept {
+    return const_iterator{this->m_components.end()};
+  }
+
+  reverse_iterator rbegin() noexcept {
+    return reverse_iterator{this->m_components.rbegin()};
+  }
+  const_reverse_iterator rbegin() const noexcept {
+    return const_reverse_iterator{this->m_components.rbegin()};
+  }
+  reverse_iterator rend() noexcept {
+    return reverse_iterator{this->m_components.rend()};
+  }
+  const_reverse_iterator rend() const noexcept {
+    return const_reverse_iterator{this->m_components.rend()};
+  }
+
 protected:
-  std::array<double, dimensions> m_components;
+  std::array<T, dimensions> m_components;
 };
 // COMBINER_PY_END
 } // namespace svector
