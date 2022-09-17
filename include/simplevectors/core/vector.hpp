@@ -280,16 +280,41 @@ public:
   T &operator[](const std::size_t index) { return this->m_components[index]; }
 
   /**
+   * Gets a certain component of the vector given the dimension number.
+   *
+   * Throws an out_of_range exception if given number is out of bounds.
+   *
+   * @param index The dimension number.
+   *
+   * @returns That dimension's component of the vector.
+   */
+  const T &at(const std::size_t index) const {
+    return this->m_components.at(index);
+  }
+
+  /**
+   * Sets a certain component of the vector given the dimension number.
+   *
+   * Throws an out_of_range exception if given number is out of bounds.
+   *
+   * @param index The dimension number.
+   *
+   * @returns That dimension's component of the vector.
+   */
+  T &at(const std::size_t index) { return this->m_components.at(index); }
+
+  /**
    * Converts the components in each dimension to a certain type
    * by putting the component into the type's constructor.
    *
    * @returns std::array of converted components.
    */
-  template <typename cT> std::array<cT, dimensions> eachComponentAs() const {
-    std::array<cT, dimensions> result;
+  template <typename newT>
+  std::array<newT, dimensions> eachComponentAs() const {
+    std::array<newT, dimensions> result;
 
     for (std::size_t i = 0; i < dimensions; i++) {
-      result[i] = cT{this->m_components[i]};
+      result[i] = newT{this->m_components[i]};
     }
 
     return result;
