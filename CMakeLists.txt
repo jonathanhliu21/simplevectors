@@ -6,6 +6,9 @@ project(simplevectors
 
 include(GNUInstallDirs)
 
+# install options
+option(SVECTOR_INSTALL "Install simplevectors during the install step")
+
 # test options
 option(SVECTOR_BUILD_TEST "Build simplevector tests" OFF)
 option(SVECTOR_BUILD_EXAMPLE "Build simplevector examples" OFF)
@@ -20,40 +23,42 @@ target_include_directories(simplevectors INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include/>)
 
-# install public headers
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+if (SVECTOR_INSTALL)
+    # install public headers
+    install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-# configure & install CMake package
-include(CMakePackageConfigHelpers)
-configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfig.cmake
-    INSTALL_DESTINATION lib/cmake/simplevectors
-    NO_SET_AND_CHECK_MACRO
-    NO_CHECK_REQUIRED_COMPONENTS_MACRO)
-write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfigVersion.cmake
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    COMPATIBILITY AnyNewerVersion
-    )  
-install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfigVersion.cmake
-    DESTINATION lib/cmake/simplevectors
-    )
-install(TARGETS simplevectors
-    EXPORT simplevectorsTargets
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    )
-install(EXPORT simplevectorsTargets
-    NAMESPACE simplevectors::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/simplevectors
-    )
+    # configure & install CMake package
+    include(CMakePackageConfigHelpers)
+    configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.in
+        ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfig.cmake
+        INSTALL_DESTINATION lib/cmake/simplevectors
+        NO_SET_AND_CHECK_MACRO
+        NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+    write_basic_package_version_file(
+        ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfigVersion.cmake
+        VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        COMPATIBILITY AnyNewerVersion
+        )  
+    install(FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfig.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/simplevectorsConfigVersion.cmake
+        DESTINATION lib/cmake/simplevectors
+        )
+    install(TARGETS simplevectors
+        EXPORT simplevectorsTargets
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        )
+    install(EXPORT simplevectorsTargets
+        NAMESPACE simplevectors::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/simplevectors
+        )
 
-# configure pc.in file
-configure_file(simplevectors.pc.in simplevectors.pc @ONLY)
-install(FILES ${CMAKE_BINARY_DIR}/simplevectors.pc
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+    # configure pc.in file
+    configure_file(simplevectors.pc.in simplevectors.pc @ONLY)
+    install(FILES ${CMAKE_BINARY_DIR}/simplevectors.pc
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+endif()
 
 # add tests if set
 if (SVECTOR_BUILD_TEST)
