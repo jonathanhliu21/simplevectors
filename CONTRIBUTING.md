@@ -16,7 +16,7 @@ Issues can be submitted in the GitHub issue tracker. For bugs and enhancements, 
 2. Run
 
 ```txt
-$ cmake .. -DBUILD_TEST=ON
+$ cmake .. -DSVECTOR_BUILD_TEST=ON
 ```
 
 3. Run `make` and `ctest`

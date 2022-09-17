@@ -7,8 +7,8 @@ project(simplevectors
 include(GNUInstallDirs)
 
 # test options
-option(BUILD_TEST "Build tests" OFF)
-option(BUILD_EXAMPLE "Build examples" OFF)
+option(SVECTOR_BUILD_TEST "Build tests" OFF)
+option(SVECTOR_BUILD_EXAMPLE "Build examples" OFF)
 
 # C++ standard
 set(CMAKE_CXX_STANDARD 14)
@@ -48,7 +48,7 @@ install(FILES ${CMAKE_BINARY_DIR}/simplevectors.pc
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
 
 # add tests if set
-if (BUILD_TEST)
+if (SVECTOR_BUILD_TEST)
     # don't install gtest when running `make install`
     set(INSTALL_GTEST OFF CACHE BOOL "Disable installation of googletest." FORCE)
     enable_testing()
@@ -56,6 +56,6 @@ if (BUILD_TEST)
 endif()
 
 # add examples
-if (BUILD_EXAMPLE)
+if (SVECTOR_BUILD_EXAMPLE)
     add_subdirectory(example)
 endif()
