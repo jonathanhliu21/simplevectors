@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <regex>
+#include <stdexcept>
 
 TEST(ConstructorTestV, ZeroConstructorTest) {
   svector::Vector<1> v;
@@ -184,4 +185,16 @@ TEST(IteratorTestV, ConstRangeLoopTestR) {
   }
 
   EXPECT_EQ(arr, res);
+}
+
+TEST(AtTestV, AtTest) {
+  svector::Vector<3> v{2, 5, 3};
+  EXPECT_EQ(v.at(0), 2);
+  EXPECT_EQ(v.at(1), 5);
+  EXPECT_EQ(v.at(2), 3);
+}
+
+TEST(AtTestV, OutOfBounds) {
+  svector::Vector<3> v{2, 5, 3};
+  EXPECT_THROW(v.at(4), std::out_of_range);
 }
