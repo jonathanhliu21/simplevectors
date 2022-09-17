@@ -2,9 +2,9 @@
 
 Simple vector implementations in C++.
 
-**NOTE**: C++14 or higher is needed for this library.
+**NOTE**: C++11 or higher is needed for this library.
 
-**NOTE**: This is mostly tested on MacOS 12.6 with C++14, clang  13.0.0, CMake  3.22.2, and GNU make 3.81
+**NOTE**: This is mostly tested on MacOS 12.6 with C++11, clang 13.0.0, CMake 3.22.2, and GNU make 3.81
 
 
 ## Installation
@@ -20,11 +20,8 @@ The simplest way is to download the single-header `simplevectors.hpp` file from 
 Alternatively, you can use CMake to install the library:
 
 ```cmake
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.16.3)
 project(MyProject LANGUAGES CXX)
-
-# C++14 or higher is needed
-set(CMAKE_CXX_STANDARD 14)
 
 find_package(simplevectors REQUIRED)
 

@@ -7,14 +7,14 @@ project(simplevectors
 include(GNUInstallDirs)
 
 # test options
-option(SVECTOR_BUILD_TEST "Build tests" OFF)
-option(SVECTOR_BUILD_EXAMPLE "Build examples" OFF)
-
-# C++ standard
-set(CMAKE_CXX_STANDARD 14)
+option(SVECTOR_BUILD_TEST "Build simplevector tests" OFF)
+option(SVECTOR_BUILD_EXAMPLE "Build simplevector examples" OFF)
 
 # compile
 add_library(simplevectors INTERFACE)
+
+# C++ standard
+target_compile_features(simplevectors INTERFACE cxx_std_11)
 
 target_include_directories(simplevectors INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
