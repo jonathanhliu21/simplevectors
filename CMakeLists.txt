@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)  # lowest version that is tested on
 project(simplevectors 
-    VERSION 0.2.0
+    VERSION 0.2.1
     DESCRIPTION "Simple vector implementations in C++"
     LANGUAGES CXX)
 
