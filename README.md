@@ -238,7 +238,7 @@ class Quaternion : public svector::Vector<4> {
 };
 ```
 
-After this, you can make your own methods interacting with the components of the vectors. Look at the [`vector2D.hpp`](./include/simplevectors/core/vector2d.hpp) and [`vector3D.hpp`](./include/simplevectors/core/vector3d.hpp) files for examples.
+After this, you can make your own methods interacting with the components of the vectors.
 
 ## License
 
