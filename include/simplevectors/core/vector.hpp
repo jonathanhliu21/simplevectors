@@ -8,11 +8,12 @@
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
 #define INCLUDE_SVECTOR_BASEVECTOR_HPP_
 
-#include <array>
-#include <cmath>
-#include <cstddef>
-#include <initializer_list>
-#include <string>
+#include <algorithm>        // std::min
+#include <array>            // std::array
+#include <cmath>            // std::sqrt
+#include <cstddef>          // std::size_t
+#include <initializer_list> // std::initializer_list
+#include <string>           // std::string, std::to_string
 
 namespace svector {
 // COMBINER_PY_START
@@ -318,7 +319,7 @@ public:
     }
 
     return result;
-  };
+  }
 
   iterator begin() noexcept { return iterator{this->m_components.begin()}; }
   const_iterator begin() const noexcept {
@@ -344,6 +345,46 @@ public:
 
 protected:
   std::array<T, dimensions> m_components;
+
+private:
+  /**
+   * Compares elements between vectors lexographically (DEV).
+   *
+   * Loops through components one by one, and for each component, if self
+   * component is less than other component, then returns -1, if self component
+   * is greater than other component, then returns 1, if all components are
+   * equal, then returns 0.
+   *
+   * If self vector has fewer components, then returns -1, if other vector
+   * has fewer components, returns 1.
+   *
+   * @param other The other vector to compare to
+   *
+   * @returns -1 if compares less, 0 if compares equal, and 1 if compares
+   * greater
+   */
+  template <std::size_t D2, typename T2>
+  int compare(const Vector<D2, T2> &other) const noexcept {
+    std::size_t min_dim = std::min(dimensions, D2);
+
+    // check dimensions first
+    if (dimensions != D2) {
+      return dimensions < D2 ? -1 : 1;
+    }
+
+    // compare one by one
+    for (std::size_t i = 0; i < min_dim; i++) {
+      if (this->m_components[i] == other[i])
+        continue;
+      else if (this->m_components[i] < other[i])
+        return -1;
+      else
+        return 1;
+    }
+
+    // means two vectors are equal
+    return 0;
+  }
 };
 // COMBINER_PY_END
 } // namespace svector
