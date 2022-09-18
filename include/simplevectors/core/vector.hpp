@@ -150,9 +150,7 @@ public:
    */
   bool operator==(const Vector<dimensions> &other) const {
     for (std::size_t i = 0; i < dimensions; i++) {
-      if (this->m_components[i] == other[i])
-        continue;
-      else
+      if (this->m_components[i] != other[i])
         return false;
     }
 
@@ -348,7 +346,7 @@ protected:
 
 private:
   /**
-   * Compares elements between vectors lexographically (DEV).
+   * Compares elements between vectors lexographically (IN DEVELOPMENT).
    *
    * Loops through components one by one, and for each component, if self
    * component is less than other component, then returns -1, if self component
