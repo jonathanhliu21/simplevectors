@@ -125,12 +125,14 @@ public:
    * @param D The angle direction to return.
    */
   template <AngleDir D> double angle() const {
-    if (D == ALPHA)
+    switch (D) {
+    case ALPHA:
       return this->getAlpha();
-    else if (D == BETA)
+    case BETA:
       return this->getBeta();
-    else
+    default:
       return this->getGamma();
+    }
   }
 
   /**
@@ -148,12 +150,14 @@ public:
    * @returns a new, rotated vector.
    */
   template <AngleDir D> Vector3D rotate(const double &ang) const {
-    if (D == ALPHA)
+    switch (D) {
+    case ALPHA:
       return this->rotateAlpha(ang);
-    else if (D == BETA)
+    case BETA:
       return this->rotateBeta(ang);
-    else
+    default:
       return this->rotateGamma(ang);
+    }
   };
 
 private:
