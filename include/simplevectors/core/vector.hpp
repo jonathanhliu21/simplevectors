@@ -20,13 +20,13 @@ namespace svector {
 /**
  * A base vector representation.
  */
-template <std::size_t dimensions, typename T = double> class Vector {
+template <std::size_t D, typename T = double> class Vector {
 public:
-  typedef typename std::array<T, dimensions>::iterator iterator;
-  typedef typename std::array<T, dimensions>::const_iterator const_iterator;
-  typedef typename std::array<T, dimensions>::reverse_iterator reverse_iterator;
-  typedef typename std::array<T, dimensions>::const_reverse_iterator
-      const_reverse_iterator;
+  typedef typename std::array<T, D>::iterator iterator;
+  typedef typename std::array<T, D>::const_iterator const_iterator;
+  typedef typename std::array<T, D>::reverse_iterator reverse_iterator;
+  typedef
+      typename std::array<T, D>::const_reverse_iterator const_reverse_iterator;
 
   /**
    * No-argument constructor.
@@ -49,7 +49,7 @@ public:
 
     std::size_t counter = 0;
     for (auto num : args) {
-      if (counter >= dimensions) {
+      if (counter >= D) {
         break;
       }
 
@@ -61,8 +61,8 @@ public:
   /**
    * Copy constructor.
    */
-  Vector(const Vector<dimensions> &other) {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector(const Vector<D> &other) {
+    for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] = other[i];
     }
   }
@@ -74,12 +74,12 @@ public:
    */
   virtual std::string toString() const {
     std::string str = "<";
-    for (std::size_t i = 0; i < dimensions - 1; i++) {
+    for (std::size_t i = 0; i < D - 1; i++) {
       str += std::to_string(this->m_components[i]);
       str += ", ";
     }
 
-    str += std::to_string(this->m_components[dimensions - 1]);
+    str += std::to_string(this->m_components[D - 1]);
     str += ">";
 
     return str;
@@ -88,9 +88,9 @@ public:
   /**
    * Adds two vectors.
    */
-  Vector<dimensions> operator+(const Vector<dimensions> &other) const {
-    Vector<dimensions> tmp;
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> operator+(const Vector<D> &other) const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] + other[i];
     }
 
@@ -100,9 +100,9 @@ public:
   /**
    * Subtracts two vectors.
    */
-  Vector<dimensions> operator-(const Vector<dimensions> &other) const {
-    Vector<dimensions> tmp;
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> operator-(const Vector<D> &other) const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] - other[i];
     }
 
@@ -112,9 +112,9 @@ public:
   /**
    * Flips direction of vector.
    */
-  Vector<dimensions> operator-() const {
-    Vector<dimensions> tmp;
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> operator-() const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
       tmp[i] = -this->m_components[i];
     }
 
@@ -124,9 +124,9 @@ public:
   /**
    * Scalar multiplication of vector.
    */
-  Vector<dimensions> operator*(const T other) const {
-    Vector<dimensions> tmp;
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> operator*(const T other) const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] * other;
     }
 
@@ -136,9 +136,9 @@ public:
   /**
    * Scalar division of vector.
    */
-  Vector<dimensions> operator/(const T other) const {
-    Vector<dimensions> tmp;
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> operator/(const T other) const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] / other;
     }
 
@@ -148,8 +148,8 @@ public:
   /**
    * Equality
    */
-  bool operator==(const Vector<dimensions> &other) const {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  bool operator==(const Vector<D> &other) const {
+    for (std::size_t i = 0; i < D; i++) {
       if (this->m_components[i] != other[i])
         return false;
     }
@@ -160,15 +160,13 @@ public:
   /**
    * Inequality
    */
-  bool operator!=(const Vector<dimensions> &other) const {
-    return !((*this) == other);
-  }
+  bool operator!=(const Vector<D> &other) const { return !((*this) == other); }
 
   /**
    * Adds another vector object to self.
    */
-  Vector<dimensions> &operator+=(const Vector<dimensions> &other) {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> &operator+=(const Vector<D> &other) {
+    for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] += other[i];
     }
 
@@ -178,8 +176,8 @@ public:
   /**
    * Subtracts another vector object from self.
    */
-  Vector<dimensions> &operator-=(const Vector<dimensions> &other) {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> &operator-=(const Vector<D> &other) {
+    for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] -= other[i];
     }
 
@@ -189,8 +187,8 @@ public:
   /**
    * Multiplies vector by a number.
    */
-  Vector<dimensions> &operator*=(const T other) {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> &operator*=(const T other) {
+    for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] *= other;
     }
 
@@ -200,8 +198,8 @@ public:
   /**
    * Divides vector by a number.
    */
-  Vector<dimensions> &operator/=(const T other) {
-    for (std::size_t i = 0; i < dimensions; i++) {
+  Vector<D> &operator/=(const T other) {
+    for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] /= other;
     }
 
@@ -218,10 +216,10 @@ public:
    *
    * @returns The dot product of the two vectors.
    */
-  T dot(const Vector<dimensions> &other) const {
+  T dot(const Vector<D> &other) const {
     T result = 0;
 
-    for (std::size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < D; i++) {
       result += this->m_components[i] * other[i];
     }
 
@@ -249,14 +247,14 @@ public:
    *
    * @returns Normalized vector.
    */
-  Vector<dimensions> normalize() const { return (*this) / this->magn(); }
+  Vector<D> normalize() const { return (*this) / this->magn(); }
 
   /**
    * Gets number of dimensions.
    *
    * @returns Number of dimensions.
    */
-  std::size_t numDimensions() const { return dimensions; }
+  std::size_t numDimensions() const { return D; }
 
   /**
    * Gets a certain component of the vector given the dimension number.
@@ -308,11 +306,10 @@ public:
    *
    * @returns std::array of converted components.
    */
-  template <typename newT>
-  std::array<newT, dimensions> eachComponentAs() const {
-    std::array<newT, dimensions> result;
+  template <typename newT> std::array<newT, D> eachComponentAs() const {
+    std::array<newT, D> result;
 
-    for (std::size_t i = 0; i < dimensions; i++) {
+    for (std::size_t i = 0; i < D; i++) {
       result[i] = newT{this->m_components[i]};
     }
 
@@ -342,7 +339,7 @@ public:
   }
 
 protected:
-  std::array<T, dimensions> m_components;
+  std::array<T, D> m_components;
 
 private:
   /**
@@ -363,11 +360,11 @@ private:
    */
   template <std::size_t D2, typename T2>
   int compare(const Vector<D2, T2> &other) const noexcept {
-    std::size_t min_dim = std::min(dimensions, D2);
+    std::size_t min_dim = std::min(D, D2);
 
     // check dimensions first
-    if (dimensions != D2) {
-      return dimensions < D2 ? -1 : 1;
+    if (D != D2) {
+      return D < D2 ? -1 : 1;
     }
 
     // compare one by one
