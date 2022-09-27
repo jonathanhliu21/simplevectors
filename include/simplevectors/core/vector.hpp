@@ -22,6 +22,20 @@ namespace svector {
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
+#ifdef SVECTOR_EXPERIMENTAL_FEATURES_
+  template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+  friend bool operator<(Vector<D1, T1>, Vector<D2, T2>);
+
+  template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+  friend bool operator<=(Vector<D1, T1>, Vector<D2, T2>);
+
+  template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+  friend bool operator>(Vector<D1, T1>, Vector<D2, T2>);
+
+  template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+  friend bool operator>=(Vector<D1, T1>, Vector<D2, T2>);
+#endif
+
   typedef typename std::array<T, D>::iterator iterator;
   typedef typename std::array<T, D>::const_iterator const_iterator;
   typedef typename std::array<T, D>::reverse_iterator reverse_iterator;
@@ -341,19 +355,21 @@ public:
 protected:
   std::array<T, D> m_components;
 
+#ifdef SVECTOR_EXPERIMENTAL_FEATURES_
 private:
   /**
-   * Compares elements between vectors lexographically (IN DEVELOPMENT).
+   * Compares elements between vectors lexographically (EXPERIMENTAL).
    *
-   * Loops through components one by one, and for each component, if self
-   * component is less than other component, then returns -1, if self component
-   * is greater than other component, then returns 1, if all components are
-   * equal, then returns 0.
+   * Loops through components one by one from left to right, and at any
+   * component, if the component of this vector is less than the component of
+   * the other vector, then returns -1. If the component of this vector is
+   * greater than the component of the other vector, then returns 1. If all
+   * components are equal, the returns 0.
    *
-   * If self vector has fewer components, then returns -1, if other vector
+   * If this vector has fewer components, then returns -1, and if other vector
    * has fewer components, returns 1.
    *
-   * @param other The other vector to compare to
+   * @param other The other vector to compare to.
    *
    * @returns -1 if compares less, 0 if compares equal, and 1 if compares
    * greater
@@ -380,6 +396,7 @@ private:
     // means two vectors are equal
     return 0;
   }
+#endif
 };
 // COMBINER_PY_END
 } // namespace svector
