@@ -1,3 +1,5 @@
+#define SVECTOR_EXPERIMENTAL_FEATURES_
+
 #include "simplevectors/vectors.hpp"
 
 #include <gtest/gtest.h>
@@ -197,4 +199,78 @@ TEST(AtTestV, AtTest) {
 TEST(AtTestV, OutOfBounds) {
   svector::Vector<3> v{2, 5, 3};
   EXPECT_THROW(v.at(4), std::out_of_range);
+}
+
+TEST(CompareTest, CompareSameDimensionsLtGt) {
+  svector::Vector<3> v1{3, 5, 1};
+  svector::Vector<3> v2{4, 5, 1};
+
+  EXPECT_TRUE(v1 < v2);
+  EXPECT_TRUE(v2 > v1);
+
+  v1 = {4, 5, 9};
+  v2 = {4, 8, 3};
+
+  EXPECT_TRUE(v1 < v2);
+  EXPECT_TRUE(v2 > v1);
+
+  v1 = {4, 5, 2};
+  v2 = {4, 5, 3};
+
+  EXPECT_TRUE(v1 < v2);
+  EXPECT_TRUE(v2 > v1);
+}
+
+TEST(CompareTest, CompareSameDimensionsLeGe) {
+  svector::Vector<3> v1{3, 5, 1};
+  svector::Vector<3> v2{4, 5, 1};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
+
+  v1 = {4, 5, 9};
+  v2 = {4, 8, 3};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
+
+  v1 = {4, 5, 2};
+  v2 = {4, 5, 3};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
+
+  v1 = {4, 5, 3};
+  v2 = {4, 5, 3};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
+}
+
+TEST(CompareTest, CompareDifferentDimensionsLtGt) {
+  svector::Vector<3> v1{3, 5, 1};
+  svector::Vector<4> v2{3, 5, 1};
+
+  EXPECT_TRUE(v1 < v2);
+  EXPECT_TRUE(v2 > v1);
+
+  v1 = {999, 999, 999};
+  v2 = {-999, -999, -999};
+
+  EXPECT_TRUE(v1 < v2);
+  EXPECT_TRUE(v2 > v1);
+}
+
+TEST(CompareTest, CompareDifferentDimensionsLeGe) {
+  svector::Vector<3> v1{3, 5, 1};
+  svector::Vector<4> v2{3, 5, 1};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
+
+  v1 = {999, 999, 999};
+  v2 = {-999, -999, -999};
+
+  EXPECT_TRUE(v1 <= v2);
+  EXPECT_TRUE(v2 >= v1);
 }
