@@ -12,6 +12,7 @@
 #include <array>            // std::array
 #include <cmath>            // std::sqrt
 #include <cstddef>          // std::size_t
+#include <cstdint>          // std::int8_t
 #include <initializer_list> // std::initializer_list
 #include <string>           // std::string, std::to_string
 
@@ -375,7 +376,7 @@ private:
    * greater
    */
   template <std::size_t D2, typename T2>
-  int compare(const Vector<D2, T2> &other) const noexcept {
+  std::int8_t compare(const Vector<D2, T2> &other) const noexcept {
     std::size_t min_dim = std::min(D, D2);
 
     // check dimensions first
