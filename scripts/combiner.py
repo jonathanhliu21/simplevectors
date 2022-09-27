@@ -27,6 +27,7 @@ FILE_BEGIN = """/**
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <initializer_list>
 #include <string>
 
@@ -38,49 +39,33 @@ FILE_END = """}
 #endif
 """
 
+"""Reads sandwiched part of file from file path"""
+
+
+def get_sandwiched(fpath):
+    filestr = ""
+    with open(fpath) as f:
+        filestr = f.read()
+
+    sandwiched_groups = re.search(RE_STR, filestr, flags=re.DOTALL)
+    assert sandwiched_groups is not None
+
+    return sandwiched_groups.group(1)
+
 
 def combine():
-    # read files into strings
-    units_str = ""
-    vector_str = ""
-    vector2d_str = ""
-    vector3d_str = ""
-
-    with open(os.path.join("include", "simplevectors", "core", "units.hpp")) as f:
-        units_str = f.read()
-
-    with open(os.path.join("include", "simplevectors", "core", "vector.hpp")) as f:
-        vector_str = f.read()
-
-    with open(os.path.join("include", "simplevectors", "core", "vector2d.hpp")) as f:
-        vector2d_str = f.read()
-
-    with open(os.path.join("include", "simplevectors", "core", "vector3d.hpp")) as f:
-        vector3d_str = f.read()
-
-    # get each "sandwiched" part of each file
-    sandwiched_units_groups = re.search(RE_STR, units_str, flags=re.DOTALL)
-    sandwiched_vector_groups = re.search(RE_STR, vector_str, flags=re.DOTALL)
-    sandwiched_vector2d_groups = re.search(RE_STR, vector2d_str, flags=re.DOTALL)
-    sandwiched_vector3d_groups = re.search(RE_STR, vector3d_str, flags=re.DOTALL)
-
-    assert sandwiched_units_groups is not None
-    assert sandwiched_vector_groups is not None
-    assert sandwiched_vector2d_groups is not None
-    assert sandwiched_vector3d_groups is not None
-
-    sandwiched_units = sandwiched_units_groups.group(1)
-    sandwiched_vector = sandwiched_vector_groups.group(1)
-    sandwiched_vector2d = sandwiched_vector2d_groups.group(1)
-    sandwiched_vector3d = sandwiched_vector3d_groups.group(1)
-
     # get final output file
     output_str = (
         FILE_BEGIN
-        + sandwiched_units
-        + sandwiched_vector
-        + sandwiched_vector2d
-        + sandwiched_vector3d
+        + get_sandwiched(os.path.join("include", "simplevectors", "core", "units.hpp"))
+        + get_sandwiched(os.path.join("include", "simplevectors", "core", "vector.hpp"))
+        + get_sandwiched(
+            os.path.join("include", "simplevectors", "core", "vector2d.hpp")
+        )
+        + get_sandwiched(
+            os.path.join("include", "simplevectors", "core", "vector3d.hpp")
+        )
+        + get_sandwiched(os.path.join("include", "simplevectors", "vectors.hpp"))
         + FILE_END
     )
 
