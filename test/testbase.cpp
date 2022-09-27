@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <regex>
+#include <set>
 #include <stdexcept>
 
 TEST(ConstructorTestV, ZeroConstructorTest) {
@@ -273,4 +274,23 @@ TEST(CompareTest, CompareDifferentDimensionsLeGe) {
 
   EXPECT_TRUE(v1 <= v2);
   EXPECT_TRUE(v2 >= v1);
+}
+
+TEST(CompareTest, SetTest) {
+  std::set<svector::Vector<4>> s_test;
+  s_test.insert({3, -1, 2, 6});
+  s_test.insert({3, -1, 2, 6});
+  EXPECT_EQ(s_test.size(), 1);
+  EXPECT_NE(s_test.find({3, -1, 2, 6}), s_test.end());
+  EXPECT_EQ(s_test.find({5, -6, 2, 6}), s_test.end());
+
+  s_test.insert({5, -6, 2, 6});
+  EXPECT_EQ(s_test.size(), 2);
+  EXPECT_NE(s_test.find({3, -1, 2, 6}), s_test.end());
+  EXPECT_NE(s_test.find({5, -6, 2, 6}), s_test.end());
+
+  s_test.erase({3, -1, 2, 6});
+  EXPECT_EQ(s_test.size(), 1);
+  EXPECT_EQ(s_test.find({3, -1, 2, 6}), s_test.end());
+  EXPECT_NE(s_test.find({5, -6, 2, 6}), s_test.end());
 }
