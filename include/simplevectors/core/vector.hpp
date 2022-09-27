@@ -24,16 +24,16 @@ template <std::size_t D, typename T = double> class Vector {
 public:
 #ifdef SVECTOR_EXPERIMENTAL_FEATURES_
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
-  friend bool operator<(Vector<D1, T1>, Vector<D2, T2>);
+  friend bool operator<(const Vector<D1, T1> &, const Vector<D2, T2> &);
 
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
-  friend bool operator<=(Vector<D1, T1>, Vector<D2, T2>);
+  friend bool operator<=(const Vector<D1, T1> &, const Vector<D2, T2> &);
 
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
-  friend bool operator>(Vector<D1, T1>, Vector<D2, T2>);
+  friend bool operator>(const Vector<D1, T1> &, const Vector<D2, T2> &);
 
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
-  friend bool operator>=(Vector<D1, T1>, Vector<D2, T2>);
+  friend bool operator>=(const Vector<D1, T1> &, const Vector<D2, T2> &);
 #endif
 
   typedef typename std::array<T, D>::iterator iterator;
