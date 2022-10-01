@@ -310,22 +310,6 @@ public:
   T &at(const std::size_t index) { return this->m_components.at(index); }
 
   /**
-   * Converts the components in each dimension to a certain type
-   * by putting the component into the type's constructor.
-   *
-   * @returns std::array of converted components.
-   */
-  template <typename newT> std::array<newT, D> eachComponentAs() const {
-    std::array<newT, D> result;
-
-    for (std::size_t i = 0; i < D; i++) {
-      result[i] = newT{this->m_components[i]};
-    }
-
-    return result;
-  }
-
-  /**
    * Pointer to beginning of array
    */
   iterator begin() noexcept { return iterator{this->m_components.begin()}; }
