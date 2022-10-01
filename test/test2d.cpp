@@ -33,6 +33,22 @@ TEST(ConstructorTest2D, CopyConstructorTest) {
   EXPECT_EQ(vector2.y(), 0);
 }
 
+TEST(SetterTest2D, SetterXTest) {
+  svector::Vector2D vector1{2, 5};
+  vector1.x(4);
+
+  EXPECT_EQ(vector1.x(), 4);
+  EXPECT_EQ(vector1.y(), 5);
+}
+
+TEST(SetterTest2D, SetterYTest) {
+  svector::Vector2D vector1{2, 5};
+  vector1.y(4);
+
+  EXPECT_EQ(vector1.x(), 2);
+  EXPECT_EQ(vector1.y(), 4);
+}
+
 TEST(StringTest2D, StringTest) {
   svector::Vector2D vector(3.52, -5.6);
 

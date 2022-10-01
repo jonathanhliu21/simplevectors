@@ -37,6 +37,33 @@ TEST(ConstructorTest3D, CopyConstructorTest) {
   EXPECT_EQ(vector2.z(), 0);
 }
 
+TEST(SetterTest3D, SetterXTest) {
+  svector::Vector3D vector1{2, 5};
+  vector1.x(4);
+
+  EXPECT_EQ(vector1.x(), 4);
+  EXPECT_EQ(vector1.y(), 5);
+  EXPECT_EQ(vector1.z(), 0);
+}
+
+TEST(SetterTest3D, SetterYTest) {
+  svector::Vector3D vector1{2, 5};
+  vector1.y(4);
+
+  EXPECT_EQ(vector1.x(), 2);
+  EXPECT_EQ(vector1.y(), 4);
+  EXPECT_EQ(vector1.z(), 0);
+}
+
+TEST(SetterTest3D, SetterZTest) {
+  svector::Vector3D vector1{2, 5};
+  vector1.z(7);
+
+  EXPECT_EQ(vector1.x(), 2);
+  EXPECT_EQ(vector1.y(), 5);
+  EXPECT_EQ(vector1.z(), 7);
+}
+
 TEST(StringTest3D, StringTest) {
   svector::Vector3D vector(3.52, -5.6, 2.2);
 
