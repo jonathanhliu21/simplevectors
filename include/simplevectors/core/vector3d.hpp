@@ -55,6 +55,11 @@ public:
   double x() const { return this->m_components[0]; }
 
   /**
+   * Sets the x-component of the vector.
+   */
+  void x(const double &newX) { this->m_components[0] = newX; }
+
+  /**
    * Gets the y-component of the vector.
    *
    * @returns y-component of vector.
@@ -62,11 +67,21 @@ public:
   double y() const { return this->m_components[1]; }
 
   /**
+   * Sets the y-component of the vector.
+   */
+  void y(const double &newY) { this->m_components[1] = newY; }
+
+  /**
    * Gets the z-component of the vector.
    *
    * @returns z-component of vector.
    */
   double z() const { return this->m_components[2]; }
+
+  /**
+   * Sets the z-component of the vector.
+   */
+  void z(const double &newZ) { this->m_components[2] = newZ; }
 
   /**
    * Cross product of two vectors.
