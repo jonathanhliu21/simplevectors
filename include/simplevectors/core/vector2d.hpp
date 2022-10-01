@@ -10,8 +10,6 @@
 
 #include "vector.hpp" // svector::Vector
 
-#include <cmath> // std::atan2, std::cos, std::sin
-
 namespace svector {
 // COMBINER_PY_START
 

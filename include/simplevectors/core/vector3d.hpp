@@ -11,8 +11,6 @@
 #include "units.hpp"  // svector::AngleDir
 #include "vector.hpp" // svector::Vector
 
-#include <cmath> // std::acos, std::cos, std::sin
-
 namespace svector {
 // COMBINER_PY_START
 
