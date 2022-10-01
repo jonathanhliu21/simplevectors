@@ -88,23 +88,6 @@ TEST(NumDimensionTestV, NumDimensionTest) {
   EXPECT_EQ(v3.numDimensions(), 10);
 }
 
-TEST(EachComponentAsTestV, EachComponentAsTest) {
-  struct Test {
-    int i;
-
-    Test() {}
-
-    Test(double d) { i = static_cast<int>(d); }
-  };
-
-  svector::Vector<3> v1{3, -5.2, 3.3};
-
-  auto arr = v1.eachComponentAs<Test>();
-  EXPECT_EQ(arr[0].i, 3);
-  EXPECT_EQ(arr[1].i, -5);
-  EXPECT_EQ(arr[2].i, 3);
-}
-
 TEST(IteratorTestV, FwdIterationTest) {
   std::vector<double> arr;
   std::vector<double> res{2, 4, 2, 1, 2, 6, 4, 3, 4, 4};
