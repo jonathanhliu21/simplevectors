@@ -8,13 +8,7 @@
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
 #define INCLUDE_SVECTOR_BASEVECTOR_HPP_
 
-#include <algorithm>        // std::min
-#include <array>            // std::array
-#include <cmath>            // std::sqrt
-#include <cstddef>          // std::size_t
-#include <cstdint>          // std::int8_t
-#include <initializer_list> // std::initializer_list
-#include <string>           // std::string, std::to_string
+#include "units.hpp" // all includes
 
 namespace svector {
 // COMBINER_PY_START
@@ -331,29 +325,60 @@ public:
     return result;
   }
 
+  /**
+   * Pointer to beginning of array
+   */
   iterator begin() noexcept { return iterator{this->m_components.begin()}; }
+
+  /**
+   * Const pointer to beginning of array
+   */
   const_iterator begin() const noexcept {
     return const_iterator{this->m_components.begin()};
   }
+
+  /**
+   * Pointer to last element of array + 1
+   */
   iterator end() noexcept { return iterator{this->m_components.end()}; }
+
+  /**
+   * Const pointer to last element of array + 1
+   */
   const_iterator end() const noexcept {
     return const_iterator{this->m_components.end()};
   }
 
+  /**
+   * Pointer to last element of array, reversed iterator
+   */
   reverse_iterator rbegin() noexcept {
     return reverse_iterator{this->m_components.rbegin()};
   }
+
+  /**
+   * Const pointer to last element of array, reversed iterator
+   */
   const_reverse_iterator rbegin() const noexcept {
     return const_reverse_iterator{this->m_components.rbegin()};
   }
+
+  /**
+   * Pointer to first element of array + 1, reversed iterator
+   */
   reverse_iterator rend() noexcept {
     return reverse_iterator{this->m_components.rend()};
   }
+
+  /**
+   * Const pointer to first element of array + 1, reversed iterator
+   */
   const_reverse_iterator rend() const noexcept {
     return const_reverse_iterator{this->m_components.rend()};
   }
 
 protected:
+  // an array of components to the vector
   std::array<T, D> m_components;
 
 #ifdef SVECTOR_EXPERIMENTAL_FEATURES_
