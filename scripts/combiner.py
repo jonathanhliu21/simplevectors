@@ -24,6 +24,7 @@ FILE_BEGIN = """/**
 #ifndef INCLUDE_SVECTORS_SIMPLEVECTORS_HPP_
 #define INCLUDE_SVECTORS_SIMPLEVECTORS_HPP_
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstddef>
