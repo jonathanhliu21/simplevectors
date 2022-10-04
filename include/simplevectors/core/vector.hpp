@@ -17,7 +17,7 @@ namespace svector {
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
-#ifdef SVECTOR_EXPERIMENTAL_FEATURES_
+#ifdef SVECTOR_EXPERIMENTAL_FEATURES
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
   friend bool operator<(const Vector<D1, T1> &, const Vector<D2, T2> &);
 
@@ -94,6 +94,7 @@ public:
     return str;
   }
 
+#ifdef SVECTOR_USE_CLASS_OPERATORS
   /**
    * Adds two vectors.
    */
@@ -113,18 +114,6 @@ public:
     Vector<D> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] - other[i];
-    }
-
-    return tmp;
-  }
-
-  /**
-   * Flips direction of vector.
-   */
-  Vector<D> operator-() const {
-    Vector<D> tmp;
-    for (std::size_t i = 0; i < D; i++) {
-      tmp[i] = -this->m_components[i];
     }
 
     return tmp;
@@ -170,6 +159,19 @@ public:
    * Inequality
    */
   bool operator!=(const Vector<D> &other) const { return !((*this) == other); }
+#endif
+
+  /**
+   * Flips direction of vector.
+   */
+  Vector<D> operator-() const {
+    Vector<D> tmp;
+    for (std::size_t i = 0; i < D; i++) {
+      tmp[i] = -this->m_components[i];
+    }
+
+    return tmp;
+  }
 
   /**
    * Adds another vector object to self.
@@ -242,6 +244,7 @@ public:
    */
   T magn() const {
     T sum_of_squares = 0;
+
     for (auto i : this->m_components) {
       sum_of_squares += i * i;
     }
@@ -365,7 +368,7 @@ protected:
   // an array of components to the vector
   std::array<T, D> m_components;
 
-#ifdef SVECTOR_EXPERIMENTAL_FEATURES_
+#ifdef SVECTOR_EXPERIMENTAL_FEATURES
 private:
   /**
    * Compares elements between vectors lexographically (EXPERIMENTAL).
