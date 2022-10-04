@@ -19,7 +19,8 @@ namespace svector {
  *
  * @returns The dot product of lhs and rhs.
  */
-template <typename T, std::size_t D> T dot(Vector<D, T> lhs, Vector<D, T> rhs) {
+template <typename T, std::size_t D>
+inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
   T result = 0;
 
   for (std::size_t i = 0; i < D; i++) {
@@ -36,7 +37,7 @@ template <typename T, std::size_t D> T dot(Vector<D, T> lhs, Vector<D, T> rhs) {
  *
  * @returns magnitude of vector.
  */
-template <typename T, std::size_t D> T magn(Vector<D, T> v) {
+template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
   T sum_of_squares = 0;
 
   for (auto i : v) {
@@ -55,16 +56,103 @@ template <typename T, std::size_t D> T magn(Vector<D, T> v) {
  *
  * @returns Normalized vector.
  */
-template <typename T, std::size_t D> Vector<D, T> normalize(Vector<D, T> v) {
+template <typename T, std::size_t D>
+inline Vector<D, T> normalize(const Vector<D, T> &v) {
   return v / v.magn();
 }
+
+/**
+ * Gets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline double x(const Vector2D &v) { return v[0]; }
+
+/**
+ * Sets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param x_value The x-value to set to the vector.
+ */
+inline void x(Vector2D &v, const double x_value) { v[0] = x_value; }
+
+/**
+ * Gets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline double x(const Vector3D &v) { return v[0]; }
+
+/**
+ * Sets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param x_value The x-value to set to the vector.
+ */
+inline void x(Vector3D &v, const double x_value) { v[0] = x_value; }
+
+/**
+ * Gets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline double y(const Vector2D &v) { return v[1]; }
+
+/**
+ * Sets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param y_value The y-value to set to the vector.
+ */
+inline void y(Vector2D &v, const double y_value) { v[1] = y_value; }
+
+/**
+ * Gets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline double y(const Vector3D &v) { return v[1]; }
+
+/**
+ * Sets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param y_value The y value to set to the vector.
+ */
+inline void y(Vector3D &v, const double y_value) { v[1] = y_value; }
+
+/**
+ * Gets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns z-component of the vector.
+ */
+inline double z(const Vector3D &v) { return v[2]; }
+
+/**
+ * Sets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param z_value The z value to set to the vector.
+ */
+inline void z(Vector3D &v, const double z_value) { v[2] = z_value; }
 
 #ifndef SVECTOR_USE_CLASS_OPERATORS
 /**
  * Adds two vectors.
  */
 template <typename T, std::size_t D>
-Vector<D, T> operator+(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
+inline Vector<D, T> operator+(const Vector<D, T> &lhs,
+                              const Vector<D, T> &rhs) {
   Vector<D, T> tmp;
   for (std::size_t i = 0; i < D; i++) {
     tmp[i] = lhs[i] + rhs[i];
@@ -77,7 +165,8 @@ Vector<D, T> operator+(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
  * Subtracts two vectors.
  */
 template <typename T, std::size_t D>
-Vector<D, T> operator-(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
+inline Vector<D, T> operator-(const Vector<D, T> &lhs,
+                              const Vector<D, T> &rhs) {
   Vector<D, T> tmp;
   for (std::size_t i = 0; i < D; i++) {
     tmp[i] = lhs[i] - rhs[i];
@@ -90,7 +179,7 @@ Vector<D, T> operator-(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
  * Scalar multiplication of vectors
  */
 template <typename T, typename T2, std::size_t D>
-Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
+inline Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
   Vector<D, T> tmp;
   for (std::size_t i = 0; i < D; i++) {
     tmp[i] = lhs[i] * rhs;
@@ -103,7 +192,7 @@ Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
  * Scalar division of vectors
  */
 template <typename T, typename T2, std::size_t D>
-Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
+inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
   Vector<D, T> tmp;
   for (std::size_t i = 0; i < D; i++) {
     tmp[i] = lhs[i] / rhs;
@@ -116,7 +205,7 @@ Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
  * Equality
  */
 template <typename T, std::size_t D>
-bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
+inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
   for (std::size_t i = 0; i < D; i++) {
     if (lhs[i] != rhs[i])
       return false;
@@ -129,7 +218,7 @@ bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
  * Inequality
  */
 template <typename T, std::size_t D>
-bool operator!=(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
+inline bool operator!=(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
   return !(lhs == rhs);
 }
 #endif

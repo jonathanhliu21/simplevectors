@@ -51,3 +51,38 @@ TEST(NormalizeTestUtil, TestNormalize3D) {
 
   EXPECT_EQ(vector, svector::Vector3D(2 / 7.0, -3 / 7.0, -6 / 7.0));
 }
+
+TEST(XYZTestUtil, GetTest2D) {
+  svector::Vector2D v(3, 5);
+  EXPECT_EQ(svector::x(v), 3);
+  EXPECT_EQ(svector::y(v), 5);
+}
+
+TEST(XYZTestUtil, SetTest2D) {
+  svector::Vector2D v;
+
+  svector::x(v, 3);
+  svector::y(v, 5);
+
+  EXPECT_EQ(svector::x(v), 3);
+  EXPECT_EQ(svector::y(v), 5);
+}
+
+TEST(XYZTestUtil, GetTest3D) {
+  svector::Vector3D v(3, 5, 6);
+  EXPECT_EQ(svector::x(v), 3);
+  EXPECT_EQ(svector::y(v), 5);
+  EXPECT_EQ(svector::z(v), 6);
+}
+
+TEST(XYZTestUtil, SetTest3D) {
+  svector::Vector3D v;
+
+  svector::x(v, 3);
+  svector::y(v, 5);
+  svector::z(v, 6);
+
+  EXPECT_EQ(svector::x(v), 3);
+  EXPECT_EQ(svector::y(v), 5);
+  EXPECT_EQ(svector::z(v), 6);
+}
