@@ -1,7 +1,7 @@
 #ifndef INCLUDE_SVECTOR_UTILS_HPP_
 #define INCLUDE_SVECTOR_UTILS_HPP_
 
-#include <cmath>   // std::atan2, std::acos
+#include <cmath>   // std::atan2, std::acos, std::sqrt
 #include <cstddef> // std::size_t
 
 #include "core/vector.hpp"
@@ -385,6 +385,28 @@ inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 template <typename T, std::size_t D>
 inline bool operator!=(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
   return !(lhs == rhs);
+}
+#endif
+
+#ifdef SVECTOR_EXPERIMENTAL_FEATURES
+template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+bool operator<(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
+  return lhs.compare(rhs) < 0;
+}
+
+template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+bool operator>(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
+  return lhs.compare(rhs) > 0;
+}
+
+template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+bool operator<=(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
+  return lhs.compare(rhs) <= 0;
+}
+
+template <std::size_t D1, std::size_t D2, typename T1, typename T2>
+bool operator>=(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
+  return lhs.compare(rhs) >= 0;
 }
 #endif
 } // namespace svector
