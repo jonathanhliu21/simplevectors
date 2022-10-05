@@ -86,3 +86,41 @@ TEST(XYZTestUtil, SetTest3D) {
   EXPECT_EQ(svector::y(v), 5);
   EXPECT_EQ(svector::z(v), 6);
 }
+
+TEST(AngleTestUtil, AngleTest2D) {
+  std::vector<std::vector<double>> tests{
+      {4.5, 2.3, 0.472},
+      {-3.4, 5.44, 2.129},
+      {-0.35, -4.44, -1.649},
+      {6.2, -3, -0.451},
+  };
+
+  for (auto testcase : tests) {
+    svector::Vector2D vector(testcase[0], testcase[1]);
+    double ang = svector::angle(vector);
+    double ang_r = std::round(ang * 1000.0) / 1000.0;
+
+    EXPECT_EQ(ang_r, testcase[2]);
+  }
+}
+
+TEST(RotationTestUtil, RotateTest2D) {
+  std::vector<std::vector<double>> tests{
+      {1, 0, M_PI / 6, 0.866, 0.5},     {1, 1, M_PI / 4, 0, 1.414},
+      {1.732, 1, M_PI / 3, 0, 2},       {0, 1, M_PI / 4, -0.707, 0.707},
+      {-1, 0, M_PI / 3, -0.5, -0.866},  {-0.5, -0.866, M_PI / 6, 0, -1},
+      {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
+  };
+
+  for (auto testcase : tests) {
+    svector::Vector2D vector(testcase[0], testcase[1]);
+    svector::Vector2D vectorp(testcase[3], testcase[4]);
+
+    svector::Vector2D rotated = svector::rotate(vector, testcase[2]);
+
+    EXPECT_EQ(std::round(vectorp.x() * 1000) / 1000,
+              std::round(rotated.x() * 1000) / 1000);
+    EXPECT_EQ(std::round(vectorp.y() * 1000) / 1000,
+              std::round(rotated.y() * 1000) / 1000);
+  }
+}

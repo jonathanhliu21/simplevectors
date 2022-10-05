@@ -1,7 +1,8 @@
 #ifndef INCLUDE_SVECTOR_UTILS_HPP_
 #define INCLUDE_SVECTOR_UTILS_HPP_
 
-#include <cstddef>
+#include <cmath>   // std::atan2, std::acos
+#include <cstddef> // std::size_t
 
 #include "core/vector.hpp"
 #include "core/vector2d.hpp"
@@ -145,6 +146,43 @@ inline double z(const Vector3D &v) { return v[2]; }
  * @param z_value The z value to set to the vector.
  */
 inline void z(Vector3D &v, const double z_value) { v[2] = z_value; }
+
+/**
+ * Gets the angle of a 2D vector in radians.
+ *
+ * The angle will be in the range (-π, π].
+ *
+ * @param v A 2D vector.
+ *
+ * @returns angle of the vector.
+ */
+inline double angle(const Vector2D &v) { return std::atan2(y(v), x(v)); }
+
+/**
+ * Rotates a 2D vector by a certain angle.
+ *
+ * The angle should be given in radians. The vector rotates
+ * counterclockwise when the angle is positive and clockwise
+ * when the angle is negative.
+ *
+ * @param v A 2D vector.
+ * @param angle the angle to rotate the vector, in radians.
+ *
+ * @returns a new, rotated vector.
+ */
+inline Vector2D rotate(const Vector2D &v, const double ang) {
+  /**
+   * Rotation matrix:
+   *
+   * | cos(ang)   -sin(ang) | |x|
+   * | sin(ang)    cos(ang) | |y|
+   */
+
+  double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
+  double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
+
+  return Vector2D{xPrime, yPrime};
+}
 
 #ifndef SVECTOR_USE_CLASS_OPERATORS
 /**
