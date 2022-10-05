@@ -184,6 +184,133 @@ inline Vector2D rotate(const Vector2D &v, const double ang) {
   return Vector2D{xPrime, yPrime};
 }
 
+/**
+ * Cross product of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector, crossed with the first vector.
+ *
+ * @returns The cross product of the two vectors.
+ */
+inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
+  double newx = y(lhs) * z(rhs) - z(lhs) * y(rhs);
+  double newy = z(lhs) * x(rhs) - x(lhs) * z(rhs);
+  double newz = x(lhs) * y(rhs) - y(lhs) * x(rhs);
+
+  return Vector3D{newx, newy, newz};
+}
+
+/**
+ * Gets α angle.
+ *
+ * α is the angle between the vector and the x-axis.
+ *
+ * @param v A 3D vector.
+ *
+ * @returns α
+ */
+inline double alpha(const Vector3D &v) { return std::acos(x(v) / magn(v)); }
+
+/**
+ * Gets β angle.
+ *
+ * β is the angle between the vector and the y-axis.
+ *
+ * @param v A 3D vector.
+ *
+ * @returns β
+ */
+inline double beta(const Vector3D &v) { return std::acos(y(v) / magn(v)); }
+
+/**
+ * Gets γ angle.
+ *
+ * γ is the angle between the vector and the z-axis.
+ *
+ * @param v A 3D vector.
+ *
+ * @returns γ
+ */
+inline double gamma(const Vector3D &v) { return std::acos(z(v) / magn(v)); }
+
+/**
+ * Rotates around x-axis.
+ *
+ * Uses the basic gimbal-like 3D rotation matrices for rotation.
+ *
+ * @param v A 3D vector.
+ * @param ang The angle to rotate the vector, in radians.
+ *
+ * @returns A new, rotated vector.
+ */
+inline Vector3D rotateAlpha(const Vector3D &v, const double &ang) {
+  /**
+   * Rotation matrix:
+   *
+   * |1   0           0     | |x|
+   * |0  cos(ang)  −sin(ang)| |y|
+   * |0  sin(ang)   cos(ang)| |z|
+   */
+
+  double xPrime = x(v);
+  double yPrime = y(v) * std::cos(ang) - z(v) * std::sin(ang);
+  double zPrime = y(v) * std::sin(ang) + z(v) * std::cos(ang);
+
+  return Vector3D{xPrime, yPrime, zPrime};
+}
+
+/**
+ * Rotates around y-axis.
+ *
+ * Uses the basic gimbal-like 3D rotation matrices for rotation.
+ *
+ * @param v A 3D vector.
+ * @param ang The angle to rotate the vector, in radians.
+ *
+ * @returns A new, rotated vector.
+ */
+inline Vector3D rotateBeta(const Vector3D &v, const double &ang) {
+  /**
+   * Rotation matrix:
+   *
+   * | cos(ang)  0  sin(ang)| |x|
+   * |   0       1      0   | |y|
+   * |−sin(ang)  0  cos(ang)| |z|
+   */
+
+  double xPrime = x(v) * std::cos(ang) + z(v) * std::sin(ang);
+  double yPrime = y(v);
+  double zPrime = -x(v) * std::sin(ang) + z(v) * std::cos(ang);
+
+  return Vector3D{xPrime, yPrime, zPrime};
+}
+
+/**
+ * Rotates around z-axis.
+ *
+ * Uses the basic gimbal-like 3D rotation matrices for rotation.
+ *
+ * @param v A 3D vector.
+ * @param ang The angle to rotate the vector, in radians.
+ *
+ * @returns A new, rotated vector.
+ */
+inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
+  /**
+   * Rotation matrix:
+   *
+   * |cos(ang)  −sin(ang)  0| |x|
+   * |sin(ang)  cos(ang)   0| |y|
+   * |  0         0        1| |z|
+   */
+
+  double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
+  double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
+  double zPrime = z(v);
+
+  return Vector3D{xPrime, yPrime, zPrime};
+}
+
 #ifndef SVECTOR_USE_CLASS_OPERATORS
 /**
  * Adds two vectors.
