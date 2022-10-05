@@ -84,9 +84,6 @@ public:
   /**
    * Cross product of two vectors.
    *
-   * Note that the dimensions of the other vector has the be the same
-   * as the current one.
-   *
    * @param other The other vector to cross current vector with.
    *
    * @returns The cross product of the two vectors.
