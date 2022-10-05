@@ -1,4 +1,4 @@
-#define SVECTOR_EXPERIMENTAL_FEATURES
+#define SVECTOR_EXPERIMENTAL_COMPARE
 
 #include "simplevectors/vectors.hpp"
 

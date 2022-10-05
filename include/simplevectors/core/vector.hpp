@@ -17,7 +17,7 @@ namespace svector {
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
-#ifdef SVECTOR_EXPERIMENTAL_FEATURES
+#ifdef SVECTOR_EXPERIMENTAL_COMPARE
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
   friend bool operator<(const Vector<D1, T1> &, const Vector<D2, T2> &);
 
@@ -368,7 +368,7 @@ protected:
   // an array of components to the vector
   std::array<T, D> m_components;
 
-#ifdef SVECTOR_EXPERIMENTAL_FEATURES
+#ifdef SVECTOR_EXPERIMENTAL_COMPARE
 private:
   /**
    * Compares elements between vectors lexographically (EXPERIMENTAL).

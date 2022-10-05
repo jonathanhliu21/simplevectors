@@ -388,7 +388,7 @@ inline bool operator!=(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 }
 #endif
 
-#ifdef SVECTOR_EXPERIMENTAL_FEATURES
+#ifdef SVECTOR_EXPERIMENTAL_COMPARE
 template <std::size_t D1, std::size_t D2, typename T1, typename T2>
 bool operator<(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
   return lhs.compare(rhs) < 0;
