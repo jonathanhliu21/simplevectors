@@ -25,7 +25,6 @@ add_executable(
     testbase.cpp
     testutil.cpp
     testexpcompare.cpp
-    testexpvectormin.cpp
 )
 target_link_libraries(
     test_all
