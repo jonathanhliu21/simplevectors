@@ -11,9 +11,13 @@
 #include <cmath>   // std::atan2, std::acos, std::sqrt
 #include <cstddef> // std::size_t
 
+#ifndef SVECTOR_EXPERIMENTAL_VECTOR_MIN
 #include "core/vector.hpp"
 #include "core/vector2d.hpp"
 #include "core/vector3d.hpp"
+#else
+#include "vector_min.hpp"
+#endif
 
 namespace svector {
 /**
@@ -48,7 +52,7 @@ inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
   T sum_of_squares = 0;
 
-  for (auto i : v) {
+  for (std::size_t i = 0; i < D; i++) {
     sum_of_squares += i * i;
   }
 
