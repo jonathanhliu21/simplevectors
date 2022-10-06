@@ -70,10 +70,21 @@ public:
   /**
    * Copy constructor.
    */
-  Vector(const Vector<D> &other) {
+  Vector(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] = other[i];
     }
+  }
+
+  /**
+   * Assignment operator
+   */
+  Vector<D, T> &operator=(const Vector<D, T> &other) {
+    for (std::size_t i = 0; i < D; i++) {
+      this->m_components[i] = other[i];
+    }
+
+    return *this;
   }
 
   /**
@@ -98,8 +109,8 @@ public:
   /**
    * Adds two vectors.
    */
-  Vector<D> operator+(const Vector<D> &other) const {
-    Vector<D> tmp;
+  Vector<D, T> operator+(const Vector<D, T> &other) const {
+    Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] + other[i];
     }
@@ -110,8 +121,8 @@ public:
   /**
    * Subtracts two vectors.
    */
-  Vector<D> operator-(const Vector<D> &other) const {
-    Vector<D> tmp;
+  Vector<D, T> operator-(const Vector<D, T> &other) const {
+    Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] - other[i];
     }
@@ -122,8 +133,8 @@ public:
   /**
    * Scalar multiplication of vector.
    */
-  Vector<D> operator*(const T other) const {
-    Vector<D> tmp;
+  Vector<D, T> operator*(const T other) const {
+    Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] * other;
     }
@@ -134,8 +145,8 @@ public:
   /**
    * Scalar division of vector.
    */
-  Vector<D> operator/(const T other) const {
-    Vector<D> tmp;
+  Vector<D, T> operator/(const T other) const {
+    Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = this->m_components[i] / other;
     }
@@ -146,7 +157,7 @@ public:
   /**
    * Equality
    */
-  bool operator==(const Vector<D> &other) const {
+  bool operator==(const Vector<D, T> &other) const {
     for (std::size_t i = 0; i < D; i++) {
       if (this->m_components[i] != other[i])
         return false;
@@ -158,14 +169,16 @@ public:
   /**
    * Inequality
    */
-  bool operator!=(const Vector<D> &other) const { return !((*this) == other); }
+  bool operator!=(const Vector<D, T> &other) const {
+    return !((*this) == other);
+  }
 #endif
 
   /**
    * Flips direction of vector.
    */
-  Vector<D> operator-() const {
-    Vector<D> tmp;
+  Vector<D, T> operator-() const {
+    Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = -this->m_components[i];
     }
@@ -176,7 +189,7 @@ public:
   /**
    * Adds another vector object to self.
    */
-  Vector<D> &operator+=(const Vector<D> &other) {
+  Vector<D, T> &operator+=(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] += other[i];
     }
@@ -187,7 +200,7 @@ public:
   /**
    * Subtracts another vector object from self.
    */
-  Vector<D> &operator-=(const Vector<D> &other) {
+  Vector<D, T> &operator-=(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] -= other[i];
     }
@@ -198,7 +211,7 @@ public:
   /**
    * Multiplies vector by a number.
    */
-  Vector<D> &operator*=(const T other) {
+  Vector<D, T> &operator*=(const T other) {
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] *= other;
     }
@@ -209,7 +222,7 @@ public:
   /**
    * Divides vector by a number.
    */
-  Vector<D> &operator/=(const T other) {
+  Vector<D, T> &operator/=(const T other) {
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] /= other;
     }
@@ -227,7 +240,7 @@ public:
    *
    * @returns The dot product of the two vectors.
    */
-  T dot(const Vector<D> &other) const {
+  T dot(const Vector<D, T> &other) const {
     T result = 0;
 
     for (std::size_t i = 0; i < D; i++) {
@@ -259,7 +272,7 @@ public:
    *
    * @returns Normalized vector.
    */
-  Vector<D> normalize() const { return (*this) / this->magn(); }
+  Vector<D, T> normalize() const { return (*this) / this->magn(); }
 
   /**
    * Gets number of dimensions.

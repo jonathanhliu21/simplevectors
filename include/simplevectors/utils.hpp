@@ -53,7 +53,7 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
   T sum_of_squares = 0;
 
   for (std::size_t i = 0; i < D; i++) {
-    sum_of_squares += i * i;
+    sum_of_squares += v[i] * v[i];
   }
 
   return std::sqrt(sum_of_squares);
@@ -70,7 +70,7 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
  */
 template <typename T, std::size_t D>
 inline Vector<D, T> normalize(const Vector<D, T> &v) {
-  return v / v.magn();
+  return v / magn(v);
 }
 
 /**
