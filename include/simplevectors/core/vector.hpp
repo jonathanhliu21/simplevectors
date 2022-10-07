@@ -40,15 +40,19 @@ public:
   /**
    * No-argument constructor.
    *
-   * Initializes a zero vector.
+   * Initializes a zero vector (all components are 0).
    */
   Vector() { this->m_components.fill(0); }
 
   /**
    * Initializes a vector given initializer list.
    *
-   * The initializer list should represent the components
-   * of the vector in each dimension.
+   * The initializer list should represent the components of the vector in each
+   * dimension. If the size of the initializer list is greater than the number
+   * of dimensions given, then the vector only initializes with the first D
+   * elements in the list, where D is the number of dimensions. If the size of
+   * the initializer list is less than the number of dimensions given, then the
+   * vector fills the rest of the dimensions with the value 0.
    *
    * @param args the initializer list.
    */
@@ -68,7 +72,7 @@ public:
   }
 
   /**
-   * Copy constructor.
+   * Copy constructor (copies from another vector to an uninitialized vector).
    */
   Vector(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -77,7 +81,8 @@ public:
   }
 
   /**
-   * Assignment operator
+   * Assignment operator (copies from another vector to a vector whose values
+   * already exist).
    */
   Vector<D, T> &operator=(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
