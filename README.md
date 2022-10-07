@@ -37,9 +37,25 @@ If you do this, the include path will be slightly different:
 
 ## Usage
 
-This section covers basic usage of 2D and 3D vectors. For more details, read the docstrings in the source code files.
+This section covers basic usage of vectors. For more details, read the docstrings in the source code files.
 
-Everything is under the namespace `svector`. 
+Everything is under the namespace `svector`.
+
+All of the examples below (except for initialization, printing, and exceptions specifically noted) show the methods of each vector. For each method, there is also a function under the `svector` namespace that takes in a vector object and the arguments for the corresponding method. For example:
+
+```cpp
+svector::Vector2D v2d(2, 4);
+double xval = v2d.x() + 1;
+v2d.x(xval);
+```
+
+is equivalent to:
+
+```cpp
+svector::Vector2D v2d(2, 4);
+double xval = svector::x(v2d) + 1;
+svector::x(v2d, xval);
+```
 
 ### Initialization
 
@@ -95,6 +111,14 @@ v3d.z(3); // v3d is now <2, 5, 3>
 
 std::cout << v2d.toString() << std::endl; // "<4.000, 4.000>"
 std::cout << v3d.toString() << std::endl; // "<2.000, 5.000, 3.000>"
+```
+
+Note that the functional equivalent for getting the angles of a 3D vector is slightly different:
+
+```cpp
+std::cout << svector::alpha(v3d) << std::endl; // alpha angle
+std::cout << svector::beta(v3d) << std::endl;  // beta angle
+std::cout << svector::gamma(v3d) << std::endl; // gamma angle
 ```
 
 ### Operations
@@ -195,6 +219,28 @@ svector::Vector3D v1_chained =
         .rotate<svector::GAMMA>(M_PI_2); // <1, 0, -1>
 ```
 
+Note that the functional equivalent of rotation around a certain axis is slightly different:
+
+```cpp
+svector::Vector3D v1_xRotation = svector::rotateAlpha(v1_3D, M_PI_2);
+svector::Vector3D v1_yRotation = svector::rotateBeta(v1_3D, M_PI_2);
+svector::Vector3D v1_zRotation = svector::rotateGamma(v1_3D, M_PI_2);
+```
+
+### Looping
+
+The `Vector` class and the classes that extend it (namely `Vector2D` and `Vector3D`) are container-like in the sense that they have iterators and `begin()`, `end()`, `rbegin()`, and `rend()` methods. This means that they can be looped through like any other STL container.
+
+```cpp
+svector::Vector<5> vector_loop{1, 6, 4, 3, 9};
+
+for (const auto& i: vector_loop) {
+  std::cout << i << std::endl;
+} // 1, 6, 4, 3, 9
+```
+
+This can be helpful for calculating sums.
+
 ## Extending
 
 To go beyond only 2D and 3D, you can extend the `Vector` base class (the 2D and 3D vector classes extend this base class as well). `Vector` is a template class, where the template takes in the number of dimensions the vector has:
@@ -229,7 +275,7 @@ It provides these constructors:
 - `Vector(std::initializer_list<double> args)`: initializes a vector, with each component given in the initializer list
 - `Vector(const Vector<dimensions>& other)`: copy constructor
 
-These methods are virtual and could be overriden:
+These methods are virtual and could be overridden:
 
 - `std::string toString()`: converts vector to a string format
 

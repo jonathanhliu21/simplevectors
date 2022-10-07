@@ -132,6 +132,13 @@ int main() {
           .rotate<svector::GAMMA>(M_PI_2); // <1, 0, -1>
   std::cout << v1_chained.toString() << std::endl;
 
+  std::cout << "LOOP TEST" << std::endl;
+  svector::Vector<5> vector_loop{1, 6, 4, 3, 9};
+
+  for (const auto &i : vector_loop) {
+    std::cout << i << std::endl;
+  } // 1, 6, 4, 3, 9
+
   class Quaternion : public svector::Vector<4> {
     Quaternion(const svector::Vector<4> &other) {
       this->m_components[0] = other[0];
