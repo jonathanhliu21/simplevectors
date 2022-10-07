@@ -57,7 +57,7 @@ double get_frequency(double wavelength) { return speed_of_light / wavelength; }
  *
  * @param log_frequency The common logarithm (log base 10) of frequency.
  *
- * @returns an enum representing the EM wave type.
+ * @returns An enum representing the EM wave type.
  */
 EM_Spectrum get_wave_type(double log_frequency) {
   if (log_frequency > 20) {
@@ -123,7 +123,7 @@ Visible_Spectrum get_color(double wavelength) {
  * @param E An electric field, represented by a 3D vector.
  * @param B A magnetic field, represented by a 3D vector.
  *
- * @returns k A unit 3D vector that is in the direction of the resulting EM
+ * @returns A unit 3D vector that is in the direction of the resulting EM
  * wave.
  */
 svector::Vector3D EM_Direction(const svector::Vector3D &E,
