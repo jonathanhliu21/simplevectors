@@ -16,6 +16,7 @@
 #include "core/vector3d.hpp"
 
 namespace svector {
+// COMBINER_PY_START
 /**
  * Dot product of two vectors.
  *
@@ -416,6 +417,7 @@ bool operator>=(const Vector<D1, T1> &lhs, const Vector<D2, T2> &rhs) {
   return lhs.compare(rhs) >= 0;
 }
 #endif
+// COMBINER_PY_END
 } // namespace svector
 
 #endif
