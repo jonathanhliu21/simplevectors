@@ -1,12 +1,12 @@
 /**
- * utils.hpp
+ * functions.hpp
  *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
 
-#ifndef INCLUDE_SVECTOR_UTILS_HPP_
-#define INCLUDE_SVECTOR_UTILS_HPP_
+#ifndef INCLUDE_SVECTOR_FUNCTIONS_HPP_
+#define INCLUDE_SVECTOR_FUNCTIONS_HPP_
 
 #include <cmath>   // std::atan2, std::acos, std::sqrt
 #include <cstddef> // std::size_t

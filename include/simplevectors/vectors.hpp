@@ -12,6 +12,6 @@
 #include "core/vector.hpp"
 #include "core/vector2d.hpp"
 #include "core/vector3d.hpp"
-#include "utils.hpp"
+#include "functions.hpp"
 
 #endif
