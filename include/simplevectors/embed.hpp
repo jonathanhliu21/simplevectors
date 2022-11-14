@@ -21,7 +21,7 @@ namespace svector {
  */
 struct Vec2D {
   /**
-   * No-argument constructor
+   * No-argument constructor.
    *
    * Initializes a zero vector.
    */
@@ -31,10 +31,10 @@ struct Vec2D {
   };
 
   /**
-   * Initializes a vector given xy components
+   * Initializes a vector given xy components.
    *
-   * @param x_other The x-component
-   * @param y_other The y-component
+   * @param x_other The x-component.
+   * @param y_other The y-component.
    */
   Vec2D(const double x_other, const double y_other) {
     x = x_other;
@@ -42,7 +42,7 @@ struct Vec2D {
   }
 
   /**
-   * Copy constructor
+   * Copy constructor.
    */
   Vec2D(const Vec2D &other) {
     x = other.x;
@@ -50,7 +50,7 @@ struct Vec2D {
   }
 
   /**
-   * Assignment operator
+   * Assignment operator.
    */
   Vec2D &operator=(const Vec2D &other) {
     x = other.x;
@@ -59,7 +59,7 @@ struct Vec2D {
   }
 
   /**
-   * Adds another vector object to self
+   * Adds another vector object to self.
    */
   Vec2D &operator+=(const Vec2D &other) {
     x += other.x;
@@ -68,7 +68,7 @@ struct Vec2D {
   }
 
   /**
-   * Subtracts another vector object from self
+   * Subtracts another vector object from self.
    */
   Vec2D &operator-=(const Vec2D &other) {
     x -= other.x;
@@ -77,7 +77,7 @@ struct Vec2D {
   }
 
   /**
-   * Multiplies vector by a number
+   * Multiplies vector by a number.
    */
   Vec2D &operator*=(const double &other) {
     x *= other;
@@ -86,7 +86,7 @@ struct Vec2D {
   }
 
   /**
-   * Divides vector by a number
+   * Divides vector by a number.
    */
   Vec2D &operator/=(const double &other) {
     x /= other;
@@ -126,7 +126,7 @@ struct Vec3D {
   }
 
   /**
-   * Copy constructor
+   * Copy constructor.
    */
   Vec3D(const Vec3D &other) {
     x = other.x;
@@ -135,7 +135,7 @@ struct Vec3D {
   }
 
   /**
-   * Assignment operator
+   * Assignment operator.
    */
   Vec3D &operator=(const Vec3D &other) {
     x = other.x;
@@ -145,7 +145,7 @@ struct Vec3D {
   }
 
   /**
-   * Adds another vector object to self
+   * Adds another vector object to self.
    */
   Vec3D &operator+=(const Vec3D &other) {
     x += other.x;
@@ -155,7 +155,7 @@ struct Vec3D {
   }
 
   /**
-   * Subtracts another vector object from self
+   * Subtracts another vector object from self.
    */
   Vec3D &operator-=(const Vec3D &other) {
     x -= other.x;
@@ -165,7 +165,7 @@ struct Vec3D {
   }
 
   /**
-   * Multiplies vector by a number
+   * Multiplies vector by a number.
    */
   Vec3D &operator*=(const double &other) {
     x *= other;
@@ -175,7 +175,7 @@ struct Vec3D {
   }
 
   /**
-   * Divides vector by a number
+   * Divides vector by a number.
    */
   Vec3D &operator/=(const double &other) {
     x /= other;
@@ -188,11 +188,11 @@ struct Vec3D {
 };
 
 /**
- * String form; can be used for printing
+ * String form; can be used for printing.
  *
  * @param vec A 2D Vector.
  *
- * @returns string form of vector
+ * @returns string form of vector.
  */
 inline std::string toString(const Vec2D &vec) {
   std::string s{"<"};
@@ -201,70 +201,70 @@ inline std::string toString(const Vec2D &vec) {
 }
 
 /**
- * Adds two vectors
+ * Adds two vectors.
  */
 inline Vec2D operator+(const Vec2D &lhs, const Vec2D &rhs) {
   return Vec2D{lhs.x + rhs.x, lhs.y + rhs.y};
 }
 
 /**
- * Subtracts two vectors
+ * Subtracts two vectors.
  */
 inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
   return Vec2D{lhs.x - rhs.x, lhs.y - rhs.y};
 }
 
 /**
- * Flips direction of vector
+ * Flips direction of vector.
  */
 inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
 
 /**
- * Scalar multiplication of vector
+ * Scalar multiplication of vector.
  */
 inline Vec2D operator*(const Vec2D &lhs, const double rhs) {
   return Vec2D{lhs.x * rhs, lhs.y * rhs};
 }
 
 /**
- * Scalar division of vector
+ * Scalar division of vector.
  */
 inline Vec2D operator/(const Vec2D &lhs, const double rhs) {
   return Vec2D{lhs.x / rhs, lhs.y / rhs};
 }
 
 /**
- * Equality
+ * Equality.
  */
 inline bool operator==(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y;
 }
 
 /**
- * Inequality
+ * Inequality.
  */
 inline bool operator!=(const Vec2D &lhs, const Vec2D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors
+ * Dot product of two vectors.
  *
  * @param lhs A 2D vector.
  * @param rhs A 2D vector.
  *
- * @returns The dotted 3D vector.
+ * @returns The dotted 2D vector.
  */
 inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
 /**
- * Gets the magnitude of the vector
+ * Gets the magnitude of the vector.
  *
  * @param vec A 2D vector.
  *
- * @returns magnitude of vector
+ * @returns magnitude of vector.
  */
 inline double magn(const Vec2D &vec) {
   return std::sqrt(vec.x * vec.x + vec.y * vec.y);
@@ -277,7 +277,7 @@ inline double magn(const Vec2D &vec) {
  *
  * @param vec A 2D vector.
  *
- * @returns angle of the vector
+ * @returns angle of the vector.
  */
 inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
 
@@ -288,7 +288,7 @@ inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
  *
  * @param vec A 2D vector.
  *
- * @returns Normalized vector
+ * @returns Normalized vector.
  */
 inline Vec2D normalize(const Vec2D &vec) {
   Vec2D tmp(vec);
@@ -303,9 +303,9 @@ inline Vec2D normalize(const Vec2D &vec) {
  * when the angle is negative.
  *
  * @param vec A 2D vector.
- * @param angle the angle to rotate the vector, in radians
+ * @param angle the angle to rotate the vector, in radians.
  *
- * @returns a new, rotated vector
+ * @returns a new, rotated vector.
  */
 inline Vec2D rotate(const Vec2D &vec, const double ang) {
   /**
@@ -322,11 +322,11 @@ inline Vec2D rotate(const Vec2D &vec, const double ang) {
 }
 
 /**
- * String form; can be used for printing
+ * String form; can be used for printing.
  *
  * @param vec A 3D Vector.
  *
- * @returns string form of vector
+ * @returns string form of vector.
  */
 inline std::string toString(const Vec3D &vec) {
   std::string s{"<"};
@@ -336,56 +336,56 @@ inline std::string toString(const Vec3D &vec) {
 }
 
 /**
- * Adds two vectors
+ * Adds two vectors.
  */
 inline Vec3D operator+(const Vec3D &lhs, const Vec3D &rhs) {
   return Vec3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
 }
 
 /**
- * Subtracts two vectors
+ * Subtracts two vectors.
  */
 inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
   return Vec3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
 }
 
 /**
- * Flips direction of vector
+ * Flips direction of vector.
  */
 inline Vec3D operator-(const Vec3D &vec) {
   return Vec3D{-vec.x, -vec.y, -vec.z};
 }
 
 /**
- * Scalar multiplication of vector
+ * Scalar multiplication of vector.
  */
 inline Vec3D operator*(const Vec3D &lhs, const double rhs) {
   return Vec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
 }
 
 /**
- * Scalar division of vector
+ * Scalar division of vector.
  */
 inline Vec3D operator/(const Vec3D &lhs, const double rhs) {
   return Vec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
 }
 
 /**
- * Equality
+ * Equality.
  */
 inline bool operator==(const Vec3D &lhs, const Vec3D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
 /**
- * Inequality
+ * Inequality.
  */
 inline bool operator!=(const Vec3D &lhs, const Vec3D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors
+ * Dot product of two vectors.
  *
  * @param lhs A 3D vector.
  * @param rhs A 3D vector.
@@ -397,7 +397,7 @@ inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Cross product of two vectors
+ * Cross product of two vectors.
  *
  * @param lhs A 3D vector.
  * @param rhs A 3D vector.
@@ -413,11 +413,11 @@ inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector
+ * Gets the magnitude of the vector.
  *
  * @param vec A 3D vector.
  *
- * @returns magnitude of vector
+ * @returns magnitude of vector.
  */
 inline double magn(const Vec3D &vec) {
   return std::sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
@@ -430,7 +430,7 @@ inline double magn(const Vec3D &vec) {
  *
  * @param vec A 3D vector.
  *
- * @returns Normalized vector
+ * @returns Normalized vector.
  */
 inline Vec3D normalize(const Vec3D &vec) {
   Vec3D tmp(vec);
@@ -438,37 +438,37 @@ inline Vec3D normalize(const Vec3D &vec) {
 }
 
 /**
- * Gets α angle
+ * Gets α angle.
  *
- * α is the angle between the vector and the x-axis
+ * α is the angle between the vector and the x-axis.
  *
  * @param vec A 3D Vector.
  *
- * @returns α
+ * @returns α.
  */
 inline double getAlpha(const Vec3D &vec) {
   return std::acos(vec.x / magn(vec));
 }
 
 /**
- * Gets β angle
+ * Gets β angle.
  *
- * β is the angle between the vector and the y-axis
+ * β is the angle between the vector and the y-axis.
  *
  * @param vec A 3D Vector.
  *
- * @returns β
+ * @returns β.
  */
 inline double getBeta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
 
 /**
- * Gets γ angle
+ * Gets γ angle.
  *
- * γ is the angle between the vector and the z-axis
+ * γ is the angle between the vector and the z-axis.
  *
  * @param vec A 3D Vector.
  *
- * @returns γ
+ * @returns γ.
  */
 inline double getGamma(const Vec3D &vec) {
   return std::acos(vec.z / magn(vec));
