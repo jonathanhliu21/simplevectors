@@ -25,6 +25,7 @@ add_executable(
     testbase.cpp
     testfunctions.cpp
     testexpcompare.cpp
+    testembed.cpp
 )
 target_link_libraries(
     test_all
