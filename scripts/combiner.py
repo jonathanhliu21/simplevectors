@@ -66,7 +66,7 @@ def combine():
         + get_sandwiched(
             os.path.join("include", "simplevectors", "core", "vector3d.hpp")
         )
-        + get_sandwiched(os.path.join("include", "simplevectors", "utils.hpp"))
+        + get_sandwiched(os.path.join("include", "simplevectors", "functions.hpp"))
         + FILE_END
     )
 

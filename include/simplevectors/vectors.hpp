@@ -1,6 +1,8 @@
 /**
  * vectors.hpp
  *
+ * Compiles all of the includes into one file.
+ *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
@@ -12,6 +14,6 @@
 #include "core/vector.hpp"
 #include "core/vector2d.hpp"
 #include "core/vector3d.hpp"
-#include "utils.hpp"
+#include "functions.hpp"
 
 #endif

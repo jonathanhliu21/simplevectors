@@ -1,6 +1,8 @@
 /**
  * vector.hpp
  *
+ * Base vector representation.
+ *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */

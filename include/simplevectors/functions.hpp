@@ -1,12 +1,15 @@
 /**
- * utils.hpp
+ * functions.hpp
+ *
+ * Functions for the vector classes (can be used for functional programming
+ * rather than using properties of the classes).
  *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
 
-#ifndef INCLUDE_SVECTOR_UTILS_HPP_
-#define INCLUDE_SVECTOR_UTILS_HPP_
+#ifndef INCLUDE_SVECTOR_FUNCTIONS_HPP_
+#define INCLUDE_SVECTOR_FUNCTIONS_HPP_
 
 #include <cmath>   // std::atan2, std::acos, std::sqrt
 #include <cstddef> // std::size_t
@@ -17,59 +20,6 @@
 
 namespace svector {
 // COMBINER_PY_START
-/**
- * Dot product of two vectors.
- *
- * Note that the dimensions of the other vector has the be the same
- * as the current one.
- *
- * @param lhs First vector.
- * @param rhs Second vector.
- *
- * @returns The dot product of lhs and rhs.
- */
-template <typename T, std::size_t D>
-inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
-  T result = 0;
-
-  for (std::size_t i = 0; i < D; i++) {
-    result += lhs[i] * rhs[i];
-  }
-
-  return result;
-}
-
-/**
- * Gets the magnitude of the vector.
- *
- * @param v The vector to get magnitude of.
- *
- * @returns magnitude of vector.
- */
-template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
-  T sum_of_squares = 0;
-
-  for (std::size_t i = 0; i < D; i++) {
-    sum_of_squares += v[i] * v[i];
-  }
-
-  return std::sqrt(sum_of_squares);
-}
-
-/**
- * Normalizes a vector.
- *
- * Finds the unit vector with the same direction angle as the current vector.
- *
- * @param v The vector to normalize.
- *
- * @returns Normalized vector.
- */
-template <typename T, std::size_t D>
-inline Vector<D, T> normalize(const Vector<D, T> &v) {
-  return v / magn(v);
-}
-
 /**
  * Gets the x-component of a 2D vector.
  *
@@ -154,6 +104,59 @@ inline double z(const Vector3D &v) { return v[2]; }
  * @param z_value The z value to set to the vector.
  */
 inline void z(Vector3D &v, const double z_value) { v[2] = z_value; }
+
+/**
+ * Dot product of two vectors.
+ *
+ * Note that the dimensions of the other vector has the be the same
+ * as the current one.
+ *
+ * @param lhs First vector.
+ * @param rhs Second vector.
+ *
+ * @returns The dot product of lhs and rhs.
+ */
+template <typename T, std::size_t D>
+inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
+  T result = 0;
+
+  for (std::size_t i = 0; i < D; i++) {
+    result += lhs[i] * rhs[i];
+  }
+
+  return result;
+}
+
+/**
+ * Gets the magnitude of the vector.
+ *
+ * @param v The vector to get magnitude of.
+ *
+ * @returns magnitude of vector.
+ */
+template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
+  T sum_of_squares = 0;
+
+  for (std::size_t i = 0; i < D; i++) {
+    sum_of_squares += v[i] * v[i];
+  }
+
+  return std::sqrt(sum_of_squares);
+}
+
+/**
+ * Normalizes a vector.
+ *
+ * Finds the unit vector with the same direction angle as the current vector.
+ *
+ * @param v The vector to normalize.
+ *
+ * @returns Normalized vector.
+ */
+template <typename T, std::size_t D>
+inline Vector<D, T> normalize(const Vector<D, T> &v) {
+  return v / magn(v);
+}
 
 /**
  * Gets the angle of a 2D vector in radians.

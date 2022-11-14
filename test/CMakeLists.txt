@@ -23,8 +23,9 @@ add_executable(
     test2d.cpp
     test3d.cpp
     testbase.cpp
-    testutil.cpp
+    testfunctions.cpp
     testexpcompare.cpp
+    testembed.cpp
 )
 target_link_libraries(
     test_all
