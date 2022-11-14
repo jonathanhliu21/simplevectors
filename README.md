@@ -243,7 +243,7 @@ This can be helpful for calculating sums.
 
 ## Embedding
 
-For adding vectors to an embedded device, there is a file called `embed.hpp` in the simplevectors folder, which contains a minimized version of the 2D and 3D vector objects above. They include every feature mentioned except for looping and extending. However, they have some differences. First, to access the x, y, and z values, rather than using `vec.x()`, you would use `vec.x` (same applies for y and z), without the parenthesis. Secondly, there are no methods in the minimized objects, and you must use the functional equivalents, which are mentioned above. Lastly, embedded devices only support 2D and 3D vectors.
+For adding vectors to an embedded device, there is a file called `embed.hpp` in the simplevectors folder, which contains a minimized version of the 2D and 3D vector objects above, named `Vec2D` and `Vec3D`, respectively. They include every feature mentioned except for looping and extending. However, they have some differences. First, to access the x, y, and z values, rather than using `vec.x()`, you would use `vec.x` (same applies for y and z), without the parenthesis. Secondly, there are no methods in the minimized objects, and you must use the functional equivalents, which are mentioned above. Lastly, embedded devices only support 2D and 3D vectors.
 
 ## Extending
 
