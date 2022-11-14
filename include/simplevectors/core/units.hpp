@@ -1,6 +1,8 @@
 /**
  * units.hpp
  *
+ * All STL includes and enums needed for the core library.
+ *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */

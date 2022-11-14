@@ -1,6 +1,9 @@
 /**
  * functions.hpp
  *
+ * Functions for the vector classes (can be used for functional programming
+ * rather than using properties of the classes).
+ *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
  */
