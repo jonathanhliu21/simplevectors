@@ -5,8 +5,6 @@
 #include <regex>
 #include <utility>
 
-#include <cmath>
-
 using namespace svector;
 
 TEST(EmbedConstructorTest2D, ZeroConstructorTest) {
@@ -14,9 +12,7 @@ TEST(EmbedConstructorTest2D, ZeroConstructorTest) {
   EXPECT_EQ(vector.x, 0);
   EXPECT_EQ(vector.y, 0);
   EXPECT_EQ(magn(vector), 0);
-  EXPECT_EQ(angle(vector), 0)
-      << "x: " << vector.x << " y: " << vector.y << " "
-      << std::atan2(vector.y, vector.x) << " " << std::atan2(0, 0);
+  EXPECT_EQ(angle(vector), 0);
 }
 
 TEST(EmbedConstructorTest2D, XYConstructorTest) {
