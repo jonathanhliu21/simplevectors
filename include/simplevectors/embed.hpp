@@ -2,7 +2,8 @@
  * embed.hpp
  *
  * A minimized version of vectors for embedded devices with access to the STL.
- * This file is meant to be a standalone file.
+ * This file is meant to be a standalone file, so it is not included in
+ * vectors.hpp
  *
  * Copyright (c) 2022 Jonathan Liu. All rights reserved.
  * MIT License
@@ -18,15 +19,13 @@ namespace svector {
 /**
  * A minimal 2D vector representation.
  */
-struct Vector2D {
-  double x, y;
-
+struct Vec2D {
   /**
    * No-argument constructor
    *
    * Initializes a zero vector.
    */
-  Vector2D() {
+  Vec2D() {
     x = 0;
     y = 0;
   };
@@ -37,22 +36,32 @@ struct Vector2D {
    * @param x_other The x-component
    * @param y_other The y-component
    */
-  Vector2D(const double x_other, const double y_other) {
+  Vec2D(const double x_other, const double y_other) {
     x = x_other;
     y = y_other;
   }
+
   /**
    * Copy constructor
    */
-  Vector2D(const Vector2D &other) {
+  Vec2D(const Vec2D &other) {
     x = other.x;
     y = other.y;
   }
 
   /**
+   * Assignment operator
+   */
+  Vec2D &operator=(const Vec2D &other) {
+    x = other.x;
+    y = other.y;
+    return *this;
+  }
+
+  /**
    * Adds another vector object to self
    */
-  Vector2D &operator+=(const Vector2D &other) {
+  Vec2D &operator+=(const Vec2D &other) {
     x += other.x;
     y += other.y;
     return *this;
@@ -61,7 +70,7 @@ struct Vector2D {
   /**
    * Subtracts another vector object from self
    */
-  Vector2D &operator-=(const Vector2D &other) {
+  Vec2D &operator-=(const Vec2D &other) {
     x -= other.x;
     y -= other.y;
     return *this;
@@ -70,7 +79,7 @@ struct Vector2D {
   /**
    * Multiplies vector by a number
    */
-  Vector2D &operator*=(const double &other) {
+  Vec2D &operator*=(const double &other) {
     x *= other;
     y *= other;
     return *this;
@@ -79,25 +88,25 @@ struct Vector2D {
   /**
    * Divides vector by a number
    */
-  Vector2D &operator/=(const double &other) {
+  Vec2D &operator/=(const double &other) {
     x /= other;
     y /= other;
     return *this;
   }
+
+  double x, y;
 };
 
 /**
  * A minimal 3D vector representation.
  */
-struct Vector3D {
-  double x, y, z;
-
+struct Vec3D {
   /**
    * No-argument constructor.
    *
    * Initializes a zero vector.
    */
-  Vector3D() {
+  Vec3D() {
     x = 0;
     y = 0;
     z = 0;
@@ -110,7 +119,7 @@ struct Vector3D {
    * @param y_other The y-component.
    * @param z_other The z-component.
    */
-  Vector3D(const double x_other, const double y_other, const double z_other) {
+  Vec3D(const double x_other, const double y_other, const double z_other) {
     x = x_other;
     y = y_other;
     z = z_other;
@@ -119,11 +128,63 @@ struct Vector3D {
   /**
    * Copy constructor
    */
-  Vector3D(const Vector3D &other) {
+  Vec3D(const Vec3D &other) {
     x = other.x;
     y = other.y;
     z = other.z;
   }
+
+  /**
+   * Assignment operator
+   */
+  Vec3D &operator=(const Vec3D &other) {
+    x = other.x;
+    y = other.y;
+    z = other.z;
+    return *this;
+  }
+
+  /**
+   * Adds another vector object to self
+   */
+  Vec3D &operator+=(const Vec3D &other) {
+    x += other.x;
+    y += other.y;
+    z += other.z;
+    return *this;
+  }
+
+  /**
+   * Subtracts another vector object from self
+   */
+  Vec3D &operator-=(const Vec3D &other) {
+    x -= other.x;
+    y -= other.y;
+    z -= other.z;
+    return *this;
+  }
+
+  /**
+   * Multiplies vector by a number
+   */
+  Vec3D &operator*=(const double &other) {
+    x *= other;
+    y *= other;
+    z *= other;
+    return *this;
+  }
+
+  /**
+   * Divides vector by a number
+   */
+  Vec3D &operator/=(const double &other) {
+    x /= other;
+    y /= other;
+    z /= other;
+    return *this;
+  }
+
+  double x, y, z;
 };
 
 /**
@@ -133,7 +194,7 @@ struct Vector3D {
  *
  * @returns string form of vector
  */
-inline std::string toString(Vector2D &vec) {
+inline std::string toString(const Vec2D &vec) {
   std::string s{"<"};
   s = s + std::to_string(vec.x) + ", " + std::to_string(vec.y) + ">";
   return s;
@@ -142,61 +203,59 @@ inline std::string toString(Vector2D &vec) {
 /**
  * Adds two vectors
  */
-inline Vector2D operator+(const Vector2D &lhs, const Vector2D &rhs) {
-  return Vector2D{lhs.x + rhs.x, lhs.y + rhs.y};
+inline Vec2D operator+(const Vec2D &lhs, const Vec2D &rhs) {
+  return Vec2D{lhs.x + rhs.x, lhs.y + rhs.y};
 }
 
 /**
  * Subtracts two vectors
  */
-inline Vector2D operator-(const Vector2D &lhs, const Vector2D &rhs) {
-  return Vector2D{lhs.x - rhs.x, lhs.y - rhs.y};
+inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
+  return Vec2D{lhs.x - rhs.x, lhs.y - rhs.y};
 }
 
 /**
  * Flips direction of vector
  */
-inline Vector2D operator-(const Vector2D &vec) {
-  return Vector2D{-vec.x, -vec.y};
-}
+inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
 
 /**
  * Scalar multiplication of vector
  */
-inline Vector2D operator*(const Vector2D &lhs, const double rhs) {
-  return Vector2D{lhs.x * rhs, lhs.y * rhs};
+inline Vec2D operator*(const Vec2D &lhs, const double rhs) {
+  return Vec2D{lhs.x * rhs, lhs.y * rhs};
 }
 
 /**
  * Scalar division of vector
  */
-inline Vector2D operator/(const Vector2D &lhs, const double rhs) {
-  return Vector2D{lhs.x / rhs, lhs.y / rhs};
+inline Vec2D operator/(const Vec2D &lhs, const double rhs) {
+  return Vec2D{lhs.x / rhs, lhs.y / rhs};
 }
 
 /**
  * Equality
  */
-inline bool operator==(const Vector2D &lhs, const Vector2D &rhs) {
+inline bool operator==(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y;
 }
 
 /**
  * Inequality
  */
-inline bool operator!=(const Vector2D &lhs, const Vector2D &rhs) {
+inline bool operator!=(const Vec2D &lhs, const Vec2D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
  * Dot product of two vectors
  *
- * @param lhs A 3D vector.
- * @param rhs A 3D vector.
+ * @param lhs A 2D vector.
+ * @param rhs A 2D vector.
  *
  * @returns The dotted 3D vector.
  */
-inline double dot(const Vector2D &lhs, const Vector2D &rhs) {
+inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
@@ -207,7 +266,7 @@ inline double dot(const Vector2D &lhs, const Vector2D &rhs) {
  *
  * @returns magnitude of vector
  */
-inline double magn(const Vector2D &vec) {
+inline double magn(const Vec2D &vec) {
   return std::sqrt(vec.x * vec.x + vec.y * vec.y);
 }
 
@@ -220,7 +279,7 @@ inline double magn(const Vector2D &vec) {
  *
  * @returns angle of the vector
  */
-inline double angle(const Vector2D &vec) { return std::atan2(vec.y, vec.x); }
+inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
 
 /**
  * Normalizes a vector.
@@ -231,8 +290,8 @@ inline double angle(const Vector2D &vec) { return std::atan2(vec.y, vec.x); }
  *
  * @returns Normalized vector
  */
-inline Vector2D normalize(const Vector2D &vec) {
-  Vector2D tmp(vec);
+inline Vec2D normalize(const Vec2D &vec) {
+  Vec2D tmp(vec);
   return tmp / magn(vec);
 }
 
@@ -248,7 +307,7 @@ inline Vector2D normalize(const Vector2D &vec) {
  *
  * @returns a new, rotated vector
  */
-inline Vector2D rotate(const Vector2D &vec, const double ang) {
+inline Vec2D rotate(const Vec2D &vec, const double ang) {
   /**
    * Rotation matrix:
    *
@@ -259,7 +318,7 @@ inline Vector2D rotate(const Vector2D &vec, const double ang) {
   double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
   double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
 
-  return Vector2D{xPrime, yPrime};
+  return Vec2D{xPrime, yPrime};
 }
 
 /**
@@ -269,7 +328,7 @@ inline Vector2D rotate(const Vector2D &vec, const double ang) {
  *
  * @returns string form of vector
  */
-inline std::string toString(Vector3D &vec) {
+inline std::string toString(const Vec3D &vec) {
   std::string s{"<"};
   s = s + std::to_string(vec.x) + ", " + std::to_string(vec.y) + ", " +
       std::to_string(vec.z) + ">";
@@ -279,49 +338,49 @@ inline std::string toString(Vector3D &vec) {
 /**
  * Adds two vectors
  */
-inline Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs) {
-  return Vector3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
+inline Vec3D operator+(const Vec3D &lhs, const Vec3D &rhs) {
+  return Vec3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
 }
 
 /**
  * Subtracts two vectors
  */
-inline Vector3D operator-(const Vector3D &lhs, const Vector3D &rhs) {
-  return Vector3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
+inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
+  return Vec3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
 }
 
 /**
  * Flips direction of vector
  */
-inline Vector3D operator-(const Vector3D &vec) {
-  return Vector3D{-vec.x, -vec.y, -vec.z};
+inline Vec3D operator-(const Vec3D &vec) {
+  return Vec3D{-vec.x, -vec.y, -vec.z};
 }
 
 /**
  * Scalar multiplication of vector
  */
-inline Vector3D operator*(const Vector3D &lhs, const double rhs) {
-  return Vector3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
+inline Vec3D operator*(const Vec3D &lhs, const double rhs) {
+  return Vec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
 }
 
 /**
  * Scalar division of vector
  */
-inline Vector3D operator/(const Vector3D &lhs, const double rhs) {
-  return Vector3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
+inline Vec3D operator/(const Vec3D &lhs, const double rhs) {
+  return Vec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
 }
 
 /**
  * Equality
  */
-inline bool operator==(const Vector3D &lhs, const Vector3D &rhs) {
+inline bool operator==(const Vec3D &lhs, const Vec3D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
 /**
  * Inequality
  */
-inline bool operator!=(const Vector3D &lhs, const Vector3D &rhs) {
+inline bool operator!=(const Vec3D &lhs, const Vec3D &rhs) {
   return !(lhs == rhs);
 }
 
@@ -333,7 +392,7 @@ inline bool operator!=(const Vector3D &lhs, const Vector3D &rhs) {
  *
  * @returns The dotted 3D vector.
  */
-inline double dot(const Vector3D &lhs, const Vector3D &rhs) {
+inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
@@ -345,23 +404,37 @@ inline double dot(const Vector3D &lhs, const Vector3D &rhs) {
  *
  * @returns The crossed 3D vector.
  */
-inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
+inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
   double newx = lhs.y * rhs.z - lhs.z * rhs.y;
   double newy = lhs.z * rhs.x - lhs.x * rhs.z;
-  double newz = lhs.x * rhs.y - lhs.y * lhs.x;
+  double newz = lhs.x * rhs.y - lhs.y * rhs.x;
 
-  return Vector3D{newx, newy, newz};
+  return Vec3D{newx, newy, newz};
 }
 
 /**
  * Gets the magnitude of the vector
  *
- * @param vec A 2D vector.
+ * @param vec A 3D vector.
  *
  * @returns magnitude of vector
  */
-inline double magn(const Vector3D &vec) {
+inline double magn(const Vec3D &vec) {
   return std::sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+/**
+ * Normalizes a vector.
+ *
+ * Finds the unit vector with the same direction angle as the current vector.
+ *
+ * @param vec A 3D vector.
+ *
+ * @returns Normalized vector
+ */
+inline Vec3D normalize(const Vec3D &vec) {
+  Vec3D tmp(vec);
+  return tmp / magn(vec);
 }
 
 /**
@@ -373,7 +446,7 @@ inline double magn(const Vector3D &vec) {
  *
  * @returns α
  */
-inline double getAlpha(const Vector3D &vec) {
+inline double getAlpha(const Vec3D &vec) {
   return std::acos(vec.x / magn(vec));
 }
 
@@ -386,9 +459,7 @@ inline double getAlpha(const Vector3D &vec) {
  *
  * @returns β
  */
-inline double getBeta(const Vector3D &vec) {
-  return std::acos(vec.y / magn(vec));
-}
+inline double getBeta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
 
 /**
  * Gets γ angle
@@ -399,7 +470,7 @@ inline double getBeta(const Vector3D &vec) {
  *
  * @returns γ
  */
-inline double getGamma(const Vector3D &vec) {
+inline double getGamma(const Vec3D &vec) {
   return std::acos(vec.z / magn(vec));
 }
 
@@ -413,7 +484,7 @@ inline double getGamma(const Vector3D &vec) {
  *
  * @returns A new, rotated vector.
  */
-inline Vector3D rotateAlpha(const Vector3D &vec, const double &ang) {
+inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
   /**
    * Rotation matrix:
    *
@@ -426,7 +497,7 @@ inline Vector3D rotateAlpha(const Vector3D &vec, const double &ang) {
   double yPrime = vec.y * std::cos(ang) - vec.z * std::sin(ang);
   double zPrime = vec.y * std::sin(ang) + vec.z * std::cos(ang);
 
-  return Vector3D{xPrime, yPrime, zPrime};
+  return Vec3D{xPrime, yPrime, zPrime};
 }
 
 /**
@@ -439,7 +510,7 @@ inline Vector3D rotateAlpha(const Vector3D &vec, const double &ang) {
  *
  * @returns A new, rotated vector.
  */
-inline Vector3D rotateBeta(const Vector3D &vec, const double &ang) {
+inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
   /**
    * Rotation matrix:
    *
@@ -452,7 +523,7 @@ inline Vector3D rotateBeta(const Vector3D &vec, const double &ang) {
   double yPrime = vec.y;
   double zPrime = -vec.x * std::sin(ang) + vec.z * std::cos(ang);
 
-  return Vector3D{xPrime, yPrime, zPrime};
+  return Vec3D{xPrime, yPrime, zPrime};
 }
 
 /**
@@ -465,7 +536,7 @@ inline Vector3D rotateBeta(const Vector3D &vec, const double &ang) {
  *
  * @returns A new, rotated vector.
  */
-inline Vector3D rotateGamma(const Vector3D &vec, const double &ang) {
+inline Vec3D rotateGamma(const Vec3D &vec, const double ang) {
   /**
    * Rotation matrix:
    *
@@ -478,7 +549,7 @@ inline Vector3D rotateGamma(const Vector3D &vec, const double &ang) {
   double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
   double zPrime = vec.z;
 
-  return Vector3D{xPrime, yPrime, zPrime};
+  return Vec3D{xPrime, yPrime, zPrime};
 }
 } // namespace svector
 
