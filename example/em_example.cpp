@@ -4,6 +4,7 @@
 
 #include "simplevectors/vectors.hpp"
 
+namespace svector_em_example {
 const double speed_of_light = 299792458; // m/s
 
 enum EM_Spectrum {
@@ -127,7 +128,8 @@ Visible_Spectrum get_color(double wavelength) {
  * wave.
  */
 svector::Vector3D EM_Direction(const svector::Vector3D &E,
-                               const svector::Vector3D &M) {
-  svector::Vector3D crossed = E.cross(M);
+                               const svector::Vector3D &B) {
+  svector::Vector3D crossed = E.cross(B);
   return crossed.normalize();
 }
+} // namespace svector_em_example

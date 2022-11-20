@@ -1,5 +1,6 @@
 #include "simplevectors/vectors.hpp"
 
+namespace svector_kinematics_example {
 /**
  * Represents a 2D object which has a mass, position, velocity and acceleration
  */
@@ -84,3 +85,4 @@ void updateVelocityPosition(Object2D &object, svector::Vector2D acc,
   object.velocity = changeInVelocity(acc, time_interval);
   object.position = changeInPosition(object.velocity, time_interval);
 }
+} // namespace svector_kinematics_example

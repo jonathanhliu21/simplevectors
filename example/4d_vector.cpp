@@ -1,5 +1,6 @@
 #include "simplevectors/vectors.hpp"
 
+namespace svector_4d_example {
 /**
  * An example 4D vector
  *
@@ -43,3 +44,4 @@ class Vector4D : public svector::Vector<4> {
     return ret;
   }
 };
+} // namespace svector_4d_example

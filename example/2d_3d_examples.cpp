@@ -3,6 +3,7 @@
 #include <cmath>
 #include <utility>
 
+namespace svector_2d_3d_examples {
 /**
  * Determines the angle between two vectors
  */
@@ -42,3 +43,4 @@ double angleBetween(svector::Vector3D v1, svector::Vector3D v2) {
 double areaParallelogram(svector::Vector3D v, svector::Vector3D w) {
   return v.cross(w).magn();
 }
+} // namespace svector_2d_3d_examples
