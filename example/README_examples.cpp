@@ -1,3 +1,4 @@
+#include <simplevectors/embed.hpp>
 #include <simplevectors/vectors.hpp>
 
 #include <iostream>
@@ -147,4 +148,22 @@ int main() {
       this->m_components[3] = other[3];
     };
   };
+
+  std::cout << "EMBED TEST" << std::endl;
+  svector::Vec2D embv2(2, 4);
+  svector::Vec3D embv3(2, 4, 5);
+
+  std::cout << svector::toString(embv2) << std::endl; // <2.000, 4.000>
+  std::cout << svector::toString(embv3) << std::endl; // <2.000, 4.000, 5.000>
+
+  std::cout << embv2.x << std::endl; // 2
+  std::cout << embv3.y << std::endl; // 4
+  std::cout << embv3.z << std::endl; // 5
+
+  // all operators work the same
+
+  svector::Vec2D emblhs(2, 5);
+  svector::Vec2D embrhs(3, -4);
+  double embdot = svector::dot(emblhs, embrhs); // -14
+  std::cout << embdot << std::endl;
 }

@@ -241,10 +241,6 @@ for (const auto& i: vector_loop) {
 
 This can be helpful for calculating sums.
 
-## Embedding
-
-For adding vectors to an embedded device, there is a file called `embed.hpp` in the simplevectors folder, which contains a minimized version of the 2D and 3D vector objects above, named `Vec2D` and `Vec3D`, respectively. They include every feature mentioned except for looping and extending. However, they have some differences. First, to access the x, y, and z values, rather than using `vec.x()`, you would use `vec.x` (same applies for y and z), without the parenthesis. Secondly, there are no methods in the minimized objects, and you must use the functional equivalents, which are mentioned above. Lastly, embedded devices only support 2D and 3D vectors.
-
 ## Extending
 
 To go beyond only 2D and 3D, you can extend the `Vector` base class (the 2D and 3D vector classes extend this base class as well). `Vector` is a template class, where the template takes in the number of dimensions the vector has:
@@ -273,11 +269,13 @@ The `Vector` base class provides a protected variable, `m_components`, an `std::
 
 Note that the binary operations with another vector require vectors **that have the same dimension**.
 
-It provides these constructors:
+The base class provides these constructors:
 
 - `Vector()`: initializes a 0 vector (or a vector with 0s in every dimension)
 - `Vector(std::initializer_list<double> args)`: initializes a vector, with each component given in the initializer list
 - `Vector(const Vector<dimensions>& other)`: copy constructor
+
+You can inherit them using `using svector::Vector<D>::Vector` or write your own constructors.
 
 These methods are virtual and could be overridden:
 
@@ -297,6 +295,45 @@ class Quaternion : public svector::Vector<4> {
 ```
 
 After this, you can make your own methods interacting with the components of the vectors.
+
+## Embedding (2D and 3D vectors only)
+
+For adding vectors to an embedded device, there is a file called `embed.hpp`, located in `include/simplevectors`, which contains a minimized version of the 2D and 3D vector objects above, named `Vec2D` and `Vec3D`, respectively. They include every feature mentioned except for looping and extending.
+
+Differences from `Vector2D` and `Vector3D`:
+
+- Names are `Vec2D` and `Vec3D` rather than `Vector2D` and `Vector3D`
+- Uses `.x`, `.y`, and `.z` rather than `.x()`, `.y()`, and `.z()` to access x, y, and z values.
+- There are no methods in the minimized objects (e.g. `.dot()`, `.cross()`, etc), so you must use the functional equivalents (e.g. `dot(vec)`, `cross(vec)`) mentioned above.
+- Embedded devices only support 2D and 3D vectors.
+- This file is not included within `simplevectors/vectors.hpp` because it is meant to be a standalone file, so it must be included explicitly.
+
+```cpp
+#include <simplevectors/embed.hpp>
+
+// ...
+
+svector::Vec2D embv2(2, 4);
+svector::Vec3D embv3(2, 4, 5);
+
+svector::toString(embv2); // <2.000, 4.000>
+svector::toString(embv3); // <2.000, 4.000, 5.000>
+
+std::cout << embv2.x << std::endl; // 2
+std::cout << embv3.y << std::endl; // 4
+std::cout << embv3.z << std::endl; // 5
+
+// all operators work the same
+
+svector::Vec2D emblhs(2, 5);
+svector::Vec2D embrhs(3, -4);
+double embdot = svector::dot(emblhs, embrhs); // -14
+```
+
+### Embedded devices without access to the STL
+
+For embedded devices without access to the C++ STL, such as on an Arduino, there is another file named `embed.h`. It is the same as `embed.hpp`, except that it does not contain a `svector` or `std` namespace and there is no `toString()` function.
+
 
 ## License
 
