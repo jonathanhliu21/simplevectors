@@ -15,7 +15,7 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<2> _Vec2;
+typedef Vector<2> _Vec2; //!< An alias to Vector<2>.
 
 /**
  * A simple 2D vector representation.

@@ -16,7 +16,7 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<3> _Vec3;
+typedef Vector<3> _Vec3; //!< An alias to Vector<3>.
 
 /**
  * A simple 3D vector representation.
