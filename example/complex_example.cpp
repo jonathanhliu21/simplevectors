@@ -81,4 +81,57 @@ Polar<T> getTotalAC(const Polar<T> source1, const Polar<T> source2) {
   Complex<T> res = wave1 + wave2;
   return res.toPolar();
 }
+
+/**
+ * Finds the total impedence given the resistance and reactances.
+ *
+ * The total impedence is represented as a complex number, with the
+ * resistance represented by the real part and the combined reactance (both
+ * capacitive and inductive) represented by the imaginary part.
+ *
+ * The value for impedence used in Ohm's Law and other formulas
+ * would be the magnitude of the complex number.
+ *
+ * @param r The resistance of the circuit.
+ * @param xc The capacitive reactance.
+ * @param xl The inductive reactance.
+ *
+ * @returns The total impedence of the circuit.
+ */
+template <typename T>
+Complex<T> getImpedence(const T r, const T xc, const T xl) {
+  T xTotal = xc + xl;
+
+  return Complex<T>(r, xTotal);
+}
+
+/**
+ * Calculates the RMS voltage given the impedence and current.
+ *
+ * This is done using Ohm's Law: V_rms = I_rms * Z
+ *
+ * @param i The RMS current.
+ * @param z The impedence.
+ *
+ * @returns The RMS voltage, calculated using Ohm's Law.
+ */
+template <typename T> T getVoltage(const T i, const Complex<T> z) {
+  T magn = z.magn();
+  return i * magn;
+}
+
+/**
+ * Calculates the RMS current given the impedence and voltage.
+ *
+ * This is done using Ohm's Law: V_rms = I_rms * Z
+ *
+ * @param v The RMS voltage.
+ * @param z The impedence.
+ *
+ * @returns The RMS current, calculated using Ohm's Law.
+ */
+template <typename T> T getCurrent(const T v, const Complex<T> z) {
+  T magn = z.magn();
+  return v / magn;
+}
 } // namespace svector_complex_example
