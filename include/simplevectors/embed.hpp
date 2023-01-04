@@ -1,12 +1,12 @@
 /**
- * embed.hpp
+ * @file embed.hpp
  *
  * A minimized version of vectors for embedded devices with access to the STL.
  * This file is meant to be a standalone file, so it is not included in
  * vectors.hpp
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_EMBED_HPP_
@@ -59,7 +59,9 @@ struct Vec2D {
   }
 
   /**
-   * Adds another vector object to self.
+   * Adds another vector object to current vector.
+   *
+   * @param other The other object to add.
    */
   Vec2D &operator+=(const Vec2D &other) {
     x += other.x;
@@ -68,7 +70,9 @@ struct Vec2D {
   }
 
   /**
-   * Subtracts another vector object from self.
+   * Subtracts another vector object from current vector.
+   *
+   * @param other The other object to subtract.
    */
   Vec2D &operator-=(const Vec2D &other) {
     x -= other.x;
@@ -77,7 +81,9 @@ struct Vec2D {
   }
 
   /**
-   * Multiplies vector by a number.
+   * Performs scalar multiplication on the current object.
+   *
+   * @param other The number to multiply by.
    */
   Vec2D &operator*=(const double &other) {
     x *= other;
@@ -86,7 +92,9 @@ struct Vec2D {
   }
 
   /**
-   * Divides vector by a number.
+   * Performs scalar division on the current object.
+   *
+   * @param other The number to divide by.
    */
   Vec2D &operator/=(const double &other) {
     x /= other;
@@ -94,7 +102,8 @@ struct Vec2D {
     return *this;
   }
 
-  double x, y;
+  double x; //!< The x-component of the 2D vector.
+  double y; //!< The y-component of the 2D vector.
 };
 
 /**
@@ -145,7 +154,9 @@ struct Vec3D {
   }
 
   /**
-   * Adds another vector object to self.
+   * Adds another vector object to current vector.
+   *
+   * @param other The other object to add.
    */
   Vec3D &operator+=(const Vec3D &other) {
     x += other.x;
@@ -155,7 +166,9 @@ struct Vec3D {
   }
 
   /**
-   * Subtracts another vector object from self.
+   * Subtracts another vector object from current vector.
+   *
+   * @param other The other object to subtract.
    */
   Vec3D &operator-=(const Vec3D &other) {
     x -= other.x;
@@ -165,7 +178,9 @@ struct Vec3D {
   }
 
   /**
-   * Multiplies vector by a number.
+   * Performs scalar multiplication on the current object.
+   *
+   * @param other The number to multiply by.
    */
   Vec3D &operator*=(const double &other) {
     x *= other;
@@ -175,7 +190,9 @@ struct Vec3D {
   }
 
   /**
-   * Divides vector by a number.
+   * Performs scalar division on the current object.
+   *
+   * @param other The number to divide by.
    */
   Vec3D &operator/=(const double &other) {
     x /= other;
@@ -184,7 +201,9 @@ struct Vec3D {
     return *this;
   }
 
-  double x, y, z;
+  double x; //!< The x-component of the 3D vector.
+  double y; //!< The y-component of the 3D vector.
+  double z; //!< The z-component of the 3D vector.
 };
 
 /**
@@ -201,59 +220,99 @@ inline std::string toString(const Vec2D &vec) {
 }
 
 /**
- * Adds two vectors.
+ * Performs vector addition and returns a new vector representing the sum of
+ * the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 inline Vec2D operator+(const Vec2D &lhs, const Vec2D &rhs) {
   return Vec2D{lhs.x + rhs.x, lhs.y + rhs.y};
 }
 
 /**
- * Subtracts two vectors.
+ * Performs vector subtraction and returns a new vector representing the
+ * difference of the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
   return Vec2D{lhs.x - rhs.x, lhs.y - rhs.y};
 }
 
 /**
- * Flips direction of vector.
+ * Makes all components of a vector negative.
+ *
+ * This can also be thought of flipping the direction of the vector.
+ *
+ * @param vec A 2D vector
+ *
+ * @returns A new vector representing the negative of the given vector.
  */
 inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
 
 /**
- * Scalar multiplication of vector.
+ * Performs scalar multiplication and returns a new vector representing the
+ * product.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 inline Vec2D operator*(const Vec2D &lhs, const double rhs) {
   return Vec2D{lhs.x * rhs, lhs.y * rhs};
 }
 
 /**
- * Scalar division of vector.
+ * Performs scalar division and returns a new vector representing the
+ * quotient.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 inline Vec2D operator/(const Vec2D &lhs, const double rhs) {
   return Vec2D{lhs.x / rhs, lhs.y / rhs};
 }
 
 /**
- * Equality.
+ * Compares equality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors compare equal.
  */
 inline bool operator==(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y;
 }
 
 /**
- * Inequality.
+ * Compares inequality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors do not compare equal.
  */
 inline bool operator!=(const Vec2D &lhs, const Vec2D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors.
+ * Calculates the dot product of two vectors.
  *
- * @param lhs A 2D vector.
- * @param rhs A 2D vector.
+ * @param lhs First vector.
+ * @param rhs Second vector.
  *
- * @returns The dotted 2D vector.
+ * @returns The dot product of lhs and rhs.
  */
 inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y;
@@ -303,17 +362,17 @@ inline Vec2D normalize(const Vec2D &vec) {
  * when the angle is negative.
  *
  * @param vec A 2D vector.
- * @param angle the angle to rotate the vector, in radians.
+ * @param ang the angle to rotate the vector, in radians.
  *
  * @returns a new, rotated vector.
  */
 inline Vec2D rotate(const Vec2D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)   -sin(ang) | |x|
-   * | sin(ang)    cos(ang) | |y|
-   */
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)   -sin(ang) | |x|
+  // | sin(ang)    cos(ang) | |y|
+  //
 
   double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
   double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
@@ -336,61 +395,101 @@ inline std::string toString(const Vec3D &vec) {
 }
 
 /**
- * Adds two vectors.
+ * Performs vector addition and returns a new vector representing the sum of
+ * the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 inline Vec3D operator+(const Vec3D &lhs, const Vec3D &rhs) {
   return Vec3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
 }
 
 /**
- * Subtracts two vectors.
+ * Performs vector subtraction and returns a new vector representing the
+ * difference of the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
   return Vec3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
 }
 
 /**
- * Flips direction of vector.
+ * Makes all components of a vector negative.
+ *
+ * This can also be thought of flipping the direction of the vector.
+ *
+ * @param vec A 3D vector
+ *
+ * @returns A new vector representing the negative of the given vector.
  */
 inline Vec3D operator-(const Vec3D &vec) {
   return Vec3D{-vec.x, -vec.y, -vec.z};
 }
 
 /**
- * Scalar multiplication of vector.
+ * Performs scalar multiplication and returns a new vector representing the
+ * product.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 inline Vec3D operator*(const Vec3D &lhs, const double rhs) {
   return Vec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
 }
 
 /**
- * Scalar division of vector.
+ * Performs scalar division and returns a new vector representing the
+ * quotient.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 inline Vec3D operator/(const Vec3D &lhs, const double rhs) {
   return Vec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
 }
 
 /**
- * Equality.
+ * Compares equality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors compare equal.
  */
 inline bool operator==(const Vec3D &lhs, const Vec3D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
 /**
- * Inequality.
+ * Compares inequality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors do not compare equal.
  */
 inline bool operator!=(const Vec3D &lhs, const Vec3D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors.
+ * Calculates the dot product of two vectors.
  *
- * @param lhs A 3D vector.
- * @param rhs A 3D vector.
+ * @param lhs First vector.
+ * @param rhs Second vector.
  *
- * @returns The dotted 3D vector.
+ * @returns The dot product of lhs and rhs.
  */
 inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
@@ -479,19 +578,19 @@ inline double getGamma(const Vec3D &vec) {
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
 inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |1   0           0     | |x|
-   * |0  cos(ang)  −sin(ang)| |y|
-   * |0  sin(ang)   cos(ang)| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // |1   0           0     | |x|
+  // |0  cos(ang)  −sin(ang)| |y|
+  // |0  sin(ang)   cos(ang)| |z|
+  //
 
   double xPrime = vec.x;
   double yPrime = vec.y * std::cos(ang) - vec.z * std::sin(ang);
@@ -505,19 +604,19 @@ inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
 inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)  0  sin(ang)| |x|
-   * |   0       1      0   | |y|
-   * |−sin(ang)  0  cos(ang)| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)  0  sin(ang)| |x|
+  // |   0       1      0   | |y|
+  // |−sin(ang)  0  cos(ang)| |z|
+  //
 
   double xPrime = vec.x * std::cos(ang) + vec.z * std::sin(ang);
   double yPrime = vec.y;
@@ -531,19 +630,19 @@ inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
 inline Vec3D rotateGamma(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |cos(ang)  −sin(ang)  0| |x|
-   * |sin(ang)  cos(ang)   0| |y|
-   * |  0         0        1| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // |cos(ang)  −sin(ang)  0| |x|
+  // |sin(ang)  cos(ang)   0| |y|
+  // |  0         0        1| |z|
+  //
 
   double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
   double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);

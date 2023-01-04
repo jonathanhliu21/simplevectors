@@ -1,11 +1,11 @@
 /**
- * functions.hpp
+ * @file functions.hpp
  *
- * Functions for the vector classes (can be used for functional programming
- * rather than using properties of the classes).
+ * Functions for the vector classes. This can be used for functional programming
+ * rather than using properties and methods of the classes.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_FUNCTIONS_HPP_
@@ -106,10 +106,9 @@ inline double z(const Vector3D &v) { return v[2]; }
 inline void z(Vector3D &v, const double z_value) { v[2] = z_value; }
 
 /**
- * Dot product of two vectors.
+ * Calculates the dot product of two vectors.
  *
- * Note that the dimensions of the other vector has the be the same
- * as the current one.
+ * @note The dimensions of the two vectors must be the same.
  *
  * @param lhs First vector.
  * @param rhs Second vector.
@@ -177,17 +176,17 @@ inline double angle(const Vector2D &v) { return std::atan2(y(v), x(v)); }
  * when the angle is negative.
  *
  * @param v A 2D vector.
- * @param angle the angle to rotate the vector, in radians.
+ * @param ang the angle to rotate the vector, in radians.
  *
  * @returns a new, rotated vector.
  */
 inline Vector2D rotate(const Vector2D &v, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)   -sin(ang) | |x|
-   * | sin(ang)    cos(ang) | |y|
-   */
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)   -sin(ang) | |x|
+  // | sin(ang)    cos(ang) | |y|
+  //
 
   double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
   double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
@@ -255,13 +254,13 @@ inline double gamma(const Vector3D &v) { return std::acos(z(v) / magn(v)); }
  * @returns A new, rotated vector.
  */
 inline Vector3D rotateAlpha(const Vector3D &v, const double &ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |1   0           0     | |x|
-   * |0  cos(ang)  −sin(ang)| |y|
-   * |0  sin(ang)   cos(ang)| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // |1   0           0     | |x|
+  // |0  cos(ang)  −sin(ang)| |y|
+  // |0  sin(ang)   cos(ang)| |z|
+  //
 
   double xPrime = x(v);
   double yPrime = y(v) * std::cos(ang) - z(v) * std::sin(ang);
@@ -281,13 +280,13 @@ inline Vector3D rotateAlpha(const Vector3D &v, const double &ang) {
  * @returns A new, rotated vector.
  */
 inline Vector3D rotateBeta(const Vector3D &v, const double &ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)  0  sin(ang)| |x|
-   * |   0       1      0   | |y|
-   * |−sin(ang)  0  cos(ang)| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)  0  sin(ang)| |x|
+  // |   0       1      0   | |y|
+  // |−sin(ang)  0  cos(ang)| |z|
+  //
 
   double xPrime = x(v) * std::cos(ang) + z(v) * std::sin(ang);
   double yPrime = y(v);
@@ -307,13 +306,13 @@ inline Vector3D rotateBeta(const Vector3D &v, const double &ang) {
  * @returns A new, rotated vector.
  */
 inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |cos(ang)  −sin(ang)  0| |x|
-   * |sin(ang)  cos(ang)   0| |y|
-   * |  0         0        1| |z|
-   */
+  //
+  // Rotation matrix:
+  //
+  // |cos(ang)  −sin(ang)  0| |x|
+  // |sin(ang)  cos(ang)   0| |y|
+  // |  0         0        1| |z|
+  //
 
   double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
   double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
@@ -324,7 +323,18 @@ inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
 
 #ifndef SVECTOR_USE_CLASS_OPERATORS
 /**
- * Adds two vectors.
+ * Performs vector addition and returns a new vector representing the sum of
+ * the two vectors.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @note The dimensions of the two vectors must be the same.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 template <typename T, std::size_t D>
 inline Vector<D, T> operator+(const Vector<D, T> &lhs,
@@ -338,7 +348,18 @@ inline Vector<D, T> operator+(const Vector<D, T> &lhs,
 }
 
 /**
- * Subtracts two vectors.
+ * Performs vector subtraction and returns a new vector representing the
+ * difference of the two vectors.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @note The dimensions of the two vectors must be the same.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
 template <typename T, std::size_t D>
 inline Vector<D, T> operator-(const Vector<D, T> &lhs,
@@ -352,7 +373,16 @@ inline Vector<D, T> operator-(const Vector<D, T> &lhs,
 }
 
 /**
- * Scalar multiplication of vectors
+ * Performs scalar multiplication and returns a new vector representing the
+ * product.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 template <typename T, typename T2, std::size_t D>
 inline Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
@@ -365,7 +395,16 @@ inline Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
 }
 
 /**
- * Scalar division of vectors
+ * Performs scalar division and returns a new vector representing the
+ * quotient.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
 template <typename T, typename T2, std::size_t D>
 inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
@@ -378,7 +417,17 @@ inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
 }
 
 /**
- * Equality
+ * Compares equality of two vectors.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @note The dimensions of the two vectors must be the same.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors compare equal.
  */
 template <typename T, std::size_t D>
 inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
@@ -391,7 +440,17 @@ inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 }
 
 /**
- * Inequality
+ * Compares inequality of two vectors.
+ *
+ * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
+ * defined. Otherwise, the operators in svector::Vector are used.
+ *
+ * @note The dimensions of the two vectors must be the same.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors do not compare equal.
  */
 template <typename T, std::size_t D>
 inline bool operator!=(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {

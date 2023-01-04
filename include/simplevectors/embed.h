@@ -1,30 +1,30 @@
 /**
- * embed.h
+ * @file embed.h
  *
  * A minimized version of vectors for embedded devices without access to the
  * STL (such as on an Arduino, hence the ".h" instead of ".hpp" and the lack of
  * a svector namespace). This file is meant to be a standalone file, so it is
- * not included in vectors.hpp
+ * not included in vectors.hpp.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_EMBED_HPP_
 #define INCLUDE_SVECTOR_EMBED_HPP_
 
-#include <math.h>
+#include <math.h> // atan2, cos, sin, sqrt
 
 /**
  * A minimal 2D vector representation.
  */
-struct Vec2D {
+struct EmbVec2D {
   /**
    * No-argument constructor.
    *
    * Initializes a zero vector.
    */
-  Vec2D() {
+  EmbVec2D() {
     x = 0;
     y = 0;
   };
@@ -35,7 +35,7 @@ struct Vec2D {
    * @param x_other The x-component.
    * @param y_other The y-component.
    */
-  Vec2D(const double x_other, const double y_other) {
+  EmbVec2D(const double x_other, const double y_other) {
     x = x_other;
     y = y_other;
   }
@@ -43,7 +43,7 @@ struct Vec2D {
   /**
    * Copy constructor.
    */
-  Vec2D(const Vec2D &other) {
+  EmbVec2D(const EmbVec2D &other) {
     x = other.x;
     y = other.y;
   }
@@ -51,61 +51,70 @@ struct Vec2D {
   /**
    * Assignment operator.
    */
-  Vec2D &operator=(const Vec2D &other) {
+  EmbVec2D &operator=(const EmbVec2D &other) {
     x = other.x;
     y = other.y;
     return *this;
   }
 
   /**
-   * Adds another vector object to self.
+   * Adds another vector object to current vector.
+   *
+   * @param other The other object to add.
    */
-  Vec2D &operator+=(const Vec2D &other) {
+  EmbVec2D &operator+=(const EmbVec2D &other) {
     x += other.x;
     y += other.y;
     return *this;
   }
 
   /**
-   * Subtracts another vector object from self.
+   * Subtracts another vector object from current vector.
+   *
+   * @param other The other object to subtract.
    */
-  Vec2D &operator-=(const Vec2D &other) {
+  EmbVec2D &operator-=(const EmbVec2D &other) {
     x -= other.x;
     y -= other.y;
     return *this;
   }
 
   /**
-   * Multiplies vector by a number.
+   * Performs scalar multiplication on the current object.
+   *
+   * @param other The number to multiply by.
    */
-  Vec2D &operator*=(const double &other) {
+  EmbVec2D &operator*=(const double &other) {
     x *= other;
     y *= other;
     return *this;
   }
 
   /**
-   * Divides vector by a number.
+   * Performs scalar division on the current object.
+   *
+   * @param other The number to divide by.
    */
-  Vec2D &operator/=(const double &other) {
+  EmbVec2D &operator/=(const double &other) {
     x /= other;
     y /= other;
     return *this;
   }
 
-  double x, y;
+  double x; //!< The x-component of the 2D vector.
+  double y; //!< The y-component of the 2D vector.
 };
 
 /**
  * A minimal 3D vector representation.
  */
-struct Vec3D {
+struct EmbVec3D {
   /**
    * No-argument constructor.
    *
    * Initializes a zero vector.
    */
-  Vec3D() {
+  EmbVec3D() {
     x = 0;
     y = 0;
     z = 0;
@@ -118,7 +127,7 @@ struct Vec3D {
    * @param y_other The y-component.
    * @param z_other The z-component.
    */
-  Vec3D(const double x_other, const double y_other, const double z_other) {
+  EmbVec3D(const double x_other, const double y_other, const double z_other) {
     x = x_other;
     y = y_other;
     z = z_other;
@@ -127,7 +136,7 @@ struct Vec3D {
   /**
    * Copy constructor.
    */
-  Vec3D(const Vec3D &other) {
+  EmbVec3D(const EmbVec3D &other) {
     x = other.x;
     y = other.y;
     z = other.z;
@@ -136,7 +145,7 @@ struct Vec3D {
   /**
    * Assignment operator.
    */
-  Vec3D &operator=(const Vec3D &other) {
+  EmbVec3D &operator=(const EmbVec3D &other) {
     x = other.x;
     y = other.y;
     z = other.z;
@@ -144,9 +153,11 @@ struct Vec3D {
   }
 
   /**
-   * Adds another vector object to self.
+   * Adds another vector object to current vector.
+   *
+   * @param other The other object to add.
    */
-  Vec3D &operator+=(const Vec3D &other) {
+  EmbVec3D &operator+=(const EmbVec3D &other) {
     x += other.x;
     y += other.y;
     z += other.z;
@@ -154,9 +165,11 @@ struct Vec3D {
   }
 
   /**
-   * Subtracts another vector object from self.
+   * Subtracts another vector object from current vector.
+   *
+   * @param other The other object to subtract.
    */
-  Vec3D &operator-=(const Vec3D &other) {
+  EmbVec3D &operator-=(const EmbVec3D &other) {
     x -= other.x;
     y -= other.y;
     z -= other.z;
@@ -164,9 +177,11 @@ struct Vec3D {
   }
 
   /**
-   * Multiplies vector by a number.
+   * Performs scalar multiplication on the current object.
+   *
+   * @param other The number to multiply by.
    */
-  Vec3D &operator*=(const double &other) {
+  EmbVec3D &operator*=(const double &other) {
     x *= other;
     y *= other;
     z *= other;
@@ -174,74 +189,120 @@ struct Vec3D {
   }
 
   /**
-   * Divides vector by a number.
+   * Performs scalar division on the current object.
+   *
+   * @param other The number to divide by.
    */
-  Vec3D &operator/=(const double &other) {
+  EmbVec3D &operator/=(const double &other) {
     x /= other;
     y /= other;
     z /= other;
     return *this;
   }
 
-  double x, y, z;
+  double x; //!< The x-component of the 3D vector.
+  double y; //!< The y-component of the 3D vector.
+  double z; //!< The z-component of the 3D vector.
 };
 
 /**
- * Adds two vectors.
+ * Performs vector addition and returns a new vector representing the sum of
+ * the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
-inline Vec2D operator+(const Vec2D &lhs, const Vec2D &rhs) {
-  return Vec2D{lhs.x + rhs.x, lhs.y + rhs.y};
+inline EmbVec2D operator+(const EmbVec2D &lhs, const EmbVec2D &rhs) {
+  return EmbVec2D{lhs.x + rhs.x, lhs.y + rhs.y};
 }
 
 /**
- * Subtracts two vectors.
+ * Performs vector subtraction and returns a new vector representing the
+ * difference of the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
-inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
-  return Vec2D{lhs.x - rhs.x, lhs.y - rhs.y};
+inline EmbVec2D operator-(const EmbVec2D &lhs, const EmbVec2D &rhs) {
+  return EmbVec2D{lhs.x - rhs.x, lhs.y - rhs.y};
 }
 
 /**
- * Flips direction of vector.
+ * Makes all components of a vector negative.
+ *
+ * This can also be thought of flipping the direction of the vector.
+ *
+ * @param vec A 2D vector
+ *
+ * @returns A new vector representing the negative of the given vector.
  */
-inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
-
-/**
- * Scalar multiplication of vector.
- */
-inline Vec2D operator*(const Vec2D &lhs, const double rhs) {
-  return Vec2D{lhs.x * rhs, lhs.y * rhs};
+inline EmbVec2D operator-(const EmbVec2D &vec) {
+  return EmbVec2D{-vec.x, -vec.y};
 }
 
 /**
- * Scalar division of vector.
+ * Performs scalar multiplication and returns a new vector representing the
+ * product.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
-inline Vec2D operator/(const Vec2D &lhs, const double rhs) {
-  return Vec2D{lhs.x / rhs, lhs.y / rhs};
+inline EmbVec2D operator*(const EmbVec2D &lhs, const double rhs) {
+  return EmbVec2D{lhs.x * rhs, lhs.y * rhs};
 }
 
 /**
- * Equality.
+ * Performs scalar division and returns a new vector representing the
+ * quotient.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
-inline bool operator==(const Vec2D &lhs, const Vec2D &rhs) {
+inline EmbVec2D operator/(const EmbVec2D &lhs, const double rhs) {
+  return EmbVec2D{lhs.x / rhs, lhs.y / rhs};
+}
+
+/**
+ * Compares equality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors compare equal.
+ */
+inline bool operator==(const EmbVec2D &lhs, const EmbVec2D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y;
 }
 
 /**
- * Inequality.
+ * Compares inequality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors do not compare equal.
  */
-inline bool operator!=(const Vec2D &lhs, const Vec2D &rhs) {
+inline bool operator!=(const EmbVec2D &lhs, const EmbVec2D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors.
+ * Calculates the dot product of two vectors.
  *
- * @param lhs A 2D vector.
- * @param rhs A 2D vector.
+ * @param lhs First vector.
+ * @param rhs Second vector.
  *
- * @returns The dotted 2D vector.
+ * @returns The dot product of lhs and rhs.
  */
-inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
+inline double dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
@@ -252,7 +313,7 @@ inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
  *
  * @returns magnitude of vector.
  */
-inline double magn(const Vec2D &vec) {
+inline double magn(const EmbVec2D &vec) {
   return sqrt(vec.x * vec.x + vec.y * vec.y);
 }
 
@@ -265,7 +326,7 @@ inline double magn(const Vec2D &vec) {
  *
  * @returns angle of the vector.
  */
-inline double angle(const Vec2D &vec) { return atan2(vec.y, vec.x); }
+inline double angle(const EmbVec2D &vec) { return atan2(vec.y, vec.x); }
 
 /**
  * Normalizes a vector.
@@ -276,8 +337,8 @@ inline double angle(const Vec2D &vec) { return atan2(vec.y, vec.x); }
  *
  * @returns Normalized vector.
  */
-inline Vec2D normalize(const Vec2D &vec) {
-  Vec2D tmp(vec);
+inline EmbVec2D normalize(const EmbVec2D &vec) {
+  EmbVec2D tmp(vec);
   return tmp / magn(vec);
 }
 
@@ -289,82 +350,122 @@ inline Vec2D normalize(const Vec2D &vec) {
  * when the angle is negative.
  *
  * @param vec A 2D vector.
- * @param angle the angle to rotate the vector, in radians.
+ * @param ang the angle to rotate the vector, in radians.
  *
  * @returns a new, rotated vector.
  */
-inline Vec2D rotate(const Vec2D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)   -sin(ang) | |x|
-   * | sin(ang)    cos(ang) | |y|
-   */
+inline EmbVec2D rotate(const EmbVec2D &vec, const double ang) {
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)   -sin(ang) | |x|
+  // | sin(ang)    cos(ang) | |y|
+  //
 
   double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
   double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
 
-  return Vec2D{xPrime, yPrime};
+  return EmbVec2D{xPrime, yPrime};
 }
 
 /**
- * Adds two vectors.
+ * Performs vector addition and returns a new vector representing the sum of
+ * the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
-inline Vec3D operator+(const Vec3D &lhs, const Vec3D &rhs) {
-  return Vec3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
+inline EmbVec3D operator+(const EmbVec3D &lhs, const EmbVec3D &rhs) {
+  return EmbVec3D{lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z};
 }
 
 /**
- * Subtracts two vectors.
+ * Performs vector subtraction and returns a new vector representing the
+ * difference of the two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the vector sum.
  */
-inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
-  return Vec3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
+inline EmbVec3D operator-(const EmbVec3D &lhs, const EmbVec3D &rhs) {
+  return EmbVec3D{lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z};
 }
 
 /**
- * Flips direction of vector.
+ * Makes all components of a vector negative.
+ *
+ * This can also be thought of flipping the direction of the vector.
+ *
+ * @param vec A 3D vector
+ *
+ * @returns A new vector representing the negative of the given vector.
  */
-inline Vec3D operator-(const Vec3D &vec) {
-  return Vec3D{-vec.x, -vec.y, -vec.z};
+inline EmbVec3D operator-(const EmbVec3D &vec) {
+  return EmbVec3D{-vec.x, -vec.y, -vec.z};
 }
 
 /**
- * Scalar multiplication of vector.
+ * Performs scalar multiplication and returns a new vector representing the
+ * product.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
-inline Vec3D operator*(const Vec3D &lhs, const double rhs) {
-  return Vec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
+inline EmbVec3D operator*(const EmbVec3D &lhs, const double rhs) {
+  return EmbVec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
 }
 
 /**
- * Scalar division of vector.
+ * Performs scalar division and returns a new vector representing the
+ * quotient.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A new vector representing the scalar product.
  */
-inline Vec3D operator/(const Vec3D &lhs, const double rhs) {
-  return Vec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
+inline EmbVec3D operator/(const EmbVec3D &lhs, const double rhs) {
+  return EmbVec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
 }
 
 /**
- * Equality.
+ * Compares equality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors compare equal.
  */
-inline bool operator==(const Vec3D &lhs, const Vec3D &rhs) {
+inline bool operator==(const EmbVec3D &lhs, const EmbVec3D &rhs) {
   return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
 /**
- * Inequality.
+ * Compares inequality of two vectors.
+ *
+ * @param lhs The first vector.
+ * @param rhs The second vector.
+ *
+ * @returns A boolean representing whether the two vectors do not compare equal.
  */
-inline bool operator!=(const Vec3D &lhs, const Vec3D &rhs) {
+inline bool operator!=(const EmbVec3D &lhs, const EmbVec3D &rhs) {
   return !(lhs == rhs);
 }
 
 /**
- * Dot product of two vectors.
+ * Calculates the dot product of two vectors.
  *
- * @param lhs A 3D vector.
- * @param rhs A 3D vector.
+ * @param lhs First vector.
+ * @param rhs Second vector.
  *
- * @returns The dotted 3D vector.
+ * @returns The dot product of lhs and rhs.
  */
-inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
+inline double dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
@@ -376,12 +477,12 @@ inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
  *
  * @returns The crossed 3D vector.
  */
-inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
+inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
   double newx = lhs.y * rhs.z - lhs.z * rhs.y;
   double newy = lhs.z * rhs.x - lhs.x * rhs.z;
   double newz = lhs.x * rhs.y - lhs.y * rhs.x;
 
-  return Vec3D{newx, newy, newz};
+  return EmbVec3D{newx, newy, newz};
 }
 
 /**
@@ -391,7 +492,7 @@ inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
  *
  * @returns magnitude of vector
  */
-inline double magn(const Vec3D &vec) {
+inline double magn(const EmbVec3D &vec) {
   return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
@@ -404,8 +505,8 @@ inline double magn(const Vec3D &vec) {
  *
  * @returns Normalized vector.
  */
-inline Vec3D normalize(const Vec3D &vec) {
-  Vec3D tmp(vec);
+inline EmbVec3D normalize(const EmbVec3D &vec) {
+  EmbVec3D tmp(vec);
   return tmp / magn(vec);
 }
 
@@ -418,7 +519,7 @@ inline Vec3D normalize(const Vec3D &vec) {
  *
  * @returns α.
  */
-inline double getAlpha(const Vec3D &vec) { return acos(vec.x / magn(vec)); }
+inline double getAlpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
 
 /**
  * Gets β angle.
@@ -429,7 +530,7 @@ inline double getAlpha(const Vec3D &vec) { return acos(vec.x / magn(vec)); }
  *
  * @returns β.
  */
-inline double getBeta(const Vec3D &vec) { return acos(vec.y / magn(vec)); }
+inline double getBeta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
 
 /**
  * Gets γ angle.
@@ -440,32 +541,32 @@ inline double getBeta(const Vec3D &vec) { return acos(vec.y / magn(vec)); }
  *
  * @returns γ.
  */
-inline double getGamma(const Vec3D &vec) { return acos(vec.z / magn(vec)); }
+inline double getGamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
 
 /**
  * Rotates around x-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
-inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |1   0           0     | |x|
-   * |0  cos(ang)  −sin(ang)| |y|
-   * |0  sin(ang)   cos(ang)| |z|
-   */
+inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const double ang) {
+  //
+  // Rotation matrix:
+  //
+  // |1   0           0     | |x|
+  // |0  cos(ang)  −sin(ang)| |y|
+  // |0  sin(ang)   cos(ang)| |z|
+  //
 
   double xPrime = vec.x;
   double yPrime = vec.y * cos(ang) - vec.z * sin(ang);
   double zPrime = vec.y * sin(ang) + vec.z * cos(ang);
 
-  return Vec3D{xPrime, yPrime, zPrime};
+  return EmbVec3D{xPrime, yPrime, zPrime};
 }
 
 /**
@@ -473,25 +574,25 @@ inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
-inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * | cos(ang)  0  sin(ang)| |x|
-   * |   0       1      0   | |y|
-   * |−sin(ang)  0  cos(ang)| |z|
-   */
+inline EmbVec3D rotateBeta(const EmbVec3D &vec, const double ang) {
+  //
+  // Rotation matrix:
+  //
+  // | cos(ang)  0  sin(ang)| |x|
+  // |   0       1      0   | |y|
+  // |−sin(ang)  0  cos(ang)| |z|
+  //
 
   double xPrime = vec.x * cos(ang) + vec.z * sin(ang);
   double yPrime = vec.y;
   double zPrime = -vec.x * sin(ang) + vec.z * cos(ang);
 
-  return Vec3D{xPrime, yPrime, zPrime};
+  return EmbVec3D{xPrime, yPrime, zPrime};
 }
 
 /**
@@ -499,25 +600,25 @@ inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
- * @param v A 3D vector.
+ * @param vec A 3D vector.
  * @param ang The angle to rotate the vector, in radians.
  *
  * @returns A new, rotated vector.
  */
-inline Vec3D rotateGamma(const Vec3D &vec, const double ang) {
-  /**
-   * Rotation matrix:
-   *
-   * |cos(ang)  −sin(ang)  0| |x|
-   * |sin(ang)  cos(ang)   0| |y|
-   * |  0         0        1| |z|
-   */
+inline EmbVec3D rotateGamma(const EmbVec3D &vec, const double ang) {
+  //
+  // Rotation matrix:
+  //
+  // |cos(ang)  −sin(ang)  0| |x|
+  // |sin(ang)  cos(ang)   0| |y|
+  // |  0         0        1| |z|
+  //
 
   double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
   double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
   double zPrime = vec.z;
 
-  return Vec3D{xPrime, yPrime, zPrime};
+  return EmbVec3D{xPrime, yPrime, zPrime};
 }
 
 #endif
