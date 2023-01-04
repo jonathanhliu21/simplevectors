@@ -124,10 +124,10 @@ public:
    * Performs vector addition and returns a new vector representing the sum of
    * the two vectors.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
    *
-   * Note that the dimensions of the other vector must be the same
+   * @note The dimensions of the other vector must be the same
    * as the current one.
    *
    * @param other The other vector.
@@ -147,10 +147,10 @@ public:
    * Performs vector subtraction and returns a new vector representing the
    * difference of the two vectors.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
    *
-   * Note that the dimensions of the other vector must be the same
+   * @note The dimensions of the other vector must be the same
    * as the current one.
    *
    * @param other The other vector.
@@ -170,7 +170,7 @@ public:
    * Performs scalar multiplication and returns a new vector representing the
    * product.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
    *
    * @param other The other vector.
@@ -190,7 +190,7 @@ public:
    * Performs scalar division and returns a new vector representing the
    * quotient.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
    *
    * @param other The other vector.
@@ -209,15 +209,15 @@ public:
   /**
    * Compares equality of two vectors.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
    *
-   * Note that the dimensions of the other vector must be the same
+   * @note The dimensions of the other vector must be the same
    * as the current one.
    *
    * @param other The other vector.
    *
-   * @returns A boolean representing whether they compare equal.
+   * @returns A boolean representing whether the vectors compare equal.
    */
   bool operator==(const Vector<D, T> &other) const {
     for (std::size_t i = 0; i < D; i++) {
@@ -231,12 +231,15 @@ public:
   /**
    * Compares inequality of two vectors.
    *
-   * Note that this method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @note The dimensions of the other vector must be the same
+   * as the current one.
    *
    * @param other The other vector.
    *
-   * @returns A boolean representing whether they do not compare equal.
+   * @returns A boolean representing whether the vectors do not compare equal.
    */
   bool operator!=(const Vector<D, T> &other) const {
     return !((*this) == other);
@@ -314,7 +317,7 @@ public:
   /**
    * Calculates the dot product of two vectors.
    *
-   * Note that the dimensions of the other vector must be the same
+   * @note The dimensions of the other vector must be the same
    * as the current one.
    *
    * @param other The other vector to dot the current vector with.
