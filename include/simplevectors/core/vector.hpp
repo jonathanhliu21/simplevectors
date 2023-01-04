@@ -1,10 +1,10 @@
 /**
- * \file vector.hpp
+ * @file vector.hpp
  *
- * Base vector representation.
+ * Contains a base vector representation.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
@@ -16,6 +16,10 @@ namespace svector {
 // COMBINER_PY_START
 /**
  * A base vector representation.
+ *
+ * @note The binary +, -, *, /, ==, and != operators are by default implemented
+ * in functions.hpp. To use the class implementation rather than the one in
+ * functions.hpp, define the variable SVECTOR_USE_CLASS_OPERATORS.
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
