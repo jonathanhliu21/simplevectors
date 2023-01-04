@@ -16,14 +16,14 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<3> _Vec3; //!< An alias to Vector<3>.
+typedef Vector<3> Vec3_; //!< An alias to Vector<3>.
 
 /**
  * A simple 3D vector representation.
  */
-class Vector3D : public _Vec3 {
+class Vector3D : public Vec3_ {
 public:
-  using _Vec3::Vector;
+  using Vec3_::Vector;
 
   /**
    * Initializes a vector given xyz components.
@@ -41,7 +41,7 @@ public:
   /**
    * Copy constructor for the base class.
    */
-  Vector3D(const _Vec3 &other) {
+  Vector3D(const Vec3_ &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
     this->m_components[2] = other[2];

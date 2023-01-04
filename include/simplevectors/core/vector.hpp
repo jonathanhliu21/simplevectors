@@ -90,6 +90,11 @@ public:
   }
 
   /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  Vector(Vector<D, T> &&) noexcept = default;
+
+  /**
    * Assignment operator (copies from another vector to a vector whose values
    * already exist).
    */
@@ -100,6 +105,16 @@ public:
 
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  Vector<D, T> &operator=(Vector<D, T> &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~Vector() = default;
 
   /**
    * String form; can be used for printing.
@@ -221,8 +236,9 @@ public:
    */
   bool operator==(const Vector<D, T> &other) const {
     for (std::size_t i = 0; i < D; i++) {
-      if (this->m_components[i] != other[i])
+      if (this->m_components[i] != other[i]) {
         return false;
+      }
     }
 
     return true;
@@ -533,6 +549,7 @@ private:
   template <std::size_t D2, typename T2>
   std::int8_t compare(const Vector<D2, T2> &other) const noexcept {
     std::size_t min_dim = std::min(D, D2);
+    std::size_t counter = 0;
 
     // check dimensions first
     if (D != D2) {
@@ -541,12 +558,17 @@ private:
 
     // compare one by one
     for (std::size_t i = 0; i < min_dim; i++) {
-      if (this->m_components[i] == other[i])
-        continue;
-      else if (this->m_components[i] < other[i])
+      if (this->m_components[i] == other[i]) {
+        counter++;
+      } else if (this->m_components[i] < other[i]) {
         return -1;
-      else
+      } else {
         return 1;
+      }
+    }
+
+    if (counter != D || counter != D2) {
+      return -1;
     }
 
     // means two vectors are equal

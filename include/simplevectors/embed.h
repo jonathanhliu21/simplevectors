@@ -24,10 +24,7 @@ struct EmbVec2D {
    *
    * Initializes a zero vector.
    */
-  EmbVec2D() {
-    x = 0;
-    y = 0;
-  };
+  EmbVec2D() : x(0), y(0){};
 
   /**
    * Initializes a vector given xy components.
@@ -35,18 +32,18 @@ struct EmbVec2D {
    * @param x_other The x-component.
    * @param y_other The y-component.
    */
-  EmbVec2D(const double x_other, const double y_other) {
-    x = x_other;
-    y = y_other;
-  }
+  EmbVec2D(const double x_other, const double y_other)
+      : x(x_other), y(y_other) {}
 
   /**
    * Copy constructor.
    */
-  EmbVec2D(const EmbVec2D &other) {
-    x = other.x;
-    y = other.y;
-  }
+  EmbVec2D(const EmbVec2D &other) : x(other.x), y(other.y) {}
+
+  /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  EmbVec2D(EmbVec2D &&) noexcept = default;
 
   /**
    * Assignment operator.
@@ -56,6 +53,16 @@ struct EmbVec2D {
     y = other.y;
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  EmbVec2D &operator=(EmbVec2D &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~EmbVec2D() = default;
 
   /**
    * Adds another vector object to current vector.
@@ -114,11 +121,7 @@ struct EmbVec3D {
    *
    * Initializes a zero vector.
    */
-  EmbVec3D() {
-    x = 0;
-    y = 0;
-    z = 0;
-  }
+  EmbVec3D() : x(0), y(0), z(0) {}
 
   /**
    * Initializes a vector given xyz components.
@@ -127,20 +130,18 @@ struct EmbVec3D {
    * @param y_other The y-component.
    * @param z_other The z-component.
    */
-  EmbVec3D(const double x_other, const double y_other, const double z_other) {
-    x = x_other;
-    y = y_other;
-    z = z_other;
-  }
+  EmbVec3D(const double x_other, const double y_other, const double z_other)
+      : x(x_other), y(y_other), z(z_other) {}
 
   /**
    * Copy constructor.
    */
-  EmbVec3D(const EmbVec3D &other) {
-    x = other.x;
-    y = other.y;
-    z = other.z;
-  }
+  EmbVec3D(const EmbVec3D &other) : x(other.x), y(other.y), z(other.z) {}
+
+  /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  EmbVec3D(EmbVec3D &&) noexcept = default;
 
   /**
    * Assignment operator.
@@ -151,6 +152,16 @@ struct EmbVec3D {
     z = other.z;
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  EmbVec3D &operator=(EmbVec3D &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~EmbVec3D() = default;
 
   /**
    * Adds another vector object to current vector.
@@ -337,10 +348,7 @@ inline double angle(const EmbVec2D &vec) { return atan2(vec.y, vec.x); }
  *
  * @returns Normalized vector.
  */
-inline EmbVec2D normalize(const EmbVec2D &vec) {
-  EmbVec2D tmp(vec);
-  return tmp / magn(vec);
-}
+inline EmbVec2D normalize(const EmbVec2D &vec) { return vec / magn(vec); }
 
 /**
  * Rotates vector by a certain angle.
@@ -505,10 +513,7 @@ inline double magn(const EmbVec3D &vec) {
  *
  * @returns Normalized vector.
  */
-inline EmbVec3D normalize(const EmbVec3D &vec) {
-  EmbVec3D tmp(vec);
-  return tmp / magn(vec);
-}
+inline EmbVec3D normalize(const EmbVec3D &vec) { return vec / magn(vec); }
 
 /**
  * Gets α angle.

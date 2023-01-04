@@ -432,8 +432,9 @@ inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
 template <typename T, std::size_t D>
 inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
   for (std::size_t i = 0; i < D; i++) {
-    if (lhs[i] != rhs[i])
+    if (lhs[i] != rhs[i]) {
       return false;
+    }
   }
 
   return true;

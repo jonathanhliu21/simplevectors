@@ -15,14 +15,14 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<2> _Vec2; //!< An alias to Vector<2>.
+typedef Vector<2> Vec2_; //!< An alias to Vector<2>.
 
 /**
  * A simple 2D vector representation.
  */
-class Vector2D : public _Vec2 {
+class Vector2D : public Vec2_ {
 public:
-  using _Vec2::Vector;
+  using Vec2_::Vector;
 
   /**
    * Initializes a vector given xy components.
@@ -38,7 +38,7 @@ public:
   /**
    * Copy constructor for base class.
    */
-  Vector2D(const _Vec2 &other) {
+  Vector2D(const Vec2_ &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
   }

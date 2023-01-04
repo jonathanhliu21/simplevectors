@@ -25,10 +25,7 @@ struct Vec2D {
    *
    * Initializes a zero vector.
    */
-  Vec2D() {
-    x = 0;
-    y = 0;
-  };
+  Vec2D() : x(0), y(0){};
 
   /**
    * Initializes a vector given xy components.
@@ -36,18 +33,17 @@ struct Vec2D {
    * @param x_other The x-component.
    * @param y_other The y-component.
    */
-  Vec2D(const double x_other, const double y_other) {
-    x = x_other;
-    y = y_other;
-  }
+  Vec2D(const double x_other, const double y_other) : x(x_other), y(y_other) {}
 
   /**
    * Copy constructor.
    */
-  Vec2D(const Vec2D &other) {
-    x = other.x;
-    y = other.y;
-  }
+  Vec2D(const Vec2D &other) : x(other.x), y(other.y) {}
+
+  /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  Vec2D(Vec2D &&) noexcept = default;
 
   /**
    * Assignment operator.
@@ -57,6 +53,16 @@ struct Vec2D {
     y = other.y;
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  Vec2D &operator=(Vec2D &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~Vec2D() = default;
 
   /**
    * Adds another vector object to current vector.
@@ -115,11 +121,7 @@ struct Vec3D {
    *
    * Initializes a zero vector.
    */
-  Vec3D() {
-    x = 0;
-    y = 0;
-    z = 0;
-  }
+  Vec3D() : x(0), y(x), z(0) {}
 
   /**
    * Initializes a vector given xyz components.
@@ -128,20 +130,18 @@ struct Vec3D {
    * @param y_other The y-component.
    * @param z_other The z-component.
    */
-  Vec3D(const double x_other, const double y_other, const double z_other) {
-    x = x_other;
-    y = y_other;
-    z = z_other;
-  }
+  Vec3D(const double x_other, const double y_other, const double z_other)
+      : x(x_other), y(y_other), z(z_other) {}
 
   /**
    * Copy constructor.
    */
-  Vec3D(const Vec3D &other) {
-    x = other.x;
-    y = other.y;
-    z = other.z;
-  }
+  Vec3D(const Vec3D &other) : x(other.x), y(other.y), z(other.z) {}
+
+  /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  Vec3D(Vec3D &&) noexcept = default;
 
   /**
    * Assignment operator.
@@ -152,6 +152,16 @@ struct Vec3D {
     z = other.z;
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  Vec3D &operator=(Vec3D &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~Vec3D() = default;
 
   /**
    * Adds another vector object to current vector.
@@ -349,10 +359,7 @@ inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
  *
  * @returns Normalized vector.
  */
-inline Vec2D normalize(const Vec2D &vec) {
-  Vec2D tmp(vec);
-  return tmp / magn(vec);
-}
+inline Vec2D normalize(const Vec2D &vec) { return vec / magn(vec); }
 
 /**
  * Rotates vector by a certain angle.
@@ -531,10 +538,7 @@ inline double magn(const Vec3D &vec) {
  *
  * @returns Normalized vector.
  */
-inline Vec3D normalize(const Vec3D &vec) {
-  Vec3D tmp(vec);
-  return tmp / magn(vec);
-}
+inline Vec3D normalize(const Vec3D &vec) { return vec / magn(vec); }
 
 /**
  * Gets α angle.
