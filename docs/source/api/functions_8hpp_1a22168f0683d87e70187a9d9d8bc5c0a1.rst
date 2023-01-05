@@ -1,0 +1,14 @@
+.. _exhale_function_functions_8hpp_1a22168f0683d87e70187a9d9d8bc5c0a1:
+
+Function svector::x(const Vector2D&)
+====================================
+
+- Defined in :ref:`file_include_simplevectors_functions.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: svector::x(const Vector2D&)
+   :project: simplevectors

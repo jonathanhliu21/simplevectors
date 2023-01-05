@@ -22,9 +22,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      - name: Run Unit Tests
+      - name: Install clang-tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy
+      - name: Build simplevectors
         run: |
           mkdir build && cd build
-          cmake .. -DSVECTOR_BUILD_TEST=ON -DSVECTOR_BUILD_EXAMPLE=ON
-          make && ctest
+          cmake .. -DSVECTOR_BUILD_TEST=ON -DSVECTOR_BUILD_EXAMPLE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+      - name: Run Unit Tests
+        run: |
+          cd build && make
+          ctest
+      - name: Run Linter
+        run: |
+          clang-tidy -p build scripts/tidy.cpp
+

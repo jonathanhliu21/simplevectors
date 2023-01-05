@@ -1,0 +1,18 @@
+
+File Hierarchy
+--------------
+
+
+.. raw:: html
+
+   <ul class="treeView" id="file-treeView">
+     <li>
+       <ul class="collapsibleList">
+         <li class="lastChild">Directory <a href="dir_include.html#dir-include">include</a><ul><li class="lastChild">Directory <a href="dir_include_simplevectors.html#dir-include-simplevectors">simplevectors</a><ul><li>Directory <a href="dir_include_simplevectors_core.html#dir-include-simplevectors-core">core</a><ul><li>File <a href="file_include_simplevectors_core_units.hpp.html#file-include-simplevectors-core-units.hpp">units.hpp</a></li><li>File <a href="file_include_simplevectors_core_vector.hpp.html#file-include-simplevectors-core-vector.hpp">vector.hpp</a></li><li>File <a href="file_include_simplevectors_core_vector2d.hpp.html#file-include-simplevectors-core-vector2d.hpp">vector2d.hpp</a></li><li class="lastChild">File <a href="file_include_simplevectors_core_vector3d.hpp.html#file-include-simplevectors-core-vector3d.hpp">vector3d.hpp</a></li></ul></li><li>File <a href="file_include_simplevectors_embed.h.html#file-include-simplevectors-embed.h">embed.h</a></li><li>File <a href="file_include_simplevectors_embed.hpp.html#file-include-simplevectors-embed.hpp">embed.hpp</a></li><li>File <a href="file_include_simplevectors_functions.hpp.html#file-include-simplevectors-functions.hpp">functions.hpp</a></li><li class="lastChild">File <a href="file_include_simplevectors_vectors.hpp.html#file-include-simplevectors-vectors.hpp">vectors.hpp</a></li></ul></li></ul></li>
+       </ul>
+     </li><!-- only tree view element -->
+   </ul><!-- /treeView file-treeView -->
+
+.. end raw html for treeView
+
+

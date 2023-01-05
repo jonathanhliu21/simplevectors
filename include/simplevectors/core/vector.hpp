@@ -1,10 +1,10 @@
 /**
- * vector.hpp
+ * @file vector.hpp
  *
- * Base vector representation.
+ * Contains a base vector representation.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
@@ -16,6 +16,10 @@ namespace svector {
 // COMBINER_PY_START
 /**
  * A base vector representation.
+ *
+ * @note The binary +, -, *, /, ==, and != operators are by default implemented
+ * in functions.hpp. To use the class implementation rather than the one in
+ * functions.hpp, define the variable SVECTOR_USE_CLASS_OPERATORS.
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
@@ -33,11 +37,14 @@ public:
   friend bool operator>=(const Vector<D1, T1> &, const Vector<D2, T2> &);
 #endif
 
-  typedef typename std::array<T, D>::iterator iterator;
-  typedef typename std::array<T, D>::const_iterator const_iterator;
-  typedef typename std::array<T, D>::reverse_iterator reverse_iterator;
   typedef
-      typename std::array<T, D>::const_reverse_iterator const_reverse_iterator;
+      typename std::array<T, D>::iterator iterator; //!< An std::array::iterator
+  typedef typename std::array<T, D>::const_iterator
+      const_iterator; //!< An std::array::const_iterator
+  typedef typename std::array<T, D>::reverse_iterator
+      reverse_iterator; //!< An std::array::reverse_iterator
+  typedef typename std::array<T, D>::const_reverse_iterator
+      const_reverse_iterator; //!< An std::array::const_reverse_iterator
 
   /**
    * No-argument constructor.
@@ -83,6 +90,11 @@ public:
   }
 
   /**
+   * Move constructor (uses C++ default move constructor)
+   */
+  Vector(Vector<D, T> &&) noexcept = default;
+
+  /**
    * Assignment operator (copies from another vector to a vector whose values
    * already exist).
    */
@@ -93,6 +105,16 @@ public:
 
     return *this;
   }
+
+  /**
+   * Move assignment operator (uses C++ default move assignment operator)
+   */
+  Vector<D, T> &operator=(Vector<D, T> &&) noexcept = default;
+
+  /**
+   * Destructor (uses C++ default destructor)
+   */
+  virtual ~Vector() = default;
 
   /**
    * String form; can be used for printing.
@@ -114,7 +136,18 @@ public:
 
 #ifdef SVECTOR_USE_CLASS_OPERATORS
   /**
-   * Adds two vectors.
+   * Performs vector addition and returns a new vector representing the sum of
+   * the two vectors.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @note The dimensions of the other vector must be the same
+   * as the current one.
+   *
+   * @param other The other vector.
+   *
+   * @returns A new vector representing the vector sum.
    */
   Vector<D, T> operator+(const Vector<D, T> &other) const {
     Vector<D, T> tmp;
@@ -126,7 +159,18 @@ public:
   }
 
   /**
-   * Subtracts two vectors.
+   * Performs vector subtraction and returns a new vector representing the
+   * difference of the two vectors.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @note The dimensions of the other vector must be the same
+   * as the current one.
+   *
+   * @param other The other vector.
+   *
+   * @returns A new vector representing the vector difference.
    */
   Vector<D, T> operator-(const Vector<D, T> &other) const {
     Vector<D, T> tmp;
@@ -138,7 +182,15 @@ public:
   }
 
   /**
-   * Scalar multiplication of vector.
+   * Performs scalar multiplication and returns a new vector representing the
+   * product.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @param other The other vector.
+   *
+   * @returns A new vector representing the scalar product.
    */
   Vector<D, T> operator*(const T other) const {
     Vector<D, T> tmp;
@@ -150,7 +202,15 @@ public:
   }
 
   /**
-   * Scalar division of vector.
+   * Performs scalar division and returns a new vector representing the
+   * quotient.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @param other The other vector.
+   *
+   * @returns A new vector representing the scalar quotient.
    */
   Vector<D, T> operator/(const T other) const {
     Vector<D, T> tmp;
@@ -162,19 +222,40 @@ public:
   }
 
   /**
-   * Equality
+   * Compares equality of two vectors.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @note The dimensions of the other vector must be the same
+   * as the current one.
+   *
+   * @param other The other vector.
+   *
+   * @returns A boolean representing whether the vectors compare equal.
    */
   bool operator==(const Vector<D, T> &other) const {
     for (std::size_t i = 0; i < D; i++) {
-      if (this->m_components[i] != other[i])
+      if (this->m_components[i] != other[i]) {
         return false;
+      }
     }
 
     return true;
   }
 
   /**
-   * Inequality
+   * Compares inequality of two vectors.
+   *
+   * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
+   * defined. Otherwise, the binary operators in functions.hpp are used.
+   *
+   * @note The dimensions of the other vector must be the same
+   * as the current one.
+   *
+   * @param other The other vector.
+   *
+   * @returns A boolean representing whether the vectors do not compare equal.
    */
   bool operator!=(const Vector<D, T> &other) const {
     return !((*this) == other);
@@ -182,7 +263,11 @@ public:
 #endif
 
   /**
-   * Flips direction of vector.
+   * Makes all components of the vector negative.
+   *
+   * This can also be thought of flipping the direction of the vector.
+   *
+   * @returns A new vector representing the negative of the current vector.
    */
   Vector<D, T> operator-() const {
     Vector<D, T> tmp;
@@ -194,7 +279,9 @@ public:
   }
 
   /**
-   * Adds another vector object to self.
+   * Adds another vector object to the current object.
+   *
+   * @param other The other vector to add.
    */
   Vector<D, T> &operator+=(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -205,7 +292,9 @@ public:
   }
 
   /**
-   * Subtracts another vector object from self.
+   * Subtracts another vector object from the current object.
+   *
+   * @param other The other vector to subtract.
    */
   Vector<D, T> &operator-=(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -216,7 +305,9 @@ public:
   }
 
   /**
-   * Multiplies vector by a number.
+   * Performs scalar multiplication on the current object.
+   *
+   * @param other The number to multiply by.
    */
   Vector<D, T> &operator*=(const T other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -227,7 +318,9 @@ public:
   }
 
   /**
-   * Divides vector by a number.
+   * Performs scalar division on the current object.
+   *
+   * @param other The number to divide by.
    */
   Vector<D, T> &operator/=(const T other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -238,14 +331,14 @@ public:
   }
 
   /**
-   * Dot product of two vectors.
+   * Calculates the dot product of two vectors.
    *
-   * Note that the dimensions of the other vector has the be the same
+   * @note The dimensions of the other vector must be the same
    * as the current one.
    *
-   * @param other The other vector to dot current vector with.
+   * @param other The other vector to dot the current vector with.
    *
-   * @returns The dot product of the two vectors.
+   * @returns A new vector representing the dot product of the two vectors.
    */
   T dot(const Vector<D, T> &other) const {
     T result = 0;
@@ -277,7 +370,7 @@ public:
    *
    * Finds the unit vector with the same direction angle as the current vector.
    *
-   * @returns Normalized vector.
+   * @returns A new vector representing the normalized vector.
    */
   Vector<D, T> normalize() const { return (*this) / this->magn(); }
 
@@ -286,14 +379,15 @@ public:
    *
    * @returns Number of dimensions.
    */
-  std::size_t numDimensions() const { return D; }
+  constexpr std::size_t numDimensions() const { return D; }
 
   /**
-   * Gets a certain component of the vector given the dimension number.
+   * Gets a reference to a specific component of the vector given the dimension
+   * number.
    *
    * @param index The dimension number.
    *
-   * @returns That dimension's component of the vector.
+   * @returns A constant reference to that dimension's component of the vector.
    */
   const T &operator[](const std::size_t index) const {
     return this->m_components[index];
@@ -303,19 +397,18 @@ public:
    * Sets a certain component of the vector given the dimension number.
    *
    * @param index The dimension number.
-   *
-   * @returns That dimension's component of the vector.
    */
   T &operator[](const std::size_t index) { return this->m_components[index]; }
 
   /**
-   * Gets a certain component of the vector given the dimension number.
+   * Gets a reference to a specific component of the vector given the dimension
+   * number.
    *
    * Throws an out_of_range exception if given number is out of bounds.
    *
    * @param index The dimension number.
    *
-   * @returns That dimension's component of the vector.
+   * @returns A constant reference to that dimension's component of the vector.
    */
   const T &at(const std::size_t index) const {
     return this->m_components.at(index);
@@ -327,66 +420,112 @@ public:
    * Throws an out_of_range exception if given number is out of bounds.
    *
    * @param index The dimension number.
-   *
-   * @returns That dimension's component of the vector.
    */
   T &at(const std::size_t index) { return this->m_components.at(index); }
 
   /**
-   * Pointer to beginning of array
+   * Returns an iterator to the first dimension of the vector. This iterator
+   * will be equal to end() for a zero-dimension vector.
+   *
+   * This can be used for looping through the dimensions of a vector.
+   *
+   * @returns An iterator to the first dimension of the vector.
    */
   iterator begin() noexcept { return iterator{this->m_components.begin()}; }
 
   /**
-   * Const pointer to beginning of array
+   * Returns a constant iterator to the first dimension of the vector. This
+   * iterator will be equal to end() for a zero-dimension vector.
+   *
+   * @returns A constant iterator to the first dimension of the vector.
    */
   const_iterator begin() const noexcept {
     return const_iterator{this->m_components.begin()};
   }
 
   /**
-   * Pointer to last element of array + 1
+   * Returns an iterator to the element following the last dimension of the
+   * vector.
+   *
+   * This iterator is a placeholder and attempting to access it will result in
+   * undefined behavior.
+   *
+   * This can be used for looping through the dimensions of a vector.
+   *
+   * @returns An iterator to the element following the last dimension.
    */
   iterator end() noexcept { return iterator{this->m_components.end()}; }
 
   /**
-   * Const pointer to last element of array + 1
+   * Returns a constant iterator to the element following the last dimension of
+   * the vector.
+   *
+   * This iterator is a placeholder and attempting to access it will result in
+   * undefined behavior.
+   *
+   * @returns A constant iterator to the element following the last dimension.
    */
   const_iterator end() const noexcept {
     return const_iterator{this->m_components.end()};
   }
 
   /**
-   * Pointer to last element of array, reversed iterator
+   * Returns a reverse iterator to the first dimension of the reversed vector.
+   * It corresponds to the last dimension of the original vector. The iterator
+   * will be equal to rend() for a zero-dimension vector.
+   *
+   * This can be used for looping through the dimensions of a vector.
+   *
+   * @returns A reverse iterator to the first dimension.
    */
   reverse_iterator rbegin() noexcept {
     return reverse_iterator{this->m_components.rbegin()};
   }
 
   /**
-   * Const pointer to last element of array, reversed iterator
+   * Returns a constant reverse iterator to the first dimension of the reversed
+   * vector. It corresponds to the last dimension of the original vector. The
+   * iterator will be equal to rend() for a zero-dimension vector.
+   *
+   * @returns A constant reverse iterator to the first dimension.
    */
   const_reverse_iterator rbegin() const noexcept {
     return const_reverse_iterator{this->m_components.rbegin()};
   }
 
   /**
-   * Pointer to first element of array + 1, reversed iterator
+   * Returns a reverse iterator to the element following the last dimension of
+   * the reversed vector. It corresponds to the element preceding the first
+   * dimension of the original vector.
+   *
+   * This iterator is a placeholder and attempting to access it will result in
+   * undefined behavior.
+   *
+   * This can be used for looping through the dimensions of a vector.
+   *
+   * @returns A reverse iterator to the element following the last dimension.
    */
   reverse_iterator rend() noexcept {
     return reverse_iterator{this->m_components.rend()};
   }
 
   /**
-   * Const pointer to first element of array + 1, reversed iterator
+   * Returns a constant reverse iterator to the element following the last
+   * dimension of the reversed vector. It corresponds to the element preceding
+   * the first dimension of the original vector.
+   *
+   * This iterator is a placeholder and attempting to access it will result in
+   * undefined behavior.
+   *
+   * @returns A constant reverse iterator to the element following the last
+   * dimension.
    */
   const_reverse_iterator rend() const noexcept {
     return const_reverse_iterator{this->m_components.rend()};
   }
 
 protected:
-  // an array of components to the vector
-  std::array<T, D> m_components;
+  std::array<T, D> m_components; //!< An array of components for the vector.
 
 #ifdef SVECTOR_EXPERIMENTAL_COMPARE
 private:
@@ -410,6 +549,7 @@ private:
   template <std::size_t D2, typename T2>
   std::int8_t compare(const Vector<D2, T2> &other) const noexcept {
     std::size_t min_dim = std::min(D, D2);
+    std::size_t counter = 0;
 
     // check dimensions first
     if (D != D2) {
@@ -418,12 +558,17 @@ private:
 
     // compare one by one
     for (std::size_t i = 0; i < min_dim; i++) {
-      if (this->m_components[i] == other[i])
-        continue;
-      else if (this->m_components[i] < other[i])
+      if (this->m_components[i] == other[i]) {
+        counter++;
+      } else if (this->m_components[i] < other[i]) {
         return -1;
-      else
+      } else {
         return 1;
+      }
+    }
+
+    if (counter != D || counter != D2) {
+      return -1;
     }
 
     // means two vectors are equal

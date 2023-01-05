@@ -1,10 +1,10 @@
 /**
- * vectors.hpp
+ * @file vectors.hpp
  *
  * Compiles all of the includes into one file.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_VECTOR_HPP_

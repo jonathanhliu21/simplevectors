@@ -1,0 +1,14 @@
+.. _exhale_function_functions_8hpp_1a9e7727208f395c0b7c36d73d730c6dd6:
+
+Template Function svector::operator/(const Vector<D, T>&, const T2)
+===================================================================
+
+- Defined in :ref:`file_include_simplevectors_functions.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: svector::operator/(const Vector<D, T>&, const T2)
+   :project: simplevectors

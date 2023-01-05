@@ -1,10 +1,10 @@
 /**
- * vector2d.hpp
+ * @file vector2d.hpp
  *
- * 2D vector representation.
+ * Contains a 2D vector representation.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_VECTOR2D_HPP_
@@ -15,14 +15,14 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<2> _Vec2;
+typedef Vector<2> Vec2_; //!< An alias to Vector<2>.
 
 /**
  * A simple 2D vector representation.
  */
-class Vector2D : public _Vec2 {
+class Vector2D : public Vec2_ {
 public:
-  using _Vec2::Vector;
+  using Vec2_::Vector;
 
   /**
    * Initializes a vector given xy components.
@@ -38,7 +38,7 @@ public:
   /**
    * Copy constructor for base class.
    */
-  Vector2D(const _Vec2 &other) {
+  Vector2D(const Vec2_ &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
   }
@@ -83,17 +83,17 @@ public:
    * counterclockwise when the angle is positive and clockwise
    * when the angle is negative.
    *
-   * @param angle the angle to rotate the vector, in radians.
+   * @param ang the angle to rotate the vector, in radians.
    *
    * @returns a new, rotated vector.
    */
   Vector2D rotate(const double ang) const {
-    /**
-     * Rotation matrix:
-     *
-     * | cos(ang)   -sin(ang) | |x|
-     * | sin(ang)    cos(ang) | |y|
-     */
+    //
+    // Rotation matrix:
+    //
+    // | cos(ang)   -sin(ang) | |x|
+    // | sin(ang)    cos(ang) | |y|
+    //
 
     double xPrime = this->x() * std::cos(ang) - this->y() * std::sin(ang);
     double yPrime = this->x() * std::sin(ang) + this->y() * std::cos(ang);

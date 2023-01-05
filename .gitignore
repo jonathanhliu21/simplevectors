@@ -37,7 +37,6 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
@@ -58,3 +57,8 @@ build/
 
 # private
 private/
+
+# Sphinx documentation
+docs/_build/
+_ext/
+docs/.venv/

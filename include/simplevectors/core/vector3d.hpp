@@ -1,10 +1,10 @@
 /**
- * vector3d.hpp
+ * @file vector3d.hpp
  *
- * 3D vector representation.
+ * Contains a 3D vector representation.
  *
- * Copyright (c) 2022 Jonathan Liu. All rights reserved.
- * MIT License
+ * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * the MIT License. All rights reserved.
  */
 
 #ifndef INCLUDE_SVECTOR_VECTOR3D_HPP_
@@ -16,14 +16,14 @@
 namespace svector {
 // COMBINER_PY_START
 
-typedef Vector<3> _Vec3;
+typedef Vector<3> Vec3_; //!< An alias to Vector<3>.
 
 /**
  * A simple 3D vector representation.
  */
-class Vector3D : public _Vec3 {
+class Vector3D : public Vec3_ {
 public:
-  using _Vec3::Vector;
+  using Vec3_::Vector;
 
   /**
    * Initializes a vector given xyz components.
@@ -39,9 +39,9 @@ public:
   }
 
   /**
-   * Copy constructor for base class.
+   * Copy constructor for the base class.
    */
-  Vector3D(const _Vec3 &other) {
+  Vector3D(const Vec3_ &other) {
     this->m_components[0] = other[0];
     this->m_components[1] = other[1];
     this->m_components[2] = other[2];
@@ -129,12 +129,14 @@ public:
   /**
    * Gets a specific angle of the vector.
    *
-   * Can get angle to x-axis (svector::ALPHA), to y-axis
-   * (svector::BETA),or to z-axis (svector::GAMMA).
-   *
    * Each angle is in the range [0, π]. Angle will be in radians.
    *
-   * @param D The angle direction to return.
+   * Specify whether you want the angle from the positive x-axis, the
+   * positive y-axis, or the positive z-axis in the template argument.
+   *
+   * @see svector::AngleDir
+   *
+   * @returns An angle representing the angle you specified.
    */
   template <AngleDir D> double angle() const {
     switch (D) {
@@ -150,16 +152,19 @@ public:
   /**
    * Rotates vector around a certain axis by a certain angle.
    *
-   * When given template is ALPHA, rotates around x-axis,
-   * when given template is BETA, rotates around y-axis,
-   * and when given template is GAMMA, rotates around z-axis.
-   *
    * Uses the basic gimbal-like 3D rotation matrices for the
    * x-axis, y-axis, and the z-axis.
    *
-   * @param angle the angle to rotate the vector, in radians.
+   * Specify your rotation in the template argument. When the given template is
+   * ALPHA, the vector rotates around the x-axis, when the given template is
+   * BETA, the vector rotates around y-axis, and when the given template is
+   * GAMMA, the vector rotates around z-axis.
    *
-   * @returns a new, rotated vector.
+   * @see svector::AngleDir
+   *
+   * @param ang the angle to rotate the vector, in radians.
+   *
+   * @returns A new, rotated vector.
    */
   template <AngleDir D> Vector3D rotate(const double &ang) const {
     switch (D) {

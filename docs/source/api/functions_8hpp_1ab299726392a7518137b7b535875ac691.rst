@@ -1,0 +1,14 @@
+.. _exhale_function_functions_8hpp_1ab299726392a7518137b7b535875ac691:
+
+Function svector::y(const Vector3D&)
+====================================
+
+- Defined in :ref:`file_include_simplevectors_functions.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: svector::y(const Vector3D&)
+   :project: simplevectors
