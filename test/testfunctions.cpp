@@ -1,6 +1,61 @@
 #include "simplevectors/vectors.hpp"
 
+#include <array>
+#include <vector>
+
 #include <gtest/gtest.h>
+
+TEST(MakeVectorTestUtil, MakeVectorArray) {
+  std::array<double, 5> arr = {{1, 2, 3, 5, 2}};
+  svector::Vector<5> vec = svector::make_vector(arr);
+  svector::Vector<5> control = {1, 2, 3, 5, 2};
+  EXPECT_EQ(vec, control);
+
+  std::array<double, 2> arr2 = {{1, 5}};
+  svector::Vector2D vec2 = svector::make_vector(arr2);
+  svector::Vector2D control2 = {1, 5};
+  EXPECT_EQ(vec2, control2);
+}
+
+TEST(MakeVectorTestUtil, MakeVectorVector) {
+  std::vector<double> arr = {{1, 2, 3, 5, 2}};
+  svector::Vector<3> vec = svector::make_vector<3>(arr);
+  svector::Vector<3> control = {1, 2, 3};
+  EXPECT_EQ(vec, control);
+
+  std::vector<double> arr2 = {1};
+  svector::Vector2D vec2 = svector::make_vector<2>(arr2);
+  svector::Vector2D control2 = {1, 0};
+  EXPECT_EQ(vec2, control2);
+}
+
+TEST(MakeVectorTestUtil, MakeVectorInitializerList) {
+  svector::Vector<5> v = svector::make_vector<5, double>({3, 5, 2, 3.5, 6});
+  EXPECT_EQ(v[0], 3);
+  EXPECT_EQ(v[1], 5);
+  EXPECT_EQ(v[2], 2);
+  EXPECT_EQ(v[3], 3.5);
+  EXPECT_EQ(v[4], 6);
+}
+
+TEST(MakeVectorTestUtil, MakeVectorInitializerListTooFew) {
+  svector::Vector<5> v2 = svector::make_vector<5, double>({3, 5, 2});
+  EXPECT_EQ(v2[0], 3);
+  EXPECT_EQ(v2[1], 5);
+  EXPECT_EQ(v2[2], 2);
+  EXPECT_EQ(v2[3], 0);
+  EXPECT_EQ(v2[4], 0);
+}
+
+TEST(MakeVectorTestUtil, MakeVectorInitializerListTooMany) {
+  svector::Vector<5> v3 =
+      svector::make_vector<5, double>({3, 5, 2, 3.5, 6, 39, 2, 6});
+  EXPECT_EQ(v3[0], 3);
+  EXPECT_EQ(v3[1], 5);
+  EXPECT_EQ(v3[2], 2);
+  EXPECT_EQ(v3[3], 3.5);
+  EXPECT_EQ(v3[4], 6);
+}
 
 TEST(OperatorTestUtil, DotTest2D) {
   svector::Vector2D lhs(2, 5);

@@ -40,6 +40,10 @@ Includes
 --------
 
 
+- ``algorithm``
+
+- ``array``
+
 - ``cmath``
 
 - ``core/vector.hpp`` (:ref:`file_include_simplevectors_core_vector.hpp`)
@@ -49,6 +53,10 @@ Includes
 - ``core/vector3d.hpp`` (:ref:`file_include_simplevectors_core_vector3d.hpp`)
 
 - ``cstddef``
+
+- ``initializer_list``
+
+- ``vector`` (:ref:`file_include_simplevectors_embed.h`)
 
 
 
@@ -86,6 +94,12 @@ Functions
 
 - :ref:`exhale_function_functions_8hpp_1a435afec5e7f1b9f866b3ab9e2d104bf7`
 
+- :ref:`exhale_function_functions_8hpp_1a12cf804f8a74e1e8291c3288be25f711`
+
+- :ref:`exhale_function_functions_8hpp_1a325d6280d9fa5c34f91b1bedf705b30d`
+
+- :ref:`exhale_function_functions_8hpp_1a853d3cbd9e6a1413f5dbefa82cb6cc25`
+
 - :ref:`exhale_function_functions_8hpp_1ade3f26b6ab2922047b85806d86e3c27a`
 
 - :ref:`exhale_function_functions_8hpp_1acab526cf22ef6bcd0d6df4d0736575a0`
@@ -108,17 +122,17 @@ Functions
 
 - :ref:`exhale_function_functions_8hpp_1a40f8501b1430b29aeea93578a57bece7`
 
-- :ref:`exhale_function_functions_8hpp_1adc381191a89be5c0a96ed981e950be2e`
-
-- :ref:`exhale_function_functions_8hpp_1a957a9f171b6f00d68ee4e371488e41e6`
-
 - :ref:`exhale_function_functions_8hpp_1a22168f0683d87e70187a9d9d8bc5c0a1`
 
 - :ref:`exhale_function_functions_8hpp_1a5eaf79f39a9b4a99979309d505cb4a12`
 
-- :ref:`exhale_function_functions_8hpp_1aa7a60091dee5a721d9916d7f211b4bfd`
+- :ref:`exhale_function_functions_8hpp_1a957a9f171b6f00d68ee4e371488e41e6`
+
+- :ref:`exhale_function_functions_8hpp_1adc381191a89be5c0a96ed981e950be2e`
 
 - :ref:`exhale_function_functions_8hpp_1a6b901e3ff50871515f36d7fc46da8435`
+
+- :ref:`exhale_function_functions_8hpp_1aa7a60091dee5a721d9916d7f211b4bfd`
 
 - :ref:`exhale_function_functions_8hpp_1ab299726392a7518137b7b535875ac691`
 
