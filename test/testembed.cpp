@@ -49,7 +49,7 @@ TEST(EmbedOperatorTest2D, AddTest) {
       {{6, -7}, {3, -2.4}, {9, -9.4}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     Vec2D rhs(testcase[1].first, testcase[1].second);
     Vec2D res(testcase[2].first, testcase[2].second);
@@ -84,7 +84,7 @@ TEST(EmbedOperatorTest2D, SubtractTest) {
       {{6, -7}, {3, -2.4}, {3, -4.6}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     Vec2D rhs(testcase[1].first, testcase[1].second);
     Vec2D res(testcase[2].first, testcase[2].second);
@@ -121,7 +121,7 @@ TEST(EmbedOperatorTest2D, NegativeOfAVector) {
       {{-5, -2}, {5, 2}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D num(testcase[0].first, testcase[0].second);
     Vec2D res(testcase[1].first, testcase[1].second);
 
@@ -134,7 +134,7 @@ TEST(EmbedOperatorTest2D, ScalarMultiplication) {
       {{-3, -4}, {5, -1}, {-15, -20}},
       {{3, 4.5}, {2.5, -1}, {7.5, 11.25}},
   };
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
     Vec2D res(testcase[2].first, testcase[2].second);
@@ -168,7 +168,7 @@ TEST(EmbedOperatorTest2D, ScalarDivision) {
       {{35, 42}, {7, -1}, {5, 6}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
     Vec2D res(testcase[2].first, testcase[2].second);
@@ -192,7 +192,7 @@ TEST(EmbedOperatorTest2D, EqualityTest) {
       {{35, 42}, {35, 42}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     Vec2D rhs(testcase[1].first, testcase[1].second);
 
@@ -206,7 +206,7 @@ TEST(EmbedOperatorTest2D, InequalityTest) {
       {{35, 42}, {19, 534}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D lhs(testcase[0].first, testcase[0].second);
     Vec2D rhs(testcase[1].first, testcase[1].second);
 
@@ -230,7 +230,7 @@ TEST(EmbedXYMagnitudeAngleMatchTest2D, TestAngleGivenXY) {
       {6.2, -3, -0.451},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D vector(testcase[0], testcase[1]);
     double ang = angle(vector);
     double ang_r = std::round(ang * 1000.0) / 1000.0;
@@ -254,7 +254,7 @@ TEST(EmbedRotationTest2D, CounterclockwiseRotation) {
       {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D vector(testcase[0], testcase[1]);
     Vec2D vectorp(testcase[3], testcase[4]);
 
@@ -275,7 +275,7 @@ TEST(EmbedRotationTest2D, ClockwiseRotation) {
       {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec2D vector(testcase[3], testcase[4]);
     Vec2D vectorp(testcase[0], testcase[1]);
 
@@ -340,7 +340,7 @@ TEST(EmbedOperatorTest3D, AddTest) {
       {{6, -7, 1}, {3, -2.4, 5}, {9, -9.4, 6}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     Vec3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
     Vec3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
@@ -375,7 +375,7 @@ TEST(EmbedOperatorTest3D, SubtractTest) {
       {{6, -7, 1}, {3, -2.4, 5}, {3, -4.6, -4}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     Vec3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
     Vec3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
@@ -412,7 +412,7 @@ TEST(EmbedOperatorTest3D, NegativeOfAVector) {
       {{-5, -2, 0}, {5, 2, 0}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D num(testcase[0][0], testcase[0][1], testcase[0][2]);
     Vec3D res(testcase[1][0], testcase[1][1], testcase[1][2]);
 
@@ -425,7 +425,7 @@ TEST(EmbedOperatorTest3D, ScalarMultiplication) {
       {{-3, -4, 8}, {5, -1, -1}, {-15, -20, 40}},
       {{3, 4.5, 2}, {2.5, -1, -1}, {7.5, 11.25, 5.0}},
   };
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     double rhs = testcase[1][0];
     Vec3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
@@ -468,7 +468,7 @@ TEST(EmbedOperatorTest3D, ScalarDivision) {
       {{35, 42, 49}, {7, -1, -1}, {5, 6, 7}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     double rhs = testcase[1][0];
     Vec3D res(testcase[2][0], testcase[2][1], testcase[2][2]);
@@ -492,7 +492,7 @@ TEST(EmbedOperatorTest3D, EqualityTest) {
       {{35, 42, 2.2}, {35, 42, 2.2}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     Vec3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
 
@@ -506,7 +506,7 @@ TEST(EmbedOperatorTest3D, InequalityTest) {
       {{35, 42, 2.2}, {35, 42, 2.3}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D lhs(testcase[0][0], testcase[0][1], testcase[0][2]);
     Vec3D rhs(testcase[1][0], testcase[1][1], testcase[1][2]);
 
@@ -560,7 +560,7 @@ TEST(EmbedRotationTest3D, AlphaRotation) {
       {3, 2.8284, 2.8284, M_PI / 4, 3, 0, 4},
       {3, 2.8284, 2.8284, -M_PI / 4, 3, 4, 0}};
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D vector(testcase[0], testcase[1], testcase[2]);
     Vec3D vectorp(testcase[4], testcase[5], testcase[6]);
 
@@ -582,7 +582,7 @@ TEST(EmbedRotationTest3D, BetaRotation) {
       {2.8284, 3, 2.8284, M_PI / 4, 4, 3, 0},
       {2.8284, 3, 2.8284, -M_PI / 4, 0, 3, 4}};
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D vector(testcase[0], testcase[1], testcase[2]);
     Vec3D vectorp(testcase[4], testcase[5], testcase[6]);
 
@@ -609,7 +609,7 @@ TEST(EmbedRotationTest3D, GammaRotation) {
       {0.707, -0.707, 3, M_PI / 4, 1, 0, 3},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     Vec3D vector(testcase[0], testcase[1], testcase[2]);
     Vec3D vectorp(testcase[4], testcase[5], testcase[6]);
 

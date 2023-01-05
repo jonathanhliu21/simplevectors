@@ -91,13 +91,13 @@ Functions
 
 - :ref:`exhale_function_embed_8hpp_1aaa0e8191898829b4175524aee2721965`
 
-- :ref:`exhale_function_embed_8hpp_1a7b534f1b7cd5bdc3cf8602a24a95fed1`
-
 - :ref:`exhale_function_embed_8hpp_1ae6520b13c6287466502d68ded5b67263`
 
-- :ref:`exhale_function_embed_8hpp_1a62e3bc32c6490be9c9c2cc0af903931e`
+- :ref:`exhale_function_embed_8hpp_1a7b534f1b7cd5bdc3cf8602a24a95fed1`
 
 - :ref:`exhale_function_embed_8hpp_1aebaadc39c0c1ff2b27d853bc9f73a933`
+
+- :ref:`exhale_function_embed_8hpp_1a62e3bc32c6490be9c9c2cc0af903931e`
 
 - :ref:`exhale_function_embed_8hpp_1ab27c463fed44bb8251ae0eba9b2d3b2d`
 
@@ -111,13 +111,13 @@ Functions
 
 - :ref:`exhale_function_embed_8hpp_1a8ef670b0db1c66a3462d3cc8130644b2`
 
-- :ref:`exhale_function_embed_8hpp_1a67f00e13c0fd29fd1590358a45d475d1`
-
 - :ref:`exhale_function_embed_8hpp_1a0e08ec5741609b8920e44aea41e2f27e`
 
-- :ref:`exhale_function_embed_8hpp_1a79486481c8b7e00eaed777b0bfebd484`
+- :ref:`exhale_function_embed_8hpp_1a67f00e13c0fd29fd1590358a45d475d1`
 
 - :ref:`exhale_function_embed_8hpp_1ae620c34725f5f048f53aeceb24853919`
+
+- :ref:`exhale_function_embed_8hpp_1a79486481c8b7e00eaed777b0bfebd484`
 
 - :ref:`exhale_function_embed_8hpp_1a3e8b1aa390964f684c7ef95a1b696d1e`
 

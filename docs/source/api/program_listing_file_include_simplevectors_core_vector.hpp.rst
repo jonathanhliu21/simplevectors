@@ -50,7 +50,7 @@ Program Listing for File vector.hpp
        this->m_components.fill(0);
    
        std::size_t counter = 0;
-       for (auto num : args) {
+       for (const auto &num : args) {
          if (counter >= D) {
            break;
          }
@@ -199,7 +199,7 @@ Program Listing for File vector.hpp
      T magn() const {
        T sum_of_squares = 0;
    
-       for (auto i : this->m_components) {
+       for (const auto &i : this->m_components) {
          sum_of_squares += i * i;
        }
    

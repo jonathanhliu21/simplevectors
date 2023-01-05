@@ -63,7 +63,7 @@ TEST(OperatorTest2D, AddTest) {
       {{6, -7}, {3, -2.4}, {9, -9.4}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     svector::Vector2D rhs(testcase[1].first, testcase[1].second);
     svector::Vector2D res(testcase[2].first, testcase[2].second);
@@ -98,7 +98,7 @@ TEST(OperatorTest2D, SubtractTest) {
       {{6, -7}, {3, -2.4}, {3, -4.6}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     svector::Vector2D rhs(testcase[1].first, testcase[1].second);
     svector::Vector2D res(testcase[2].first, testcase[2].second);
@@ -135,7 +135,7 @@ TEST(OperatorTest2D, NegativeOfAVector) {
       {{-5, -2}, {5, 2}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D num(testcase[0].first, testcase[0].second);
     svector::Vector2D res(testcase[1].first, testcase[1].second);
 
@@ -148,7 +148,7 @@ TEST(OperatorTest2D, ScalarMultiplication) {
       {{-3, -4}, {5, -1}, {-15, -20}},
       {{3, 4.5}, {2.5, -1}, {7.5, 11.25}},
   };
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
     svector::Vector2D res(testcase[2].first, testcase[2].second);
@@ -182,7 +182,7 @@ TEST(OperatorTest2D, ScalarDivision) {
       {{35, 42}, {7, -1}, {5, 6}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     double rhs = testcase[1].first;
     svector::Vector2D res(testcase[2].first, testcase[2].second);
@@ -206,7 +206,7 @@ TEST(OperatorTest2D, EqualityTest) {
       {{35, 42}, {35, 42}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     svector::Vector2D rhs(testcase[1].first, testcase[1].second);
 
@@ -220,7 +220,7 @@ TEST(OperatorTest2D, InequalityTest) {
       {{35, 42}, {19, 534}},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D lhs(testcase[0].first, testcase[0].second);
     svector::Vector2D rhs(testcase[1].first, testcase[1].second);
 
@@ -244,7 +244,7 @@ TEST(XYMagnitudeAngleMatchTest2D, TestAngleGivenXY) {
       {6.2, -3, -0.451},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D vector(testcase[0], testcase[1]);
     double ang = vector.angle();
     double ang_r = std::round(ang * 1000.0) / 1000.0;
@@ -297,7 +297,7 @@ TEST(RotationTest2D, CounterclockwiseRotation) {
       {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D vector(testcase[0], testcase[1]);
     svector::Vector2D vectorp(testcase[3], testcase[4]);
 
@@ -318,7 +318,7 @@ TEST(RotationTest2D, ClockwiseRotation) {
       {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D vector(testcase[3], testcase[4]);
     svector::Vector2D vectorp(testcase[0], testcase[1]);
 

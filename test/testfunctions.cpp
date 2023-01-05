@@ -159,7 +159,7 @@ TEST(AngleTestUtil, AngleTest2D) {
       {6.2, -3, -0.451},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D vector(testcase[0], testcase[1]);
     double ang = svector::angle(vector);
     double ang_r = std::round(ang * 1000.0) / 1000.0;
@@ -200,7 +200,7 @@ TEST(RotationTestUtil, RotateTest2D) {
       {0, -1, M_PI / 4, 0.707, -0.707}, {0.707, -0.707, M_PI / 4, 1, 0},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector2D vector(testcase[0], testcase[1]);
     svector::Vector2D vectorp(testcase[3], testcase[4]);
 
@@ -220,7 +220,7 @@ TEST(RotationTestUtil, AlphaRotation) {
       {3, 2.8284, 2.8284, M_PI / 4, 3, 0, 4},
       {3, 2.8284, 2.8284, -M_PI / 4, 3, 4, 0}};
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
     svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
@@ -242,7 +242,7 @@ TEST(RotationTestUtil, BetaRotation) {
       {2.8284, 3, 2.8284, M_PI / 4, 4, 3, 0},
       {2.8284, 3, 2.8284, -M_PI / 4, 0, 3, 4}};
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
     svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
@@ -269,7 +269,7 @@ TEST(RotationTestUtil, GammaRotation) {
       {0.707, -0.707, 3, M_PI / 4, 1, 0, 3},
   };
 
-  for (auto testcase : tests) {
+  for (const auto &testcase : tests) {
     svector::Vector3D vector(testcase[0], testcase[1], testcase[2]);
     svector::Vector3D vectorp(testcase[4], testcase[5], testcase[6]);
 
