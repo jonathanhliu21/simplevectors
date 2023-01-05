@@ -93,16 +93,14 @@ Polar<T> getTotalAC(const Polar<T> source1, const Polar<T> source2) {
  * would be the magnitude of the complex number.
  *
  * @param r The resistance of the circuit.
- * @param xc The capacitive reactance.
+ * @param xc The capacitive reactance (positive).
  * @param xl The inductive reactance.
  *
  * @returns The total impedence of the circuit.
  */
 template <typename T>
 Complex<T> getImpedence(const T r, const T xc, const T xl) {
-  T xTotal = xc + xl;
-
-  return Complex<T>(r, xTotal);
+  return Complex<T>(r, xl - xc);
 }
 
 /**
