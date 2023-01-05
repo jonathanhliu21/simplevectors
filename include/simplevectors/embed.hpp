@@ -3,7 +3,7 @@
  *
  * A minimized version of vectors for embedded devices with access to the STL.
  * This file is meant to be a standalone file, so it is not included in
- * vectors.hpp
+ * vectors.hpp.
  *
  * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
