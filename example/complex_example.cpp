@@ -1,6 +1,7 @@
 #include "simplevectors/vectors.hpp"
 
 #include <cmath>
+#include <initializer_list>
 
 namespace svector_complex_example {
 template <typename T> struct Polar { T r, ang; };
@@ -24,6 +25,16 @@ public:
 
   Complex getConjugate() {
     return Complex<T>(this->m_components[0], -this->m_components[1]);
+  }
+
+  Complex getReciprocal() {
+    T a = this->m_components[0];
+    T b = this->m_components[1];
+
+    T re = a / (a * a + b * b);
+    T im = b / (a * a + b * b);
+
+    return Complex<T>(re, -im);
   }
 
   double angle() {
@@ -101,6 +112,43 @@ Polar<T> getTotalAC(const Polar<T> source1, const Polar<T> source2) {
 template <typename T>
 Complex<T> getImpedence(const T r, const T xc, const T xl) {
   return Complex<T>(r, xl - xc);
+}
+
+/**
+ * Finds the total series impedence given a list of impedences.
+ *
+ * @param list An initializer list of impedences represented by complex numbers.
+ *
+ * @returns The total impedence of the series circuit.
+ */
+template <typename T>
+Complex<T> getSeriesImpedence(std::initializer_list<Complex<T>> list) {
+  Complex<T> total;
+
+  for (const auto &impedence : list) {
+    total += impedence;
+  }
+
+  return total;
+}
+
+/**
+ * Finds the total parallel impedence given a list of impedences.
+ *
+ * @param list An initializer list of impedences represented by complex numbers.
+ *
+ * @returns The total impedence of the parallel circuit.
+ */
+template <typename T>
+Complex<T> getParallelImpedence(std::initializer_list<Complex<T>> list) {
+  Complex<T> total;
+
+  for (const auto &impedence : list) {
+    auto reciprocal = impedence.getReciprocal();
+    total += reciprocal;
+  }
+
+  return total.getReciprocal();
 }
 
 /**
