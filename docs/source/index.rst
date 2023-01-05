@@ -7,6 +7,13 @@ Simple vector implementations in C++.
 
 **NOTE**: This is mostly tested on MacOS 12.6 with C++11, clang 13.0.0, CMake 3.22.2, and GNU make 3.81.
 
+.. image:: https://img.shields.io/github/actions/workflow/status/jonyboi396825/simplevectors/test.yml
+   :alt: GitHub Workflow Status
+
+.. image:: https://readthedocs.org/projects/simplevectors/badge/?version=latest
+    :target: https://simplevectors.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 Installation
 ------------
 
