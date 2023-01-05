@@ -11,8 +11,12 @@
 #ifndef INCLUDE_SVECTOR_FUNCTIONS_HPP_
 #define INCLUDE_SVECTOR_FUNCTIONS_HPP_
 
-#include <cmath>   // std::atan2, std::acos, std::sqrt
-#include <cstddef> // std::size_t
+#include <algorithm>        // std::min
+#include <array>            // std::array
+#include <cmath>            // std::atan2, std::acos, std::sqrt
+#include <cstddef>          // std::size_t
+#include <initializer_list> // std::initializer_list
+#include <vector>           // std::vector
 
 #include "core/vector.hpp"
 #include "core/vector2d.hpp"
@@ -20,6 +24,69 @@
 
 namespace svector {
 // COMBINER_PY_START
+
+/**
+ * Creates a vector from an std::array.
+ *
+ * @param array An array.
+ *
+ * @returns A vector whose dimensions reflect the elements in the array.
+ */
+template <std::size_t D, typename T>
+Vector<D, T> make_vector(std::array<T, D> array) {
+  Vector<D, T> vec;
+  for (std::size_t i = 0; i < D; i++) {
+    vec[i] = array[i];
+  }
+
+  return vec;
+}
+
+/**
+ * Creates a vector from a std::vetor.
+ *
+ * If the given std::vector has fewer elements than the specified dimensions,
+ * then this function will fill up the first elements of the vector with those
+ * in the given std::vector. The rest of the elements would be 0.
+ *
+ * If the given std::vector has more elements than the specified dimensions,
+ * then the resulting vector would ignore the numbers in those dimensions.
+ *
+ * @param vector A std::vector.
+ *
+ * @returns A vector whose dimensions reflect the elements in the std::vector.
+ */
+template <std::size_t D, typename T>
+Vector<D, T> make_vector(std::vector<T> vector) {
+  Vector<D, T> vec;
+  for (std::size_t i = 0; i < std::min(D, vector.size()); i++) {
+    vec[i] = vector[i];
+  }
+
+  return vec;
+}
+
+/**
+ * Creates a vector from an initializer list.
+ *
+ * The initializer list should represent the components of the vector in each
+ * dimension. If the size of the initializer list is greater than the number
+ * of dimensions given, then the vector only initializes with the first D
+ * elements in the list, where D is the number of dimensions. If the size of
+ * the initializer list is less than the number of dimensions given, then the
+ * vector fills the rest of the dimensions with the value 0.
+ *
+ * @param args the initializer list.
+ *
+ * @returns A vector whose dimensions reflect the elements in the initializer
+ * list.
+ */
+template <std::size_t D, typename T>
+Vector<D, T> make_vector(const std::initializer_list<T> args) {
+  Vector<D, T> vec(args);
+  return vec;
+}
+
 /**
  * Gets the x-component of a 2D vector.
  *
