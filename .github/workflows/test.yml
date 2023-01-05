@@ -32,10 +32,9 @@ jobs:
           cmake .. -DSVECTOR_BUILD_TEST=ON -DSVECTOR_BUILD_EXAMPLE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1
       - name: Run Unit Tests
         run: |
-          make
+          cd build && make
           ctest
       - name: Run Linter
         run: |
-          cd ..
           clang-tidy -p build scripts/tidy.cpp
 
