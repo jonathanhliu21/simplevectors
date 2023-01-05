@@ -14,8 +14,12 @@ Program Listing for File functions.hpp
    #ifndef INCLUDE_SVECTOR_FUNCTIONS_HPP_
    #define INCLUDE_SVECTOR_FUNCTIONS_HPP_
    
-   #include <cmath>   // std::atan2, std::acos, std::sqrt
-   #include <cstddef> // std::size_t
+   #include <algorithm>        // std::min
+   #include <array>            // std::array
+   #include <cmath>            // std::atan2, std::acos, std::sqrt
+   #include <cstddef>          // std::size_t
+   #include <initializer_list> // std::initializer_list
+   #include <vector>           // std::vector
    
    #include "core/vector.hpp"
    #include "core/vector2d.hpp"
@@ -23,6 +27,33 @@ Program Listing for File functions.hpp
    
    namespace svector {
    // COMBINER_PY_START
+   
+   template <std::size_t D, typename T>
+   Vector<D, T> make_vector(std::array<T, D> array) {
+     Vector<D, T> vec;
+     for (std::size_t i = 0; i < D; i++) {
+       vec[i] = array[i];
+     }
+   
+     return vec;
+   }
+   
+   template <std::size_t D, typename T>
+   Vector<D, T> make_vector(std::vector<T> vector) {
+     Vector<D, T> vec;
+     for (std::size_t i = 0; i < std::min(D, vector.size()); i++) {
+       vec[i] = vector[i];
+     }
+   
+     return vec;
+   }
+   
+   template <std::size_t D, typename T>
+   Vector<D, T> make_vector(const std::initializer_list<T> args) {
+     Vector<D, T> vec(args);
+     return vec;
+   }
+   
    inline double x(const Vector2D &v) { return v[0]; }
    
    inline void x(Vector2D &v, const double x_value) { v[0] = x_value; }
