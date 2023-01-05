@@ -41,13 +41,13 @@ $ source .venv/bin/activate
 
 3. Install dependencies
 
-```
+```txt
 $ pip install -r requirements.txt
 ```
 
 4. Build the final documentation
 
-```
+```txt
 $ make html
 ```
 
