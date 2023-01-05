@@ -37,4 +37,5 @@ jobs:
       - name: Run Linter
         run: |
           clang-tidy -p build scripts/tidy.cpp
+          clang-tidy -p build scripts/tidy_class_operators.cpp
 
