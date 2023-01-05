@@ -1,0 +1,14 @@
+.. _exhale_function_embed_8h_1a88bb1d4f85ea18626a38892483b1646b:
+
+Function operator/(const EmbVec3D&, const double)
+=================================================
+
+- Defined in :ref:`file_include_simplevectors_embed.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: operator/(const EmbVec3D&, const double)
+   :project: simplevectors

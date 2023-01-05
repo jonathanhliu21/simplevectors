@@ -1,0 +1,18 @@
+
+Class Hierarchy
+---------------
+
+
+.. raw:: html
+
+   <ul class="treeView" id="class-treeView">
+     <li>
+       <ul class="collapsibleList">
+         <li>Namespace <a href="namespace_svector.html#namespace-svector">svector</a><ul><li>Struct <a href="structsvector_1_1_vec2_d.html#exhale-struct-structsvector-1-1-vec2-d">Vec2D</a></li><li>Struct <a href="structsvector_1_1_vec3_d.html#exhale-struct-structsvector-1-1-vec3-d">Vec3D</a></li><li>Template Class <a href="classsvector_1_1_vector.html#exhale-class-classsvector-1-1-vector">Vector</a></li><li>Class <a href="classsvector_1_1_vector2_d.html#exhale-class-classsvector-1-1-vector2-d">Vector2D</a></li><li>Class <a href="classsvector_1_1_vector3_d.html#exhale-class-classsvector-1-1-vector3-d">Vector3D</a></li><li class="lastChild">Enum <a href="enum_units_8hpp_1a0bce35f558c2b5bf5b39d311bc00aa1c.html#exhale-enum-units-8hpp-1a0bce35f558c2b5bf5b39d311bc00aa1c">AngleDir</a></li></ul></li><li>Struct <a href="struct_emb_vec2_d.html#exhale-struct-struct-emb-vec2-d">EmbVec2D</a></li><li class="lastChild">Struct <a href="struct_emb_vec3_d.html#exhale-struct-struct-emb-vec3-d">EmbVec3D</a></li>
+       </ul>
+     </li><!-- only tree view element -->
+   </ul><!-- /treeView class-treeView -->
+
+.. end raw html for treeView
+
+

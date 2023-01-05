@@ -21,3 +21,33 @@ $ cmake .. -DSVECTOR_BUILD_TEST=ON
 
 3. Run `make` and `ctest`
 
+## Documentation
+
+To build documentation, you need doxygen and sphinx.
+
+1. Build the doxygen documentation
+
+```txt
+$ doxygen
+```
+
+2. Go into the docs folder and set up a Python environment.
+
+```txt
+$ cd docs
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+```
+
+3. Install dependencies
+
+```
+$ pip install -r requirements.txt
+```
+
+4. Build the final documentation
+
+```
+$ make html
+```
+

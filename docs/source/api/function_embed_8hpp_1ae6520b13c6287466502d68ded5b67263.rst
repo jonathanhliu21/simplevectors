@@ -1,0 +1,14 @@
+.. _exhale_function_embed_8hpp_1ae6520b13c6287466502d68ded5b67263:
+
+Function svector::operator!=(const Vec2D&, const Vec2D&)
+========================================================
+
+- Defined in :ref:`file_include_simplevectors_embed.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: svector::operator!=(const Vec2D&, const Vec2D&)
+   :project: simplevectors
