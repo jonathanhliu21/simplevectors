@@ -63,19 +63,23 @@ double get_frequency(double wavelength) { return speed_of_light / wavelength; }
 EM_Spectrum get_wave_type(double log_frequency) {
   if (log_frequency > 20) {
     return GAMMA;
-  } else if (log_frequency > 17 && log_frequency <= 20) {
-    return XRAY;
-  } else if (log_frequency > 15 && log_frequency <= 17) {
-    return ULTRAVIOLET;
-  } else if (log_frequency > 14 && log_frequency <= 15) {
-    return VISIBLE;
-  } else if (log_frequency > 11 && log_frequency <= 14) {
-    return INFRARED;
-  } else if (log_frequency > 9 && log_frequency <= 11) {
-    return MICROWAVE;
-  } else {
-    return RADIO;
   }
+  if (log_frequency > 17 && log_frequency <= 20) {
+    return XRAY;
+  }
+  if (log_frequency > 15 && log_frequency <= 17) {
+    return ULTRAVIOLET;
+  }
+  if (log_frequency > 14 && log_frequency <= 15) {
+    return VISIBLE;
+  }
+  if (log_frequency > 11 && log_frequency <= 14) {
+    return INFRARED;
+  }
+  if (log_frequency > 9 && log_frequency <= 11) {
+    return MICROWAVE;
+  }
+  return RADIO;
 }
 
 /**
@@ -96,23 +100,29 @@ EM_Spectrum get_wave_type(double log_frequency) {
 Visible_Spectrum get_color(double wavelength) {
   if (wavelength > 750) {
     return IR_OR_LARGER;
-  } else if (wavelength > 625 && wavelength <= 750) {
-    return RED;
-  } else if (wavelength > 590 && wavelength <= 625) {
-    return ORANGE;
-  } else if (wavelength > 565 && wavelength <= 590) {
-    return YELLOW;
-  } else if (wavelength > 500 && wavelength <= 565) {
-    return GREEN;
-  } else if (wavelength > 485 && wavelength <= 500) {
-    return CYAN;
-  } else if (wavelength > 450 && wavelength <= 485) {
-    return BLUE;
-  } else if (wavelength > 380 && wavelength <= 450) {
-    return VIOLET;
-  } else {
-    return UV_OR_SMALLER;
   }
+  if (wavelength > 625 && wavelength <= 750) {
+    return RED;
+  }
+  if (wavelength > 590 && wavelength <= 625) {
+    return ORANGE;
+  }
+  if (wavelength > 565 && wavelength <= 590) {
+    return YELLOW;
+  }
+  if (wavelength > 500 && wavelength <= 565) {
+    return GREEN;
+  }
+  if (wavelength > 485 && wavelength <= 500) {
+    return CYAN;
+  }
+  if (wavelength > 450 && wavelength <= 485) {
+    return BLUE;
+  }
+  if (wavelength > 380 && wavelength <= 450) {
+    return VIOLET;
+  }
+  return UV_OR_SMALLER;
 }
 
 /**
