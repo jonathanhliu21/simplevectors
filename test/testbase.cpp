@@ -69,7 +69,7 @@ TEST(ConstructorTestV, CopyConstructorTest) {
 TEST(StringTestV, StringTest) {
   svector::Vector<5> vector{3.52, -5.6, 3, 4.2, 1.1};
 
-  std::regex r("<3\.520*, -5\.60*, 3\.0*, 4\.20*, 1\.10*>");
+  std::regex r("<3\\.520*, -5\\.60*, 3\\.0*, 4\\.20*, 1\\.10*>");
 
   EXPECT_TRUE(std::regex_match(vector.toString(), r)) << vector.toString();
 }

@@ -38,7 +38,7 @@ TEST(EmbedConstructorTest2D, CopyConstructorTest) {
 TEST(EmbedStringTest2D, StringTest) {
   Vec2D vector(3.52, -5.6);
 
-  std::regex r("<3\.520*, -5\.60*>");
+  std::regex r("<3\\.520*, -5\\.60*>");
 
   EXPECT_TRUE(std::regex_match(toString(vector), r));
 }
@@ -329,7 +329,7 @@ TEST(EmbedConstructorTest3D, CopyConstructorTest) {
 TEST(EmbedStringTest3D, StringTest) {
   Vec3D vector(3.52, -5.6, 2.2);
 
-  std::regex r("<3\.520*, -5\.60*, 2\.20*>");
+  std::regex r("<3\\.520*, -5\\.60*, 2\\.20*>");
 
   EXPECT_TRUE(std::regex_match(toString(vector), r));
 }

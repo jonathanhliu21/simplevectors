@@ -67,7 +67,7 @@ TEST(SetterTest3D, SetterZTest) {
 TEST(StringTest3D, StringTest) {
   svector::Vector3D vector(3.52, -5.6, 2.2);
 
-  std::regex r("<3\.520*, -5\.60*, 2\.20*>");
+  std::regex r("<3\\.520*, -5\\.60*, 2\\.20*>");
 
   EXPECT_TRUE(std::regex_match(vector.toString(), r));
 }
