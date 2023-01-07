@@ -62,3 +62,4 @@ private/
 docs/_build/
 _ext/
 docs/.venv/
+docs/source/api/
