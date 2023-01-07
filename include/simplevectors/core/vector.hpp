@@ -551,8 +551,13 @@ private:
     std::size_t min_dim = std::min(D, D2);
     std::size_t counter = 0;
 
-    // check dimensions first
+// to suppress MSVC warning
+#ifdef _MSC_VER
+    if constexpr (D != D2) {
+#else
     if (D != D2) {
+#endif
+      // check dimensions first
       return D < D2 ? -1 : 1;
     }
 
