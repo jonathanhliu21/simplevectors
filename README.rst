@@ -17,7 +17,7 @@ Simple, embeddable, and extendable vector implementations in C++.
 Quickstart
 ----------
 
-This is a very basic example of simplevectors.
+This is a very basic example of simplevectors. First, download ``simplevectors.hpp`` from the releases page on the GitHub repository, then paste the code below:
 
 .. code:: cpp
 

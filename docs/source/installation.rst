@@ -19,7 +19,7 @@ Alternatively, you can use CMake to install the library. First install the libra
 
 .. code-block:: text
 
-   $ cmake -B build -DSVECTOR_INSTALL=1
+   $ cmake -B build -DSVECTOR_INSTALL=1 -DCMAKE_BUILD_TYPE=Release
    $ cmake --build build --target install
 
 Then, place the code below into your ``CMakeLists.txt``:
