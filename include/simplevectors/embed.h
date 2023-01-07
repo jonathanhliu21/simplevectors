@@ -49,6 +49,11 @@ struct EmbVec2D {
    * Assignment operator.
    */
   EmbVec2D &operator=(const EmbVec2D &other) {
+    // check if assigning to self
+    if (this == &other) {
+      return *this;
+    }
+
     x = other.x;
     y = other.y;
     return *this;
@@ -147,6 +152,11 @@ struct EmbVec3D {
    * Assignment operator.
    */
   EmbVec3D &operator=(const EmbVec3D &other) {
+    // check if assigning to self
+    if (this == &other) {
+      return *this;
+    }
+
     x = other.x;
     y = other.y;
     z = other.z;

@@ -49,6 +49,11 @@ struct Vec2D {
    * Assignment operator.
    */
   Vec2D &operator=(const Vec2D &other) {
+    // check if assigning to self
+    if (this == &other) {
+      return *this;
+    }
+
     x = other.x;
     y = other.y;
     return *this;
@@ -147,6 +152,11 @@ struct Vec3D {
    * Assignment operator.
    */
   Vec3D &operator=(const Vec3D &other) {
+    // check if assigning to self
+    if (this == &other) {
+      return *this;
+    }
+
     x = other.x;
     y = other.y;
     z = other.z;

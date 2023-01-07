@@ -99,6 +99,11 @@ public:
    * already exist).
    */
   Vector<D, T> &operator=(const Vector<D, T> &other) {
+    // check if assigning to self
+    if (this == &other) {
+      return *this;
+    }
+
     for (std::size_t i = 0; i < D; i++) {
       this->m_components[i] = other[i];
     }
