@@ -5,7 +5,7 @@ namespace svector_kinematics_example {
  * Represents a 2D object which has a mass, position, velocity and acceleration
  */
 struct Object2D {
-  double mass;
+  double mass = 0;
   svector::Vector2D position;
   svector::Vector2D velocity;
   svector::Vector2D acceleration;
@@ -21,7 +21,8 @@ struct Object2D {
  *
  * @returns The average velocity over that time interval
  */
-svector::Vector2D avgVelocity(svector::Vector2D pos_0, svector::Vector2D pos_f,
+svector::Vector2D avgVelocity(const svector::Vector2D &pos_0,
+                              const svector::Vector2D &pos_f,
                               double time_interval) {
   svector::Vector2D delta = pos_f - pos_0;
   return delta / time_interval;
@@ -37,7 +38,8 @@ svector::Vector2D avgVelocity(svector::Vector2D pos_0, svector::Vector2D pos_f,
  *
  * @returns The average acceleration over that time interval
  */
-svector::Vector2D avgAcceleration(svector::Vector2D v_0, svector::Vector2D v_f,
+svector::Vector2D avgAcceleration(const svector::Vector2D &v_0,
+                                  const svector::Vector2D &v_f,
                                   double time_interval) {
   svector::Vector2D delta = v_f - v_0;
   return delta / time_interval;
@@ -52,7 +54,7 @@ svector::Vector2D avgAcceleration(svector::Vector2D v_0, svector::Vector2D v_f,
  * @returns The change in position after travelling at a certain velocity for a
  * certain interval of time
  */
-svector::Vector2D changeInPosition(svector::Vector2D vel,
+svector::Vector2D changeInPosition(const svector::Vector2D &vel,
                                    double time_interval) {
   return vel * time_interval;
 }
@@ -66,7 +68,7 @@ svector::Vector2D changeInPosition(svector::Vector2D vel,
  * @returns The change in velocity after accelerating for a certain interval of
  * time
  */
-svector::Vector2D changeInVelocity(svector::Vector2D acc,
+svector::Vector2D changeInVelocity(const svector::Vector2D &acc,
                                    double time_interval) {
   return acc * time_interval;
 }
@@ -79,7 +81,7 @@ svector::Vector2D changeInVelocity(svector::Vector2D acc,
  * @param acc The acceleration of the object
  * @param time_interval The time interval that the object has that acceleration
  */
-void updateVelocityPosition(Object2D &object, svector::Vector2D acc,
+void updateVelocityPosition(Object2D &object, const svector::Vector2D &acc,
                             double time_interval) {
   object.acceleration = acc;
   object.velocity = changeInVelocity(acc, time_interval);
