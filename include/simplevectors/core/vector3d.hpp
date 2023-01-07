@@ -100,7 +100,7 @@ public:
 
   /**
    * Converts components of vector to an object with a constructor
-   * that has two parameters.
+   * that has three parameters.
    *
    * For example, this method can be used to convert the components of
    * a 3D vector into a struct with three
