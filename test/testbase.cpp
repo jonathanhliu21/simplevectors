@@ -3,8 +3,14 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <regex>
 #include <stdexcept>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 TEST(ConstructorTestV, ZeroConstructorTest) {
   svector::Vector<1> v;
