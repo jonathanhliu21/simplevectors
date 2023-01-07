@@ -1,9 +1,33 @@
 #include <simplevectors/embed.hpp>
 #include <simplevectors/vectors.hpp>
 
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 int main() {
+  // ----------------------------------------
+  // This is for the quickstart example.
+  // ----------------------------------------
+
+  svector::Vector<2> vector2; // creates a 2D-vector
+  svector::Vector2D
+      vector2d; // creates a 2D-vector with 2D-specific functionality
+
+  svector::Vector<3> vector3; // creates a 3D-vector
+  svector::Vector3D
+      vector3d; // creates a 3D-vector with 3D-specific functionality
+
+  svector::Vector<4> vector4; // creates a 4D-vector
+
+  // ----------------------------------------
+  // This is for the basic examples.
+  // ----------------------------------------
+
   std::cout << "INITIALIZATION TEST" << std::endl;
 
   svector::Vector2D zero2d; // <0, 0>
@@ -29,9 +53,9 @@ int main() {
   // make_vector() handles it the same way as it would handle a std::vector that
   // has too few/many elements.
 
-  std::cout << vec_from_std_array.toString() << std::endl;  // <1, 2, 3, 5, 2>
-  std::cout << vec_from_std_vector.toString() << std::endl; // <1, 0>
-  std::cout << vec_from_initializer_list.toString() << std::endl; // <1, 4>
+  std::cout << vec_from_std_array.toString() << std::endl;  // "<1, 2, 3, 5, 2>"
+  std::cout << vec_from_std_vector.toString() << std::endl; // "<1, 0>"
+  std::cout << vec_from_initializer_list.toString() << std::endl; // "<1, 4>"
 
   std::cout << "TO STRING TEST" << std::endl;
   std::cout << zero2d.toString() << std::endl; // "<0.000, 0.000>"
@@ -39,25 +63,25 @@ int main() {
 
   std::cout << "PROPERTIES TEST" << std::endl;
   // components of the vector
-  std::cout << v2d.x() << " " // 2.000
-            << v2d.y() << " " // 4.000
+  std::cout << v2d.x() << " " // "2"
+            << v2d.y() << " " // "4"
             << std::endl;
 
-  std::cout << v3d.x() << " " // 2.000
-            << v3d.y() << " " // 4.000
-            << v3d.z() << " " // 5.000
+  std::cout << v3d.x() << " " // "2"
+            << v3d.y() << " " // "4"
+            << v3d.z() << " " // "5"
             << std::endl;
 
   // 2D magnitude and angle from horizontal, in radians
-  std::cout << v2d.magn() << std::endl;  // 4.472
-  std::cout << v2d.angle() << std::endl; // 1.107
+  std::cout << v2d.magn() << std::endl;  // "4.472"
+  std::cout << v2d.angle() << std::endl; // "1.107"
 
   // 3D magnitude and angle from x-axis (ALPHA), y-axis (BETA),
   // and z-axis (GAMMA) in radians
-  std::cout << v3d.magn() << std::endl;                  // 6.708
-  std::cout << v3d.angle<svector::ALPHA>() << std::endl; // 1.268
-  std::cout << v3d.angle<svector::BETA>() << std::endl;  // 0.9322
-  std::cout << v3d.angle<svector::GAMMA>() << std::endl; // 0.730
+  std::cout << v3d.magn() << std::endl;                  // "6.708"
+  std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
+  std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
+  std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
@@ -66,6 +90,24 @@ int main() {
 
   std::cout << v2d.toString() << std::endl; // "<4.000, 4.000>"
   std::cout << v3d.toString() << std::endl; // "<2.000, 5.000, 3.000>"
+
+  // set component values
+  v2d[0] = 2;
+  v2d[1] = 4; // v2d is now <2, 4>
+
+  v3d[0] = 2;
+  v3d[1] = 4;
+  v3d[2] = 5; // v3d is now <2, 4, 5>
+
+  // components of the vector
+  std::cout << v2d[0] << " " // "2"
+            << v2d[1] << " " // "4"
+            << std::endl;
+
+  std::cout << v3d[0] << " " // "2"
+            << v3d[1] << " " // "4"
+            << v3d[2] << " " // "5"
+            << std::endl;
 
   std::cout << "OPERATIONS TEST" << std::endl;
 
@@ -98,7 +140,7 @@ int main() {
   inplacev *= 5;
   inplacev /= 7;
 
-  std::cout << inplacev.toString() << std::endl; // <2.143, 5.714>
+  std::cout << inplacev.toString() << std::endl; // "<2.143, 5.714>"
 
   std::cout << "EQUALITY TEST" << std::endl;
   svector::Vector2D lhs1(2, 5);

@@ -2,8 +2,14 @@
 
 #include <gtest/gtest.h>
 
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <regex>
 #include <utility>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 TEST(ConstructorTest2D, ZeroConstructorTest) {
   svector::Vector2D vector;
@@ -52,7 +58,7 @@ TEST(SetterTest2D, SetterYTest) {
 TEST(StringTest2D, StringTest) {
   svector::Vector2D vector(3.52, -5.6);
 
-  std::regex r("<3\.520*, -5\.60*>");
+  std::regex r("<3\\.520*, -5\\.60*>");
 
   EXPECT_TRUE(std::regex_match(vector.toString(), r));
 }

@@ -41,7 +41,7 @@ struct EmbVec2D {
   EmbVec2D(const EmbVec2D &other) : x(other.x), y(other.y) {}
 
   /**
-   * Move constructor (uses C++ default move constructor)
+   * Move constructor (uses C++ default move constructor).
    */
   EmbVec2D(EmbVec2D &&) noexcept = default;
 
@@ -55,12 +55,12 @@ struct EmbVec2D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator)
+   * Move assignment operator (uses C++ default move assignment operator).
    */
   EmbVec2D &operator=(EmbVec2D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor)
+   * Destructor (uses C++ default destructor).
    */
   virtual ~EmbVec2D() = default;
 
@@ -139,7 +139,7 @@ struct EmbVec3D {
   EmbVec3D(const EmbVec3D &other) : x(other.x), y(other.y), z(other.z) {}
 
   /**
-   * Move constructor (uses C++ default move constructor)
+   * Move constructor (uses C++ default move constructor).
    */
   EmbVec3D(EmbVec3D &&) noexcept = default;
 
@@ -154,12 +154,12 @@ struct EmbVec3D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator)
+   * Move assignment operator (uses C++ default move assignment operator).
    */
   EmbVec3D &operator=(EmbVec3D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor)
+   * Destructor (uses C++ default destructor).
    */
   virtual ~EmbVec3D() = default;
 

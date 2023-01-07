@@ -1,7 +1,7 @@
 Extending
 =========
 
-To go beyond only 2D and 3D, you can extend the ``Vector``` base class (the 2D and 3D vector classes extend this base class as well). `Vector` is a template class, where the template takes in the number of dimensions the vector has:
+To go beyond only 2D and 3D, you can extend the ``Vector`` base class (the 2D and 3D vector classes extend this base class as well). ``Vector`` is a template class, where the template takes in the number of dimensions the vector has:
 
 .. code-block:: cpp
 
@@ -23,7 +23,7 @@ The ``Vector`` base class provides a protected variable, ``m_components``, an ``
 - ``magn()``: finds the magnitude of a vector
 - ``normalize()``: normalizes a vector
 - ``numDimensions()``: determines the number of dimensions in a vector
-- ``operator[](index)``: returns dimension `index`'s component of a vector
+- ``operator[](index)``: returns dimension ``index``'s component of a vector
 
 Note that the binary operations with another vector require vectors **that have the same dimension**.
 
@@ -35,11 +35,11 @@ The base class provides these constructors:
 
 You can inherit them using ``using svector::Vector<D>::Vector`` or write your own constructors.
 
-These methods are virtual and could be overridden:
+These methods are virtual and can be overridden:
 
 - ``std::string toString()``: converts vector to a string format
 
-To make the operators work, you must include a constructor that takes in a base class:
+To make the operators work (without needing a downcast), you must include a constructor that takes in a base class:
 
 .. code-block:: cpp
 

@@ -41,7 +41,7 @@ struct Vec2D {
   Vec2D(const Vec2D &other) : x(other.x), y(other.y) {}
 
   /**
-   * Move constructor (uses C++ default move constructor)
+   * Move constructor (uses C++ default move constructor).
    */
   Vec2D(Vec2D &&) noexcept = default;
 
@@ -55,12 +55,12 @@ struct Vec2D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator)
+   * Move assignment operator (uses C++ default move assignment operator).
    */
   Vec2D &operator=(Vec2D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor)
+   * Destructor (uses C++ default destructor).
    */
   virtual ~Vec2D() = default;
 
@@ -139,7 +139,7 @@ struct Vec3D {
   Vec3D(const Vec3D &other) : x(other.x), y(other.y), z(other.z) {}
 
   /**
-   * Move constructor (uses C++ default move constructor)
+   * Move constructor (uses C++ default move constructor).
    */
   Vec3D(Vec3D &&) noexcept = default;
 
@@ -154,12 +154,12 @@ struct Vec3D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator)
+   * Move assignment operator (uses C++ default move assignment operator).
    */
   Vec3D &operator=(Vec3D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor)
+   * Destructor (uses C++ default destructor).
    */
   virtual ~Vec3D() = default;
 

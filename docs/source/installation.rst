@@ -6,16 +6,23 @@ These are different ways you can install simplevectors.
 Simple Install
 --------------
 
-The simplest way is to download the single-header `simplevectors.hpp` file from the releases page. To include the file, simply put the path to the header file.
+The simplest way is to download the single-header ``simplevectors.hpp`` file from the releases page. To include the file, simply put the path to the header file.
 
 .. code-block:: cpp
 
    #include "path/to/simplevectors.hpp"
 
 CMake
-~~~~~
+-----
 
-Alternatively, you can use CMake to install the library:
+Alternatively, you can use CMake to install the library. First install the library onto your system:
+
+.. code-block:: text
+
+   $ cmake -B build -DSVECTOR_INSTALL=1 -DCMAKE_BUILD_TYPE=Release
+   $ cmake --build build --target install
+
+Then, place the code below into your ``CMakeLists.txt``:
 
 .. code-block:: cmake
 
@@ -27,7 +34,7 @@ Alternatively, you can use CMake to install the library:
    add_executable(main main.cpp)
    target_link_libraries(main PRIVATE simplevectors::simplevectors)
 
-If you do this, the include path will be slightly different:
+If you do follow these instruction steps, the include path will be slightly different:
 
 .. code-block:: cpp
 

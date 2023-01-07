@@ -90,7 +90,7 @@ public:
   }
 
   /**
-   * Move constructor (uses C++ default move constructor)
+   * Move constructor (uses C++ default move constructor).
    */
   Vector(Vector<D, T> &&) noexcept = default;
 
@@ -107,19 +107,19 @@ public:
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator)
+   * Move assignment operator (uses C++ default move assignment operator).
    */
   Vector<D, T> &operator=(Vector<D, T> &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor)
+   * Destructor (uses C++ default destructor).
    */
   virtual ~Vector() = default;
 
   /**
    * String form; can be used for printing.
    *
-   * @returns string form of vector.
+   * @returns The string form of the vector.
    */
   virtual std::string toString() const {
     std::string str = "<";
@@ -353,7 +353,7 @@ public:
   /**
    * Gets the magnitude of the vector.
    *
-   * @returns magnitude of vector.
+   * @returns The magnitude of the vector.
    */
   T magn() const {
     T sum_of_squares = 0;
@@ -375,7 +375,7 @@ public:
   Vector<D, T> normalize() const { return (*this) / this->magn(); }
 
   /**
-   * Gets number of dimensions.
+   * Gets the number of dimensions.
    *
    * @returns Number of dimensions.
    */
@@ -404,7 +404,7 @@ public:
    * Gets a reference to a specific component of the vector given the dimension
    * number.
    *
-   * Throws an out_of_range exception if given number is out of bounds.
+   * Throws an out_of_range exception if the given number is out of bounds.
    *
    * @param index The dimension number.
    *
@@ -417,7 +417,7 @@ public:
   /**
    * Sets a certain component of the vector given the dimension number.
    *
-   * Throws an out_of_range exception if given number is out of bounds.
+   * Throws an out_of_range exception if the given number is out of bounds.
    *
    * @param index The dimension number.
    */
@@ -543,16 +543,21 @@ private:
    *
    * @param other The other vector to compare to.
    *
-   * @returns -1 if compares less, 0 if compares equal, and 1 if compares
-   * greater
+   * @returns -1 if the current vector compares less, 0 if the current vector
+   * compares equal, and 1 if the current vector compares greater.
    */
   template <std::size_t D2, typename T2>
   std::int8_t compare(const Vector<D2, T2> &other) const noexcept {
     std::size_t min_dim = std::min(D, D2);
     std::size_t counter = 0;
 
-    // check dimensions first
+// to suppress MSVC warning
+#ifdef _MSC_VER
+    if constexpr (D != D2) {
+#else
     if (D != D2) {
+#endif
+      // check dimensions first
       return D < D2 ? -1 : 1;
     }
 

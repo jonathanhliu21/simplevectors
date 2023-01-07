@@ -72,7 +72,7 @@ public:
    *
    * The angle will be in the range (-π, π].
    *
-   * @returns angle of the vector.
+   * @returns The angle of the vector.
    */
   double angle() const { return std::atan2(this->y(), this->x()); }
 
@@ -85,7 +85,7 @@ public:
    *
    * @param ang the angle to rotate the vector, in radians.
    *
-   * @returns a new, rotated vector.
+   * @returns A new, rotated vector.
    */
   Vector2D rotate(const double ang) const {
     //
@@ -102,14 +102,14 @@ public:
   }
 
   /**
-   * Converts components of vector to an object with a constructor
+   * Converts the components of the vector to an object with a constructor
    * that has two parameters.
    *
    * For example, this method can be used to convert the components of
    * a 2D vector into a `pair<double, double>`, or a struct with two
    * variables and a constructor for those two variables.
    *
-   * @returns Converted value.
+   * @returns The converted value.
    */
   template <typename T> T componentsAs() const {
     return T{this->x(), this->y()};

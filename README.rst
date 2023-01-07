@@ -1,5 +1,5 @@
-Simplevectors Documentation
-===========================
+Simplevectors
+=============
 
 Simple, embeddable, and extendable vector implementations in C++.
 
@@ -39,14 +39,4 @@ License
 -------
 
 MIT License (© 2022 Jonathan Liu)
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   installation
-   basic_usage
-   extending
-   embedding
-   api/library_root
 

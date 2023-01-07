@@ -100,20 +100,20 @@ public:
 
   /**
    * Converts components of vector to an object with a constructor
-   * that has two parameters.
+   * that has three parameters.
    *
    * For example, this method can be used to convert the components of
-   * a 2D vector into a `pair<double, double>`, or a struct with two
-   * variables and a constructor for those two variables.
+   * a 3D vector into a struct with three
+   * variables and a constructor for those three variables.
    *
-   * @returns Converted value.
+   * @returns The converted value.
    */
   template <typename T> T componentsAs() const {
     return T{this->x(), this->y(), this->z()};
   }
 
   /**
-   * Converts angles of vector to an object with a constructor that
+   * Converts the angles of vector to an object with a constructor that
    * has three parameters.
    *
    * For example, this method can be used to convert the angles
