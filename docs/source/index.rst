@@ -14,6 +14,12 @@ Simple, embeddable, and extendable vector implementations in C++.
     :target: https://simplevectors.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+Links
+-----
+
+- Source Code: `<https://github.com/jonyboi396825/simplevectors>`_
+- Documentation: `<https://simplevectors.readthedocs.io/en/latest/>`_
+
 Quickstart
 ----------
 
