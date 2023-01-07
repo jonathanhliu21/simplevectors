@@ -1,7 +1,7 @@
 Simplevectors Documentation
 ===========================
 
-Simple vector implementations in C++.
+Simple, embeddable, and extendable vector implementations in C++.
 
 **NOTE**: C++11 or higher is needed for this library.
 
@@ -14,35 +14,26 @@ Simple vector implementations in C++.
     :target: https://simplevectors.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-Installation
-------------
+Quickstart
+----------
 
-The simplest way is to download the single-header `simplevectors.hpp` file from the releases page. To include the file, simply put the path to the header file.
+This is a very basic example of simplevectors.
 
-.. code-block:: cpp
+.. code:: cpp
 
    #include "path/to/simplevectors.hpp"
 
-CMake
-~~~~~
+   int main(){
+      svector::Vector<2> vector2; // creates a 2D-vector
+      svector::Vector2D
+          vector2d; // creates a 2D-vector with 2D-specific functionality
 
-Alternatively, you can use CMake to install the library:
+      svector::Vector<3> vector3; // creates a 3D-vector
+      svector::Vector3D
+          vector3d; // creates a 3D-vector with 3D-specific functionality
 
-.. code-block:: cmake
-
-   cmake_minimum_required(VERSION 3.16.3)
-   project(MyProject LANGUAGES CXX)
-
-   find_package(simplevectors REQUIRED)
-
-   add_executable(main main.cpp)
-   target_link_libraries(main PRIVATE simplevectors::simplevectors)
-
-If you do this, the include path will be slightly different:
-
-.. code-block:: cpp
-
-   #include <simplevectors/vectors.hpp>
+      svector::Vector<4> vector4; // creates a 4D-vector
+   }
 
 License
 -------

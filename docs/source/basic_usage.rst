@@ -1,11 +1,13 @@
 Basic Usage
 ===========
 
-This section covers basic usage of vectors. For more details, read the docstrings in the source code files.
+This section covers basic usage of vectors with ``Vector2D`` and ``Vector3D`` objects. For more details, see the :doc:`/api/library_root`.
 
 Everything is under the namespace ``svector``.
 
-All of the examples below (except for initialization, printing, and exceptions specifically noted) show the methods of each vector. For each method, there is also a function under the `svector` namespace that takes in a vector object and the arguments for the corresponding method. For example:
+The examples below are combined in the ``example/basic_examples.cpp`` file in the source code.
+
+All of the examples below (except for initialization, printing, and those specifically noted) show the methods of the vector object. For each method, there is also a function under the `svector` namespace that takes in a vector object and the arguments for the corresponding method. For example:
 
 .. code-block:: cpp
 
@@ -37,7 +39,7 @@ Below are examples of zero initialization and initializing with values.
 Using ``make_vector()``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also initialize a vector in a functional manner by using the ``make_vector()`` function. This function can be used to initialize a vector from an ``std::array``, ``std::vector``, or an initializer list. Note that if you are using ``make_vector`` to initialize from a ``std::vector`` or an initializer list, then you need to specify the number of dimensions as a template argument. If you are using an initializer list, you also need to specify the type of vector.
+You can also initialize a vector in a functional manner by using the ``make_vector()`` function. This function can be used to initialize a vector from an ``std::array``, ``std::vector``, or an initializer list. Note that if you are using ``make_vector`` to initialize from a ``std::vector`` or an initializer list, then you need to specify the number of dimensions as a template argument. If you are using an initializer list, you also need to specify the type of the vector elements.
 
 .. code-block:: cpp
 
@@ -78,35 +80,30 @@ The properties are shown in the code snippet below.
 .. code-block:: cpp
 
   // components of the vector
-  std::cout << v2d.x() << " " // 2.000
-            << v2d.y() << " " // 4.000
+  std::cout << v2d.x() << " " // "2"
+            << v2d.y() << " " // "4"
             << std::endl;
 
-  std::cout << v3d.x() << " " // 2.000
-            << v3d.y() << " " // 4.000
-            << v3d.z() << " " // 5.000
+  std::cout << v3d.x() << " " // "2"
+            << v3d.y() << " " // "4"
+            << v3d.z() << " " // "5"
             << std::endl;
 
   // 2D magnitude and angle from horizontal, in radians
-  // Angle ranges from (-π, π]
-  std::cout << v2d.magn() << std::endl;  // 4.472
-  std::cout << v2d.angle() << std::endl; // 1.107
+  std::cout << v2d.magn() << std::endl;  // "4.472"
+  std::cout << v2d.angle() << std::endl; // "1.107"
 
   // 3D magnitude and angle from x-axis (ALPHA), y-axis (BETA),
   // and z-axis (GAMMA) in radians
-  // Angles range from [0, π]
-  std::cout << v3d.magn() << std::endl;                  // 6.708
-  std::cout << v3d.angle<svector::ALPHA>() << std::endl; // 1.268
-  std::cout << v3d.angle<svector::BETA>() << std::endl;  // 0.932
-  std::cout << v3d.angle<svector::GAMMA>() << std::endl; // 0.730
+  std::cout << v3d.magn() << std::endl;                  // "6.708"
+  std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
+  std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
+  std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
   v3d.y(5);
   v3d.z(3); // v3d is now <2, 5, 3>
-
-  std::cout << v2d.toString() << std::endl; // "<4.000, 4.000>"
-  std::cout << v3d.toString() << std::endl; // "<2.000, 5.000, 3.000>"
 
 Note that the functional equivalent for getting the angles of a 3D vector is slightly different:
 
@@ -115,6 +112,28 @@ Note that the functional equivalent for getting the angles of a 3D vector is sli
   std::cout << svector::alpha(v3d) << std::endl; // alpha angle
   std::cout << svector::beta(v3d) << std::endl;  // beta angle
   std::cout << svector::gamma(v3d) << std::endl; // gamma angle
+
+You can also access the x, y, and z components using the ``[]`` operator. In this case, the 0th index would correspond to the x-value, the 1st index would correspond to the y-value, and the 2nd index would correspond to the z-value. This also works on higher-dimensional vectors. There is no functional equivalent to this operator.
+
+.. code-block:: cpp
+
+  // set component values
+  v2d[0] = 2;
+  v2d[1] = 4; // v2d is now <2, 4>
+
+  v3d[0] = 2;
+  v3d[1] = 4;
+  v3d[2] = 5; // v3d is now <2, 4, 5>
+
+  // components of the vector
+  std::cout << v2d[0] << " " // same as x(), will print out "2"
+            << v2d[1] << " " // same as y(), will print out "4"
+            << std::endl;
+
+  std::cout << v3d[0] << " " // same as x(), will print out "2"
+            << v3d[1] << " " // same as y(), will print out "4"
+            << v3d[2] << " " // same as z(), will print out "5"
+            << std::endl;
 
 Operations
 ----------
@@ -152,7 +171,7 @@ Vectors can be added, subtracted, multiplied, or divided in place.
   inplacev *= 5;
   inplacev /= 7;
 
-  std::cout << inplacev.toString() << std::endl; // <2.143, 5.714>
+  std::cout << inplacev.toString() << std::endl; // "<2.143, 5.714>"
 
 Equality
 --------
