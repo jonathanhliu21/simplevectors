@@ -255,8 +255,8 @@ inline Vector2D rotate(const Vector2D &v, const double ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
-  double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
+  const double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
+  const double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
 
   return Vector2D{xPrime, yPrime};
 }
@@ -270,9 +270,9 @@ inline Vector2D rotate(const Vector2D &v, const double ang) {
  * @returns The cross product of the two vectors.
  */
 inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
-  double newx = y(lhs) * z(rhs) - z(lhs) * y(rhs);
-  double newy = z(lhs) * x(rhs) - x(lhs) * z(rhs);
-  double newz = x(lhs) * y(rhs) - y(lhs) * x(rhs);
+  const double newx = y(lhs) * z(rhs) - z(lhs) * y(rhs);
+  const double newy = z(lhs) * x(rhs) - x(lhs) * z(rhs);
+  const double newz = x(lhs) * y(rhs) - y(lhs) * x(rhs);
 
   return Vector3D{newx, newy, newz};
 }
@@ -329,9 +329,9 @@ inline Vector3D rotateAlpha(const Vector3D &v, const double &ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  double xPrime = x(v);
-  double yPrime = y(v) * std::cos(ang) - z(v) * std::sin(ang);
-  double zPrime = y(v) * std::sin(ang) + z(v) * std::cos(ang);
+  const double xPrime = x(v);
+  const double yPrime = y(v) * std::cos(ang) - z(v) * std::sin(ang);
+  const double zPrime = y(v) * std::sin(ang) + z(v) * std::cos(ang);
 
   return Vector3D{xPrime, yPrime, zPrime};
 }
@@ -355,9 +355,9 @@ inline Vector3D rotateBeta(const Vector3D &v, const double &ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  double xPrime = x(v) * std::cos(ang) + z(v) * std::sin(ang);
-  double yPrime = y(v);
-  double zPrime = -x(v) * std::sin(ang) + z(v) * std::cos(ang);
+  const double xPrime = x(v) * std::cos(ang) + z(v) * std::sin(ang);
+  const double yPrime = y(v);
+  const double zPrime = -x(v) * std::sin(ang) + z(v) * std::cos(ang);
 
   return Vector3D{xPrime, yPrime, zPrime};
 }
@@ -381,9 +381,9 @@ inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
   // |  0         0        1| |z|
   //
 
-  double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
-  double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
-  double zPrime = z(v);
+  const double xPrime = x(v) * std::cos(ang) - y(v) * std::sin(ang);
+  const double yPrime = x(v) * std::sin(ang) + y(v) * std::cos(ang);
+  const double zPrime = z(v);
 
   return Vector3D{xPrime, yPrime, zPrime};
 }

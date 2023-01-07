@@ -370,8 +370,8 @@ inline EmbVec2D rotate(const EmbVec2D &vec, const double ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
+  const double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
+  const double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
 
   return EmbVec2D{xPrime, yPrime};
 }
@@ -486,9 +486,9 @@ inline double dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  * @returns The crossed 3D vector.
  */
 inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
-  double newx = lhs.y * rhs.z - lhs.z * rhs.y;
-  double newy = lhs.z * rhs.x - lhs.x * rhs.z;
-  double newz = lhs.x * rhs.y - lhs.y * rhs.x;
+  const double newx = lhs.y * rhs.z - lhs.z * rhs.y;
+  const double newy = lhs.z * rhs.x - lhs.x * rhs.z;
+  const double newz = lhs.x * rhs.y - lhs.y * rhs.x;
 
   return EmbVec3D{newx, newy, newz};
 }
@@ -567,9 +567,9 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const double ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  double xPrime = vec.x;
-  double yPrime = vec.y * cos(ang) - vec.z * sin(ang);
-  double zPrime = vec.y * sin(ang) + vec.z * cos(ang);
+  const double xPrime = vec.x;
+  const double yPrime = vec.y * cos(ang) - vec.z * sin(ang);
+  const double zPrime = vec.y * sin(ang) + vec.z * cos(ang);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -593,9 +593,9 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const double ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  double xPrime = vec.x * cos(ang) + vec.z * sin(ang);
-  double yPrime = vec.y;
-  double zPrime = -vec.x * sin(ang) + vec.z * cos(ang);
+  const double xPrime = vec.x * cos(ang) + vec.z * sin(ang);
+  const double yPrime = vec.y;
+  const double zPrime = -vec.x * sin(ang) + vec.z * cos(ang);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -619,9 +619,9 @@ inline EmbVec3D rotateGamma(const EmbVec3D &vec, const double ang) {
   // |  0         0        1| |z|
   //
 
-  double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
-  double zPrime = vec.z;
+  const double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
+  const double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
+  const double zPrime = vec.z;
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }

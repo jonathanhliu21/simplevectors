@@ -91,9 +91,9 @@ public:
    * @returns The cross product of the two vectors.
    */
   Vector3D cross(const Vector3D &other) const {
-    double newx = this->y() * other.z() - this->z() * other.y();
-    double newy = this->z() * other.x() - this->x() * other.z();
-    double newz = this->x() * other.y() - this->y() * other.x();
+    const double newx = this->y() * other.z() - this->z() * other.y();
+    const double newy = this->z() * other.x() - this->x() * other.z();
+    const double newz = this->x() * other.y() - this->y() * other.x();
 
     return Vector3D{newx, newy, newz};
   }
@@ -217,9 +217,9 @@ private:
      * |0  sin(ang)   cos(ang)| |z|
      */
 
-    double xPrime = this->x();
-    double yPrime = this->y() * std::cos(ang) - this->z() * std::sin(ang);
-    double zPrime = this->y() * std::sin(ang) + this->z() * std::cos(ang);
+    const double xPrime = this->x();
+    const double yPrime = this->y() * std::cos(ang) - this->z() * std::sin(ang);
+    const double zPrime = this->y() * std::sin(ang) + this->z() * std::cos(ang);
 
     return Vector3D{xPrime, yPrime, zPrime};
   }
@@ -236,9 +236,10 @@ private:
      * |−sin(ang)  0  cos(ang)| |z|
      */
 
-    double xPrime = this->x() * std::cos(ang) + this->z() * std::sin(ang);
-    double yPrime = this->y();
-    double zPrime = -this->x() * std::sin(ang) + this->z() * std::cos(ang);
+    const double xPrime = this->x() * std::cos(ang) + this->z() * std::sin(ang);
+    const double yPrime = this->y();
+    const double zPrime =
+        -this->x() * std::sin(ang) + this->z() * std::cos(ang);
 
     return Vector3D{xPrime, yPrime, zPrime};
   }
@@ -255,9 +256,9 @@ private:
      * |  0         0        1| |z|
      */
 
-    double xPrime = this->x() * std::cos(ang) - this->y() * std::sin(ang);
-    double yPrime = this->x() * std::sin(ang) + this->y() * std::cos(ang);
-    double zPrime = this->z();
+    const double xPrime = this->x() * std::cos(ang) - this->y() * std::sin(ang);
+    const double yPrime = this->x() * std::sin(ang) + this->y() * std::cos(ang);
+    const double zPrime = this->z();
 
     return Vector3D{xPrime, yPrime, zPrime};
   }

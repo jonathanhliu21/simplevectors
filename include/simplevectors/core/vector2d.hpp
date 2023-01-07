@@ -95,8 +95,8 @@ public:
     // | sin(ang)    cos(ang) | |y|
     //
 
-    double xPrime = this->x() * std::cos(ang) - this->y() * std::sin(ang);
-    double yPrime = this->x() * std::sin(ang) + this->y() * std::cos(ang);
+    const double xPrime = this->x() * std::cos(ang) - this->y() * std::sin(ang);
+    const double yPrime = this->x() * std::sin(ang) + this->y() * std::cos(ang);
 
     return Vector2D{xPrime, yPrime};
   }

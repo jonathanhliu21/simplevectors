@@ -381,8 +381,8 @@ inline Vec2D rotate(const Vec2D &vec, const double ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
-  double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
+  const double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
+  const double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
 
   return Vec2D{xPrime, yPrime};
 }
@@ -511,9 +511,9 @@ inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
  * @returns The crossed 3D vector.
  */
 inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
-  double newx = lhs.y * rhs.z - lhs.z * rhs.y;
-  double newy = lhs.z * rhs.x - lhs.x * rhs.z;
-  double newz = lhs.x * rhs.y - lhs.y * rhs.x;
+  const double newx = lhs.y * rhs.z - lhs.z * rhs.y;
+  const double newy = lhs.z * rhs.x - lhs.x * rhs.z;
+  const double newz = lhs.x * rhs.y - lhs.y * rhs.x;
 
   return Vec3D{newx, newy, newz};
 }
@@ -596,9 +596,9 @@ inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  double xPrime = vec.x;
-  double yPrime = vec.y * std::cos(ang) - vec.z * std::sin(ang);
-  double zPrime = vec.y * std::sin(ang) + vec.z * std::cos(ang);
+  const double xPrime = vec.x;
+  const double yPrime = vec.y * std::cos(ang) - vec.z * std::sin(ang);
+  const double zPrime = vec.y * std::sin(ang) + vec.z * std::cos(ang);
 
   return Vec3D{xPrime, yPrime, zPrime};
 }
@@ -622,9 +622,9 @@ inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  double xPrime = vec.x * std::cos(ang) + vec.z * std::sin(ang);
-  double yPrime = vec.y;
-  double zPrime = -vec.x * std::sin(ang) + vec.z * std::cos(ang);
+  const double xPrime = vec.x * std::cos(ang) + vec.z * std::sin(ang);
+  const double yPrime = vec.y;
+  const double zPrime = -vec.x * std::sin(ang) + vec.z * std::cos(ang);
 
   return Vec3D{xPrime, yPrime, zPrime};
 }
@@ -648,9 +648,9 @@ inline Vec3D rotateGamma(const Vec3D &vec, const double ang) {
   // |  0         0        1| |z|
   //
 
-  double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
-  double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
-  double zPrime = vec.z;
+  const double xPrime = vec.x * std::cos(ang) - vec.y * std::sin(ang);
+  const double yPrime = vec.x * std::sin(ang) + vec.y * std::cos(ang);
+  const double zPrime = vec.z;
 
   return Vec3D{xPrime, yPrime, zPrime};
 }
