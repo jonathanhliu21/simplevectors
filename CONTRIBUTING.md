@@ -76,7 +76,7 @@ To lint your code, you need `clang-tidy` and `clang-format`.
 2. Run
 
 ```text
-$ cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+$ cmake .. -DSVECTOR_BUILD_EXAMPLE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS="-Werror -Wall -Wextra"
 ```
 
 3. Run `make`.
