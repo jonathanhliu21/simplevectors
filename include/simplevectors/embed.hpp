@@ -38,7 +38,7 @@ struct Vec2D {
   /**
    * Copy constructor.
    */
-  Vec2D(const Vec2D &other) : x(other.x), y(other.y) {}
+  Vec2D(const Vec2D &other) = default;
 
   /**
    * Move constructor (uses C++ default move constructor).
@@ -141,7 +141,7 @@ struct Vec3D {
   /**
    * Copy constructor.
    */
-  Vec3D(const Vec3D &other) : x(other.x), y(other.y), z(other.z) {}
+  Vec3D(const Vec3D &other) = default;
 
   /**
    * Move constructor (uses C++ default move constructor).

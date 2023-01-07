@@ -38,7 +38,7 @@ struct EmbVec2D {
   /**
    * Copy constructor.
    */
-  EmbVec2D(const EmbVec2D &other) : x(other.x), y(other.y) {}
+  EmbVec2D(const EmbVec2D &other) = default;
 
   /**
    * Move constructor (uses C++ default move constructor).
@@ -141,7 +141,7 @@ struct EmbVec3D {
   /**
    * Copy constructor.
    */
-  EmbVec3D(const EmbVec3D &other) : x(other.x), y(other.y), z(other.z) {}
+  EmbVec3D(const EmbVec3D &other) = default;
 
   /**
    * Move constructor (uses C++ default move constructor).
