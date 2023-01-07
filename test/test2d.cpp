@@ -11,6 +11,14 @@
 #define M_PI 3.14159265358979323846
 #endif
 
+#ifndef M_PI_2
+#define M_PI_2 M_PI / 2
+#endif
+
+#ifndef M_PI_4
+#define M_PI_4 M_PI / 4
+#endif
+
 TEST(ConstructorTest2D, ZeroConstructorTest) {
   svector::Vector2D vector;
   EXPECT_EQ(vector.x(), 0);
