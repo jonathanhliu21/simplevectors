@@ -71,7 +71,7 @@ Complex<T> operator/(const Complex<T> &lhs, const Complex<T> &rhs) {
   return Complex<T>(re, im);
 }
 
-// Application of complex numbers: AC circuits
+// Application of complex numbers: sinusoidal AC circuits
 
 /**
  * Finds the total sum wave of 2 sinusoidal AC sources.
@@ -104,8 +104,8 @@ Polar<T> getTotalAC(const Polar<T> source1, const Polar<T> source2) {
  * would be the magnitude of the complex number.
  *
  * @param r The resistance of the circuit.
- * @param xc The capacitive reactance (positive).
- * @param xl The inductive reactance.
+ * @param xc The magnitude of the capacitive reactance (positive).
+ * @param xl The magnitude of the inductive reactance.
  *
  * @returns The total impedence of the circuit.
  */
@@ -116,6 +116,8 @@ Complex<T> getImpedence(const T r, const T xc, const T xl) {
 
 /**
  * Finds the total series impedence given a list of impedences.
+ *
+ * These impedences can be calculated using getImpedence().
  *
  * @param list An initializer list of impedences represented by complex numbers.
  *
@@ -135,6 +137,8 @@ Complex<T> getSeriesImpedence(std::initializer_list<Complex<T>> list) {
 /**
  * Finds the total parallel impedence given a list of impedences.
  *
+ * These impedences can be calculated using getImpedence().
+ *
  * @param list An initializer list of impedences represented by complex numbers.
  *
  * @returns The total impedence of the parallel circuit.
@@ -152,32 +156,93 @@ Complex<T> getParallelImpedence(std::initializer_list<Complex<T>> list) {
 }
 
 /**
- * Calculates the RMS voltage given the impedence and current.
+ * Calculates the voltage given the impedence and current.
  *
- * This is done using Ohm's Law: V_rms = I_rms * Z
+ * This is done using Ohm's Law: V_rms = I_rms * Z. The voltage and current are
+ * represented as polar coordinates with r representing the
+ * amplitudes of the voltage and current and ang representing the phase
+ * shifts. The impedence can be calculated using getImpedence().
  *
- * @param i The RMS current.
+ * @param i The current.
  * @param z The impedence.
  *
- * @returns The RMS voltage, calculated using Ohm's Law.
+ * @returns The voltage, calculated using Ohm's Law.
  */
-template <typename T> T getVoltage(const T i, const Complex<T> z) {
-  T magn = z.magn();
-  return i * magn;
+template <typename T>
+Polar<T> getVoltage(const Polar<T> i, const Complex<T> z) {
+  Complex<T> currentComplex(i);
+  Complex<T> product = i * z;
+  return product.toPolar();
 }
 
 /**
- * Calculates the RMS current given the impedence and voltage.
+ * Calculates the current given the impedence and voltage.
  *
- * This is done using Ohm's Law: V_rms = I_rms * Z
+ * This is done using Ohm's Law: V_rms = I_rms * Z. The voltage and current are
+ * represented as polar coordinates with r representing the
+ * amplitudes of the voltage and current and ang representing the phase
+ * shifts. The impedence can be calculated using getImpedence().
  *
- * @param v The RMS voltage.
+ * @param v The voltage.
  * @param z The impedence.
  *
- * @returns The RMS current, calculated using Ohm's Law.
+ * @returns The current, calculated using Ohm's Law.
  */
-template <typename T> T getCurrent(const T v, const Complex<T> z) {
-  T magn = z.magn();
-  return v / magn;
+template <typename T>
+Polar<T> getCurrent(const Polar<T> v, const Complex<T> z) {
+  Complex<T> voltageComplex(v);
+  Complex<T> quotient = v / z;
+  return quotient.toPolar();
+}
+
+/**
+ * Calculates the apparent power.
+ *
+ * This is done using the formula VA = Irms * Vrms. The voltage and current are
+ * represented as polar coordinates with r representing the
+ * amplitudes of the voltage and current and ang representing the phase
+ * shifts. These must be the RMS voltage and current.
+ *
+ * @param v The RMS voltage.
+ * @param i The RMS current.
+ *
+ * @returns The apparent power, represented as a polar coordinate with r being
+ * the apparent power and ang being the added phase shifts of the voltage and
+ * current.
+ */
+template <typename T>
+Polar<T> getApparentPower(const Polar<T> v, const Polar<T> i) {
+  Complex<T> voltageComplex(v);
+  Complex<T> currentComplex(i);
+
+  Complex<T> powerComplex = voltageComplex * currentComplex;
+
+  return powerComplex.toPolar();
+}
+
+/**
+ * Calculates the power factor.
+ *
+ * This is done by finding the cosine of the phase shift between the voltage and
+ * current. The voltage and current are represented as polar coordinates with r
+ * representing the amplitudes of the voltage and current and ang representing
+ * the phase shifts.
+ *
+ * Since this is the ratio between the real power and apparent power, this
+ * can be used with getApparentPower() to calculate reactive power, real power,
+ * and the reactive factor.
+ *
+ * @param v The voltage.
+ * @param i The current.
+ *
+ * @returns The power factor (should be less than 1).
+ */
+template <typename T> T getReactiveFactor(const Polar<T> v, const Polar<T> i) {
+  Complex<T> voltageComplex(v);
+  Complex<T> currentComplex(i);
+
+  // cosine of angle = (a dot b) / (magn(a) * magn(b))
+  return voltageComplex.dot(currentComplex) /
+         (voltageComplex.magn() * currentComplex.magn());
 }
 } // namespace svector_complex_example

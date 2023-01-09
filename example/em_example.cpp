@@ -2,12 +2,19 @@
  * https://en.wikipedia.org/wiki/Electromagnetic_radiation
  */
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #include "simplevectors/vectors.hpp"
 
 namespace svector_em_example {
 const double speed_of_light = 299792458; // m/s
 
-enum EM_Spectrum {
+enum EMSpectrum {
   GAMMA,
   XRAY,
   ULTRAVIOLET,
@@ -17,7 +24,7 @@ enum EM_Spectrum {
   RADIO
 };
 
-enum Visible_Spectrum {
+enum VisibleSpectrum {
   VIOLET,
   BLUE,
   CYAN,
@@ -36,7 +43,7 @@ enum Visible_Spectrum {
  *
  * @returns Wavelength, in meters.
  */
-double get_wavelength(double frequency) { return speed_of_light / frequency; }
+double getWavelength(double frequency) { return speed_of_light / frequency; }
 
 /**
  * Gets frequency given wavelength; uses c/λ
@@ -45,7 +52,7 @@ double get_wavelength(double frequency) { return speed_of_light / frequency; }
  *
  * @returns Frequency, in hertz.
  */
-double get_frequency(double wavelength) { return speed_of_light / wavelength; }
+double getFrequency(double wavelength) { return speed_of_light / wavelength; }
 
 /**
  * Gets wave type based on EM Spectrum.
@@ -60,7 +67,7 @@ double get_frequency(double wavelength) { return speed_of_light / wavelength; }
  *
  * @returns An enum representing the EM wave type.
  */
-EM_Spectrum get_wave_type(double log_frequency) {
+EMSpectrum getWaveType(double log_frequency) {
   if (log_frequency > 20) {
     return GAMMA;
   }
@@ -97,7 +104,7 @@ EM_Spectrum get_wave_type(double log_frequency) {
  *
  * @returns an enum representing the color.
  */
-Visible_Spectrum get_color(double wavelength) {
+VisibleSpectrum getColor(double wavelength) {
   if (wavelength > 750) {
     return IR_OR_LARGER;
   }
@@ -137,9 +144,21 @@ Visible_Spectrum get_color(double wavelength) {
  * @returns A unit 3D vector that is in the direction of the resulting EM
  * wave.
  */
-svector::Vector3D EM_Direction(const svector::Vector3D &E,
-                               const svector::Vector3D &B) {
+svector::Vector3D EMDirection(const svector::Vector3D &E,
+                              const svector::Vector3D &B) {
   svector::Vector3D crossed = E.cross(B);
   return crossed.normalize();
+}
+
+/**
+ * Gets the resonant frequency of an LC circuit.
+ *
+ * @param c The capacitance of the LC circuit.
+ * @param l The inductance of the LC circuit.
+ *
+ * @returns The resonant frequency of the circuit.
+ */
+template <typename T> T getResonantFrequency(T c, T l) {
+  return 1 / (2 * M_PI * std::sqrt(l * c));
 }
 } // namespace svector_em_example
