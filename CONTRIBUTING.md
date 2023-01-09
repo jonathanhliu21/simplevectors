@@ -89,13 +89,21 @@ $ cd ..
 5. Run
 
 ```text
-$ clang-tidy -p build/ scripts/tidy.cpp
-$ clang-tidy -p build/ scripts/tidy_class_operators.cpp
+$ make -C scripts/ lint
 ```
 
 6. To format your C++ code (do not run the command for any other type of file), run
 
 ```text
 $ clang-format -i path/to/file/you/just/changed.hpp
+```
+
+## Generating the Single Header
+
+1. Create a build folder
+2. Run
+
+```text
+$ python3 scripts/combiner.py > build/simplevectors.hpp
 ```
 
