@@ -354,11 +354,21 @@ inline double angle(const EmbVec2D &vec) { return atan2(vec.y, vec.x); }
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 2D vector.
  *
  * @returns Normalized vector.
  */
 inline EmbVec2D normalize(const EmbVec2D &vec) { return vec / magn(vec); }
+
+/**
+ * Determines whether a vector is a zero vector.
+ *
+ * @returns Whether the given vector is a zero vector.
+ */
+inline bool isZero(const EmbVec2D &vec) { return magn(vec) == 0; }
 
 /**
  * Rotates vector by a certain angle.
@@ -519,6 +529,9 @@ inline double magn(const EmbVec3D &vec) {
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D vector.
  *
  * @returns Normalized vector.
@@ -526,37 +539,53 @@ inline double magn(const EmbVec3D &vec) {
 inline EmbVec3D normalize(const EmbVec3D &vec) { return vec / magn(vec); }
 
 /**
+ * Determines whether a vector is a zero vector.
+ *
+ * @returns Whether the given vector is a zero vector.
+ */
+inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
+
+/**
  * Gets α angle.
  *
  * α is the angle between the vector and the x-axis.
+ *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
  *
  * @param vec A 3D Vector.
  *
  * @returns α.
  */
-inline double getAlpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
+inline double alpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
 
 /**
  * Gets β angle.
  *
  * β is the angle between the vector and the y-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D Vector.
  *
  * @returns β.
  */
-inline double getBeta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
+inline double beta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
 
 /**
  * Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D Vector.
  *
  * @returns γ.
  */
-inline double getGamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
+inline double gamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
 
 /**
  * Rotates around x-axis.

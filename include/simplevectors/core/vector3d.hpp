@@ -136,6 +136,9 @@ public:
    *
    * @see svector::AngleDir
    *
+   * @note This method will result in undefined behavior if the vector is a zero
+   * vector (if the magnitude equals zero).
+   *
    * @returns An angle representing the angle you specified.
    */
   template <AngleDir D> double angle() const {
