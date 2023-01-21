@@ -99,11 +99,17 @@ The properties are shown in the code snippet below.
   std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
   std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
   std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
   v3d.y(5);
   v3d.z(3); // v3d is now <2, 5, 3>
+
+  // check if a vector is a zero vector (magnitude is zero)
+  std::cout << (v2d.isZero() ? "true" : "false") << std::endl; // false
+  std::cout << (v3d.isZero() ? "true" : "false") << std::endl; // false
 
 Note that the functional equivalent for getting the angles of a 3D vector is slightly different:
 
@@ -112,6 +118,8 @@ Note that the functional equivalent for getting the angles of a 3D vector is sli
   std::cout << svector::alpha(v3d) << std::endl; // alpha angle
   std::cout << svector::beta(v3d) << std::endl;  // beta angle
   std::cout << svector::gamma(v3d) << std::endl; // gamma angle
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
 You can also access the x, y, and z components using the ``[]`` operator. In this case, the 0th index would correspond to the x-value, the 1st index would correspond to the y-value, and the 2nd index would correspond to the z-value. This also works on higher-dimensional vectors. There is no functional equivalent to this operator.
 
@@ -202,6 +210,9 @@ Below shows an example of vector normalization.
 
   svector::Vector2D norm2D = unnorm2D.normalize(); // <0.6, 0.8>
   svector::Vector3D norm3D = unnorm3D.normalize(); // <0.424, 0.566, 0.707>
+
+
+**NOTE**: ``normalize()`` will result in undefined behavior if the magnitude of the vector is zero.
 
 Rotation 2D
 -----------

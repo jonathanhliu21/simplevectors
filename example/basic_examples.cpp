@@ -90,11 +90,17 @@ int main() {
   std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
   std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
   std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
   v3d.y(5);
   v3d.z(3); // v3d is now <2, 5, 3>
+
+  // check if a vector is a zero vector (magnitude is zero)
+  std::cout << (v2d.isZero() ? "true" : "false") << std::endl; // false
+  std::cout << (v3d.isZero() ? "true" : "false") << std::endl; // false
 
   std::cout << v2d.toString() << std::endl; // "<4.000, 4.000>"
   std::cout << v3d.toString() << std::endl; // "<2.000, 5.000, 3.000>"
