@@ -33,7 +33,7 @@ namespace svector {
  * @returns A vector whose dimensions reflect the elements in the array.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(std::array<T, D> array) {
+Vector<D, T> makeVector(std::array<T, D> array) {
   Vector<D, T> vec;
   for (std::size_t i = 0; i < D; i++) {
     vec[i] = array[i];
@@ -57,7 +57,7 @@ Vector<D, T> make_vector(std::array<T, D> array) {
  * @returns A vector whose dimensions reflect the elements in the std::vector.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(std::vector<T> vector) {
+Vector<D, T> makeVector(std::vector<T> vector) {
   Vector<D, T> vec;
   for (std::size_t i = 0; i < std::min(D, vector.size()); i++) {
     vec[i] = vector[i];
@@ -82,7 +82,7 @@ Vector<D, T> make_vector(std::vector<T> vector) {
  * list.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(const std::initializer_list<T> args) {
+Vector<D, T> makeVector(const std::initializer_list<T> args) {
   Vector<D, T> vec(args);
   return vec;
 }

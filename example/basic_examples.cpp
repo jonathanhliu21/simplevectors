@@ -46,19 +46,19 @@ int main() {
 
   std::array<double, 5> an_std_array = {{1, 2, 3, 5, 2}};
   svector::Vector<5> vec_from_std_array =
-      svector::make_vector(an_std_array); // <1, 2, 3, 5, 2>
+      svector::makeVector(an_std_array); // <1, 2, 3, 5, 2>
 
   std::vector<double> an_std_vector = {1};
   svector::Vector2D vec_from_std_vector =
-      svector::make_vector<2>(an_std_vector); // <1, 0>
+      svector::makeVector<2>(an_std_vector); // <1, 0>
   // If there are too few elements inside the std::vector, then the rest of the
   // dimensions for the vector will be 0. If there are too many, then the vector
   // truncates the dimensions.
 
   svector::Vector2D vec_from_initializer_list =
-      svector::make_vector<2, double>({1, 4, 5}); // <1, 4>
+      svector::makeVector<2, double>({1, 4, 5}); // <1, 4>
   // If there are too few or too many elements inside the initializer list, then
-  // make_vector() handles it the same way as it would handle a std::vector that
+  // makeVector() handles it the same way as it would handle a std::vector that
   // has too few/many elements.
 
   std::cout << vec_from_std_array.toString() << std::endl;  // "<1, 2, 3, 5, 2>"
