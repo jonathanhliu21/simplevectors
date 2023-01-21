@@ -195,3 +195,16 @@ TEST(AtTestV, OutOfBounds) {
   svector::Vector<3> v{2, 5, 3};
   EXPECT_THROW(v.at(4), std::out_of_range);
 }
+
+TEST(IsZeroTestV, IsZeroTestNonZeroDimensionVector) {
+  svector::Vector<3> v{2, 5, 3};
+  EXPECT_TRUE(!v.isZero());
+
+  svector::Vector<3> v2{0, 0, 0};
+  EXPECT_TRUE(v2.isZero());
+}
+
+TEST(IsZeroTestV, IsZeroTestZeroDimensionVector) {
+  svector::Vector<0> v;
+  EXPECT_TRUE(v.isZero());
+}

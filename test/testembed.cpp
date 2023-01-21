@@ -538,7 +538,7 @@ TEST(EmbedXYMagnitudeAngleMatchTest3D, TestMagnitudeGivenXYZ) {
 
 TEST(EmbedXYMagnitudeAngleMatchTest3D, TestAlphaGivenXYZ) {
   Vec3D vector(-3, 2, -6);
-  double ang = getAlpha(vector);
+  double ang = alpha(vector);
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 2.014);
@@ -546,7 +546,7 @@ TEST(EmbedXYMagnitudeAngleMatchTest3D, TestAlphaGivenXYZ) {
 
 TEST(EmbedXYMagnitudeAngleMatchTest3D, TestBetaGivenXYZ) {
   Vec3D vector(-3, 2, -6);
-  double ang = getBeta(vector);
+  double ang = beta(vector);
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 1.281);
@@ -554,7 +554,7 @@ TEST(EmbedXYMagnitudeAngleMatchTest3D, TestBetaGivenXYZ) {
 
 TEST(EmbedXYMagnitudeAngleMatchTest3D, TestGammaGivenXYZ) {
   Vec3D vector(-3, 2, -6);
-  double ang = getGamma(vector);
+  double ang = gamma(vector);
   double ang_r = std::round(ang * 1000.0) / 1000.0;
 
   EXPECT_EQ(ang_r, 2.600);
@@ -636,4 +636,12 @@ TEST(EmbedRotationTest3D, GammaRotation) {
     EXPECT_EQ(std::round(vectorp.z * 1000) / 1000,
               std::round(rotated.z * 1000) / 1000);
   }
+}
+
+TEST(EmbedIsZeroTest, IsZeroTestNonZeroDimensionVector) {
+  svector::Vec3D v{2, 5, 3};
+  EXPECT_TRUE(!isZero(v));
+
+  svector::Vec3D v2{0, 0, 0};
+  EXPECT_TRUE(isZero(v2));
 }

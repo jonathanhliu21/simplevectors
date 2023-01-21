@@ -297,3 +297,16 @@ TEST(RotationTestUtil, GammaRotation) {
               std::round(rotated.z() * 1000) / 1000);
   }
 }
+
+TEST(IsZeroTestUtil, IsZeroTestNonZeroDimensionVector) {
+  svector::Vector<5> v{2, 5, 3};
+  EXPECT_TRUE(!svector::isZero(v));
+
+  svector::Vector<5> v2{0};
+  EXPECT_TRUE(svector::isZero(v2));
+}
+
+TEST(IsZeroTestUtil, IsZeroTestZeroDimensionVector) {
+  svector::Vector<0> v;
+  EXPECT_TRUE(svector::isZero(v));
+}
