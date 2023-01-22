@@ -36,28 +36,28 @@ Below are examples of zero initialization and initializing with values.
   svector::Vector2D v2d(2, 4);    // <2, 4>
   svector::Vector3D v3d(2, 4, 5); // <2, 4, 5>
 
-Using ``make_vector()``
+Using ``makeVector()``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also initialize a vector in a functional manner by using the ``make_vector()`` function. This function can be used to initialize a vector from an ``std::array``, ``std::vector``, or an initializer list. Note that if you are using ``make_vector`` to initialize from a ``std::vector`` or an initializer list, then you need to specify the number of dimensions as a template argument. If you are using an initializer list, you also need to specify the type of the vector elements.
+You can also initialize a vector in a functional manner by using the ``makeVector()`` function. This function can be used to initialize a vector from an ``std::array``, ``std::vector``, or an initializer list. Note that if you are using ``makeVector()`` to initialize from a ``std::vector`` or an initializer list, then you need to specify the number of dimensions as a template argument. If you are using an initializer list, you also need to specify the type of the vector elements.
 
 .. code-block:: cpp
 
   std::array<double, 5> an_std_array = {{1, 2, 3, 5, 2}};
   svector::Vector<5> vec_from_std_array =
-      svector::make_vector(an_std_array); // <1, 2, 3, 5, 2>
+      svector::makeVector(an_std_array); // <1, 2, 3, 5, 2>
 
   std::vector<double> an_std_vector = {1};
   svector::Vector2D vec_from_std_vector =
-      svector::make_vector<2>(an_std_vector); // <1, 0>
+      svector::makeVector<2>(an_std_vector); // <1, 0>
   // If there are too few elements inside the std::vector, then the rest of the
   // dimensions for the vector will be 0. If there are too many, then the vector
   // truncates the dimensions.
 
   svector::Vector2D vec_from_initializer_list =
-      svector::make_vector<2, double>({1, 4, 5}); // <1, 4>
+      svector::makeVector<2, double>({1, 4, 5}); // <1, 4>
   // If there are too few or too many elements inside the initializer list, then
-  // make_vector() handles it the same way as it would handle a std::vector that
+  // makeVector() handles it the same way as it would handle a std::vector that
   // has too few/many elements.
 
 Printing
@@ -99,11 +99,17 @@ The properties are shown in the code snippet below.
   std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
   std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
   std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
   v3d.y(5);
   v3d.z(3); // v3d is now <2, 5, 3>
+
+  // check if a vector is a zero vector (magnitude is zero)
+  std::cout << (v2d.isZero() ? "true" : "false") << std::endl; // false
+  std::cout << (v3d.isZero() ? "true" : "false") << std::endl; // false
 
 Note that the functional equivalent for getting the angles of a 3D vector is slightly different:
 
@@ -112,6 +118,8 @@ Note that the functional equivalent for getting the angles of a 3D vector is sli
   std::cout << svector::alpha(v3d) << std::endl; // alpha angle
   std::cout << svector::beta(v3d) << std::endl;  // beta angle
   std::cout << svector::gamma(v3d) << std::endl; // gamma angle
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
 You can also access the x, y, and z components using the ``[]`` operator. In this case, the 0th index would correspond to the x-value, the 1st index would correspond to the y-value, and the 2nd index would correspond to the z-value. This also works on higher-dimensional vectors. There is no functional equivalent to this operator.
 
@@ -202,6 +210,9 @@ Below shows an example of vector normalization.
 
   svector::Vector2D norm2D = unnorm2D.normalize(); // <0.6, 0.8>
   svector::Vector3D norm3D = unnorm3D.normalize(); // <0.424, 0.566, 0.707>
+
+
+**NOTE**: ``normalize()`` will result in undefined behavior if the magnitude of the vector is zero.
 
 Rotation 2D
 -----------

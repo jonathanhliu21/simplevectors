@@ -46,19 +46,19 @@ int main() {
 
   std::array<double, 5> an_std_array = {{1, 2, 3, 5, 2}};
   svector::Vector<5> vec_from_std_array =
-      svector::make_vector(an_std_array); // <1, 2, 3, 5, 2>
+      svector::makeVector(an_std_array); // <1, 2, 3, 5, 2>
 
   std::vector<double> an_std_vector = {1};
   svector::Vector2D vec_from_std_vector =
-      svector::make_vector<2>(an_std_vector); // <1, 0>
+      svector::makeVector<2>(an_std_vector); // <1, 0>
   // If there are too few elements inside the std::vector, then the rest of the
   // dimensions for the vector will be 0. If there are too many, then the vector
   // truncates the dimensions.
 
   svector::Vector2D vec_from_initializer_list =
-      svector::make_vector<2, double>({1, 4, 5}); // <1, 4>
+      svector::makeVector<2, double>({1, 4, 5}); // <1, 4>
   // If there are too few or too many elements inside the initializer list, then
-  // make_vector() handles it the same way as it would handle a std::vector that
+  // makeVector() handles it the same way as it would handle a std::vector that
   // has too few/many elements.
 
   std::cout << vec_from_std_array.toString() << std::endl;  // "<1, 2, 3, 5, 2>"
@@ -90,11 +90,17 @@ int main() {
   std::cout << v3d.angle<svector::ALPHA>() << std::endl; // "1.268"
   std::cout << v3d.angle<svector::BETA>() << std::endl;  // "0.9322"
   std::cout << v3d.angle<svector::GAMMA>() << std::endl; // "0.730"
+  // NOTE: the angle methods will result in undefined behavior if the magnitude
+  // of the vector is zero.
 
   // set component values
   v2d.x(4); // v2d is now <4, 4>
   v3d.y(5);
   v3d.z(3); // v3d is now <2, 5, 3>
+
+  // check if a vector is a zero vector (magnitude is zero)
+  std::cout << (v2d.isZero() ? "true" : "false") << std::endl; // false
+  std::cout << (v3d.isZero() ? "true" : "false") << std::endl; // false
 
   std::cout << v2d.toString() << std::endl; // "<4.000, 4.000>"
   std::cout << v3d.toString() << std::endl; // "<2.000, 5.000, 3.000>"

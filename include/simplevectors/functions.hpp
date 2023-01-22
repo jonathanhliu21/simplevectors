@@ -33,7 +33,7 @@ namespace svector {
  * @returns A vector whose dimensions reflect the elements in the array.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(std::array<T, D> array) {
+Vector<D, T> makeVector(std::array<T, D> array) {
   Vector<D, T> vec;
   for (std::size_t i = 0; i < D; i++) {
     vec[i] = array[i];
@@ -57,7 +57,7 @@ Vector<D, T> make_vector(std::array<T, D> array) {
  * @returns A vector whose dimensions reflect the elements in the std::vector.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(std::vector<T> vector) {
+Vector<D, T> makeVector(std::vector<T> vector) {
   Vector<D, T> vec;
   for (std::size_t i = 0; i < std::min(D, vector.size()); i++) {
     vec[i] = vector[i];
@@ -82,7 +82,7 @@ Vector<D, T> make_vector(std::vector<T> vector) {
  * list.
  */
 template <std::size_t D, typename T>
-Vector<D, T> make_vector(const std::initializer_list<T> args) {
+Vector<D, T> makeVector(const std::initializer_list<T> args) {
   Vector<D, T> vec(args);
   return vec;
 }
@@ -215,6 +215,9 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param v The vector to normalize.
  *
  * @returns Normalized vector.
@@ -222,6 +225,15 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
 template <typename T, std::size_t D>
 inline Vector<D, T> normalize(const Vector<D, T> &v) {
   return v / magn(v);
+}
+
+/**
+ * Determines whether a vector is a zero vector.
+ *
+ * @returns Whether the given vector is a zero vector.
+ */
+template <typename T, std::size_t D> inline bool isZero(const Vector<D, T> &v) {
+  return magn(v) == 0;
 }
 
 /**
@@ -282,6 +294,9 @@ inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
  *
  * α is the angle between the vector and the x-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param v A 3D vector.
  *
  * @returns α
@@ -293,6 +308,9 @@ inline double alpha(const Vector3D &v) { return std::acos(x(v) / magn(v)); }
  *
  * β is the angle between the vector and the y-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param v A 3D vector.
  *
  * @returns β
@@ -303,6 +321,9 @@ inline double beta(const Vector3D &v) { return std::acos(y(v) / magn(v)); }
  * Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
+ *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
  *
  * @param v A 3D vector.
  *

@@ -375,6 +375,9 @@ public:
    *
    * Finds the unit vector with the same direction angle as the current vector.
    *
+   * @note This method will result in undefined behavior if the vector is a zero
+   * vector (if the magnitude equals zero).
+   *
    * @returns A new vector representing the normalized vector.
    */
   Vector<D, T> normalize() const { return (*this) / this->magn(); }
@@ -385,6 +388,13 @@ public:
    * @returns Number of dimensions.
    */
   constexpr std::size_t numDimensions() const { return D; }
+
+  /**
+   * Determines whether the current vector is a zero vector.
+   *
+   * @returns Whether the current vector is a zero vector.
+   */
+  bool isZero() const { return this->magn() == 0; }
 
   /**
    * Gets a reference to a specific component of the vector given the dimension

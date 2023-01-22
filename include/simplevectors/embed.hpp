@@ -365,11 +365,21 @@ inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 2D vector.
  *
  * @returns Normalized vector.
  */
 inline Vec2D normalize(const Vec2D &vec) { return vec / magn(vec); }
+
+/**
+ * Determines whether a vector is a zero vector.
+ *
+ * @returns Whether the given vector is a zero vector.
+ */
+inline bool isZero(const Vec2D &vec) { return magn(vec) == 0; }
 
 /**
  * Rotates vector by a certain angle.
@@ -544,6 +554,9 @@ inline double magn(const Vec3D &vec) {
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D vector.
  *
  * @returns Normalized vector.
@@ -551,41 +564,53 @@ inline double magn(const Vec3D &vec) {
 inline Vec3D normalize(const Vec3D &vec) { return vec / magn(vec); }
 
 /**
+ * Determines whether a vector is a zero vector.
+ *
+ * @returns Whether the given vector is a zero vector.
+ */
+inline bool isZero(const Vec3D &vec) { return magn(vec) == 0; }
+
+/**
  * Gets α angle.
  *
  * α is the angle between the vector and the x-axis.
+ *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
  *
  * @param vec A 3D Vector.
  *
  * @returns α.
  */
-inline double getAlpha(const Vec3D &vec) {
-  return std::acos(vec.x / magn(vec));
-}
+inline double alpha(const Vec3D &vec) { return std::acos(vec.x / magn(vec)); }
 
 /**
  * Gets β angle.
  *
  * β is the angle between the vector and the y-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D Vector.
  *
  * @returns β.
  */
-inline double getBeta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
+inline double beta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
 
 /**
  * Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
  *
+ * @note This method will result in undefined behavior if the vector is a zero
+ * vector (if the magnitude equals zero).
+ *
  * @param vec A 3D Vector.
  *
  * @returns γ.
  */
-inline double getGamma(const Vec3D &vec) {
-  return std::acos(vec.z / magn(vec));
-}
+inline double gamma(const Vec3D &vec) { return std::acos(vec.z / magn(vec)); }
 
 /**
  * Rotates around x-axis.
