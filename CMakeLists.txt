@@ -15,6 +15,8 @@ option(SVECTOR_BUILD_EXAMPLE "Build simplevector examples" OFF)
 
 # compile
 add_library(simplevectors INTERFACE)
+# alias for library (for FetchContent, add_subdirectory, etc)
+add_library(simplevectors::simplevectors ALIAS simplevectors)
 
 # C++ standard
 target_compile_features(simplevectors INTERFACE cxx_std_11)
