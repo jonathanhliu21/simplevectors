@@ -10,7 +10,9 @@
 #ifndef INCLUDE_SVECTOR_VECTOR2D_HPP_
 #define INCLUDE_SVECTOR_VECTOR2D_HPP_
 
-#include "vector.hpp" // svector::Vector
+#include <cmath> // std::atan2, std::cos, std::sin
+
+#include "simplevectors/core/vector.hpp" // svector::Vector
 
 namespace svector {
 // COMBINER_PY_START

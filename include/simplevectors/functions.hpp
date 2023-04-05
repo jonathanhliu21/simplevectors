@@ -18,9 +18,9 @@
 #include <initializer_list> // std::initializer_list
 #include <vector>           // std::vector
 
-#include "core/vector.hpp"
-#include "core/vector2d.hpp"
-#include "core/vector3d.hpp"
+#include "simplevectors/core/vector.hpp"
+#include "simplevectors/core/vector2d.hpp"
+#include "simplevectors/core/vector3d.hpp"
 
 namespace svector {
 // COMBINER_PY_START

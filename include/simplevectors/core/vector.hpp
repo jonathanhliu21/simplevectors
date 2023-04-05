@@ -10,7 +10,13 @@
 #ifndef INCLUDE_SVECTOR_BASEVECTOR_HPP_
 #define INCLUDE_SVECTOR_BASEVECTOR_HPP_
 
-#include "units.hpp" // all includes
+#include <algorithm>        // std::min
+#include <array>            // std::array
+#include <cmath>            // std::atan2, std::sqrt
+#include <cstddef>          // std::size_t
+#include <cstdint>          // std::int8_t
+#include <initializer_list> // std::initializer_list
+#include <string>           // std::string, std::to_string
 
 namespace svector {
 // COMBINER_PY_START

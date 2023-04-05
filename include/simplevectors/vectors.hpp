@@ -10,10 +10,10 @@
 #ifndef INCLUDE_SVECTOR_VECTOR_HPP_
 #define INCLUDE_SVECTOR_VECTOR_HPP_
 
-#include "core/units.hpp"
-#include "core/vector.hpp"
-#include "core/vector2d.hpp"
-#include "core/vector3d.hpp"
-#include "functions.hpp"
+#include "simplevectors/core/units.hpp"
+#include "simplevectors/core/vector.hpp"
+#include "simplevectors/core/vector2d.hpp"
+#include "simplevectors/core/vector3d.hpp"
+#include "simplevectors/functions.hpp"
 
 #endif

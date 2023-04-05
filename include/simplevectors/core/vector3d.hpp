@@ -10,8 +10,10 @@
 #ifndef INCLUDE_SVECTOR_VECTOR3D_HPP_
 #define INCLUDE_SVECTOR_VECTOR3D_HPP_
 
-#include "units.hpp"  // svector::AngleDir
-#include "vector.hpp" // svector::Vector
+#include <cmath> // std::acos, std::cos, std::sin
+
+#include "simplevectors/core/units.hpp"  // svector::AngleDir
+#include "simplevectors/core/vector.hpp" // svector::Vector
 
 namespace svector {
 // COMBINER_PY_START
