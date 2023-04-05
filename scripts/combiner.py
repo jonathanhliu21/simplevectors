@@ -31,6 +31,7 @@ FILE_BEGIN = """/**
 #include <cstdint>
 #include <initializer_list>
 #include <string>
+#include <vector>
 
 namespace svector {
 """
@@ -40,10 +41,10 @@ FILE_END = """}
 #endif
 """
 
-"""Reads sandwiched part of file from file path"""
-
 
 def get_sandwiched(fpath):
+    """Reads sandwiched part of file from file path"""
+
     filestr = ""
     with open(fpath) as f:
         filestr = f.read()
