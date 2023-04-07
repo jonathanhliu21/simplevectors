@@ -27,6 +27,8 @@ The ``Vector`` base class provides a protected variable, ``m_components``, an ``
 
 Note that the binary operations with another vector require vectors **that have the same dimension**.
 
+If you want to provide a different implementation for any of the non-operator methods (such as fast inverse square root for calculating the normalized vector), you can add a new method with a different name (such as ``fastNormalize()``).
+
 The base class provides these constructors:
 
 - ``Vector()``: initializes a 0 vector (or a vector with 0s in every dimension)
@@ -37,6 +39,7 @@ You can inherit them using ``using svector::Vector<D>::Vector`` or write your ow
 
 These methods are virtual and can be overridden:
 
+- ``~Vector()``: Destructor
 - ``std::string toString()``: converts vector to a string format
 
 To make the operators work (without needing a downcast), you must include a constructor that takes in a base class:
