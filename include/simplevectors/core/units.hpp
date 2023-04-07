@@ -3,7 +3,7 @@
  *
  * All STL includes and enums needed for the core library.
  *
- * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
 

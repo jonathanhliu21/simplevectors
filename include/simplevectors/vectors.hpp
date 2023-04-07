@@ -3,7 +3,7 @@
  *
  * Compiles all of the includes into one file.
  *
- * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
 

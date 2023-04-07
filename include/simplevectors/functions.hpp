@@ -4,7 +4,7 @@
  * Functions for the vector classes. This can be used for functional programming
  * rather than using properties and methods of the classes.
  *
- * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
 

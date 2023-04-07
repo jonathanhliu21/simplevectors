@@ -44,5 +44,5 @@ This is a very basic example of simplevectors. First, download ``simplevectors.h
 License
 -------
 
-MIT License (© 2022 Jonathan Liu)
+MIT License (© 2023 Jonathan Liu)
 

@@ -6,7 +6,7 @@
  * a svector namespace). This file is meant to be a standalone file, so it is
  * not included in vectors.hpp.
  *
- * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
 

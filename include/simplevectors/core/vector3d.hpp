@@ -3,7 +3,7 @@
  *
  * Contains a 3D vector representation.
  *
- * @copyright Copyright (c) 2022 Jonathan Liu. This project is released under
+ * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
 
