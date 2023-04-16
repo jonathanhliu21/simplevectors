@@ -17,6 +17,7 @@
 #include <cstdint>          // std::int8_t
 #include <initializer_list> // std::initializer_list
 #include <string>           // std::string, std::to_string
+#include <type_traits>      // std::is_arithmetic
 
 namespace svector {
 // COMBINER_PY_START
@@ -29,6 +30,9 @@ namespace svector {
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
+  // makes sure that type is numeric
+  static_assert(std::is_arithmetic<T>::value, "Vector type must be numeric");
+
 #ifdef SVECTOR_EXPERIMENTAL_COMPARE
   template <std::size_t D1, std::size_t D2, typename T1, typename T2>
   friend bool operator<(const Vector<D1, T1> &, const Vector<D2, T2> &);
