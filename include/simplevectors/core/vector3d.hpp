@@ -180,7 +180,7 @@ public:
     default:
       return this->rotateGamma(ang);
     }
-  };
+  }
 
 private:
   /**
