@@ -2,9 +2,8 @@
  * @file embed.h
  *
  * A minimized version of vectors for embedded devices without access to the
- * STL (such as on an Arduino, hence the ".h" instead of ".hpp" and the lack of
- * a svector namespace). This file is meant to be a standalone file, so it is
- * not included in vectors.hpp.
+ * STL (such as on an Arduino, hence the ".h" instead of ".hpp"). This file is
+ * meant to be a standalone file, so it is not included in vectors.hpp.
  *
  * The MIT License (MIT)
  *
