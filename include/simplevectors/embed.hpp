@@ -25,15 +25,15 @@ struct Vec2D {
    *
    * Initializes a zero vector.
    */
-  Vec2D() : x(0), y(0){};
+  Vec2D() : x{0}, y{0} {};
 
   /**
    * Initializes a vector given xy components.
    *
-   * @param x_other The x-component.
-   * @param y_other The y-component.
+   * @param xOther The x-component.
+   * @param yOther The y-component.
    */
-  Vec2D(const double x_other, const double y_other) : x(x_other), y(y_other) {}
+  Vec2D(const double xOther, const double yOther) : x{xOther}, y{yOther} {}
 
   /**
    * Copy constructor.
@@ -126,17 +126,17 @@ struct Vec3D {
    *
    * Initializes a zero vector.
    */
-  Vec3D() : x(0), y(x), z(0) {}
+  Vec3D() : x{0}, y{0}, z{0} {}
 
   /**
    * Initializes a vector given xyz components.
    *
-   * @param x_other The x-component.
-   * @param y_other The y-component.
-   * @param z_other The z-component.
+   * @param xOther The x-component.
+   * @param yOther The y-component.
+   * @param zOther The z-component.
    */
-  Vec3D(const double x_other, const double y_other, const double z_other)
-      : x(x_other), y(y_other), z(z_other) {}
+  Vec3D(const double xOther, const double yOther, const double zOther)
+      : x{xOther}, y{yOther}, z{zOther} {}
 
   /**
    * Copy constructor.
@@ -225,6 +225,91 @@ struct Vec3D {
   double y; //!< The y-component of the 3D vector.
   double z; //!< The z-component of the 3D vector.
 };
+
+/**
+ * Gets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline double x(const Vec2D &v) { return v.x; }
+
+/**
+ * Sets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param xValue The x-value to set to the vector.
+ */
+inline void x(Vec2D &v, const double xValue) { v.x = xValue; }
+
+/**
+ * Gets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline double x(const Vec3D &v) { return v.x; }
+
+/**
+ * Sets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param xValue The x-value to set to the vector.
+ */
+inline void x(Vec3D &v, const double xValue) { v.x = xValue; }
+
+/**
+ * Gets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline double y(const Vec2D &v) { return v.y; }
+
+/**
+ * Sets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param yValue The y-value to set to the vector.
+ */
+inline void y(Vec2D &v, const double yValue) { v.y = yValue; }
+
+/**
+ * Gets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline double y(const Vec3D &v) { return v.y; }
+
+/**
+ * Sets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param yValue The y value to set to the vector.
+ */
+inline void y(Vec3D &v, const double yValue) { v.y = yValue; }
+
+/**
+ * Gets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns z-component of the vector.
+ */
+inline double z(const Vec3D &v) { return v.z; }
+
+/**
+ * Sets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param zValue The z value to set to the vector.
+ */
+inline void z(Vec3D &v, const double zValue) { v.z = zValue; }
 
 /**
  * String form; can be used for printing.
