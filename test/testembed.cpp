@@ -21,6 +21,33 @@
 
 using namespace svector;
 
+TEST(EmbedXYZ, GetterSetterTest2D) {
+  Vec2D vector(1, 2);
+  EXPECT_EQ(x(vector), 1);
+  EXPECT_EQ(y(vector), 2);
+
+  x(vector, 3);
+  y(vector, 4);
+
+  EXPECT_EQ(x(vector), 3);
+  EXPECT_EQ(y(vector), 4);
+}
+
+TEST(EmbedXYZ, GetterSetterTest3D) {
+  Vec3D vector(1, 2, 5);
+  EXPECT_EQ(x(vector), 1);
+  EXPECT_EQ(y(vector), 2);
+  EXPECT_EQ(z(vector), 5);
+
+  x(vector, 3);
+  y(vector, 4);
+  z(vector, 0);
+
+  EXPECT_EQ(x(vector), 3);
+  EXPECT_EQ(y(vector), 4);
+  EXPECT_EQ(z(vector), 0);
+}
+
 TEST(EmbedConstructorTest2D, ZeroConstructorTest) {
   Vec2D vector;
   EXPECT_EQ(vector.x, 0);
