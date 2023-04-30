@@ -448,7 +448,7 @@ inline float dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
  * @returns magnitude of vector.
  */
 inline float magn(const EmbVec2D &vec) {
-  return sqrt(vec.x * vec.x + vec.y * vec.y);
+  return static_cast<float>(sqrt(vec.x * vec.x + vec.y * vec.y));
 }
 
 /**
@@ -460,7 +460,9 @@ inline float magn(const EmbVec2D &vec) {
  *
  * @returns angle of the vector.
  */
-inline float angle(const EmbVec2D &vec) { return atan2(vec.y, vec.x); }
+inline float angle(const EmbVec2D &vec) {
+  return static_cast<float>(atan2(vec.y, vec.x));
+}
 
 /**
  * Normalizes a vector.
@@ -503,8 +505,8 @@ inline EmbVec2D rotate(const EmbVec2D &vec, const float ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  const float xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  const float yPrime = vec.x * sin(ang) + vec.y * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
+  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
 
   return EmbVec2D{xPrime, yPrime};
 }
@@ -634,7 +636,8 @@ inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  * @returns magnitude of vector
  */
 inline float magn(const EmbVec3D &vec) {
-  return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+  return static_cast<float>(
+      sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }
 
 /**
@@ -670,7 +673,9 @@ inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
  *
  * @returns α.
  */
-inline float alpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
+inline float alpha(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.x / magn(vec)));
+}
 
 /**
  * Gets β angle.
@@ -684,7 +689,9 @@ inline float alpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
  *
  * @returns β.
  */
-inline float beta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
+inline float beta(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.y / magn(vec)));
+}
 
 /**
  * Gets γ angle.
@@ -698,7 +705,9 @@ inline float beta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
  *
  * @returns γ.
  */
-inline float gamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
+inline float gamma(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.z / magn(vec)));
+}
 
 /**
  * Rotates around x-axis.
@@ -719,9 +728,9 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const float ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  const float xPrime = vec.x;
-  const float yPrime = vec.y * cos(ang) - vec.z * sin(ang);
-  const float zPrime = vec.y * sin(ang) + vec.z * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x);
+  const auto yPrime = static_cast<float>(vec.y * cos(ang) - vec.z * sin(ang));
+  const auto zPrime = static_cast<float>(vec.y * sin(ang) + vec.z * cos(ang));
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -745,9 +754,9 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const float ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  const float xPrime = vec.x * cos(ang) + vec.z * sin(ang);
-  const float yPrime = vec.y;
-  const float zPrime = -vec.x * sin(ang) + vec.z * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) + vec.z * sin(ang));
+  const auto yPrime = static_cast<float>(vec.y);
+  const auto zPrime = static_cast<float>(-vec.x * sin(ang) + vec.z * cos(ang));
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -771,9 +780,9 @@ inline EmbVec3D rotateGamma(const EmbVec3D &vec, const float ang) {
   // |  0         0        1| |z|
   //
 
-  const float xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  const float yPrime = vec.x * sin(ang) + vec.y * cos(ang);
-  const float zPrime = vec.z;
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
+  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
+  const auto zPrime = static_cast<float>(vec.z);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
