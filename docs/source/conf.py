@@ -1,7 +1,7 @@
 project = "simplevectors"
 copyright = "2023, Jonathan Liu"
 author = "Jonathan Liu"
-release = "0.3.6"
+release = "0.3.7"
 extensions = ["breathe", "exhale"]
 breathe_projects = {"simplevectors": "../_build/xml"}
 breathe_default_project = "simplevectors"
