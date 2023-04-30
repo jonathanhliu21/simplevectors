@@ -15,6 +15,7 @@
 
 #include <math.h> // atan2, cos, sin, sqrt
 
+namespace svector {
 /**
  * A minimal 2D vector representation.
  */
@@ -664,5 +665,6 @@ inline EmbVec3D rotateGamma(const EmbVec3D &vec, const double ang) {
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
+} // namespace svector
 
 #endif

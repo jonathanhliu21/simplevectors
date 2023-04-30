@@ -40,8 +40,6 @@ For embedded devices without access to the C++ STL, such as on an Arduino, there
 
 - 2D vectors are named ``EmbVec2D`` rather than ``Vec2D``.
 - 3D vectors are named ``EmbVec3D`` rather than ``Vec3D``.
-- It does not contain a ``svector`` or ``std`` namespace.
+- It does not contain a ``std`` namespace, but the ``svector`` namespace is still there.
 - There is no ``toString()`` function.
-
-
 
