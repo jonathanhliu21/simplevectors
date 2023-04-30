@@ -8,7 +8,7 @@
 #include <utility>
 
 #ifndef M_PI
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159265f
 #endif
 
 #ifndef M_PI_2
@@ -17,6 +17,11 @@
 
 #ifndef M_PI_4
 #define M_PI_4 M_PI / 4
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(disable : 4305)
+#pragma warning(disable : 4244)
 #endif
 
 using namespace svector;
@@ -265,9 +270,8 @@ TEST(Embed2XYMagnitudeAngleMatchTest2D, TestAngleGivenXY) {
   for (const auto &testcase : tests) {
     EmbVec2D vector(testcase[0], testcase[1]);
     float ang = angle(vector);
-    float ang_r = std::round(ang * 1000.0) / 1000.0;
 
-    EXPECT_EQ(ang_r, testcase[2]);
+    EXPECT_LT(std::abs(ang - testcase[2]), 0.001);
   }
 }
 
@@ -292,10 +296,8 @@ TEST(Embed2RotationTest2D, CounterclockwiseRotation) {
 
     EmbVec2D rotated = rotate(vector, testcase[2]);
 
-    EXPECT_EQ(std::round(vectorp.x * 1000) / 1000,
-              std::round(rotated.x * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.y * 1000) / 1000,
-              std::round(rotated.y * 1000) / 1000);
+    EXPECT_LT(std::abs(vectorp.x - rotated.x), 0.001);
+    EXPECT_LT(std::abs(vectorp.y - rotated.y), 0.001);
   }
 }
 
@@ -313,10 +315,8 @@ TEST(Embed2RotationTest2D, ClockwiseRotation) {
 
     EmbVec2D rotated = rotate(vector, -testcase[2]);
 
-    EXPECT_EQ(std::round(vectorp.x * 1000) / 1000,
-              std::round(rotated.x * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.y * 1000) / 1000,
-              std::round(rotated.y * 1000) / 1000);
+    EXPECT_LT(std::abs(vectorp.x - rotated.x), 0.001);
+    EXPECT_LT(std::abs(vectorp.y - rotated.y), 0.001);
   }
 }
 
@@ -586,12 +586,9 @@ TEST(Embed2RotationTest3D, AlphaRotation) {
 
     EmbVec3D rotated = rotateAlpha(vector, testcase[3]);
 
-    EXPECT_EQ(std::round(vectorp.x * 1000) / 1000,
-              std::round(rotated.x * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.y * 1000) / 1000,
-              std::round(rotated.y * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.z * 1000) / 1000,
-              std::round(rotated.z * 1000) / 1000);
+    EXPECT_LT(std::abs(vectorp.x - rotated.x), 0.001);
+    EXPECT_LT(std::abs(vectorp.y - rotated.y), 0.001);
+    EXPECT_LT(std::abs(vectorp.z - rotated.z), 0.001);
   }
 }
 
@@ -608,12 +605,9 @@ TEST(Embed2RotationTest3D, BetaRotation) {
 
     EmbVec3D rotated = rotateBeta(vector, testcase[3]);
 
-    EXPECT_EQ(std::round(vectorp.x * 1000) / 1000,
-              std::round(rotated.x * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.y * 1000) / 1000,
-              std::round(rotated.y * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.z * 1000) / 1000,
-              std::round(rotated.z * 1000) / 1000);
+    EXPECT_LT(std::abs(vectorp.x - rotated.x), 0.001);
+    EXPECT_LT(std::abs(vectorp.y - rotated.y), 0.001);
+    EXPECT_LT(std::abs(vectorp.z - rotated.z), 0.001);
   }
 }
 
@@ -635,12 +629,9 @@ TEST(Embed2RotationTest3D, GammaRotation) {
 
     EmbVec3D rotated = rotateGamma(vector, testcase[3]);
 
-    EXPECT_EQ(std::round(vectorp.x * 1000) / 1000,
-              std::round(rotated.x * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.y * 1000) / 1000,
-              std::round(rotated.y * 1000) / 1000);
-    EXPECT_EQ(std::round(vectorp.z * 1000) / 1000,
-              std::round(rotated.z * 1000) / 1000);
+    EXPECT_LT(std::abs(vectorp.x - rotated.x), 0.001);
+    EXPECT_LT(std::abs(vectorp.y - rotated.y), 0.001);
+    EXPECT_LT(std::abs(vectorp.z - rotated.z), 0.001);
   }
 }
 
