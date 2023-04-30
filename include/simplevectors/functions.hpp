@@ -100,9 +100,9 @@ inline double x(const Vector2D &v) { return v[0]; }
  * Sets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
- * @param x_value The x-value to set to the vector.
+ * @param xValue The x-value to set to the vector.
  */
-inline void x(Vector2D &v, const double x_value) { v[0] = x_value; }
+inline void x(Vector2D &v, const double xValue) { v[0] = xValue; }
 
 /**
  * Gets the x-component of a 3D vector.
@@ -117,9 +117,9 @@ inline double x(const Vector3D &v) { return v[0]; }
  * Sets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
- * @param x_value The x-value to set to the vector.
+ * @param xValue The x-value to set to the vector.
  */
-inline void x(Vector3D &v, const double x_value) { v[0] = x_value; }
+inline void x(Vector3D &v, const double xValue) { v[0] = xValue; }
 
 /**
  * Gets the y-component of a 2D vector.
@@ -134,9 +134,9 @@ inline double y(const Vector2D &v) { return v[1]; }
  * Sets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
- * @param y_value The y-value to set to the vector.
+ * @param yValue The y-value to set to the vector.
  */
-inline void y(Vector2D &v, const double y_value) { v[1] = y_value; }
+inline void y(Vector2D &v, const double yValue) { v[1] = yValue; }
 
 /**
  * Gets the y-component of a 3D vector.
@@ -151,9 +151,9 @@ inline double y(const Vector3D &v) { return v[1]; }
  * Sets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
- * @param y_value The y value to set to the vector.
+ * @param yValue The y value to set to the vector.
  */
-inline void y(Vector3D &v, const double y_value) { v[1] = y_value; }
+inline void y(Vector3D &v, const double yValue) { v[1] = yValue; }
 
 /**
  * Gets the z-component of a 3D vector.
@@ -168,9 +168,9 @@ inline double z(const Vector3D &v) { return v[2]; }
  * Sets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
- * @param z_value The z value to set to the vector.
+ * @param zValue The z value to set to the vector.
  */
-inline void z(Vector3D &v, const double z_value) { v[2] = z_value; }
+inline void z(Vector3D &v, const double zValue) { v[2] = zValue; }
 
 /**
  * Calculates the dot product of two vectors.
