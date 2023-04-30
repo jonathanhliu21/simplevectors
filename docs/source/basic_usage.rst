@@ -23,6 +23,9 @@ is equivalent to:
   double xval = svector::x(v2d) + 1;
   svector::x(v2d, xval);
 
+.. note::
+   To ensure compatiblity between embedded and non-embedded versions, it is recommended to use the functional equivalents over the member functions.
+
 Initialization
 --------------
 

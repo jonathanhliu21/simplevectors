@@ -6,6 +6,28 @@
  * a svector namespace). This file is meant to be a standalone file, so it is
  * not included in vectors.hpp.
  *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2023 Jonathan Liu
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
  */
@@ -15,8 +37,12 @@
 
 #include <math.h> // atan2, cos, sin, sqrt
 
+namespace svector {
 /**
  * A minimal 2D vector representation.
+ *
+ * @note Uses floats to store data types rather than doubles in order to save
+ * memory, which means that the vector type is not as precise.
  */
 struct EmbVec2D {
   /**
@@ -24,16 +50,15 @@ struct EmbVec2D {
    *
    * Initializes a zero vector.
    */
-  EmbVec2D() : x(0), y(0){};
+  EmbVec2D() : x{0}, y{0} {};
 
   /**
    * Initializes a vector given xy components.
    *
-   * @param x_other The x-component.
-   * @param y_other The y-component.
+   * @param xOther The x-component.
+   * @param yOther The y-component.
    */
-  EmbVec2D(const double x_other, const double y_other)
-      : x(x_other), y(y_other) {}
+  EmbVec2D(const float xOther, const float yOther) : x{xOther}, y{yOther} {}
 
   /**
    * Copy constructor.
@@ -96,7 +121,7 @@ struct EmbVec2D {
    *
    * @param other The number to multiply by.
    */
-  EmbVec2D &operator*=(const double &other) {
+  EmbVec2D &operator*=(const float &other) {
     x *= other;
     y *= other;
     return *this;
@@ -107,18 +132,21 @@ struct EmbVec2D {
    *
    * @param other The number to divide by.
    */
-  EmbVec2D &operator/=(const double &other) {
+  EmbVec2D &operator/=(const float &other) {
     x /= other;
     y /= other;
     return *this;
   }
 
-  double x; //!< The x-component of the 2D vector.
-  double y; //!< The y-component of the 2D vector.
+  float x; //!< The x-component of the 2D vector.
+  float y; //!< The y-component of the 2D vector.
 };
 
 /**
  * A minimal 3D vector representation.
+ *
+ * @note Uses floats to store data types rather than doubles in order to save
+ * memory, which means that the vector type is not as precise.
  */
 struct EmbVec3D {
   /**
@@ -126,17 +154,17 @@ struct EmbVec3D {
    *
    * Initializes a zero vector.
    */
-  EmbVec3D() : x(0), y(0), z(0) {}
+  EmbVec3D() : x{0}, y{0}, z{0} {}
 
   /**
    * Initializes a vector given xyz components.
    *
-   * @param x_other The x-component.
-   * @param y_other The y-component.
-   * @param z_other The z-component.
+   * @param xOther The x-component.
+   * @param yOther The y-component.
+   * @param zOther The z-component.
    */
-  EmbVec3D(const double x_other, const double y_other, const double z_other)
-      : x(x_other), y(y_other), z(z_other) {}
+  EmbVec3D(const float xOther, const float yOther, const float zOther)
+      : x{xOther}, y{yOther}, z{zOther} {}
 
   /**
    * Copy constructor.
@@ -202,7 +230,7 @@ struct EmbVec3D {
    *
    * @param other The number to multiply by.
    */
-  EmbVec3D &operator*=(const double &other) {
+  EmbVec3D &operator*=(const float &other) {
     x *= other;
     y *= other;
     z *= other;
@@ -214,17 +242,102 @@ struct EmbVec3D {
    *
    * @param other The number to divide by.
    */
-  EmbVec3D &operator/=(const double &other) {
+  EmbVec3D &operator/=(const float &other) {
     x /= other;
     y /= other;
     z /= other;
     return *this;
   }
 
-  double x; //!< The x-component of the 3D vector.
-  double y; //!< The y-component of the 3D vector.
-  double z; //!< The z-component of the 3D vector.
+  float x; //!< The x-component of the 3D vector.
+  float y; //!< The y-component of the 3D vector.
+  float z; //!< The z-component of the 3D vector.
 };
+
+/**
+ * Gets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline float x(const EmbVec2D &v) { return v.x; }
+
+/**
+ * Sets the x-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param xValue The x-value to set to the vector.
+ */
+inline void x(EmbVec2D &v, const float xValue) { v.x = xValue; }
+
+/**
+ * Gets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns x-component of the vector.
+ */
+inline float x(const EmbVec3D &v) { return v.x; }
+
+/**
+ * Sets the x-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param xValue The x-value to set to the vector.
+ */
+inline void x(EmbVec3D &v, const float xValue) { v.x = xValue; }
+
+/**
+ * Gets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline float y(const EmbVec2D &v) { return v.y; }
+
+/**
+ * Sets the y-component of a 2D vector.
+ *
+ * @param v A 2D Vector.
+ * @param yValue The y-value to set to the vector.
+ */
+inline void y(EmbVec2D &v, const float yValue) { v.y = yValue; }
+
+/**
+ * Gets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns y-component of the vector.
+ */
+inline float y(const EmbVec3D &v) { return v.y; }
+
+/**
+ * Sets the y-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param yValue The y value to set to the vector.
+ */
+inline void y(EmbVec3D &v, const float yValue) { v.y = yValue; }
+
+/**
+ * Gets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ *
+ * @returns z-component of the vector.
+ */
+inline float z(const EmbVec3D &v) { return v.z; }
+
+/**
+ * Sets the z-component of a 3D vector.
+ *
+ * @param v A 3D Vector.
+ * @param zValue The z value to set to the vector.
+ */
+inline void z(EmbVec3D &v, const float zValue) { v.z = zValue; }
 
 /**
  * Performs vector addition and returns a new vector representing the sum of
@@ -274,7 +387,7 @@ inline EmbVec2D operator-(const EmbVec2D &vec) {
  *
  * @returns A new vector representing the scalar product.
  */
-inline EmbVec2D operator*(const EmbVec2D &lhs, const double rhs) {
+inline EmbVec2D operator*(const EmbVec2D &lhs, const float rhs) {
   return EmbVec2D{lhs.x * rhs, lhs.y * rhs};
 }
 
@@ -287,7 +400,7 @@ inline EmbVec2D operator*(const EmbVec2D &lhs, const double rhs) {
  *
  * @returns A new vector representing the scalar product.
  */
-inline EmbVec2D operator/(const EmbVec2D &lhs, const double rhs) {
+inline EmbVec2D operator/(const EmbVec2D &lhs, const float rhs) {
   return EmbVec2D{lhs.x / rhs, lhs.y / rhs};
 }
 
@@ -323,7 +436,7 @@ inline bool operator!=(const EmbVec2D &lhs, const EmbVec2D &rhs) {
  *
  * @returns The dot product of lhs and rhs.
  */
-inline double dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
+inline float dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
@@ -334,8 +447,8 @@ inline double dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
  *
  * @returns magnitude of vector.
  */
-inline double magn(const EmbVec2D &vec) {
-  return sqrt(vec.x * vec.x + vec.y * vec.y);
+inline float magn(const EmbVec2D &vec) {
+  return static_cast<float>(sqrt(vec.x * vec.x + vec.y * vec.y));
 }
 
 /**
@@ -347,7 +460,9 @@ inline double magn(const EmbVec2D &vec) {
  *
  * @returns angle of the vector.
  */
-inline double angle(const EmbVec2D &vec) { return atan2(vec.y, vec.x); }
+inline float angle(const EmbVec2D &vec) {
+  return static_cast<float>(atan2(vec.y, vec.x));
+}
 
 /**
  * Normalizes a vector.
@@ -382,7 +497,7 @@ inline bool isZero(const EmbVec2D &vec) { return magn(vec) == 0; }
  *
  * @returns a new, rotated vector.
  */
-inline EmbVec2D rotate(const EmbVec2D &vec, const double ang) {
+inline EmbVec2D rotate(const EmbVec2D &vec, const float ang) {
   //
   // Rotation matrix:
   //
@@ -390,8 +505,8 @@ inline EmbVec2D rotate(const EmbVec2D &vec, const double ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  const double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  const double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
+  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
 
   return EmbVec2D{xPrime, yPrime};
 }
@@ -444,7 +559,7 @@ inline EmbVec3D operator-(const EmbVec3D &vec) {
  *
  * @returns A new vector representing the scalar product.
  */
-inline EmbVec3D operator*(const EmbVec3D &lhs, const double rhs) {
+inline EmbVec3D operator*(const EmbVec3D &lhs, const float rhs) {
   return EmbVec3D{lhs.x * rhs, lhs.y * rhs, lhs.z * rhs};
 }
 
@@ -457,7 +572,7 @@ inline EmbVec3D operator*(const EmbVec3D &lhs, const double rhs) {
  *
  * @returns A new vector representing the scalar product.
  */
-inline EmbVec3D operator/(const EmbVec3D &lhs, const double rhs) {
+inline EmbVec3D operator/(const EmbVec3D &lhs, const float rhs) {
   return EmbVec3D{lhs.x / rhs, lhs.y / rhs, lhs.z / rhs};
 }
 
@@ -493,7 +608,7 @@ inline bool operator!=(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  *
  * @returns The dot product of lhs and rhs.
  */
-inline double dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
+inline float dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
@@ -506,9 +621,9 @@ inline double dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  * @returns The crossed 3D vector.
  */
 inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
-  const double newx = lhs.y * rhs.z - lhs.z * rhs.y;
-  const double newy = lhs.z * rhs.x - lhs.x * rhs.z;
-  const double newz = lhs.x * rhs.y - lhs.y * rhs.x;
+  const float newx = lhs.y * rhs.z - lhs.z * rhs.y;
+  const float newy = lhs.z * rhs.x - lhs.x * rhs.z;
+  const float newz = lhs.x * rhs.y - lhs.y * rhs.x;
 
   return EmbVec3D{newx, newy, newz};
 }
@@ -520,8 +635,9 @@ inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  *
  * @returns magnitude of vector
  */
-inline double magn(const EmbVec3D &vec) {
-  return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+inline float magn(const EmbVec3D &vec) {
+  return static_cast<float>(
+      sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }
 
 /**
@@ -557,7 +673,9 @@ inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
  *
  * @returns α.
  */
-inline double alpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
+inline float alpha(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.x / magn(vec)));
+}
 
 /**
  * Gets β angle.
@@ -571,7 +689,9 @@ inline double alpha(const EmbVec3D &vec) { return acos(vec.x / magn(vec)); }
  *
  * @returns β.
  */
-inline double beta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
+inline float beta(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.y / magn(vec)));
+}
 
 /**
  * Gets γ angle.
@@ -585,7 +705,9 @@ inline double beta(const EmbVec3D &vec) { return acos(vec.y / magn(vec)); }
  *
  * @returns γ.
  */
-inline double gamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
+inline float gamma(const EmbVec3D &vec) {
+  return static_cast<float>(acos(vec.z / magn(vec)));
+}
 
 /**
  * Rotates around x-axis.
@@ -597,7 +719,7 @@ inline double gamma(const EmbVec3D &vec) { return acos(vec.z / magn(vec)); }
  *
  * @returns A new, rotated vector.
  */
-inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const double ang) {
+inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const float ang) {
   //
   // Rotation matrix:
   //
@@ -606,9 +728,9 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const double ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  const double xPrime = vec.x;
-  const double yPrime = vec.y * cos(ang) - vec.z * sin(ang);
-  const double zPrime = vec.y * sin(ang) + vec.z * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x);
+  const auto yPrime = static_cast<float>(vec.y * cos(ang) - vec.z * sin(ang));
+  const auto zPrime = static_cast<float>(vec.y * sin(ang) + vec.z * cos(ang));
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -623,7 +745,7 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const double ang) {
  *
  * @returns A new, rotated vector.
  */
-inline EmbVec3D rotateBeta(const EmbVec3D &vec, const double ang) {
+inline EmbVec3D rotateBeta(const EmbVec3D &vec, const float ang) {
   //
   // Rotation matrix:
   //
@@ -632,9 +754,9 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const double ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  const double xPrime = vec.x * cos(ang) + vec.z * sin(ang);
-  const double yPrime = vec.y;
-  const double zPrime = -vec.x * sin(ang) + vec.z * cos(ang);
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) + vec.z * sin(ang));
+  const auto yPrime = static_cast<float>(vec.y);
+  const auto zPrime = static_cast<float>(-vec.x * sin(ang) + vec.z * cos(ang));
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -649,7 +771,7 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const double ang) {
  *
  * @returns A new, rotated vector.
  */
-inline EmbVec3D rotateGamma(const EmbVec3D &vec, const double ang) {
+inline EmbVec3D rotateGamma(const EmbVec3D &vec, const float ang) {
   //
   // Rotation matrix:
   //
@@ -658,11 +780,12 @@ inline EmbVec3D rotateGamma(const EmbVec3D &vec, const double ang) {
   // |  0         0        1| |z|
   //
 
-  const double xPrime = vec.x * cos(ang) - vec.y * sin(ang);
-  const double yPrime = vec.x * sin(ang) + vec.y * cos(ang);
-  const double zPrime = vec.z;
+  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
+  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
+  const auto zPrime = static_cast<float>(vec.z);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
+} // namespace svector
 
 #endif

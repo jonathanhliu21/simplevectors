@@ -7,7 +7,7 @@ Differences from ``Vector2D`` and ``Vector3D``:
 
 - Names are ``Vec2D`` and ``Vec3D`` instead of ``Vector2D`` and ``Vector3D``.
 - Uses ``.x``, ``.y``, and ``.z`` instead of ``.x()``, ``.y()``, and ``.z()`` to access x, y, and z values.
-- There are no methods in the minimized objects (e.g. ``.dot()``, ``.cross()``, etc), so you must use the functional equivalents (e.g. ``dot(vec)``, ``cross(vec)``) mentioned above.
+- There are no methods in the minimized objects (e.g. ``.dot()``, ``.cross()``, etc), so you must use the functional equivalents (e.g. ``dot(vec)``, ``cross(vec)``) mentioned above. Most functions are compatible between the embed and non-embed versions, with some exceptions that are stated below.
 - Embedded devices only support 2D and 3D vectors.
 - This file is not included within ``simplevectors/vectors.hpp`` because it is meant to be a standalone file, so it must be included explicitly.
 
@@ -40,8 +40,7 @@ For embedded devices without access to the C++ STL, such as on an Arduino, there
 
 - 2D vectors are named ``EmbVec2D`` rather than ``Vec2D``.
 - 3D vectors are named ``EmbVec3D`` rather than ``Vec3D``.
-- It does not contain a ``svector`` or ``std`` namespace.
+- It does not contain a ``std`` namespace, but the ``svector`` namespace is still there.
 - There is no ``toString()`` function.
-
-
+- Uses floats rather than doubles to store numbers to save memory, but this means the numbers are less precise
 
