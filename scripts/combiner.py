@@ -55,7 +55,7 @@ FILE_BEGIN = """/**
 namespace svector {
 """
 
-FILE_END = """}
+FILE_END = """} // namespace svector
 
 #endif
 """
