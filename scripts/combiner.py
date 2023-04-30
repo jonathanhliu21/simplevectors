@@ -50,6 +50,7 @@ FILE_BEGIN = """/**
 #include <cstdint>
 #include <initializer_list>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 namespace svector {
