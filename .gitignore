@@ -58,8 +58,3 @@ build/
 # private
 private/
 
-# Sphinx documentation
-docs/_build/
-_ext/
-docs/.venv/
-docs/source/api/

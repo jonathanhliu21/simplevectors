@@ -1,10 +1,13 @@
 /**
  * @file embed.hpp
  *
- * A minimized version of vectors for embedded devices with access to the STL.
+ * @brief A minimized version of vectors for embedded devices with access to the
+ STL.
+ *
  * This file is meant to be a standalone file, so it is not included in
  * vectors.hpp.
-
+ *
+ * @internal
  * The MIT License (MIT)
  *
  * Copyright (c) 2023 Jonathan Liu
@@ -26,6 +29,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ * @endinternal
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
@@ -39,18 +43,18 @@
 
 namespace svector {
 /**
- * A minimal 2D vector representation.
+ * @brief A minimal 2D vector representation.
  */
 struct Vec2D {
   /**
-   * No-argument constructor.
+   * @brief No-argument constructor.
    *
    * Initializes a zero vector.
    */
   Vec2D() : x{0}, y{0} {};
 
   /**
-   * Initializes a vector given xy components.
+   * @brief Initializes a vector given xy components.
    *
    * @param xOther The x-component.
    * @param yOther The y-component.
@@ -58,17 +62,19 @@ struct Vec2D {
   Vec2D(const double xOther, const double yOther) : x{xOther}, y{yOther} {}
 
   /**
-   * Copy constructor.
+   * @brief Copy constructor.
    */
   Vec2D(const Vec2D &other) = default;
 
   /**
-   * Move constructor (uses C++ default move constructor).
+   * @brief Move constructor.
+   *
+   * Uses C++ default move constructor.
    */
   Vec2D(Vec2D &&) noexcept = default;
 
   /**
-   * Assignment operator.
+   * @brief Assignment operator.
    */
   Vec2D &operator=(const Vec2D &other) {
     // check if assigning to self
@@ -82,16 +88,22 @@ struct Vec2D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator).
+   * @brief Move assignment operator
+   *
+   * Uses C++ default move assignment operator.
    */
   Vec2D &operator=(Vec2D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor).
+   * @brief Destructor
+   *
+   * Uses C++ default destructor.
    */
   virtual ~Vec2D() = default;
 
   /**
+   * @brief In-place addtion
+   *
    * Adds another vector object to current vector.
    *
    * @param other The other object to add.
@@ -103,6 +115,8 @@ struct Vec2D {
   }
 
   /**
+   * @brief In-place subtraction
+   *
    * Subtracts another vector object from current vector.
    *
    * @param other The other object to subtract.
@@ -114,6 +128,8 @@ struct Vec2D {
   }
 
   /**
+   * @brief In-place scalar multiplication
+   *
    * Performs scalar multiplication on the current object.
    *
    * @param other The number to multiply by.
@@ -125,6 +141,8 @@ struct Vec2D {
   }
 
   /**
+   * @brief In-place scalar division
+   *
    * Performs scalar division on the current object.
    *
    * @param other The number to divide by.
@@ -140,18 +158,18 @@ struct Vec2D {
 };
 
 /**
- * A minimal 3D vector representation.
+ * @brief A minimal 3D vector representation.
  */
 struct Vec3D {
   /**
-   * No-argument constructor.
+   * @brief No-argument constructor.
    *
    * Initializes a zero vector.
    */
   Vec3D() : x{0}, y{0}, z{0} {}
 
   /**
-   * Initializes a vector given xyz components.
+   * @brief Initializes a vector given xyz components.
    *
    * @param xOther The x-component.
    * @param yOther The y-component.
@@ -161,17 +179,19 @@ struct Vec3D {
       : x{xOther}, y{yOther}, z{zOther} {}
 
   /**
-   * Copy constructor.
+   * @brief Copy constructor.
    */
   Vec3D(const Vec3D &other) = default;
 
   /**
-   * Move constructor (uses C++ default move constructor).
+   * @brief Move constructor
+   *
+   * Uses C++ default move constructor.
    */
   Vec3D(Vec3D &&) noexcept = default;
 
   /**
-   * Assignment operator.
+   * @brief Assignment operator.
    */
   Vec3D &operator=(const Vec3D &other) {
     // check if assigning to self
@@ -186,16 +206,22 @@ struct Vec3D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator).
+   * @brief Move assignment operator
+   *
+   * Uses C++ default move assignment operator.
    */
   Vec3D &operator=(Vec3D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor).
+   * @brief Destructor
+   *
+   * Uses C++ default destructor.
    */
   virtual ~Vec3D() = default;
 
   /**
+   * @brief In-place addtion
+   *
    * Adds another vector object to current vector.
    *
    * @param other The other object to add.
@@ -208,6 +234,8 @@ struct Vec3D {
   }
 
   /**
+   * @brief In-place subtraction
+   *
    * Subtracts another vector object from current vector.
    *
    * @param other The other object to subtract.
@@ -220,6 +248,8 @@ struct Vec3D {
   }
 
   /**
+   * @brief In-place scalar multiplication
+   *
    * Performs scalar multiplication on the current object.
    *
    * @param other The number to multiply by.
@@ -232,6 +262,8 @@ struct Vec3D {
   }
 
   /**
+   * @brief In-place scalar division
+   *
    * Performs scalar division on the current object.
    *
    * @param other The number to divide by.
@@ -249,7 +281,7 @@ struct Vec3D {
 };
 
 /**
- * Gets the x-component of a 2D vector.
+ * @brief Gets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -258,7 +290,7 @@ struct Vec3D {
 inline double x(const Vec2D &v) { return v.x; }
 
 /**
- * Sets the x-component of a 2D vector.
+ * @brief Sets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param xValue The x-value to set to the vector.
@@ -266,7 +298,7 @@ inline double x(const Vec2D &v) { return v.x; }
 inline void x(Vec2D &v, const double xValue) { v.x = xValue; }
 
 /**
- * Gets the x-component of a 3D vector.
+ * @brief Gets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -275,7 +307,7 @@ inline void x(Vec2D &v, const double xValue) { v.x = xValue; }
 inline double x(const Vec3D &v) { return v.x; }
 
 /**
- * Sets the x-component of a 3D vector.
+ * @brief Sets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param xValue The x-value to set to the vector.
@@ -283,7 +315,7 @@ inline double x(const Vec3D &v) { return v.x; }
 inline void x(Vec3D &v, const double xValue) { v.x = xValue; }
 
 /**
- * Gets the y-component of a 2D vector.
+ * @brief Gets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -292,7 +324,7 @@ inline void x(Vec3D &v, const double xValue) { v.x = xValue; }
 inline double y(const Vec2D &v) { return v.y; }
 
 /**
- * Sets the y-component of a 2D vector.
+ * @brief Sets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param yValue The y-value to set to the vector.
@@ -300,7 +332,7 @@ inline double y(const Vec2D &v) { return v.y; }
 inline void y(Vec2D &v, const double yValue) { v.y = yValue; }
 
 /**
- * Gets the y-component of a 3D vector.
+ * @brief Gets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -309,7 +341,7 @@ inline void y(Vec2D &v, const double yValue) { v.y = yValue; }
 inline double y(const Vec3D &v) { return v.y; }
 
 /**
- * Sets the y-component of a 3D vector.
+ * @brief Sets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param yValue The y value to set to the vector.
@@ -317,7 +349,7 @@ inline double y(const Vec3D &v) { return v.y; }
 inline void y(Vec3D &v, const double yValue) { v.y = yValue; }
 
 /**
- * Gets the z-component of a 3D vector.
+ * @brief Gets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -326,7 +358,7 @@ inline void y(Vec3D &v, const double yValue) { v.y = yValue; }
 inline double z(const Vec3D &v) { return v.z; }
 
 /**
- * Sets the z-component of a 3D vector.
+ * @brief Sets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param zValue The z value to set to the vector.
@@ -334,7 +366,9 @@ inline double z(const Vec3D &v) { return v.z; }
 inline void z(Vec3D &v, const double zValue) { v.z = zValue; }
 
 /**
- * String form; can be used for printing.
+ * @brief String form
+ *
+ * This can be used for printing.
  *
  * @param vec A 2D Vector.
  *
@@ -347,6 +381,8 @@ inline std::string toString(const Vec2D &vec) {
 }
 
 /**
+ * @brief Vector addition
+ *
  * Performs vector addition and returns a new vector representing the sum of
  * the two vectors.
  *
@@ -360,6 +396,8 @@ inline Vec2D operator+(const Vec2D &lhs, const Vec2D &rhs) {
 }
 
 /**
+ * @brief Vector subtraction
+ *
  * Performs vector subtraction and returns a new vector representing the
  * difference of the two vectors.
  *
@@ -373,6 +411,8 @@ inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
 }
 
 /**
+ * @brief Negative of a vector
+ *
  * Makes all components of a vector negative.
  *
  * This can also be thought of flipping the direction of the vector.
@@ -384,6 +424,8 @@ inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
 inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
 
 /**
+ * @brief Scalar multiplication
+ *
  * Performs scalar multiplication and returns a new vector representing the
  * product.
  *
@@ -397,6 +439,8 @@ inline Vec2D operator*(const Vec2D &lhs, const double rhs) {
 }
 
 /**
+ * @brief Scalar division
+ *
  * Performs scalar division and returns a new vector representing the
  * quotient.
  *
@@ -410,7 +454,7 @@ inline Vec2D operator/(const Vec2D &lhs, const double rhs) {
 }
 
 /**
- * Compares equality of two vectors.
+ * @brief Compares equality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -422,7 +466,7 @@ inline bool operator==(const Vec2D &lhs, const Vec2D &rhs) {
 }
 
 /**
- * Compares inequality of two vectors.
+ * @brief Compares inequality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -434,7 +478,7 @@ inline bool operator!=(const Vec2D &lhs, const Vec2D &rhs) {
 }
 
 /**
- * Calculates the dot product of two vectors.
+ * @brief Calculates the dot product of two vectors.
  *
  * @param lhs First vector.
  * @param rhs Second vector.
@@ -446,7 +490,7 @@ inline double dot(const Vec2D &lhs, const Vec2D &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector.
+ * @brief Gets the magnitude of the vector.
  *
  * @param vec A 2D vector.
  *
@@ -457,7 +501,7 @@ inline double magn(const Vec2D &vec) {
 }
 
 /**
- * Gets the angle of the vector in radians.
+ * @brief Gets the angle of a 2D vector in radians.
  *
  * The angle will be in the range (-π, π].
  *
@@ -468,7 +512,7 @@ inline double magn(const Vec2D &vec) {
 inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
 
 /**
- * Normalizes a vector.
+ * @brief Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
@@ -482,14 +526,14 @@ inline double angle(const Vec2D &vec) { return std::atan2(vec.y, vec.x); }
 inline Vec2D normalize(const Vec2D &vec) { return vec / magn(vec); }
 
 /**
- * Determines whether a vector is a zero vector.
+ * @brief Determines whether a vector is a zero vector.
  *
  * @returns Whether the given vector is a zero vector.
  */
 inline bool isZero(const Vec2D &vec) { return magn(vec) == 0; }
 
 /**
- * Rotates vector by a certain angle.
+ * @brief Rotates vector by a certain angle.
  *
  * The angle should be given in radians. The vector rotates
  * counterclockwise when the angle is positive and clockwise
@@ -515,7 +559,9 @@ inline Vec2D rotate(const Vec2D &vec, const double ang) {
 }
 
 /**
- * String form; can be used for printing.
+ * @brief String form
+ *
+ * This can be used for printing.
  *
  * @param vec A 3D Vector.
  *
@@ -529,6 +575,8 @@ inline std::string toString(const Vec3D &vec) {
 }
 
 /**
+ * @brief Vector addition
+ *
  * Performs vector addition and returns a new vector representing the sum of
  * the two vectors.
  *
@@ -542,6 +590,8 @@ inline Vec3D operator+(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
+ * @brief Vector subtraction
+ *
  * Performs vector subtraction and returns a new vector representing the
  * difference of the two vectors.
  *
@@ -555,6 +605,8 @@ inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
+ * @brief Negative of a vector
+ *
  * Makes all components of a vector negative.
  *
  * This can also be thought of flipping the direction of the vector.
@@ -568,6 +620,8 @@ inline Vec3D operator-(const Vec3D &vec) {
 }
 
 /**
+ * @brief Scalar multiplication
+ *
  * Performs scalar multiplication and returns a new vector representing the
  * product.
  *
@@ -581,6 +635,8 @@ inline Vec3D operator*(const Vec3D &lhs, const double rhs) {
 }
 
 /**
+ * @brief Scalar division
+ *
  * Performs scalar division and returns a new vector representing the
  * quotient.
  *
@@ -594,7 +650,7 @@ inline Vec3D operator/(const Vec3D &lhs, const double rhs) {
 }
 
 /**
- * Compares equality of two vectors.
+ * @brief Compares equality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -606,7 +662,7 @@ inline bool operator==(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Compares inequality of two vectors.
+ * @brief Compares inequality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -618,7 +674,7 @@ inline bool operator!=(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Calculates the dot product of two vectors.
+ * @brief Calculates the dot product of two vectors.
  *
  * @param lhs First vector.
  * @param rhs Second vector.
@@ -630,7 +686,7 @@ inline double dot(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Cross product of two vectors.
+ * @brief Cross product of two vectors.
  *
  * @param lhs A 3D vector.
  * @param rhs A 3D vector.
@@ -646,7 +702,7 @@ inline Vec3D cross(const Vec3D &lhs, const Vec3D &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector.
+ * @brief Gets the magnitude of the vector.
  *
  * @param vec A 3D vector.
  *
@@ -657,7 +713,7 @@ inline double magn(const Vec3D &vec) {
 }
 
 /**
- * Normalizes a vector.
+ * @brief Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
@@ -671,14 +727,14 @@ inline double magn(const Vec3D &vec) {
 inline Vec3D normalize(const Vec3D &vec) { return vec / magn(vec); }
 
 /**
- * Determines whether a vector is a zero vector.
+ * @brief Determines whether a vector is a zero vector.
  *
  * @returns Whether the given vector is a zero vector.
  */
 inline bool isZero(const Vec3D &vec) { return magn(vec) == 0; }
 
 /**
- * Gets α angle.
+ * @brief Gets α angle.
  *
  * α is the angle between the vector and the x-axis.
  *
@@ -692,7 +748,7 @@ inline bool isZero(const Vec3D &vec) { return magn(vec) == 0; }
 inline double alpha(const Vec3D &vec) { return std::acos(vec.x / magn(vec)); }
 
 /**
- * Gets β angle.
+ * @brief Gets β angle.
  *
  * β is the angle between the vector and the y-axis.
  *
@@ -706,7 +762,7 @@ inline double alpha(const Vec3D &vec) { return std::acos(vec.x / magn(vec)); }
 inline double beta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
 
 /**
- * Gets γ angle.
+ * @brief Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
  *
@@ -720,7 +776,7 @@ inline double beta(const Vec3D &vec) { return std::acos(vec.y / magn(vec)); }
 inline double gamma(const Vec3D &vec) { return std::acos(vec.z / magn(vec)); }
 
 /**
- * Rotates around x-axis.
+ * @brief Rotates around x-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -746,7 +802,7 @@ inline Vec3D rotateAlpha(const Vec3D &vec, const double ang) {
 }
 
 /**
- * Rotates around y-axis.
+ * @brief Rotates around y-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -772,7 +828,7 @@ inline Vec3D rotateBeta(const Vec3D &vec, const double ang) {
 }
 
 /**
- * Rotates around z-axis.
+ * @brief Rotates around z-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *

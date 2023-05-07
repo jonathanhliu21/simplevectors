@@ -1,7 +1,7 @@
 /**
  * @file vector2d.hpp
  *
- * Contains a 2D vector representation.
+ * @brief Contains a 2D vector representation.
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
@@ -20,14 +20,14 @@ namespace svector {
 typedef Vector<2> Vec2_; //!< An alias to Vector<2>.
 
 /**
- * A simple 2D vector representation.
+ * @brief A simple 2D vector representation.
  */
 class Vector2D : public Vec2_ {
 public:
   using Vec2_::Vector;
 
   /**
-   * Initializes a vector given xy components.
+   * @brief Initializes a vector given xy components.
    *
    * @param x The x-component.
    * @param y The y-component.
@@ -38,7 +38,7 @@ public:
   }
 
   /**
-   * Copy constructor for base class.
+   * @brief Copy constructor for base class.
    */
   Vector2D(const Vec2_ &other) {
     this->m_components[0] = other[0];
@@ -46,6 +46,8 @@ public:
   }
 
   /**
+   * @brief Gets x-component
+   *
    * Gets the x-component of the vector.
    *
    * @returns x-component of vector.
@@ -53,11 +55,17 @@ public:
   double x() const { return this->m_components[0]; }
 
   /**
+   * @brief Sets x-component
+   *
    * Sets the x-component of the vector.
+   *
+   * @param newX x-value to set
    */
   void x(const double &newX) { this->m_components[0] = newX; }
 
   /**
+   * @brief Gets y-component
+   *
    * Gets the y-component of the vector.
    *
    * @returns y-component of vector.
@@ -65,11 +73,17 @@ public:
   double y() const { return this->m_components[1]; }
 
   /**
+   * @brief Sets y-component
+   *
    * Sets the y-component of the vector.
+   *
+   * @param newY y-value to set
    */
   void y(const double &newY) { this->m_components[1] = newY; }
 
   /**
+   * @brief Angle of vector
+   *
    * Gets the angle of the vector in radians.
    *
    * The angle will be in the range (-π, π].
@@ -79,7 +93,7 @@ public:
   double angle() const { return std::atan2(this->y(), this->x()); }
 
   /**
-   * Rotates vector by a certain angle.
+   * @brief Rotates vector by a certain angle.
    *
    * The angle should be given in radians. The vector rotates
    * counterclockwise when the angle is positive and clockwise
@@ -104,6 +118,8 @@ public:
   }
 
   /**
+   * @brief Converts vector to another object
+   *
    * Converts the components of the vector to an object with a constructor
    * that has two parameters.
    *

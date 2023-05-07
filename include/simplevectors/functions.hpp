@@ -1,8 +1,10 @@
 /**
  * @file functions.hpp
  *
- * Functions for the vector classes. This can be used for functional programming
- * rather than using properties and methods of the classes.
+ * @brief Functions for the vector classes.
+ *
+ * This can be used for functional programming rather than using properties and
+ * methods of the classes.
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
@@ -26,7 +28,7 @@ namespace svector {
 // COMBINER_PY_START
 
 /**
- * Creates a vector from an std::array.
+ * @brief Creates a vector from an std::array.
  *
  * @param array An array.
  *
@@ -43,7 +45,7 @@ Vector<D, T> makeVector(std::array<T, D> array) {
 }
 
 /**
- * Creates a vector from a std::vetor.
+ * @brief Creates a vector from a std::vetor.
  *
  * If the given std::vector has fewer elements than the specified dimensions,
  * then this function will fill up the first elements of the vector with those
@@ -67,7 +69,7 @@ Vector<D, T> makeVector(std::vector<T> vector) {
 }
 
 /**
- * Creates a vector from an initializer list.
+ * @brief Creates a vector from an initializer list.
  *
  * The initializer list should represent the components of the vector in each
  * dimension. If the size of the initializer list is greater than the number
@@ -88,7 +90,7 @@ Vector<D, T> makeVector(const std::initializer_list<T> args) {
 }
 
 /**
- * Gets the x-component of a 2D vector.
+ * @brief Gets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -97,7 +99,7 @@ Vector<D, T> makeVector(const std::initializer_list<T> args) {
 inline double x(const Vector2D &v) { return v[0]; }
 
 /**
- * Sets the x-component of a 2D vector.
+ * @brief Sets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param xValue The x-value to set to the vector.
@@ -105,7 +107,7 @@ inline double x(const Vector2D &v) { return v[0]; }
 inline void x(Vector2D &v, const double xValue) { v[0] = xValue; }
 
 /**
- * Gets the x-component of a 3D vector.
+ * @brief Gets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -114,7 +116,7 @@ inline void x(Vector2D &v, const double xValue) { v[0] = xValue; }
 inline double x(const Vector3D &v) { return v[0]; }
 
 /**
- * Sets the x-component of a 3D vector.
+ * @brief Sets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param xValue The x-value to set to the vector.
@@ -122,7 +124,7 @@ inline double x(const Vector3D &v) { return v[0]; }
 inline void x(Vector3D &v, const double xValue) { v[0] = xValue; }
 
 /**
- * Gets the y-component of a 2D vector.
+ * @brief Gets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -131,7 +133,7 @@ inline void x(Vector3D &v, const double xValue) { v[0] = xValue; }
 inline double y(const Vector2D &v) { return v[1]; }
 
 /**
- * Sets the y-component of a 2D vector.
+ * @brief Sets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param yValue The y-value to set to the vector.
@@ -139,7 +141,7 @@ inline double y(const Vector2D &v) { return v[1]; }
 inline void y(Vector2D &v, const double yValue) { v[1] = yValue; }
 
 /**
- * Gets the y-component of a 3D vector.
+ * @brief Gets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -148,7 +150,7 @@ inline void y(Vector2D &v, const double yValue) { v[1] = yValue; }
 inline double y(const Vector3D &v) { return v[1]; }
 
 /**
- * Sets the y-component of a 3D vector.
+ * @brief Sets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param yValue The y value to set to the vector.
@@ -156,7 +158,7 @@ inline double y(const Vector3D &v) { return v[1]; }
 inline void y(Vector3D &v, const double yValue) { v[1] = yValue; }
 
 /**
- * Gets the z-component of a 3D vector.
+ * @brief Gets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -165,7 +167,7 @@ inline void y(Vector3D &v, const double yValue) { v[1] = yValue; }
 inline double z(const Vector3D &v) { return v[2]; }
 
 /**
- * Sets the z-component of a 3D vector.
+ * @brief Sets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param zValue The z value to set to the vector.
@@ -173,7 +175,7 @@ inline double z(const Vector3D &v) { return v[2]; }
 inline void z(Vector3D &v, const double zValue) { v[2] = zValue; }
 
 /**
- * Calculates the dot product of two vectors.
+ * @brief Calculates the dot product of two vectors.
  *
  * @note The dimensions of the two vectors must be the same.
  *
@@ -194,7 +196,7 @@ inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector.
+ * @brief Gets the magnitude of the vector.
  *
  * @param v The vector to get magnitude of.
  *
@@ -211,7 +213,7 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
 }
 
 /**
- * Normalizes a vector.
+ * @brief Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
@@ -228,7 +230,7 @@ inline Vector<D, T> normalize(const Vector<D, T> &v) {
 }
 
 /**
- * Determines whether a vector is a zero vector.
+ * @brief Determines whether a vector is a zero vector.
  *
  * @returns Whether the given vector is a zero vector.
  */
@@ -237,7 +239,7 @@ template <typename T, std::size_t D> inline bool isZero(const Vector<D, T> &v) {
 }
 
 /**
- * Gets the angle of a 2D vector in radians.
+ * @brief Gets the angle of a 2D vector in radians.
  *
  * The angle will be in the range (-π, π].
  *
@@ -248,7 +250,7 @@ template <typename T, std::size_t D> inline bool isZero(const Vector<D, T> &v) {
 inline double angle(const Vector2D &v) { return std::atan2(y(v), x(v)); }
 
 /**
- * Rotates a 2D vector by a certain angle.
+ * @brief Rotates a 2D vector by a certain angle.
  *
  * The angle should be given in radians. The vector rotates
  * counterclockwise when the angle is positive and clockwise
@@ -274,7 +276,7 @@ inline Vector2D rotate(const Vector2D &v, const double ang) {
 }
 
 /**
- * Cross product of two vectors.
+ * @brief Cross product of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector, crossed with the first vector.
@@ -290,7 +292,7 @@ inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
 }
 
 /**
- * Gets α angle.
+ * @brief Gets α angle.
  *
  * α is the angle between the vector and the x-axis.
  *
@@ -304,7 +306,7 @@ inline Vector3D cross(const Vector3D &lhs, const Vector3D &rhs) {
 inline double alpha(const Vector3D &v) { return std::acos(x(v) / magn(v)); }
 
 /**
- * Gets β angle.
+ * @brief Gets β angle.
  *
  * β is the angle between the vector and the y-axis.
  *
@@ -318,7 +320,7 @@ inline double alpha(const Vector3D &v) { return std::acos(x(v) / magn(v)); }
 inline double beta(const Vector3D &v) { return std::acos(y(v) / magn(v)); }
 
 /**
- * Gets γ angle.
+ * @brief Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
  *
@@ -332,7 +334,7 @@ inline double beta(const Vector3D &v) { return std::acos(y(v) / magn(v)); }
 inline double gamma(const Vector3D &v) { return std::acos(z(v) / magn(v)); }
 
 /**
- * Rotates around x-axis.
+ * @brief Rotates around x-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -358,7 +360,7 @@ inline Vector3D rotateAlpha(const Vector3D &v, const double &ang) {
 }
 
 /**
- * Rotates around y-axis.
+ * @brief Rotates around y-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -384,7 +386,7 @@ inline Vector3D rotateBeta(const Vector3D &v, const double &ang) {
 }
 
 /**
- * Rotates around z-axis.
+ * @brief Rotates around z-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -411,6 +413,8 @@ inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
 
 #ifndef SVECTOR_USE_CLASS_OPERATORS
 /**
+ * @brief Vector addition
+ *
  * Performs vector addition and returns a new vector representing the sum of
  * the two vectors.
  *
@@ -436,6 +440,8 @@ inline Vector<D, T> operator+(const Vector<D, T> &lhs,
 }
 
 /**
+ * @brief Vector subtraction
+ *
  * Performs vector subtraction and returns a new vector representing the
  * difference of the two vectors.
  *
@@ -461,6 +467,8 @@ inline Vector<D, T> operator-(const Vector<D, T> &lhs,
 }
 
 /**
+ * @brief Scalar multiplication
+ *
  * Performs scalar multiplication and returns a new vector representing the
  * product.
  *
@@ -483,6 +491,8 @@ inline Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
 }
 
 /**
+ * @brief Scalar division
+ *
  * Performs scalar division and returns a new vector representing the
  * quotient.
  *
@@ -505,7 +515,7 @@ inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
 }
 
 /**
- * Compares equality of two vectors.
+ * @brief Compares equality of two vectors.
  *
  * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
  * defined. Otherwise, the operators in svector::Vector are used.
@@ -529,7 +539,7 @@ inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 }
 
 /**
- * Compares inequality of two vectors.
+ * @brief Compares inequality of two vectors.
  *
  * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
  * defined. Otherwise, the operators in svector::Vector are used.
