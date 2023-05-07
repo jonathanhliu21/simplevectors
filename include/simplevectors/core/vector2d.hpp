@@ -39,8 +39,6 @@ public:
 
   /**
    * @brief Copy constructor for base class.
-   *
-   * @param other A base class vector
    */
   Vector2D(const Vec2_ &other) {
     this->m_components[0] = other[0];

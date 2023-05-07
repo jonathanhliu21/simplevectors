@@ -42,8 +42,6 @@ public:
 
   /**
    * @brief Copy constructor for the base class.
-   *
-   * @param other A base class vector.
    */
   Vector3D(const Vec3_ &other) {
     this->m_components[0] = other[0];
@@ -179,7 +177,7 @@ public:
   }
 
   /**
-   * Brief Rotates vector around a certain axis by a certain angle.
+   * @brief Rotates vector around a certain axis by a certain angle.
    *
    * Uses the basic gimbal-like 3D rotation matrices for the
    * x-axis, y-axis, and the z-axis.

@@ -38,21 +38,21 @@
 
 namespace svector {
 /**
- * A minimal 2D vector representation.
+ * @brief A minimal 2D vector representation.
  *
  * @note Uses floats to store data types rather than doubles in order to save
  * memory, which means that the vector type is not as precise.
  */
 struct EmbVec2D {
   /**
-   * No-argument constructor.
+   * @brief No-argument constructor.
    *
    * Initializes a zero vector.
    */
   EmbVec2D() : x{0}, y{0} {};
 
   /**
-   * Initializes a vector given xy components.
+   * @brief Initializes a vector given xy components.
    *
    * @param xOther The x-component.
    * @param yOther The y-component.
@@ -60,17 +60,19 @@ struct EmbVec2D {
   EmbVec2D(const float xOther, const float yOther) : x{xOther}, y{yOther} {}
 
   /**
-   * Copy constructor.
+   * @brief Copy constructor.
    */
   EmbVec2D(const EmbVec2D &other) = default;
 
   /**
-   * Move constructor (uses C++ default move constructor).
+   * @brief Move constructor.
+   *
+   * Uses C++ default move constructor.
    */
   EmbVec2D(EmbVec2D &&) noexcept = default;
 
   /**
-   * Assignment operator.
+   * @brief Assignment operator.
    */
   EmbVec2D &operator=(const EmbVec2D &other) {
     // check if assigning to self
@@ -84,16 +86,22 @@ struct EmbVec2D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator).
+   * @brief Move assignment operator
+   *
+   * Uses C++ default move assignment operator.
    */
   EmbVec2D &operator=(EmbVec2D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor).
+   * @brief Destructor
+   *
+   * Uses C++ default destructor.
    */
   virtual ~EmbVec2D() = default;
 
   /**
+   * @brief In-place addtion
+   *
    * Adds another vector object to current vector.
    *
    * @param other The other object to add.
@@ -105,6 +113,8 @@ struct EmbVec2D {
   }
 
   /**
+   * @brief In-place subtraction
+   *
    * Subtracts another vector object from current vector.
    *
    * @param other The other object to subtract.
@@ -116,6 +126,8 @@ struct EmbVec2D {
   }
 
   /**
+   * @brief In-place scalar multiplication
+   *
    * Performs scalar multiplication on the current object.
    *
    * @param other The number to multiply by.
@@ -127,6 +139,8 @@ struct EmbVec2D {
   }
 
   /**
+   * @brief In-place scalar division
+   *
    * Performs scalar division on the current object.
    *
    * @param other The number to divide by.
@@ -142,21 +156,21 @@ struct EmbVec2D {
 };
 
 /**
- * A minimal 3D vector representation.
+ * @brief A minimal 3D vector representation.
  *
  * @note Uses floats to store data types rather than doubles in order to save
  * memory, which means that the vector type is not as precise.
  */
 struct EmbVec3D {
   /**
-   * No-argument constructor.
+   * @brief No-argument constructor.
    *
    * Initializes a zero vector.
    */
   EmbVec3D() : x{0}, y{0}, z{0} {}
 
   /**
-   * Initializes a vector given xyz components.
+   * @brief Initializes a vector given xyz components.
    *
    * @param xOther The x-component.
    * @param yOther The y-component.
@@ -166,17 +180,19 @@ struct EmbVec3D {
       : x{xOther}, y{yOther}, z{zOther} {}
 
   /**
-   * Copy constructor.
+   * @brief Copy constructor.
    */
   EmbVec3D(const EmbVec3D &other) = default;
 
   /**
-   * Move constructor (uses C++ default move constructor).
+   * @brief Move constructor
+   *
+   * Uses C++ default move constructor.
    */
   EmbVec3D(EmbVec3D &&) noexcept = default;
 
   /**
-   * Assignment operator.
+   * @brief Assignment operator.
    */
   EmbVec3D &operator=(const EmbVec3D &other) {
     // check if assigning to self
@@ -191,16 +207,22 @@ struct EmbVec3D {
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator).
+   * @brief Move assignment operator
+   *
+   * Uses C++ default move assignment operator.
    */
   EmbVec3D &operator=(EmbVec3D &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor).
+   * @brief Destructor
+   *
+   * Uses C++ default destructor.
    */
   virtual ~EmbVec3D() = default;
 
   /**
+   * @brief In-place addtion
+   *
    * Adds another vector object to current vector.
    *
    * @param other The other object to add.
@@ -213,6 +235,8 @@ struct EmbVec3D {
   }
 
   /**
+   * @brief In-place subtraction
+   *
    * Subtracts another vector object from current vector.
    *
    * @param other The other object to subtract.
@@ -225,6 +249,8 @@ struct EmbVec3D {
   }
 
   /**
+   * @brief In-place scalar multiplication
+   *
    * Performs scalar multiplication on the current object.
    *
    * @param other The number to multiply by.
@@ -237,6 +263,8 @@ struct EmbVec3D {
   }
 
   /**
+   * @brief In-place scalar division
+   *
    * Performs scalar division on the current object.
    *
    * @param other The number to divide by.
@@ -254,7 +282,7 @@ struct EmbVec3D {
 };
 
 /**
- * Gets the x-component of a 2D vector.
+ * @brief Gets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -263,7 +291,7 @@ struct EmbVec3D {
 inline float x(const EmbVec2D &v) { return v.x; }
 
 /**
- * Sets the x-component of a 2D vector.
+ * @brief Sets the x-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param xValue The x-value to set to the vector.
@@ -271,7 +299,7 @@ inline float x(const EmbVec2D &v) { return v.x; }
 inline void x(EmbVec2D &v, const float xValue) { v.x = xValue; }
 
 /**
- * Gets the x-component of a 3D vector.
+ * @brief Gets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -280,7 +308,7 @@ inline void x(EmbVec2D &v, const float xValue) { v.x = xValue; }
 inline float x(const EmbVec3D &v) { return v.x; }
 
 /**
- * Sets the x-component of a 3D vector.
+ * @brief Sets the x-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param xValue The x-value to set to the vector.
@@ -288,7 +316,7 @@ inline float x(const EmbVec3D &v) { return v.x; }
 inline void x(EmbVec3D &v, const float xValue) { v.x = xValue; }
 
 /**
- * Gets the y-component of a 2D vector.
+ * @brief Gets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  *
@@ -297,7 +325,7 @@ inline void x(EmbVec3D &v, const float xValue) { v.x = xValue; }
 inline float y(const EmbVec2D &v) { return v.y; }
 
 /**
- * Sets the y-component of a 2D vector.
+ * @brief Sets the y-component of a 2D vector.
  *
  * @param v A 2D Vector.
  * @param yValue The y-value to set to the vector.
@@ -305,7 +333,7 @@ inline float y(const EmbVec2D &v) { return v.y; }
 inline void y(EmbVec2D &v, const float yValue) { v.y = yValue; }
 
 /**
- * Gets the y-component of a 3D vector.
+ * @brief Gets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -314,7 +342,7 @@ inline void y(EmbVec2D &v, const float yValue) { v.y = yValue; }
 inline float y(const EmbVec3D &v) { return v.y; }
 
 /**
- * Sets the y-component of a 3D vector.
+ * @brief Sets the y-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param yValue The y value to set to the vector.
@@ -322,7 +350,7 @@ inline float y(const EmbVec3D &v) { return v.y; }
 inline void y(EmbVec3D &v, const float yValue) { v.y = yValue; }
 
 /**
- * Gets the z-component of a 3D vector.
+ * @brief Gets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  *
@@ -331,7 +359,7 @@ inline void y(EmbVec3D &v, const float yValue) { v.y = yValue; }
 inline float z(const EmbVec3D &v) { return v.z; }
 
 /**
- * Sets the z-component of a 3D vector.
+ * @brief Sets the z-component of a 3D vector.
  *
  * @param v A 3D Vector.
  * @param zValue The z value to set to the vector.
@@ -339,6 +367,8 @@ inline float z(const EmbVec3D &v) { return v.z; }
 inline void z(EmbVec3D &v, const float zValue) { v.z = zValue; }
 
 /**
+ * @brief Vector addition
+ *
  * Performs vector addition and returns a new vector representing the sum of
  * the two vectors.
  *
@@ -352,6 +382,8 @@ inline EmbVec2D operator+(const EmbVec2D &lhs, const EmbVec2D &rhs) {
 }
 
 /**
+ * @brief Vector subtraction
+ *
  * Performs vector subtraction and returns a new vector representing the
  * difference of the two vectors.
  *
@@ -365,6 +397,8 @@ inline EmbVec2D operator-(const EmbVec2D &lhs, const EmbVec2D &rhs) {
 }
 
 /**
+ * @brief Negative of a vector
+ *
  * Makes all components of a vector negative.
  *
  * This can also be thought of flipping the direction of the vector.
@@ -378,6 +412,8 @@ inline EmbVec2D operator-(const EmbVec2D &vec) {
 }
 
 /**
+ * @brief Scalar multiplication
+ *
  * Performs scalar multiplication and returns a new vector representing the
  * product.
  *
@@ -391,6 +427,8 @@ inline EmbVec2D operator*(const EmbVec2D &lhs, const float rhs) {
 }
 
 /**
+ * @brief Scalar division
+ *
  * Performs scalar division and returns a new vector representing the
  * quotient.
  *
@@ -404,7 +442,7 @@ inline EmbVec2D operator/(const EmbVec2D &lhs, const float rhs) {
 }
 
 /**
- * Compares equality of two vectors.
+ * @brief Compares equality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -416,7 +454,7 @@ inline bool operator==(const EmbVec2D &lhs, const EmbVec2D &rhs) {
 }
 
 /**
- * Compares inequality of two vectors.
+ * @brief Compares inequality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -428,7 +466,7 @@ inline bool operator!=(const EmbVec2D &lhs, const EmbVec2D &rhs) {
 }
 
 /**
- * Calculates the dot product of two vectors.
+ * @brief Calculates the dot product of two vectors.
  *
  * @param lhs First vector.
  * @param rhs Second vector.
@@ -440,7 +478,7 @@ inline float dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector.
+ * @brief Gets the magnitude of the vector.
  *
  * @param vec A 2D vector.
  *
@@ -451,7 +489,7 @@ inline float magn(const EmbVec2D &vec) {
 }
 
 /**
- * Gets the angle of the vector in radians.
+ * @brief Gets the angle of a 2D vector in radians.
  *
  * The angle will be in the range (-π, π].
  *
@@ -462,7 +500,7 @@ inline float magn(const EmbVec2D &vec) {
 inline float angle(const EmbVec2D &vec) { return atan2f(vec.y, vec.x); }
 
 /**
- * Normalizes a vector.
+ * @brief Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
@@ -476,14 +514,14 @@ inline float angle(const EmbVec2D &vec) { return atan2f(vec.y, vec.x); }
 inline EmbVec2D normalize(const EmbVec2D &vec) { return vec / magn(vec); }
 
 /**
- * Determines whether a vector is a zero vector.
+ * @brief Determines whether a vector is a zero vector.
  *
  * @returns Whether the given vector is a zero vector.
  */
 inline bool isZero(const EmbVec2D &vec) { return magn(vec) == 0; }
 
 /**
- * Rotates vector by a certain angle.
+ * @brief Rotates vector by a certain angle.
  *
  * The angle should be given in radians. The vector rotates
  * counterclockwise when the angle is positive and clockwise
@@ -509,6 +547,8 @@ inline EmbVec2D rotate(const EmbVec2D &vec, const float ang) {
 }
 
 /**
+ * @brief Vector addition
+ *
  * Performs vector addition and returns a new vector representing the sum of
  * the two vectors.
  *
@@ -522,6 +562,8 @@ inline EmbVec3D operator+(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
+ * @brief Vector subtraction
+ *
  * Performs vector subtraction and returns a new vector representing the
  * difference of the two vectors.
  *
@@ -535,6 +577,8 @@ inline EmbVec3D operator-(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
+ * @brief Negative of a vector
+ *
  * Makes all components of a vector negative.
  *
  * This can also be thought of flipping the direction of the vector.
@@ -548,6 +592,8 @@ inline EmbVec3D operator-(const EmbVec3D &vec) {
 }
 
 /**
+ * @brief Scalar multiplication
+ *
  * Performs scalar multiplication and returns a new vector representing the
  * product.
  *
@@ -561,6 +607,8 @@ inline EmbVec3D operator*(const EmbVec3D &lhs, const float rhs) {
 }
 
 /**
+ * @brief Scalar division
+ *
  * Performs scalar division and returns a new vector representing the
  * quotient.
  *
@@ -574,7 +622,7 @@ inline EmbVec3D operator/(const EmbVec3D &lhs, const float rhs) {
 }
 
 /**
- * Compares equality of two vectors.
+ * @brief Compares equality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -586,7 +634,7 @@ inline bool operator==(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
- * Compares inequality of two vectors.
+ * @brief Compares inequality of two vectors.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -598,7 +646,7 @@ inline bool operator!=(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
- * Calculates the dot product of two vectors.
+ * @brief Calculates the dot product of two vectors.
  *
  * @param lhs First vector.
  * @param rhs Second vector.
@@ -610,7 +658,7 @@ inline float dot(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
- * Cross product of two vectors.
+ * @brief Cross product of two vectors.
  *
  * @param lhs A 3D vector.
  * @param rhs A 3D vector.
@@ -626,7 +674,7 @@ inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 }
 
 /**
- * Gets the magnitude of the vector.
+ * @brief Gets the magnitude of the vector.
  *
  * @param vec A 3D vector.
  *
@@ -637,7 +685,7 @@ inline float magn(const EmbVec3D &vec) {
 }
 
 /**
- * Normalizes a vector.
+ * @brief Normalizes a vector.
  *
  * Finds the unit vector with the same direction angle as the current vector.
  *
@@ -651,14 +699,14 @@ inline float magn(const EmbVec3D &vec) {
 inline EmbVec3D normalize(const EmbVec3D &vec) { return vec / magn(vec); }
 
 /**
- * Determines whether a vector is a zero vector.
+ * @brief Determines whether a vector is a zero vector.
  *
  * @returns Whether the given vector is a zero vector.
  */
 inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
 
 /**
- * Gets α angle.
+ * @brief Gets α angle.
  *
  * α is the angle between the vector and the x-axis.
  *
@@ -672,7 +720,7 @@ inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
 inline float alpha(const EmbVec3D &vec) { return acosf(vec.x / magn(vec)); }
 
 /**
- * Gets β angle.
+ * @brief Gets β angle.
  *
  * β is the angle between the vector and the y-axis.
  *
@@ -686,7 +734,7 @@ inline float alpha(const EmbVec3D &vec) { return acosf(vec.x / magn(vec)); }
 inline float beta(const EmbVec3D &vec) { return acosf(vec.y / magn(vec)); }
 
 /**
- * Gets γ angle.
+ * @brief Gets γ angle.
  *
  * γ is the angle between the vector and the z-axis.
  *
@@ -700,7 +748,7 @@ inline float beta(const EmbVec3D &vec) { return acosf(vec.y / magn(vec)); }
 inline float gamma(const EmbVec3D &vec) { return acosf(vec.z / magn(vec)); }
 
 /**
- * Rotates around x-axis.
+ * @brief Rotates around x-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -726,7 +774,7 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const float ang) {
 }
 
 /**
- * Rotates around y-axis.
+ * @brief Rotates around y-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
@@ -752,7 +800,7 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const float ang) {
 }
 
 /**
- * Rotates around z-axis.
+ * @brief Rotates around z-axis.
  *
  * Uses the basic gimbal-like 3D rotation matrices for rotation.
  *
