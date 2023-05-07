@@ -34,7 +34,7 @@
 #ifndef INCLUDE_SVECTOR_EMBED_HPP_
 #define INCLUDE_SVECTOR_EMBED_HPP_
 
-#include <math.h> // atan2, cos, sin, sqrt
+#include <math.h> // acosf, atan2f, cosf, sinf, sqrtf
 
 namespace svector {
 /**
@@ -447,7 +447,7 @@ inline float dot(const EmbVec2D &lhs, const EmbVec2D &rhs) {
  * @returns magnitude of vector.
  */
 inline float magn(const EmbVec2D &vec) {
-  return static_cast<float>(sqrt(vec.x * vec.x + vec.y * vec.y));
+  return sqrtf(vec.x * vec.x + vec.y * vec.y);
 }
 
 /**
@@ -459,9 +459,7 @@ inline float magn(const EmbVec2D &vec) {
  *
  * @returns angle of the vector.
  */
-inline float angle(const EmbVec2D &vec) {
-  return static_cast<float>(atan2(vec.y, vec.x));
-}
+inline float angle(const EmbVec2D &vec) { return atan2f(vec.y, vec.x); }
 
 /**
  * Normalizes a vector.
@@ -504,8 +502,8 @@ inline EmbVec2D rotate(const EmbVec2D &vec, const float ang) {
   // | sin(ang)    cos(ang) | |y|
   //
 
-  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
-  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
+  const auto xPrime = vec.x * cosf(ang) - vec.y * sinf(ang);
+  const auto yPrime = vec.x * sinf(ang) + vec.y * cosf(ang);
 
   return EmbVec2D{xPrime, yPrime};
 }
@@ -635,8 +633,7 @@ inline EmbVec3D cross(const EmbVec3D &lhs, const EmbVec3D &rhs) {
  * @returns magnitude of vector
  */
 inline float magn(const EmbVec3D &vec) {
-  return static_cast<float>(
-      sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
+  return sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
 /**
@@ -672,9 +669,7 @@ inline bool isZero(const EmbVec3D &vec) { return magn(vec) == 0; }
  *
  * @returns α.
  */
-inline float alpha(const EmbVec3D &vec) {
-  return static_cast<float>(acos(vec.x / magn(vec)));
-}
+inline float alpha(const EmbVec3D &vec) { return acosf(vec.x / magn(vec)); }
 
 /**
  * Gets β angle.
@@ -688,9 +683,7 @@ inline float alpha(const EmbVec3D &vec) {
  *
  * @returns β.
  */
-inline float beta(const EmbVec3D &vec) {
-  return static_cast<float>(acos(vec.y / magn(vec)));
-}
+inline float beta(const EmbVec3D &vec) { return acosf(vec.y / magn(vec)); }
 
 /**
  * Gets γ angle.
@@ -704,9 +697,7 @@ inline float beta(const EmbVec3D &vec) {
  *
  * @returns γ.
  */
-inline float gamma(const EmbVec3D &vec) {
-  return static_cast<float>(acos(vec.z / magn(vec)));
-}
+inline float gamma(const EmbVec3D &vec) { return acosf(vec.z / magn(vec)); }
 
 /**
  * Rotates around x-axis.
@@ -727,9 +718,9 @@ inline EmbVec3D rotateAlpha(const EmbVec3D &vec, const float ang) {
   // |0  sin(ang)   cos(ang)| |z|
   //
 
-  const auto xPrime = static_cast<float>(vec.x);
-  const auto yPrime = static_cast<float>(vec.y * cos(ang) - vec.z * sin(ang));
-  const auto zPrime = static_cast<float>(vec.y * sin(ang) + vec.z * cos(ang));
+  const auto xPrime = vec.x;
+  const auto yPrime = vec.y * cosf(ang) - vec.z * sinf(ang);
+  const auto zPrime = vec.y * sinf(ang) + vec.z * cosf(ang);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -753,9 +744,9 @@ inline EmbVec3D rotateBeta(const EmbVec3D &vec, const float ang) {
   // |−sin(ang)  0  cos(ang)| |z|
   //
 
-  const auto xPrime = static_cast<float>(vec.x * cos(ang) + vec.z * sin(ang));
-  const auto yPrime = static_cast<float>(vec.y);
-  const auto zPrime = static_cast<float>(-vec.x * sin(ang) + vec.z * cos(ang));
+  const auto xPrime = vec.x * cosf(ang) + vec.z * sinf(ang);
+  const auto yPrime = vec.y;
+  const auto zPrime = -vec.x * sinf(ang) + vec.z * cosf(ang);
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
@@ -779,9 +770,9 @@ inline EmbVec3D rotateGamma(const EmbVec3D &vec, const float ang) {
   // |  0         0        1| |z|
   //
 
-  const auto xPrime = static_cast<float>(vec.x * cos(ang) - vec.y * sin(ang));
-  const auto yPrime = static_cast<float>(vec.x * sin(ang) + vec.y * cos(ang));
-  const auto zPrime = static_cast<float>(vec.z);
+  const auto xPrime = vec.x * cosf(ang) - vec.y * sinf(ang);
+  const auto yPrime = vec.x * sinf(ang) + vec.y * cosf(ang);
+  const auto zPrime = vec.z;
 
   return EmbVec3D{xPrime, yPrime, zPrime};
 }
