@@ -37,7 +37,7 @@ int main(){
 
 ## More info
 
-For more information about usage, look under the "Related Pages" tab. For info about the API, look under the "Classes" tab.
+For more information about usage, look under the "Related Pages" tab. For info about the API classes, look under the "Classes" tab.  For info about functions, look under the "Files" tab.
 
 ## License
 

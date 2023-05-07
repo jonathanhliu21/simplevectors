@@ -1,7 +1,7 @@
 /**
  * @file vector2d.hpp
  *
- * Contains a 2D vector representation.
+ * @brief Contains a 2D vector representation.
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.

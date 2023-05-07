@@ -1,10 +1,13 @@
 /**
  * @file embed.h
  *
- * A minimized version of vectors for embedded devices without access to the
- * STL (such as on an Arduino, hence the ".h" instead of ".hpp"). This file is
- * meant to be a standalone file, so it is not included in vectors.hpp.
+ * @brief A minimized version of vectors for embedded devices without access to
+ * the STL (such as on an Arduino, hence the ".h" instead of ".hpp").
  *
+ * This file is meant to be a standalone file, so it is not included in
+ * vectors.hpp.
+ *
+ * @internal
  * The MIT License (MIT)
  *
  * Copyright (c) 2023 Jonathan Liu
@@ -26,6 +29,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ * @endinternal
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.

@@ -1,7 +1,7 @@
 /**
  * @file vector3d.hpp
  *
- * Contains a 3D vector representation.
+ * @brief Contains a 3D vector representation.
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.

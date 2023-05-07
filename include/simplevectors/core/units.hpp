@@ -1,7 +1,7 @@
 /**
  * @file units.hpp
  *
- * All STL includes and enums needed for the core library.
+ * @brief Enums for core library
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.

@@ -1,7 +1,7 @@
 /**
  * @file vector.hpp
  *
- * Contains a base vector representation.
+ * @brief Contains a base vector representation.
  *
  * @copyright Copyright (c) 2023 Jonathan Liu. This project is released under
  * the MIT License. All rights reserved.
