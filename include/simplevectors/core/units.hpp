@@ -13,16 +13,18 @@
 namespace svector {
 // COMBINER_PY_START
 /**
- * An enum representing the angle to use for a 3D vector.
+ * @brief Angle enumerator
  *
- * ALPHA is the angle between the positive x-axis and the vector, BETA is the
- * angle between the positive y-axis and the vector, and GAMMA is the angle
- * between the positive z-axis and the vector.
+ * An enum representing the angle to use for a 3D vector.
  *
  * This is only used in svector::Vector3D::angle() and
  * svector::Vector3D::rotate().
  */
-enum AngleDir { ALPHA, BETA, GAMMA };
+enum AngleDir {
+  ALPHA, //!< Angle between positive x-axis and vector
+  BETA,  //!< Angle between positive y-axis and vector
+  GAMMA  //!< Angle between positive z-axis and vector
+};
 // COMBINER_PY_END
 } // namespace svector
 

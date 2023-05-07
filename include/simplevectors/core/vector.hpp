@@ -22,7 +22,7 @@
 namespace svector {
 // COMBINER_PY_START
 /**
- * A base vector representation.
+ * @brief A base vector representation.
  *
  * @note The binary +, -, *, /, ==, and != operators are by default implemented
  * in functions.hpp. To use the class implementation rather than the one in
@@ -57,14 +57,14 @@ public:
       const_reverse_iterator; //!< An std::array::const_reverse_iterator
 
   /**
-   * No-argument constructor.
+   * @brief No-argument constructor
    *
    * Initializes a zero vector (all components are 0).
    */
   Vector() { this->m_components.fill(0); }
 
   /**
-   * Initializes a vector given initializer list.
+   * @brief Initializes a vector given initializer list
    *
    * The initializer list should represent the components of the vector in each
    * dimension. If the size of the initializer list is greater than the number
@@ -91,7 +91,9 @@ public:
   }
 
   /**
-   * Copy constructor (copies from another vector to an uninitialized vector).
+   * @brief Copy constructor
+   *
+   * Copies from another vector to an uninitialized vector.
    */
   Vector(const Vector<D, T> &other) {
     for (std::size_t i = 0; i < D; i++) {
@@ -100,13 +102,16 @@ public:
   }
 
   /**
-   * Move constructor (uses C++ default move constructor).
+   * @brief Move constructor
+   *
+   * Uses C++ default move constructor.
    */
   Vector(Vector<D, T> &&) noexcept = default;
 
   /**
-   * Assignment operator (copies from another vector to a vector whose values
-   * already exist).
+   * @brief Assignment operator
+   *
+   * Copies from another vector to a vector whose values already exist.
    */
   Vector<D, T> &operator=(const Vector<D, T> &other) {
     // check if assigning to self
@@ -122,17 +127,23 @@ public:
   }
 
   /**
-   * Move assignment operator (uses C++ default move assignment operator).
+   * @brief Move assignment operator
+   *
+   * Uses C++ default move assignment operator.
    */
   Vector<D, T> &operator=(Vector<D, T> &&) noexcept = default;
 
   /**
-   * Destructor (uses C++ default destructor).
+   * @brief Destructor
+   *
+   * Uses C++ default destructor.
    */
   virtual ~Vector() = default;
 
   /**
-   * String form; can be used for printing.
+   * @brief Returns string form of vector
+   *
+   * This string form can be used for printing.
    *
    * @returns The string form of the vector.
    */
@@ -151,6 +162,8 @@ public:
 
 #ifdef SVECTOR_USE_CLASS_OPERATORS
   /**
+   * @brief Vector addition
+   *
    * Performs vector addition and returns a new vector representing the sum of
    * the two vectors.
    *
@@ -174,6 +187,8 @@ public:
   }
 
   /**
+   * @brief Vector subtraction
+   *
    * Performs vector subtraction and returns a new vector representing the
    * difference of the two vectors.
    *
@@ -197,6 +212,8 @@ public:
   }
 
   /**
+   * @brief Scalar multiplication
+   *
    * Performs scalar multiplication and returns a new vector representing the
    * product.
    *
@@ -217,6 +234,8 @@ public:
   }
 
   /**
+   * @brief Scalar division
+   *
    * Performs scalar division and returns a new vector representing the
    * quotient.
    *
@@ -237,7 +256,7 @@ public:
   }
 
   /**
-   * Compares equality of two vectors.
+   * @brief Compares equality of two vectors.
    *
    * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
@@ -260,7 +279,7 @@ public:
   }
 
   /**
-   * Compares inequality of two vectors.
+   * @brief Compares inequality of two vectors.
    *
    * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is
    * defined. Otherwise, the binary operators in functions.hpp are used.
@@ -278,6 +297,8 @@ public:
 #endif
 
   /**
+   * @brief Negative of a vector
+   *
    * Makes all components of the vector negative.
    *
    * This can also be thought of flipping the direction of the vector.
@@ -294,6 +315,8 @@ public:
   }
 
   /**
+   * @brief In-place addition
+   *
    * Adds another vector object to the current object.
    *
    * @param other The other vector to add.
@@ -307,6 +330,8 @@ public:
   }
 
   /**
+   * @brief In-place subtraction
+   *
    * Subtracts another vector object from the current object.
    *
    * @param other The other vector to subtract.
@@ -320,6 +345,8 @@ public:
   }
 
   /**
+   * @brief In-place scalar multiplication
+   *
    * Performs scalar multiplication on the current object.
    *
    * @param other The number to multiply by.
@@ -333,6 +360,8 @@ public:
   }
 
   /**
+   * @brief In-place scalar division
+   *
    * Performs scalar division on the current object.
    *
    * @param other The number to divide by.
@@ -346,6 +375,8 @@ public:
   }
 
   /**
+   * @brief Dot product
+   *
    * Calculates the dot product of two vectors.
    *
    * @note The dimensions of the other vector must be the same
@@ -366,6 +397,8 @@ public:
   }
 
   /**
+   * @brief Magnitude
+   *
    * Gets the magnitude of the vector.
    *
    * @returns The magnitude of the vector.
@@ -381,7 +414,7 @@ public:
   };
 
   /**
-   * Normalizes a vector.
+   * @brief Normalizes a vector.
    *
    * Finds the unit vector with the same direction angle as the current vector.
    *
@@ -393,20 +426,22 @@ public:
   Vector<D, T> normalize() const { return (*this) / this->magn(); }
 
   /**
-   * Gets the number of dimensions.
+   * @brief Gets the number of dimensions.
    *
    * @returns Number of dimensions.
    */
   constexpr std::size_t numDimensions() const { return D; }
 
   /**
-   * Determines whether the current vector is a zero vector.
+   * @brief Determines whether the current vector is a zero vector.
    *
    * @returns Whether the current vector is a zero vector.
    */
   bool isZero() const { return this->magn() == 0; }
 
   /**
+   * @brief Value of a certain component of a vector
+   *
    * Gets a reference to a specific component of the vector given the dimension
    * number.
    *
@@ -419,6 +454,8 @@ public:
   }
 
   /**
+   * @brief Sets value of a certain component
+   *
    * Sets a certain component of the vector given the dimension number.
    *
    * @param index The dimension number.
@@ -426,6 +463,8 @@ public:
   T &operator[](const std::size_t index) { return this->m_components[index]; }
 
   /**
+   * @brief Value of a certain component of a vector
+   *
    * Gets a reference to a specific component of the vector given the dimension
    * number.
    *
@@ -440,6 +479,8 @@ public:
   }
 
   /**
+   * @brief Sets value of a certain component
+   *
    * Sets a certain component of the vector given the dimension number.
    *
    * Throws an out_of_range exception if the given number is out of bounds.
@@ -449,6 +490,8 @@ public:
   T &at(const std::size_t index) { return this->m_components.at(index); }
 
   /**
+   * @brief Iterator of first element
+   *
    * Returns an iterator to the first dimension of the vector. This iterator
    * will be equal to end() for a zero-dimension vector.
    *
@@ -459,6 +502,8 @@ public:
   iterator begin() noexcept { return iterator{this->m_components.begin()}; }
 
   /**
+   * @brief Const interator of first element
+   *
    * Returns a constant iterator to the first dimension of the vector. This
    * iterator will be equal to end() for a zero-dimension vector.
    *
@@ -469,6 +514,8 @@ public:
   }
 
   /**
+   * @brief Interator of last element + 1
+   *
    * Returns an iterator to the element following the last dimension of the
    * vector.
    *
@@ -482,6 +529,8 @@ public:
   iterator end() noexcept { return iterator{this->m_components.end()}; }
 
   /**
+   * @brief Const interator of last element + 1
+   *
    * Returns a constant iterator to the element following the last dimension of
    * the vector.
    *
@@ -495,6 +544,8 @@ public:
   }
 
   /**
+   * @brief Reverse iterator to last element
+   *
    * Returns a reverse iterator to the first dimension of the reversed vector.
    * It corresponds to the last dimension of the original vector. The iterator
    * will be equal to rend() for a zero-dimension vector.
@@ -508,6 +559,8 @@ public:
   }
 
   /**
+   * @brief Const reverse iterator to last element
+   *
    * Returns a constant reverse iterator to the first dimension of the reversed
    * vector. It corresponds to the last dimension of the original vector. The
    * iterator will be equal to rend() for a zero-dimension vector.
@@ -519,6 +572,8 @@ public:
   }
 
   /**
+   * @brief Reverse iterator to first element - 1
+   *
    * Returns a reverse iterator to the element following the last dimension of
    * the reversed vector. It corresponds to the element preceding the first
    * dimension of the original vector.
@@ -535,6 +590,8 @@ public:
   }
 
   /**
+   * @brief Const reverse iterator to first element - 1
+   *
    * Returns a constant reverse iterator to the element following the last
    * dimension of the reversed vector. It corresponds to the element preceding
    * the first dimension of the original vector.

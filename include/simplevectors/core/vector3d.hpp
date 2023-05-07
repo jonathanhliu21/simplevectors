@@ -21,14 +21,14 @@ namespace svector {
 typedef Vector<3> Vec3_; //!< An alias to Vector<3>.
 
 /**
- * A simple 3D vector representation.
+ * @brief A simple 3D vector representation.
  */
 class Vector3D : public Vec3_ {
 public:
   using Vec3_::Vector;
 
   /**
-   * Initializes a vector given xyz components.
+   * @brief Initializes a vector given xyz components.
    *
    * @param x The x-component.
    * @param y The y-component.
@@ -41,7 +41,9 @@ public:
   }
 
   /**
-   * Copy constructor for the base class.
+   * @brief Copy constructor for the base class.
+   *
+   * @param other A base class vector.
    */
   Vector3D(const Vec3_ &other) {
     this->m_components[0] = other[0];
@@ -50,6 +52,8 @@ public:
   }
 
   /**
+   * @brief Gets x-component
+   *
    * Gets the x-component of the vector.
    *
    * @returns x-component of vector.
@@ -57,11 +61,17 @@ public:
   double x() const { return this->m_components[0]; }
 
   /**
+   * @brief Sets x-component
+   *
    * Sets the x-component of the vector.
+   *
+   * @param newX x-value to set
    */
   void x(const double &newX) { this->m_components[0] = newX; }
 
   /**
+   * @brief Gets y-component
+   *
    * Gets the y-component of the vector.
    *
    * @returns y-component of vector.
@@ -69,11 +79,17 @@ public:
   double y() const { return this->m_components[1]; }
 
   /**
+   * @brief Sets y-component
+   *
    * Sets the y-component of the vector.
+   *
+   * @param newY y-value to set
    */
   void y(const double &newY) { this->m_components[1] = newY; }
 
   /**
+   * @brief Gets z-component
+   *
    * Gets the z-component of the vector.
    *
    * @returns z-component of vector.
@@ -81,12 +97,16 @@ public:
   double z() const { return this->m_components[2]; }
 
   /**
+   * @brief Sets z-component
+   *
    * Sets the z-component of the vector.
+   *
+   * @param newZ z-value to set
    */
   void z(const double &newZ) { this->m_components[2] = newZ; }
 
   /**
-   * Cross product of two vectors.
+   * @brief Cross product of two vectors.
    *
    * @param other The other vector to cross current vector with.
    *
@@ -101,6 +121,8 @@ public:
   }
 
   /**
+   * @brief Converts vector to another object
+   *
    * Converts components of vector to an object with a constructor
    * that has three parameters.
    *
@@ -115,6 +137,8 @@ public:
   }
 
   /**
+   * @brief Converts angles to another object
+   *
    * Converts the angles of vector to an object with a constructor that
    * has three parameters.
    *
@@ -129,7 +153,7 @@ public:
   }
 
   /**
-   * Gets a specific angle of the vector.
+   * @brief Gets a specific angle of the vector.
    *
    * Each angle is in the range [0, π]. Angle will be in radians.
    *
@@ -155,7 +179,7 @@ public:
   }
 
   /**
-   * Rotates vector around a certain axis by a certain angle.
+   * Brief Rotates vector around a certain axis by a certain angle.
    *
    * Uses the basic gimbal-like 3D rotation matrices for the
    * x-axis, y-axis, and the z-axis.
