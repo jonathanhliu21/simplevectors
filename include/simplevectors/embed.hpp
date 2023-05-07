@@ -34,7 +34,7 @@
 #ifndef INCLUDE_SVECTOR_EMBED_HPP_
 #define INCLUDE_SVECTOR_EMBED_HPP_
 
-#include <cmath>  // std::atan2, std::cos, std::sin, std::sqrt
+#include <cmath>  // std::acos, std::atan2, std::cos, std::sin, std::sqrt
 #include <string> // std::string
 
 namespace svector {
