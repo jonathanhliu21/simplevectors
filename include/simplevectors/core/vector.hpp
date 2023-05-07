@@ -612,7 +612,7 @@ protected:
 #ifdef SVECTOR_EXPERIMENTAL_COMPARE
 private:
   /**
-   * Compares elements between vectors lexographically (EXPERIMENTAL).
+   * @brief Compares elements between vectors lexographically (EXPERIMENTAL).
    *
    * Loops through components one by one from left to right, and at any
    * component, if the component of this vector is less than the component of
