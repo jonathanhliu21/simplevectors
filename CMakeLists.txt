@@ -1,17 +1,18 @@
 cmake_minimum_required(VERSION 3.16.3)  # lowest version that is tested on
 project(simplevectors 
-    VERSION 0.3.7
+    VERSION 0.3.8
     DESCRIPTION "Simple vector implementations in C++"
     LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
 # install options
-option(SVECTOR_INSTALL "Install simplevectors during the install step")
+option(SVECTOR_INSTALL "Installs simplevectors during the install step")
 
-# test options
-option(SVECTOR_BUILD_TEST "Build simplevector tests" OFF)
-option(SVECTOR_BUILD_EXAMPLE "Build simplevector examples" OFF)
+# build options
+option(SVECTOR_BUILD_TEST "Builds simplevector tests" OFF)
+option(SVECTOR_BUILD_EXAMPLE "Builds simplevector examples" OFF)
+option(SVECTOR_BUILD_DOC "Builds simplevector documentation" OFF)
 
 # compile
 add_library(simplevectors INTERFACE)
@@ -73,4 +74,9 @@ endif()
 # add examples
 if (SVECTOR_BUILD_EXAMPLE)
     add_subdirectory(example)
+endif()
+
+# add docs
+if(SVECTOR_BUILD_DOC)
+    add_subdirectory(doc)
 endif()

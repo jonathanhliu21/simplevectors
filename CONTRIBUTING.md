@@ -4,35 +4,35 @@ Issues can be submitted in the GitHub issue tracker. For bugs and enhancements, 
 
 ## Creating a Pull Request
 
-1. Fork the repository.
-2. Start writing code and committing.
-3. Create a pull request from the fork into the `develop` branch.
-4. In the pull request, please reference the issue that the PR is addressing.
-5. Make sure all checks pass.
+- Fork the repository.
+- Start writing code and committing.
+- Create a pull request from the fork into the `develop` branch.
+- In the pull request, please reference the issue that the PR is addressing.
+- Make sure all checks pass.
 
 ## Testing
 
-1. Create a build folder and `cd` into it.
-2. Run
+- Create a build folder and `cd` into it.
+- Run
 
 ```text
 $ cmake .. -DSVECTOR_BUILD_TEST=ON
 ```
 
-3. Run `make`.
-4. Run `ctest` to run the test suite.
+- Run `make`.
+- Run `ctest` to run the test suite.
 
 ## Examples
 
-1. Create a build folder and `cd` into it.
-2. Run
+- Create a build folder and `cd` into it.
+- Run
 
 ```text
 $ cmake .. -DSVECTOR_BUILD_EXAMPLE=ON
 ```
 
-3. Run `make`.
-4. Run
+- Run `make`.
+- Run
 
 ```text
 $ ./example/example
@@ -42,57 +42,41 @@ $ ./example/example
 
 To build documentation, you need doxygen and sphinx.
 
-1. Build the doxygen documentation.
+- Create a build folder and `cd` into it.
+- Run
 
 ```text
-$ doxygen
+$ cmake .. -DSVECTOR_BUILD_DOC=ON
 ```
 
-2. Go into the docs folder and set up a Python environment.
-
-```text
-$ cd docs
-$ python3 -m venv .venv
-$ source .venv/bin/activate
-```
-
-3. Install dependencies.
-
-```text
-$ pip install -r requirements.txt
-```
-
-4. Build the final documentation.
-
-```text
-$ make html
-```
+- Run `make doxygen`.
+- The index file should be in `./doc/html/index.html`
 
 ## Linting and Formatting
 
 To lint your code, you need `clang-tidy` and `clang-format`.
 
-1. Create a build folder and `cd` into it.
-2. Run
+- Create a build folder and `cd` into it.
+- Run
 
 ```text
 $ cmake .. -DSVECTOR_BUILD_EXAMPLE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS="-Werror -Wall -Wextra"
 ```
 
-3. Run `make`.
-4. Go to the root directory of the repository.
+- Run `make`.
+- Go to the root directory of the repository.
 
 ```text
 $ cd ..
 ```
 
-5. Run
+- Run
 
 ```text
 $ make -C scripts/ lint
 ```
 
-6. To format your C++ code (do not run the command for any other type of file), run
+- To format your C++ code (do not run the command for any other type of file), run
 
 ```text
 $ clang-format -i path/to/file/you/just/changed.hpp
@@ -100,8 +84,8 @@ $ clang-format -i path/to/file/you/just/changed.hpp
 
 ## Generating the Single Header
 
-1. Create a build folder
-2. Run
+- Create a build folder
+- Run
 
 ```text
 $ python3 scripts/combiner.py > build/simplevectors.hpp
