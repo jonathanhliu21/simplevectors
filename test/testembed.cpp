@@ -170,6 +170,22 @@ TEST(EmbedOperatorTest2D, NegativeOfAVector) {
   }
 }
 
+TEST(EmbedOperatorTest2D, PositiveOfAVector) {
+  std::vector<std::vector<std::pair<double, double>>> tests{
+      {{2, 5}, {2, 5}},
+      {{6, -7}, {6, -7}},
+      {{-4, 2}, {-4, 2}},
+      {{-5, -2}, {-5, -2}},
+  };
+
+  for (const auto &testcase : tests) {
+    Vec2D num(testcase[0].first, testcase[0].second);
+    Vec2D res(testcase[1].first, testcase[1].second);
+
+    EXPECT_EQ(+num, res);
+  }
+}
+
 TEST(EmbedOperatorTest2D, ScalarMultiplication) {
   std::vector<std::vector<std::pair<double, double>>> tests{
       {{-3, -4}, {5, -1}, {-15, -20}},
@@ -458,6 +474,22 @@ TEST(EmbedOperatorTest3D, NegativeOfAVector) {
     Vec3D res(testcase[1][0], testcase[1][1], testcase[1][2]);
 
     EXPECT_EQ(-num, res);
+  }
+}
+
+TEST(EmbedOperatorTest3D, PositiveOfAVector) {
+  std::vector<std::vector<std::vector<double>>> tests{
+      {{2, 5, 8}, {2, 5, 8}},
+      {{6, -7, -8}, {6, -7, -8}},
+      {{-4, 2, 6}, {-4, 2, 6}},
+      {{-5, -2, 0}, {-5, -2, 0}},
+  };
+
+  for (const auto &testcase : tests) {
+    Vec3D num(testcase[0][0], testcase[0][1], testcase[0][2]);
+    Vec3D res(testcase[1][0], testcase[1][1], testcase[1][2]);
+
+    EXPECT_EQ(+num, res);
   }
 }
 

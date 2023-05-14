@@ -299,7 +299,7 @@ public:
   /**
    * @brief Negative of a vector
    *
-   * Makes all components of the vector negative.
+   * Makes all components of the vector negative of what they currently are.
    *
    * This can also be thought of flipping the direction of the vector.
    *
@@ -309,6 +309,23 @@ public:
     Vector<D, T> tmp;
     for (std::size_t i = 0; i < D; i++) {
       tmp[i] = -this->m_components[i];
+    }
+
+    return tmp;
+  }
+
+  /**
+   * @brief Positive of a vector
+   *
+   * Creates new vector where the unary plus operator is applied to each
+   * component. In almost all cases, this returns the original vector.
+   *
+   * @returns The current vector.
+   */
+  Vector<D, T> operator+() const {
+    Vector<D, T> tmp;
+    for (std::size_t i = 0; i < D; i++) {
+      tmp[i] = +this->m_components[i];
     }
 
     return tmp;
