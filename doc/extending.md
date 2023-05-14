@@ -6,23 +6,7 @@ To go beyond only 2D and 3D, you can extend the `Vector` base class (the 2D and 
 class Quaternion : public svector::Vector<4> {};
 ```
 
-The `Vector` base class provides a protected variable, `m_components`, an `std::array` of each component of the vector. It also provides these methods, **which are not virtual**:
-
-- `operator+()`: adds two vectors
-- `operator-()`: subtracts two vectors, or flips the direction of a vector if used as a unary operator
-- `operator*()`: scalar multiplication
-- `operator/()`: scalar division
-- `operator==()`: equality (by comparing each component)
-- `operator!=()`: inequality
-- `operator+=()`: adds in place
-- `operator-=()`: subtracts in place
-- `operator*=()`: multiplies in place
-- `operator/=()`: divides in place
-- `dot()`: finds the dot product of two vectors
-- `magn()`: finds the magnitude of a vector
-- `normalize()`: normalizes a vector
-- `numDimensions()`: determines the number of dimensions in a vector
-- `operator[](index)`: returns dimension `index`'s component of a vector
+The `Vector` base class provides a protected variable, `m_components`, an `std::array` of each component of the vector. Please check the library API (under the Classes tab) for more details on inherited member functions. Note which ones are virtual and which ones are not.
 
 @note The binary operations with another vector require vectors **that have the same dimension**.
 
@@ -30,16 +14,11 @@ If you want to provide a different implementation for any of the non-operator me
 
 The base class provides these constructors:
 
-- `Vector()`: initializes a 0 vector (or a vector with 0s in every dimension)
+- `Vector()`: initializes a zero vector (or a vector with 0s in every dimension)
 - `Vector(std::initializer_list<double> args)`: initializes a vector, with each component given in the initializer list
 - `Vector(const Vector<dimensions>& other)`: copy constructor
 
 You can inherit them using `using svector::Vector<D>::Vector` or write your own constructors.
-
-These methods are virtual and can be overridden:
-
-- `~Vector()`: Destructor
-- `std::string toString()`: converts vector to a string format
 
 To make the operators work (without needing a downcast), you must include a constructor that takes in a base class:
 
