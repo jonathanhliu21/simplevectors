@@ -1,4 +1,4 @@
-# Simplevectors Documentation
+# Simplevectors
 
 Simple, embeddable, and extendable vector implementations in C++.
 
