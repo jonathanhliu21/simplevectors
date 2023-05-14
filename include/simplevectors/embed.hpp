@@ -413,15 +413,26 @@ inline Vec2D operator-(const Vec2D &lhs, const Vec2D &rhs) {
 /**
  * @brief Negative of a vector
  *
- * Makes all components of a vector negative.
+ * Makes all components of a vector negative of what they currently are.
  *
  * This can also be thought of flipping the direction of the vector.
  *
- * @param vec A 2D vector
+ * @param vec A 2D vector.
  *
  * @returns A new vector representing the negative of the given vector.
  */
 inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
+
+/**
+ * @brief Positive of a vector
+ *
+ * Represents value of vector, with no changes.
+ *
+ * @param vec A 2D vector.
+ *
+ * @returns The same 2D vector.
+ */
+inline Vec2D operator+(const Vec2D &vec) { return Vec2D{vec}; }
 
 /**
  * @brief Scalar multiplication
@@ -607,17 +618,28 @@ inline Vec3D operator-(const Vec3D &lhs, const Vec3D &rhs) {
 /**
  * @brief Negative of a vector
  *
- * Makes all components of a vector negative.
+ * Makes all components of a vector negative of what they currently are.
  *
  * This can also be thought of flipping the direction of the vector.
  *
- * @param vec A 3D vector
+ * @param vec A 3D vector.
  *
  * @returns A new vector representing the negative of the given vector.
  */
 inline Vec3D operator-(const Vec3D &vec) {
   return Vec3D{-vec.x, -vec.y, -vec.z};
 }
+
+/**
+ * @brief Positive of a vector
+ *
+ * Represents value of vector, with no changes.
+ *
+ * @param vec A 3D vector.
+ *
+ * @returns The same 3D vector.
+ */
+inline Vec3D operator+(const Vec3D &vec) { return Vec3D{vec}; }
 
 /**
  * @brief Scalar multiplication

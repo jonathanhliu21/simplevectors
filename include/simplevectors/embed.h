@@ -407,13 +407,24 @@ inline EmbVec2D operator-(const EmbVec2D &lhs, const EmbVec2D &rhs) {
  *
  * This can also be thought of flipping the direction of the vector.
  *
- * @param vec A 2D vector
+ * @param vec A 2D vector.
  *
  * @returns A new vector representing the negative of the given vector.
  */
 inline EmbVec2D operator-(const EmbVec2D &vec) {
   return EmbVec2D{-vec.x, -vec.y};
 }
+
+/**
+ * @brief Positive of a vector
+ *
+ * Represents value of vector, with no changes.
+ *
+ * @param vec A 2D vector.
+ *
+ * @returns The same 2D vector.
+ */
+inline EmbVec2D operator+(const EmbVec2D &vec) { return EmbVec2D{vec}; }
 
 /**
  * @brief Scalar multiplication
@@ -583,17 +594,28 @@ inline EmbVec3D operator-(const EmbVec3D &lhs, const EmbVec3D &rhs) {
 /**
  * @brief Negative of a vector
  *
- * Makes all components of a vector negative.
+ * Makes all components of a vector negative of what they currently are.
  *
  * This can also be thought of flipping the direction of the vector.
  *
- * @param vec A 3D vector
+ * @param vec A 3D vector.
  *
  * @returns A new vector representing the negative of the given vector.
  */
 inline EmbVec3D operator-(const EmbVec3D &vec) {
   return EmbVec3D{-vec.x, -vec.y, -vec.z};
 }
+
+/**
+ * @brief Positive of a vector
+ *
+ * Represents value of vector, with no changes.
+ *
+ * @param vec A 3D vector.
+ *
+ * @returns The same 3D vector.
+ */
+inline EmbVec3D operator+(const EmbVec3D &vec) { return EmbVec3D{vec}; }
 
 /**
  * @brief Scalar multiplication

@@ -299,7 +299,7 @@ public:
   /**
    * @brief Negative of a vector
    *
-   * Makes all components of the vector negative.
+   * Makes all components of the vector negative of what they currently are.
    *
    * This can also be thought of flipping the direction of the vector.
    *
@@ -311,6 +311,18 @@ public:
       tmp[i] = -this->m_components[i];
     }
 
+    return tmp;
+  }
+
+  /**
+   * @brief Positive of a vector
+   *
+   * Represents value of vector, with no changes.
+   *
+   * @returns The current vector.
+   */
+  Vector<D, T> operator+() const {
+    Vector<D, T> tmp{*this};
     return tmp;
   }
 
