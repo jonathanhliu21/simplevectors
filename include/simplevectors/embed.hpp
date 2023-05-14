@@ -426,13 +426,14 @@ inline Vec2D operator-(const Vec2D &vec) { return Vec2D{-vec.x, -vec.y}; }
 /**
  * @brief Positive of a vector
  *
- * Represents value of vector, with no changes.
+ * Represents value of vector, with the unary plus operator applied to each
+ * component. In almost all cases, this should result in the original vector.
  *
  * @param vec A 2D vector.
  *
  * @returns The same 2D vector.
  */
-inline Vec2D operator+(const Vec2D &vec) { return Vec2D{vec}; }
+inline Vec2D operator+(const Vec2D &vec) { return Vec2D{+vec.x, +vec.y}; }
 
 /**
  * @brief Scalar multiplication
@@ -633,13 +634,16 @@ inline Vec3D operator-(const Vec3D &vec) {
 /**
  * @brief Positive of a vector
  *
- * Represents value of vector, with no changes.
+ * Represents value of vector, with the unary plus operator applied to each
+ * component. In almost all cases, this should result in the original vector.
  *
  * @param vec A 3D vector.
  *
  * @returns The same 3D vector.
  */
-inline Vec3D operator+(const Vec3D &vec) { return Vec3D{vec}; }
+inline Vec3D operator+(const Vec3D &vec) {
+  return Vec3D{+vec.x, +vec.y, +vec.z};
+}
 
 /**
  * @brief Scalar multiplication

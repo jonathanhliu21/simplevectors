@@ -317,12 +317,17 @@ public:
   /**
    * @brief Positive of a vector
    *
-   * Represents value of vector, with no changes.
+   * Creates new vector where the unary plus operator is applied to each
+   * component. In almost all cases, this returns the original vector.
    *
    * @returns The current vector.
    */
   Vector<D, T> operator+() const {
-    Vector<D, T> tmp{*this};
+    Vector<D, T> tmp;
+    for (std::size_t i = 0; i < D; i++) {
+      tmp[i] = +this->m_components[i];
+    }
+
     return tmp;
   }
 

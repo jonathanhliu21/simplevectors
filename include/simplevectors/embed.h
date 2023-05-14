@@ -418,13 +418,16 @@ inline EmbVec2D operator-(const EmbVec2D &vec) {
 /**
  * @brief Positive of a vector
  *
- * Represents value of vector, with no changes.
+ * Represents value of vector, with the unary plus operator applied to each
+ * component. In almost all cases, this should result in the original vector.
  *
  * @param vec A 2D vector.
  *
  * @returns The same 2D vector.
  */
-inline EmbVec2D operator+(const EmbVec2D &vec) { return EmbVec2D{vec}; }
+inline EmbVec2D operator+(const EmbVec2D &vec) {
+  return EmbVec2D{+vec.x, +vec.y};
+}
 
 /**
  * @brief Scalar multiplication
@@ -609,13 +612,16 @@ inline EmbVec3D operator-(const EmbVec3D &vec) {
 /**
  * @brief Positive of a vector
  *
- * Represents value of vector, with no changes.
+ * Represents value of vector, with the unary plus operator applied to each
+ * component. In almost all cases, this should result in the original vector.
  *
  * @param vec A 3D vector.
  *
  * @returns The same 3D vector.
  */
-inline EmbVec3D operator+(const EmbVec3D &vec) { return EmbVec3D{vec}; }
+inline EmbVec3D operator+(const EmbVec3D &vec) {
+  return EmbVec3D{+vec.x, +vec.y, +vec.z};
+}
 
 /**
  * @brief Scalar multiplication
