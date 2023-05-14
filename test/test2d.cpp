@@ -157,6 +157,22 @@ TEST(OperatorTest2D, NegativeOfAVector) {
   }
 }
 
+TEST(OperatorTest2D, PositiveOfAVector) {
+  std::vector<std::vector<std::pair<double, double>>> tests{
+      {{2, 5}, {2, 5}},
+      {{6, -7}, {6, -7}},
+      {{-4, 2}, {-4, 2}},
+      {{-5, -2}, {-5, -2}},
+  };
+
+  for (const auto &testcase : tests) {
+    svector::Vector2D num(testcase[0].first, testcase[0].second);
+    svector::Vector2D res(testcase[1].first, testcase[1].second);
+
+    EXPECT_EQ(+num, res);
+  }
+}
+
 TEST(OperatorTest2D, ScalarMultiplication) {
   std::vector<std::vector<std::pair<double, double>>> tests{
       {{-3, -4}, {5, -1}, {-15, -20}},
