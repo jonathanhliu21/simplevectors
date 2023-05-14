@@ -154,6 +154,7 @@ svector::Vector2D product = lhs * 3;      // <6, 15>
 svector::Vector2D quotient = lhs / 3;     // <0.667, 1.667>
 double dot_product = lhs.dot(rhs);        // -14
 svector::Vector2D neg = -lhs;             // <-2, -5>
+svector::Vector2D pos = +lhs;             // <2, 5>
 ```
 
 Cross products only work on 3D vectors.

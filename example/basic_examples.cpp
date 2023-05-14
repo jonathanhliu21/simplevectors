@@ -134,6 +134,7 @@ int main() {
   svector::Vector2D quotient = lhs / 3;     // <0.667, 1.667>
   double dot_product = lhs.dot(rhs);        // -14
   svector::Vector2D neg = -lhs;             // <-2, -5>
+  svector::Vector2D pos = +lhs;             // <2, 5>
 
   std::cout << sum.toString() << std::endl;
   std::cout << difference.toString() << std::endl;
@@ -141,6 +142,7 @@ int main() {
   std::cout << quotient.toString() << std::endl;
   std::cout << dot_product << std::endl;
   std::cout << neg.toString() << std::endl;
+  std::cout << pos.toString() << std::endl;
 
   svector::Vector3D lhs3d(2, 5, -3);
   svector::Vector3D rhs3d(6, 5, 9);
