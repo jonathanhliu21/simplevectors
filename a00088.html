@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simplevectors
-   &#160;<span id="projectnumber">0.3.8</span>
+   &#160;<span id="projectnumber">0.3.9</span>
    </div>
    <div id="projectbrief">Simple vector implementations in C++</div>
   </td>
@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a79529f4272bee3fb4a25a223e33c49d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html">Vector</a>&lt; D, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">operator-</a> () const</td></tr>
 <tr class="memdesc:a79529f4272bee3fb4a25a223e33c49d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negative of a vector.  <a href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">More...</a><br /></td></tr>
 <tr class="separator:a79529f4272bee3fb4a25a223e33c49d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13afee2758933db5cdb1acf28ad472d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html">Vector</a>&lt; D, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">operator+</a> () const</td></tr>
+<tr class="memdesc:a13afee2758933db5cdb1acf28ad472d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positive of a vector.  <a href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">More...</a><br /></td></tr>
+<tr class="separator:a13afee2758933db5cdb1acf28ad472d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aef72548b86be6fa4754922484941c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html">Vector</a>&lt; D, T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a3aef72548b86be6fa4754922484941c2">operator+=</a> (const <a class="el" href="a00088.html">Vector</a>&lt; D, T &gt; &amp;other)</td></tr>
 <tr class="memdesc:a3aef72548b86be6fa4754922484941c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">In-place addition.  <a href="a00088.html#a3aef72548b86be6fa4754922484941c2">More...</a><br /></td></tr>
 <tr class="separator:a3aef72548b86be6fa4754922484941c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -782,6 +785,37 @@ template&lt;std::size_t D, typename T  = double&gt; </div>
 
 </div>
 </div>
+<a id="a13afee2758933db5cdb1acf28ad472d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13afee2758933db5cdb1acf28ad472d6">&#9670;&nbsp;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t D, typename T  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00088.html">Vector</a>&lt;D, T&gt; <a class="el" href="a00088.html">svector::Vector</a>&lt; D, T &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Positive of a vector. </p>
+<p>Creates new vector where the unary plus operator is applied to each component. In almost all cases, this returns the original vector.</p>
+<dl class="section return"><dt>Returns</dt><dd>The current vector. </dd></dl>
+
+</div>
+</div>
 <a id="a3aef72548b86be6fa4754922484941c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3aef72548b86be6fa4754922484941c2">&#9670;&nbsp;</a></span>operator+=()</h2>
 
@@ -845,7 +879,7 @@ template&lt;std::size_t D, typename T  = double&gt; </div>
 </div><div class="memdoc">
 
 <p>Negative of a vector. </p>
-<p>Makes all components of the vector negative.</p>
+<p>Makes all components of the vector negative of what they currently are.</p>
 <p>This can also be thought of flipping the direction of the vector.</p>
 <dl class="section return"><dt>Returns</dt><dd>A new vector representing the negative of the current vector. </dd></dl>
 

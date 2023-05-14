@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simplevectors
-   &#160;<span id="projectnumber">0.3.8</span>
+   &#160;<span id="projectnumber">0.3.9</span>
    </div>
    <div id="projectbrief">Simple vector implementations in C++</div>
   </td>
@@ -162,9 +162,9 @@ Properties</h1>
 <div class="line">std::cout &lt;&lt; <a class="code" href="a00035.html#ada83de391f28387dd6ccdfe5f19bfa3f">svector::gamma</a>(v3d) &lt;&lt; std::endl; <span class="comment">// gamma angle</span></div>
 <div class="line"><span class="comment">// NOTE: the angle methods will result in undefined behavior if the magnitude</span></div>
 <div class="line"><span class="comment">// of the vector is zero.</span></div>
-<div class="ttc" id="aa00035_html_a2fe9c1451857b286fcd699a23ed42f95"><div class="ttname"><a href="a00035.html#a2fe9c1451857b286fcd699a23ed42f95">svector::alpha</a></div><div class="ttdeci">float alpha(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets α angle.</div><div class="ttdef"><b>Definition:</b> embed.h:724</div></div>
-<div class="ttc" id="aa00035_html_acb93eff310411aa83a61a828d4571d37"><div class="ttname"><a href="a00035.html#acb93eff310411aa83a61a828d4571d37">svector::beta</a></div><div class="ttdeci">float beta(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets β angle.</div><div class="ttdef"><b>Definition:</b> embed.h:738</div></div>
-<div class="ttc" id="aa00035_html_ada83de391f28387dd6ccdfe5f19bfa3f"><div class="ttname"><a href="a00035.html#ada83de391f28387dd6ccdfe5f19bfa3f">svector::gamma</a></div><div class="ttdeci">float gamma(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets γ angle.</div><div class="ttdef"><b>Definition:</b> embed.h:752</div></div>
+<div class="ttc" id="aa00035_html_a2fe9c1451857b286fcd699a23ed42f95"><div class="ttname"><a href="a00035.html#a2fe9c1451857b286fcd699a23ed42f95">svector::alpha</a></div><div class="ttdeci">float alpha(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets α angle.</div><div class="ttdef"><b>Definition:</b> embed.h:752</div></div>
+<div class="ttc" id="aa00035_html_acb93eff310411aa83a61a828d4571d37"><div class="ttname"><a href="a00035.html#acb93eff310411aa83a61a828d4571d37">svector::beta</a></div><div class="ttdeci">float beta(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets β angle.</div><div class="ttdef"><b>Definition:</b> embed.h:766</div></div>
+<div class="ttc" id="aa00035_html_ada83de391f28387dd6ccdfe5f19bfa3f"><div class="ttname"><a href="a00035.html#ada83de391f28387dd6ccdfe5f19bfa3f">svector::gamma</a></div><div class="ttdeci">float gamma(const EmbVec3D &amp;vec)</div><div class="ttdoc">Gets γ angle.</div><div class="ttdef"><b>Definition:</b> embed.h:780</div></div>
 </div><!-- fragment --><p>You can also access the x, y, and z components using the <code>[]</code> operator. In this case, the 0th index would correspond to the x-value, the 1st index would correspond to the y-value, and the 2nd index would correspond to the z-value. This also works on higher-dimensional vectors. There is no functional equivalent to this operator.</p>
 <div class="fragment"><div class="line"><span class="comment">// set component values</span></div>
 <div class="line">v2d[0] = 2;</div>
@@ -195,13 +195,14 @@ Operations</h1>
 <div class="line"><a class="code" href="a00092.html">svector::Vector2D</a> quotient = lhs / 3;     <span class="comment">// &lt;0.667, 1.667&gt;</span></div>
 <div class="line"><span class="keywordtype">double</span> dot_product = lhs.<a class="code" href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">dot</a>(rhs);        <span class="comment">// -14</span></div>
 <div class="line"><a class="code" href="a00092.html">svector::Vector2D</a> neg = -lhs;             <span class="comment">// &lt;-2, -5&gt;</span></div>
-<div class="ttc" id="aa00088_html_aa8c5febe15949c0b06bf9161ecc7cc98"><div class="ttname"><a href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">svector::Vector::dot</a></div><div class="ttdeci">T dot(const Vector&lt; D, T &gt; &amp;other) const</div><div class="ttdoc">Dot product.</div><div class="ttdef"><b>Definition:</b> vector.hpp:389</div></div>
+<div class="line"><a class="code" href="a00092.html">svector::Vector2D</a> pos = +lhs;             <span class="comment">// &lt;2, 5&gt;</span></div>
+<div class="ttc" id="aa00088_html_aa8c5febe15949c0b06bf9161ecc7cc98"><div class="ttname"><a href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">svector::Vector::dot</a></div><div class="ttdeci">T dot(const Vector&lt; D, T &gt; &amp;other) const</div><div class="ttdoc">Dot product.</div><div class="ttdef"><b>Definition:</b> vector.hpp:406</div></div>
 </div><!-- fragment --><p>Cross products only work on 3D vectors.</p>
 <div class="fragment"><div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> lhs3d(2, 5, -3);</div>
 <div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> rhs3d(6, 5, 9);</div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> <a class="code" href="a00035.html#adfc6e296bf904e600101f65861638a51">cross</a> = lhs3d.cross(rhs3d); <span class="comment">// &lt;60, -36, -20&gt;</span></div>
-<div class="ttc" id="aa00035_html_adfc6e296bf904e600101f65861638a51"><div class="ttname"><a href="a00035.html#adfc6e296bf904e600101f65861638a51">svector::cross</a></div><div class="ttdeci">EmbVec3D cross(const EmbVec3D &amp;lhs, const EmbVec3D &amp;rhs)</div><div class="ttdoc">Cross product of two vectors.</div><div class="ttdef"><b>Definition:</b> embed.h:672</div></div>
+<div class="ttc" id="aa00035_html_adfc6e296bf904e600101f65861638a51"><div class="ttname"><a href="a00035.html#adfc6e296bf904e600101f65861638a51">svector::cross</a></div><div class="ttdeci">EmbVec3D cross(const EmbVec3D &amp;lhs, const EmbVec3D &amp;rhs)</div><div class="ttdoc">Cross product of two vectors.</div><div class="ttdef"><b>Definition:</b> embed.h:700</div></div>
 </div><!-- fragment --><p>Vectors can be added, subtracted, multiplied, or divided in place.</p>
 <div class="fragment"><div class="line"><a class="code" href="a00092.html">svector::Vector2D</a> inplacev(2, 5);</div>
 <div class="line">inplacev += <a class="code" href="a00092.html">svector::Vector2D</a>(3, 6);</div>
@@ -230,7 +231,7 @@ Normalization</h1>
 <div class="line"> </div>
 <div class="line"><a class="code" href="a00092.html">svector::Vector2D</a> norm2D = unnorm2D.<a class="code" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">normalize</a>(); <span class="comment">// &lt;0.6, 0.8&gt;</span></div>
 <div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> norm3D = unnorm3D.<a class="code" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">normalize</a>(); <span class="comment">// &lt;0.424, 0.566, 0.707&gt;</span></div>
-<div class="ttc" id="aa00088_html_a4f87a5c8f27493f09d14108efaab47a4"><div class="ttname"><a href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">svector::Vector::normalize</a></div><div class="ttdeci">Vector&lt; D, T &gt; normalize() const</div><div class="ttdoc">Normalizes a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:426</div></div>
+<div class="ttc" id="aa00088_html_a4f87a5c8f27493f09d14108efaab47a4"><div class="ttname"><a href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">svector::Vector::normalize</a></div><div class="ttdeci">Vector&lt; D, T &gt; normalize() const</div><div class="ttdoc">Normalizes a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:443</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd><code><a class="el" href="a00035.html#ac232d8fca01b8483a24b37a8271a6e70" title="Normalizes a vector.">normalize()</a></code> will result in undefined behavior if the magnitude of the vector is zero.</dd></dl>
 <h1><a class="anchor" id="autotoc_md22"></a>
 Rotation 2D</h1>
@@ -262,9 +263,9 @@ Rotation 3D</h1>
 <div class="fragment"><div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> v1_xRotation = <a class="code" href="a00035.html#a6df21069f31c0a5ac1736df62a1c11da">svector::rotateAlpha</a>(v1_3D, M_PI_2);</div>
 <div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> v1_yRotation = <a class="code" href="a00035.html#ac2e465bf8cfdc4a836b9f95a81caac58">svector::rotateBeta</a>(v1_3D, M_PI_2);</div>
 <div class="line"><a class="code" href="a00096.html">svector::Vector3D</a> v1_zRotation = <a class="code" href="a00035.html#a58d4541e9720a4aa6bc33d6538730cf0">svector::rotateGamma</a>(v1_3D, M_PI_2);</div>
-<div class="ttc" id="aa00035_html_a58d4541e9720a4aa6bc33d6538730cf0"><div class="ttname"><a href="a00035.html#a58d4541e9720a4aa6bc33d6538730cf0">svector::rotateGamma</a></div><div class="ttdeci">EmbVec3D rotateGamma(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around z-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:816</div></div>
-<div class="ttc" id="aa00035_html_a6df21069f31c0a5ac1736df62a1c11da"><div class="ttname"><a href="a00035.html#a6df21069f31c0a5ac1736df62a1c11da">svector::rotateAlpha</a></div><div class="ttdeci">EmbVec3D rotateAlpha(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around x-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:764</div></div>
-<div class="ttc" id="aa00035_html_ac2e465bf8cfdc4a836b9f95a81caac58"><div class="ttname"><a href="a00035.html#ac2e465bf8cfdc4a836b9f95a81caac58">svector::rotateBeta</a></div><div class="ttdeci">EmbVec3D rotateBeta(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around y-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:790</div></div>
+<div class="ttc" id="aa00035_html_a58d4541e9720a4aa6bc33d6538730cf0"><div class="ttname"><a href="a00035.html#a58d4541e9720a4aa6bc33d6538730cf0">svector::rotateGamma</a></div><div class="ttdeci">EmbVec3D rotateGamma(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around z-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:844</div></div>
+<div class="ttc" id="aa00035_html_a6df21069f31c0a5ac1736df62a1c11da"><div class="ttname"><a href="a00035.html#a6df21069f31c0a5ac1736df62a1c11da">svector::rotateAlpha</a></div><div class="ttdeci">EmbVec3D rotateAlpha(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around x-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:792</div></div>
+<div class="ttc" id="aa00035_html_ac2e465bf8cfdc4a836b9f95a81caac58"><div class="ttname"><a href="a00035.html#ac2e465bf8cfdc4a836b9f95a81caac58">svector::rotateBeta</a></div><div class="ttdeci">EmbVec3D rotateBeta(const EmbVec3D &amp;vec, const float ang)</div><div class="ttdoc">Rotates around y-axis.</div><div class="ttdef"><b>Definition:</b> embed.h:818</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
 Looping</h1>
 <p>The <code>Vector</code> class and the classes that extend it (namely <code>Vector2D</code> and <code>Vector3D</code>) are container-like in the sense that they have iterators and <code>begin()</code>, <code>end()</code>, <code>rbegin()</code>, and <code>rend()</code> methods. This means that they can be looped through like any other STL container.</p>
