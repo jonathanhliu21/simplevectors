@@ -27,6 +27,9 @@ namespace svector {
  * @note The binary +, -, *, /, ==, and != operators are by default implemented
  * in functions.hpp. To use the class implementation rather than the one in
  * functions.hpp, define the variable SVECTOR_USE_CLASS_OPERATORS.
+ *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  */
 template <std::size_t D, typename T = double> class Vector {
 public:
@@ -639,6 +642,9 @@ private:
    *
    * If this vector has fewer components, then returns -1, and if other vector
    * has fewer components, returns 1.
+   *
+   * @tparam D2 The number of dimensions of the other vector.
+   * @tparam T2 Vector type of the other vector.
    *
    * @param other The other vector to compare to.
    *

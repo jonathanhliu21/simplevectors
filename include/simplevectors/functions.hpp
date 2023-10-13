@@ -30,6 +30,8 @@ namespace svector {
 /**
  * @brief Creates a vector from an std::array.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  * @param array An array.
  *
  * @returns A vector whose dimensions reflect the elements in the array.
@@ -54,6 +56,8 @@ Vector<D, T> makeVector(std::array<T, D> array) {
  * If the given std::vector has more elements than the specified dimensions,
  * then the resulting vector would ignore the numbers in those dimensions.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  * @param vector A std::vector.
  *
  * @returns A vector whose dimensions reflect the elements in the std::vector.
@@ -78,6 +82,8 @@ Vector<D, T> makeVector(std::vector<T> vector) {
  * the initializer list is less than the number of dimensions given, then the
  * vector fills the rest of the dimensions with the value 0.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  * @param args the initializer list.
  *
  * @returns A vector whose dimensions reflect the elements in the initializer
@@ -179,6 +185,9 @@ inline void z(Vector3D &v, const double zValue) { v[2] = zValue; }
  *
  * @note The dimensions of the two vectors must be the same.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ *
  * @param lhs First vector.
  * @param rhs Second vector.
  *
@@ -197,6 +206,9 @@ inline T dot(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
 
 /**
  * @brief Gets the magnitude of the vector.
+ *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  *
  * @param v The vector to get magnitude of.
  *
@@ -220,6 +232,9 @@ template <typename T, std::size_t D> inline T magn(const Vector<D, T> &v) {
  * @note This method will result in undefined behavior if the vector is a zero
  * vector (if the magnitude equals zero).
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ *
  * @param v The vector to normalize.
  *
  * @returns Normalized vector.
@@ -231,6 +246,9 @@ inline Vector<D, T> normalize(const Vector<D, T> &v) {
 
 /**
  * @brief Determines whether a vector is a zero vector.
+ *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  *
  * @returns Whether the given vector is a zero vector.
  */
@@ -423,6 +441,9 @@ inline Vector3D rotateGamma(const Vector3D &v, const double &ang) {
  *
  * @note The dimensions of the two vectors must be the same.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ *
  * @param lhs The first vector.
  * @param rhs The second vector.
  *
@@ -450,6 +471,9 @@ inline Vector<D, T> operator+(const Vector<D, T> &lhs,
  *
  * @note The dimensions of the two vectors must be the same.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ *
  * @param lhs The first vector.
  * @param rhs The second vector.
  *
@@ -475,6 +499,10 @@ inline Vector<D, T> operator-(const Vector<D, T> &lhs,
  * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
  * defined. Otherwise, the operators in svector::Vector are used.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ * @tparam T2 Scalar multiplication type.
+ *
  * @param lhs The first vector.
  * @param rhs The second vector.
  *
@@ -499,6 +527,10 @@ inline Vector<D, T> operator*(const Vector<D, T> &lhs, const T2 rhs) {
  * @note This method is only used if SVECTOR_USE_CLASS_OPERATORS is not
  * defined. Otherwise, the operators in svector::Vector are used.
  *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
+ * @tparam T2 Scalar division type.
+ *
  * @param lhs The first vector.
  * @param rhs The second vector.
  *
@@ -521,6 +553,9 @@ inline Vector<D, T> operator/(const Vector<D, T> &lhs, const T2 rhs) {
  * defined. Otherwise, the operators in svector::Vector are used.
  *
  * @note The dimensions of the two vectors must be the same.
+ *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
@@ -545,6 +580,9 @@ inline bool operator==(const Vector<D, T> &lhs, const Vector<D, T> &rhs) {
  * defined. Otherwise, the operators in svector::Vector are used.
  *
  * @note The dimensions of the two vectors must be the same.
+ *
+ * @tparam D The number of dimensions.
+ * @tparam T Vector type.
  *
  * @param lhs The first vector.
  * @param rhs The second vector.
