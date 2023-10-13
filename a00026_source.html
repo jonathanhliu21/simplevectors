@@ -86,340 +86,340 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>svector {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// COMBINER_PY_START</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="a00088.html">   31</a></span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D, <span class="keyword">typename</span> T = <span class="keywordtype">double</span>&gt; <span class="keyword">class </span><a class="code" href="a00088.html">Vector</a> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// makes sure that type is numeric</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  static_assert(std::is_arithmetic&lt;T&gt;::value, <span class="stringliteral">&quot;Vector type must be numeric&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef SVECTOR_EXPERIMENTAL_COMPARE</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D1, std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="a00088.html">   34</a></span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D, <span class="keyword">typename</span> T = <span class="keywordtype">double</span>&gt; <span class="keyword">class </span><a class="code" href="a00088.html">Vector</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// makes sure that type is numeric</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  static_assert(std::is_arithmetic&lt;T&gt;::value, <span class="stringliteral">&quot;Vector type must be numeric&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifdef SVECTOR_EXPERIMENTAL_COMPARE</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D1, std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&lt;=(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D1, std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&gt;(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&lt;=(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D1, std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&gt;=(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">typedef</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">   51</a></span>&#160;      <span class="keyword">typename</span> std::array&lt;T, D&gt;::iterator <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::const_iterator</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">   53</a></span>&#160;      <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::reverse_iterator</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">   55</a></span>&#160;      <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::const_reverse_iterator</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00088.html#a0346035577f39d20980aec3b2acc3839">   57</a></span>&#160;      <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">   64</a></span>&#160;  <a class="code" href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">Vector</a>() { this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.fill(0); }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">   78</a></span>&#160;  <a class="code" href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">Vector</a>(<span class="keyword">const</span> std::initializer_list&lt;T&gt; args) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// in case length of args &lt; dimensions</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.fill(0);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::size_t counter = 0;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;num : args) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">if</span> (counter &gt;= D) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[counter] = num;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      counter++;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">   98</a></span>&#160;  <a class="code" href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">Vector</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] = other[i];</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="a00088.html#a265d6629c6d07dc72e3050cb8c963423">  109</a></span>&#160;  <a class="code" href="a00088.html#a265d6629c6d07dc72e3050cb8c963423">Vector</a>(<a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;&amp;) noexcept = default;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="a00088.html#aa104c7240b64c743c6d8451504abe616">  116</a></span>&#160;  <a class="code" href="a00088.html">Vector</a>&lt;D, T&gt; &amp;operator=(const <a class="code" href="a00088.html">Vector</a>&lt;D, T&gt; &amp;other) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">// check if assigning to self</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;other) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] = other[i];</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&gt;(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D1, std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator&gt;=(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D1, T1&gt;</a> &amp;, <span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">typedef</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">   54</a></span>&#160;      <span class="keyword">typename</span> std::array&lt;T, D&gt;::iterator <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::const_iterator</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">   56</a></span>&#160;      <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::reverse_iterator</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">   58</a></span>&#160;      <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> std::array&lt;T, D&gt;::const_reverse_iterator</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="a00088.html#a0346035577f39d20980aec3b2acc3839">   60</a></span>&#160;      <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">   67</a></span>&#160;  <a class="code" href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">Vector</a>() { this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.fill(0); }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">   81</a></span>&#160;  <a class="code" href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">Vector</a>(<span class="keyword">const</span> std::initializer_list&lt;T&gt; args) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// in case length of args &lt; dimensions</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.fill(0);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::size_t counter = 0;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;num : args) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keywordflow">if</span> (counter &gt;= D) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[counter] = num;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      counter++;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">  101</a></span>&#160;  <a class="code" href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">Vector</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] = other[i];</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="a00088.html#a265d6629c6d07dc72e3050cb8c963423">  112</a></span>&#160;  <a class="code" href="a00088.html#a265d6629c6d07dc72e3050cb8c963423">Vector</a>(<a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;&amp;) noexcept = default;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="a00088.html#aa104c7240b64c743c6d8451504abe616">  119</a></span>&#160;  <a class="code" href="a00088.html">Vector</a>&lt;D, T&gt; &amp;operator=(const <a class="code" href="a00088.html">Vector</a>&lt;D, T&gt; &amp;other) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// check if assigning to self</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;other) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] = other[i];</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="a00088.html#a8cc27e048d28bb5597c7b96cd1b89321">  134</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a8cc27e048d28bb5597c7b96cd1b89321">operator=</a>(<a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;&amp;) noexcept = default;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="a00088.html#affe2ae62a95ea70f7065c0bd61a53553">  141</a></span>&#160;  virtual ~<a class="code" href="a00088.html">Vector</a>() = default;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="a00088.html#a706197199863f1748ce354de928a13de">  150</a></span>&#160;  virtual std::<span class="keywordtype">string</span> <a class="code" href="a00088.html#a706197199863f1748ce354de928a13de">toString</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    std::string str = <span class="stringliteral">&quot;&lt;&quot;</span>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D - 1; i++) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      str += std::to_string(this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i]);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      str += <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    str += std::to_string(this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[D - 1]);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    str += <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="a00088.html#a8cc27e048d28bb5597c7b96cd1b89321">  137</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a8cc27e048d28bb5597c7b96cd1b89321">operator=</a>(<a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;&amp;) noexcept = default;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="a00088.html#affe2ae62a95ea70f7065c0bd61a53553">  144</a></span>&#160;  virtual ~<a class="code" href="a00088.html">Vector</a>() = default;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="a00088.html#a706197199863f1748ce354de928a13de">  153</a></span>&#160;  virtual std::<span class="keywordtype">string</span> <a class="code" href="a00088.html#a706197199863f1748ce354de928a13de">toString</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::string str = <span class="stringliteral">&quot;&lt;&quot;</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D - 1; i++) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      str += std::to_string(this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i]);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      str += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    str += std::to_string(this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[D - 1]);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    str += <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#ifdef SVECTOR_USE_CLASS_OPERATORS</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">operator+</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] + other[i];</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#ifdef SVECTOR_USE_CLASS_OPERATORS</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">operator+</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] + other[i];</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">operator-</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] - other[i];</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">operator-</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] - other[i];</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00035.html#add312a2d477804ec252ea7a03c777200">operator*</a>(<span class="keyword">const</span> T other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] * other;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00035.html#add312a2d477804ec252ea7a03c777200">operator*</a>(<span class="keyword">const</span> T other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] * other;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00035.html#adc99369ee035ac7339667cd06c32b23a">operator/</a>(<span class="keyword">const</span> T other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] / other;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  Vector&lt;D, T&gt; <a class="code" href="a00035.html#adc99369ee035ac7339667cd06c32b23a">operator/</a>(<span class="keyword">const</span> T other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    Vector&lt;D, T&gt; tmp;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      tmp[i] = this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] / other;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00035.html#a0e3454407cd15e9be453574e6e392492">operator==</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      <span class="keywordflow">if</span> (this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] != other[i]) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00035.html#a0e3454407cd15e9be453574e6e392492">operator==</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      <span class="keywordflow">if</span> (this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] != other[i]) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    }</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00035.html#ac539cb71e9c7952a2aa6bcd507fcbdbd">operator!=</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> !((*this) == other);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">  308</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">operator-</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      tmp[i] = -this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i];</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00035.html#ac539cb71e9c7952a2aa6bcd507fcbdbd">operator!=</a>(<span class="keyword">const</span> Vector&lt;D, T&gt; &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span> !((*this) == other);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">  311</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">operator-</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      tmp[i] = -this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i];</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">  325</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">operator+</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      tmp[i] = +this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i];</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">  328</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">operator+</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> tmp;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      tmp[i] = +this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i];</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    }</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="a00088.html#a3aef72548b86be6fa4754922484941c2">  341</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a3aef72548b86be6fa4754922484941c2">operator+=</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] += other[i];</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="a00088.html#a3aef72548b86be6fa4754922484941c2">  344</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a3aef72548b86be6fa4754922484941c2">operator+=</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] += other[i];</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">  356</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">operator-=</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] -= other[i];</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">  359</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">operator-=</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other) {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] -= other[i];</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    }</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">  371</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">operator*=</a>(<span class="keyword">const</span> T other) {</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] *= other;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno"><a class="line" href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">  374</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">operator*=</a>(<span class="keyword">const</span> T other) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] *= other;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="a00088.html#ab312fad048da79f297c3b1d9103236b9">  386</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#ab312fad048da79f297c3b1d9103236b9">operator/=</a>(<span class="keyword">const</span> T other) {</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] /= other;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno"><a class="line" href="a00088.html#ab312fad048da79f297c3b1d9103236b9">  389</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;<a class="code" href="a00088.html#ab312fad048da79f297c3b1d9103236b9">operator/=</a>(<span class="keyword">const</span> T other) {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] /= other;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno"><a class="line" href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">  406</a></span>&#160;  T <a class="code" href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">dot</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    T result = 0;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      result += this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] * other[i];</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno"><a class="line" href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">  409</a></span>&#160;  T <a class="code" href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">dot</a>(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    T result = 0;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; D; i++) {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;      result += this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[i] * other[i];</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno"><a class="line" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">  423</a></span>&#160;  T <a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    T sum_of_squares = 0;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;i : this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>) {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;      sum_of_squares += i * i;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    }</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">return</span> std::sqrt(sum_of_squares);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  };</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">  426</a></span>&#160;  T <a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    T sum_of_squares = 0;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;i : this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>) {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;      sum_of_squares += i * i;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    }</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
-<div class="line"><a name="l00443"></a><span class="lineno"><a class="line" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">  443</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">normalize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) / this-&gt;<a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>(); }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
-<div class="line"><a name="l00450"></a><span class="lineno"><a class="line" href="a00088.html#af6b51d8b845952b1c693e430c77ab220">  450</a></span>&#160;  constexpr std::size_t <a class="code" href="a00088.html#af6b51d8b845952b1c693e430c77ab220">numDimensions</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> D; }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
-<div class="line"><a name="l00457"></a><span class="lineno"><a class="line" href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">  457</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">isZero</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>() == 0; }</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
-<div class="line"><a name="l00469"></a><span class="lineno"><a class="line" href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">  469</a></span>&#160;  <span class="keyword">const</span> T &amp;<a class="code" href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">operator[]</a>(<span class="keyword">const</span> std::size_t index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[index];</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  }</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
-<div class="line"><a name="l00480"></a><span class="lineno"><a class="line" href="a00088.html#adf62ce931622e9acb55614b4170442e8">  480</a></span>&#160;  T &amp;<a class="code" href="a00088.html#adf62ce931622e9acb55614b4170442e8">operator[]</a>(<span class="keyword">const</span> std::size_t index) { <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[index]; }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno"><a class="line" href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">  494</a></span>&#160;  <span class="keyword">const</span> T &amp;<a class="code" href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">at</a>(<span class="keyword">const</span> std::size_t index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.at(index);</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  }</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
-<div class="line"><a name="l00507"></a><span class="lineno"><a class="line" href="a00088.html#aef620526e8001af494bd793ea4a8f044">  507</a></span>&#160;  T &amp;<a class="code" href="a00088.html#aef620526e8001af494bd793ea4a8f044">at</a>(<span class="keyword">const</span> std::size_t index) { <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.at(index); }</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
-<div class="line"><a name="l00519"></a><span class="lineno"><a class="line" href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">  519</a></span>&#160;  <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a> <a class="code" href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">begin</a>() noexcept { <span class="keywordflow">return</span> <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.begin()}; }</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00529"></a><span class="lineno"><a class="line" href="a00088.html#aea758be24ad30640ebe49a801b775945">  529</a></span>&#160;  <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a> <a class="code" href="a00088.html#aea758be24ad30640ebe49a801b775945">begin</a>() const noexcept {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.begin()};</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;  }</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
-<div class="line"><a name="l00546"></a><span class="lineno"><a class="line" href="a00088.html#a90b984cf25cbc2043736a5673f03444a">  546</a></span>&#160;  iterator <a class="code" href="a00088.html#a90b984cf25cbc2043736a5673f03444a">end</a>() noexcept { <span class="keywordflow">return</span> <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.end()}; }</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
-<div class="line"><a name="l00559"></a><span class="lineno"><a class="line" href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">  559</a></span>&#160;  <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a> <a class="code" href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">end</a>() const noexcept {</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.end()};</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  }</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
-<div class="line"><a name="l00574"></a><span class="lineno"><a class="line" href="a00088.html#a2702f121eaef8d97f30b482fed56c509">  574</a></span>&#160;  <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a> <a class="code" href="a00088.html#a2702f121eaef8d97f30b482fed56c509">rbegin</a>() noexcept {</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rbegin()};</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  }</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160; </div>
-<div class="line"><a name="l00587"></a><span class="lineno"><a class="line" href="a00088.html#a41d606c82599dda991cc95bdfce83daf">  587</a></span>&#160;  <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a> <a class="code" href="a00088.html#a41d606c82599dda991cc95bdfce83daf">rbegin</a>() const noexcept {</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rbegin()};</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  }</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160; </div>
-<div class="line"><a name="l00605"></a><span class="lineno"><a class="line" href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">  605</a></span>&#160;  <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a> <a class="code" href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">rend</a>() noexcept {</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rend()};</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;  }</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
-<div class="line"><a name="l00622"></a><span class="lineno"><a class="line" href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">  622</a></span>&#160;  <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a> <a class="code" href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">rend</a>() const noexcept {</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rend()};</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  }</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160; </div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00627"></a><span class="lineno"><a class="line" href="a00088.html#aa16867012cbc61db8d2296b49afec291">  627</a></span>&#160;  std::array&lt;T, D&gt; <a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">return</span> std::sqrt(sum_of_squares);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  };</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno"><a class="line" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">  446</a></span>&#160;  <a class="code" href="a00088.html">Vector&lt;D, T&gt;</a> <a class="code" href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">normalize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) / this-&gt;<a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>(); }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="a00088.html#af6b51d8b845952b1c693e430c77ab220">  453</a></span>&#160;  constexpr std::size_t <a class="code" href="a00088.html#af6b51d8b845952b1c693e430c77ab220">numDimensions</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> D; }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno"><a class="line" href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">  460</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">isZero</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">magn</a>() == 0; }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00472"></a><span class="lineno"><a class="line" href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">  472</a></span>&#160;  <span class="keyword">const</span> T &amp;<a class="code" href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">operator[]</a>(<span class="keyword">const</span> std::size_t index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[index];</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno"><a class="line" href="a00088.html#adf62ce931622e9acb55614b4170442e8">  483</a></span>&#160;  T &amp;<a class="code" href="a00088.html#adf62ce931622e9acb55614b4170442e8">operator[]</a>(<span class="keyword">const</span> std::size_t index) { <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>[index]; }</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno"><a class="line" href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">  497</a></span>&#160;  <span class="keyword">const</span> T &amp;<a class="code" href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">at</a>(<span class="keyword">const</span> std::size_t index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.at(index);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;  }</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno"><a class="line" href="a00088.html#aef620526e8001af494bd793ea4a8f044">  510</a></span>&#160;  T &amp;<a class="code" href="a00088.html#aef620526e8001af494bd793ea4a8f044">at</a>(<span class="keyword">const</span> std::size_t index) { <span class="keywordflow">return</span> this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.at(index); }</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno"><a class="line" href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">  522</a></span>&#160;  <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a> <a class="code" href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">begin</a>() noexcept { <span class="keywordflow">return</span> <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.begin()}; }</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno"><a class="line" href="a00088.html#aea758be24ad30640ebe49a801b775945">  532</a></span>&#160;  <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a> <a class="code" href="a00088.html#aea758be24ad30640ebe49a801b775945">begin</a>() const noexcept {</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.begin()};</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;  }</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
+<div class="line"><a name="l00549"></a><span class="lineno"><a class="line" href="a00088.html#a90b984cf25cbc2043736a5673f03444a">  549</a></span>&#160;  iterator <a class="code" href="a00088.html#a90b984cf25cbc2043736a5673f03444a">end</a>() noexcept { <span class="keywordflow">return</span> <a class="code" href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.end()}; }</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno"><a class="line" href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">  562</a></span>&#160;  <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a> <a class="code" href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">end</a>() const noexcept {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">const_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.end()};</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;  }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00577"></a><span class="lineno"><a class="line" href="a00088.html#a2702f121eaef8d97f30b482fed56c509">  577</a></span>&#160;  <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a> <a class="code" href="a00088.html#a2702f121eaef8d97f30b482fed56c509">rbegin</a>() noexcept {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rbegin()};</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  }</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160; </div>
+<div class="line"><a name="l00590"></a><span class="lineno"><a class="line" href="a00088.html#a41d606c82599dda991cc95bdfce83daf">  590</a></span>&#160;  <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a> <a class="code" href="a00088.html#a41d606c82599dda991cc95bdfce83daf">rbegin</a>() const noexcept {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rbegin()};</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160; </div>
+<div class="line"><a name="l00608"></a><span class="lineno"><a class="line" href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">  608</a></span>&#160;  <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a> <a class="code" href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">rend</a>() noexcept {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#adbdec14f43e66c6b2204317f041d7185">reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rend()};</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;  }</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
+<div class="line"><a name="l00625"></a><span class="lineno"><a class="line" href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">  625</a></span>&#160;  <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a> <a class="code" href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">rend</a>() const noexcept {</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00088.html#a0346035577f39d20980aec3b2acc3839">const_reverse_iterator</a>{this-&gt;<a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>.rend()};</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  }</div>
 <div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160; </div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;<span class="preprocessor">#ifdef SVECTOR_EXPERIMENTAL_COMPARE</span></div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T2&gt;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  std::int8_t compare(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;other) <span class="keyword">const</span> noexcept {</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    std::size_t min_dim = std::min(D, D2);</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    std::size_t counter = 0;</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160; </div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="comment">// to suppress MSVC warning</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="preprocessor">#ifdef _MSC_VER</span></div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="keywordflow">if</span> constexpr (D != D2) {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    <span class="keywordflow">if</span> (D != D2) {</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;      <span class="comment">// check dimensions first</span></div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;      <span class="keywordflow">return</span> D &lt; D2 ? -1 : 1;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    }</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160; </div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="comment">// compare one by one</span></div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; min_dim; i++) {</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;      <span class="keywordflow">if</span> (this-&gt;m_components[i] == other[i]) {</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;        counter++;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;m_components[i] &lt; other[i]) {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;      }</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    }</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; </div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    <span class="keywordflow">if</span> (counter != D || counter != D2) {</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    }</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; </div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="comment">// means two vectors are equal</span></div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  }</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;};</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="comment">// COMBINER_PY_END</span></div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;} <span class="comment">// namespace svector</span></div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00630"></a><span class="lineno"><a class="line" href="a00088.html#aa16867012cbc61db8d2296b49afec291">  630</a></span>&#160;  std::array&lt;T, D&gt; <a class="code" href="a00088.html#aa16867012cbc61db8d2296b49afec291">m_components</a>; </div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;<span class="preprocessor">#ifdef SVECTOR_EXPERIMENTAL_COMPARE</span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> D2, <span class="keyword">typename</span> T2&gt;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  std::int8_t compare(<span class="keyword">const</span> <a class="code" href="a00088.html">Vector&lt;D2, T2&gt;</a> &amp;other) <span class="keyword">const</span> noexcept {</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    std::size_t min_dim = std::min(D, D2);</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    std::size_t counter = 0;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160; </div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="comment">// to suppress MSVC warning</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="preprocessor">#ifdef _MSC_VER</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="keywordflow">if</span> constexpr (D != D2) {</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="keywordflow">if</span> (D != D2) {</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;      <span class="comment">// check dimensions first</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;      <span class="keywordflow">return</span> D &lt; D2 ? -1 : 1;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    }</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; </div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <span class="comment">// compare one by one</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; min_dim; i++) {</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;      <span class="keywordflow">if</span> (this-&gt;m_components[i] == other[i]) {</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;        counter++;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;m_components[i] &lt; other[i]) {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;      }</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    }</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160; </div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="keywordflow">if</span> (counter != D || counter != D2) {</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    }</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; </div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <span class="comment">// means two vectors are equal</span></div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  }</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;};</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="comment">// COMBINER_PY_END</span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;} <span class="comment">// namespace svector</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aa00035_html_a0e3454407cd15e9be453574e6e392492"><div class="ttname"><a href="a00035.html#a0e3454407cd15e9be453574e6e392492">svector::operator==</a></div><div class="ttdeci">bool operator==(const EmbVec2D &amp;lhs, const EmbVec2D &amp;rhs)</div><div class="ttdoc">Compares equality of two vectors.</div><div class="ttdef"><b>Definition:</b> embed.h:470</div></div>
 <div class="ttc" id="aa00035_html_ac539cb71e9c7952a2aa6bcd507fcbdbd"><div class="ttname"><a href="a00035.html#ac539cb71e9c7952a2aa6bcd507fcbdbd">svector::operator!=</a></div><div class="ttdeci">bool operator!=(const EmbVec2D &amp;lhs, const EmbVec2D &amp;rhs)</div><div class="ttdoc">Compares inequality of two vectors.</div><div class="ttdef"><b>Definition:</b> embed.h:482</div></div>
 <div class="ttc" id="aa00035_html_adc99369ee035ac7339667cd06c32b23a"><div class="ttname"><a href="a00035.html#adc99369ee035ac7339667cd06c32b23a">svector::operator/</a></div><div class="ttdeci">EmbVec2D operator/(const EmbVec2D &amp;lhs, const float rhs)</div><div class="ttdoc">Scalar division.</div><div class="ttdef"><b>Definition:</b> embed.h:458</div></div>
 <div class="ttc" id="aa00035_html_add312a2d477804ec252ea7a03c777200"><div class="ttname"><a href="a00035.html#add312a2d477804ec252ea7a03c777200">svector::operator*</a></div><div class="ttdeci">EmbVec2D operator*(const EmbVec2D &amp;lhs, const float rhs)</div><div class="ttdoc">Scalar multiplication.</div><div class="ttdef"><b>Definition:</b> embed.h:443</div></div>
-<div class="ttc" id="aa00088_html"><div class="ttname"><a href="a00088.html">svector::Vector</a></div><div class="ttdoc">A base vector representation.</div><div class="ttdef"><b>Definition:</b> vector.hpp:31</div></div>
-<div class="ttc" id="aa00088_html_a0346035577f39d20980aec3b2acc3839"><div class="ttname"><a href="a00088.html#a0346035577f39d20980aec3b2acc3839">svector::Vector::const_reverse_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::const_reverse_iterator const_reverse_iterator</div><div class="ttdoc">An std::array::const_reverse_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:57</div></div>
-<div class="ttc" id="aa00088_html_a0a600611b85c1d7e190634ed17f8b259"><div class="ttname"><a href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">svector::Vector::at</a></div><div class="ttdeci">const T &amp; at(const std::size_t index) const</div><div class="ttdoc">Value of a certain component of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:494</div></div>
-<div class="ttc" id="aa00088_html_a0e00d66b1b8a7f90a45a61f24b88834d"><div class="ttname"><a href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">svector::Vector::Vector</a></div><div class="ttdeci">Vector()</div><div class="ttdoc">No-argument constructor.</div><div class="ttdef"><b>Definition:</b> vector.hpp:64</div></div>
-<div class="ttc" id="aa00088_html_a114147aca66dcebb6e2f718ff2fdf21a"><div class="ttname"><a href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">svector::Vector::const_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::const_iterator const_iterator</div><div class="ttdoc">An std::array::const_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:53</div></div>
-<div class="ttc" id="aa00088_html_a13afee2758933db5cdb1acf28ad472d6"><div class="ttname"><a href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">svector::Vector::operator+</a></div><div class="ttdeci">Vector&lt; D, T &gt; operator+() const</div><div class="ttdoc">Positive of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:325</div></div>
-<div class="ttc" id="aa00088_html_a142a7f6785eba59d5f3efb1f97cb22ed"><div class="ttname"><a href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">svector::Vector::rend</a></div><div class="ttdeci">reverse_iterator rend() noexcept</div><div class="ttdoc">Reverse iterator to first element - 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:605</div></div>
+<div class="ttc" id="aa00088_html"><div class="ttname"><a href="a00088.html">svector::Vector</a></div><div class="ttdoc">A base vector representation.</div><div class="ttdef"><b>Definition:</b> vector.hpp:34</div></div>
+<div class="ttc" id="aa00088_html_a0346035577f39d20980aec3b2acc3839"><div class="ttname"><a href="a00088.html#a0346035577f39d20980aec3b2acc3839">svector::Vector::const_reverse_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::const_reverse_iterator const_reverse_iterator</div><div class="ttdoc">An std::array::const_reverse_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:60</div></div>
+<div class="ttc" id="aa00088_html_a0a600611b85c1d7e190634ed17f8b259"><div class="ttname"><a href="a00088.html#a0a600611b85c1d7e190634ed17f8b259">svector::Vector::at</a></div><div class="ttdeci">const T &amp; at(const std::size_t index) const</div><div class="ttdoc">Value of a certain component of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:497</div></div>
+<div class="ttc" id="aa00088_html_a0e00d66b1b8a7f90a45a61f24b88834d"><div class="ttname"><a href="a00088.html#a0e00d66b1b8a7f90a45a61f24b88834d">svector::Vector::Vector</a></div><div class="ttdeci">Vector()</div><div class="ttdoc">No-argument constructor.</div><div class="ttdef"><b>Definition:</b> vector.hpp:67</div></div>
+<div class="ttc" id="aa00088_html_a114147aca66dcebb6e2f718ff2fdf21a"><div class="ttname"><a href="a00088.html#a114147aca66dcebb6e2f718ff2fdf21a">svector::Vector::const_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::const_iterator const_iterator</div><div class="ttdoc">An std::array::const_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:56</div></div>
+<div class="ttc" id="aa00088_html_a13afee2758933db5cdb1acf28ad472d6"><div class="ttname"><a href="a00088.html#a13afee2758933db5cdb1acf28ad472d6">svector::Vector::operator+</a></div><div class="ttdeci">Vector&lt; D, T &gt; operator+() const</div><div class="ttdoc">Positive of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:328</div></div>
+<div class="ttc" id="aa00088_html_a142a7f6785eba59d5f3efb1f97cb22ed"><div class="ttname"><a href="a00088.html#a142a7f6785eba59d5f3efb1f97cb22ed">svector::Vector::rend</a></div><div class="ttdeci">reverse_iterator rend() noexcept</div><div class="ttdoc">Reverse iterator to first element - 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:608</div></div>
 <div class="ttc" id="aa00088_html_a265d6629c6d07dc72e3050cb8c963423"><div class="ttname"><a href="a00088.html#a265d6629c6d07dc72e3050cb8c963423">svector::Vector::Vector</a></div><div class="ttdeci">Vector(Vector&lt; D, T &gt; &amp;&amp;) noexcept=default</div><div class="ttdoc">Move constructor.</div></div>
-<div class="ttc" id="aa00088_html_a2702f121eaef8d97f30b482fed56c509"><div class="ttname"><a href="a00088.html#a2702f121eaef8d97f30b482fed56c509">svector::Vector::rbegin</a></div><div class="ttdeci">reverse_iterator rbegin() noexcept</div><div class="ttdoc">Reverse iterator to last element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:574</div></div>
-<div class="ttc" id="aa00088_html_a2ee110a3ffb375d2a929b2ff949081ca"><div class="ttname"><a href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">svector::Vector::magn</a></div><div class="ttdeci">T magn() const</div><div class="ttdoc">Magnitude.</div><div class="ttdef"><b>Definition:</b> vector.hpp:423</div></div>
-<div class="ttc" id="aa00088_html_a3aef72548b86be6fa4754922484941c2"><div class="ttname"><a href="a00088.html#a3aef72548b86be6fa4754922484941c2">svector::Vector::operator+=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator+=(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">In-place addition.</div><div class="ttdef"><b>Definition:</b> vector.hpp:341</div></div>
-<div class="ttc" id="aa00088_html_a41d606c82599dda991cc95bdfce83daf"><div class="ttname"><a href="a00088.html#a41d606c82599dda991cc95bdfce83daf">svector::Vector::rbegin</a></div><div class="ttdeci">const_reverse_iterator rbegin() const noexcept</div><div class="ttdoc">Const reverse iterator to last element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:587</div></div>
-<div class="ttc" id="aa00088_html_a448079b6fdc19f1bdb753f3b33c03934"><div class="ttname"><a href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">svector::Vector::begin</a></div><div class="ttdeci">iterator begin() noexcept</div><div class="ttdoc">Iterator of first element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:519</div></div>
-<div class="ttc" id="aa00088_html_a4c9b94cbfcc97c894149ff849fcea0e0"><div class="ttname"><a href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">svector::Vector::iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::iterator iterator</div><div class="ttdoc">An std::array::iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:34</div></div>
-<div class="ttc" id="aa00088_html_a4efdfe65e424daca281d09d3341ab8d9"><div class="ttname"><a href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">svector::Vector::end</a></div><div class="ttdeci">const_iterator end() const noexcept</div><div class="ttdoc">Const interator of last element + 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:559</div></div>
-<div class="ttc" id="aa00088_html_a4f87a5c8f27493f09d14108efaab47a4"><div class="ttname"><a href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">svector::Vector::normalize</a></div><div class="ttdeci">Vector&lt; D, T &gt; normalize() const</div><div class="ttdoc">Normalizes a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:443</div></div>
-<div class="ttc" id="aa00088_html_a5e27aa7efedb7d0bdbace989238018d9"><div class="ttname"><a href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">svector::Vector::operator-=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator-=(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">In-place subtraction.</div><div class="ttdef"><b>Definition:</b> vector.hpp:356</div></div>
-<div class="ttc" id="aa00088_html_a604df9d4e4e6f410a82e156dd717a535"><div class="ttname"><a href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">svector::Vector::rend</a></div><div class="ttdeci">const_reverse_iterator rend() const noexcept</div><div class="ttdoc">Const reverse iterator to first element - 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:622</div></div>
-<div class="ttc" id="aa00088_html_a706197199863f1748ce354de928a13de"><div class="ttname"><a href="a00088.html#a706197199863f1748ce354de928a13de">svector::Vector::toString</a></div><div class="ttdeci">virtual std::string toString() const</div><div class="ttdoc">Returns string form of vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:150</div></div>
-<div class="ttc" id="aa00088_html_a79529f4272bee3fb4a25a223e33c49d1"><div class="ttname"><a href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">svector::Vector::operator-</a></div><div class="ttdeci">Vector&lt; D, T &gt; operator-() const</div><div class="ttdoc">Negative of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:308</div></div>
-<div class="ttc" id="aa00088_html_a7abfe9895c72adf1da5280f6db80db69"><div class="ttname"><a href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">svector::Vector::Vector</a></div><div class="ttdeci">Vector(const std::initializer_list&lt; T &gt; args)</div><div class="ttdoc">Initializes a vector given initializer list.</div><div class="ttdef"><b>Definition:</b> vector.hpp:78</div></div>
+<div class="ttc" id="aa00088_html_a2702f121eaef8d97f30b482fed56c509"><div class="ttname"><a href="a00088.html#a2702f121eaef8d97f30b482fed56c509">svector::Vector::rbegin</a></div><div class="ttdeci">reverse_iterator rbegin() noexcept</div><div class="ttdoc">Reverse iterator to last element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:577</div></div>
+<div class="ttc" id="aa00088_html_a2ee110a3ffb375d2a929b2ff949081ca"><div class="ttname"><a href="a00088.html#a2ee110a3ffb375d2a929b2ff949081ca">svector::Vector::magn</a></div><div class="ttdeci">T magn() const</div><div class="ttdoc">Magnitude.</div><div class="ttdef"><b>Definition:</b> vector.hpp:426</div></div>
+<div class="ttc" id="aa00088_html_a3aef72548b86be6fa4754922484941c2"><div class="ttname"><a href="a00088.html#a3aef72548b86be6fa4754922484941c2">svector::Vector::operator+=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator+=(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">In-place addition.</div><div class="ttdef"><b>Definition:</b> vector.hpp:344</div></div>
+<div class="ttc" id="aa00088_html_a41d606c82599dda991cc95bdfce83daf"><div class="ttname"><a href="a00088.html#a41d606c82599dda991cc95bdfce83daf">svector::Vector::rbegin</a></div><div class="ttdeci">const_reverse_iterator rbegin() const noexcept</div><div class="ttdoc">Const reverse iterator to last element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:590</div></div>
+<div class="ttc" id="aa00088_html_a448079b6fdc19f1bdb753f3b33c03934"><div class="ttname"><a href="a00088.html#a448079b6fdc19f1bdb753f3b33c03934">svector::Vector::begin</a></div><div class="ttdeci">iterator begin() noexcept</div><div class="ttdoc">Iterator of first element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:522</div></div>
+<div class="ttc" id="aa00088_html_a4c9b94cbfcc97c894149ff849fcea0e0"><div class="ttname"><a href="a00088.html#a4c9b94cbfcc97c894149ff849fcea0e0">svector::Vector::iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::iterator iterator</div><div class="ttdoc">An std::array::iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:37</div></div>
+<div class="ttc" id="aa00088_html_a4efdfe65e424daca281d09d3341ab8d9"><div class="ttname"><a href="a00088.html#a4efdfe65e424daca281d09d3341ab8d9">svector::Vector::end</a></div><div class="ttdeci">const_iterator end() const noexcept</div><div class="ttdoc">Const interator of last element + 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:562</div></div>
+<div class="ttc" id="aa00088_html_a4f87a5c8f27493f09d14108efaab47a4"><div class="ttname"><a href="a00088.html#a4f87a5c8f27493f09d14108efaab47a4">svector::Vector::normalize</a></div><div class="ttdeci">Vector&lt; D, T &gt; normalize() const</div><div class="ttdoc">Normalizes a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:446</div></div>
+<div class="ttc" id="aa00088_html_a5e27aa7efedb7d0bdbace989238018d9"><div class="ttname"><a href="a00088.html#a5e27aa7efedb7d0bdbace989238018d9">svector::Vector::operator-=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator-=(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">In-place subtraction.</div><div class="ttdef"><b>Definition:</b> vector.hpp:359</div></div>
+<div class="ttc" id="aa00088_html_a604df9d4e4e6f410a82e156dd717a535"><div class="ttname"><a href="a00088.html#a604df9d4e4e6f410a82e156dd717a535">svector::Vector::rend</a></div><div class="ttdeci">const_reverse_iterator rend() const noexcept</div><div class="ttdoc">Const reverse iterator to first element - 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:625</div></div>
+<div class="ttc" id="aa00088_html_a706197199863f1748ce354de928a13de"><div class="ttname"><a href="a00088.html#a706197199863f1748ce354de928a13de">svector::Vector::toString</a></div><div class="ttdeci">virtual std::string toString() const</div><div class="ttdoc">Returns string form of vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:153</div></div>
+<div class="ttc" id="aa00088_html_a79529f4272bee3fb4a25a223e33c49d1"><div class="ttname"><a href="a00088.html#a79529f4272bee3fb4a25a223e33c49d1">svector::Vector::operator-</a></div><div class="ttdeci">Vector&lt; D, T &gt; operator-() const</div><div class="ttdoc">Negative of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:311</div></div>
+<div class="ttc" id="aa00088_html_a7abfe9895c72adf1da5280f6db80db69"><div class="ttname"><a href="a00088.html#a7abfe9895c72adf1da5280f6db80db69">svector::Vector::Vector</a></div><div class="ttdeci">Vector(const std::initializer_list&lt; T &gt; args)</div><div class="ttdoc">Initializes a vector given initializer list.</div><div class="ttdef"><b>Definition:</b> vector.hpp:81</div></div>
 <div class="ttc" id="aa00088_html_a8cc27e048d28bb5597c7b96cd1b89321"><div class="ttname"><a href="a00088.html#a8cc27e048d28bb5597c7b96cd1b89321">svector::Vector::operator=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator=(Vector&lt; D, T &gt; &amp;&amp;) noexcept=default</div><div class="ttdoc">Move assignment operator.</div></div>
-<div class="ttc" id="aa00088_html_a90b984cf25cbc2043736a5673f03444a"><div class="ttname"><a href="a00088.html#a90b984cf25cbc2043736a5673f03444a">svector::Vector::end</a></div><div class="ttdeci">iterator end() noexcept</div><div class="ttdoc">Interator of last element + 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:546</div></div>
-<div class="ttc" id="aa00088_html_a90e54dd0178d253b9a1945448836f2a5"><div class="ttname"><a href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">svector::Vector::Vector</a></div><div class="ttdeci">Vector(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">Copy constructor.</div><div class="ttdef"><b>Definition:</b> vector.hpp:98</div></div>
-<div class="ttc" id="aa00088_html_aa16867012cbc61db8d2296b49afec291"><div class="ttname"><a href="a00088.html#aa16867012cbc61db8d2296b49afec291">svector::Vector::m_components</a></div><div class="ttdeci">std::array&lt; T, D &gt; m_components</div><div class="ttdoc">An array of components for the vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:627</div></div>
-<div class="ttc" id="aa00088_html_aa8c5febe15949c0b06bf9161ecc7cc98"><div class="ttname"><a href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">svector::Vector::dot</a></div><div class="ttdeci">T dot(const Vector&lt; D, T &gt; &amp;other) const</div><div class="ttdoc">Dot product.</div><div class="ttdef"><b>Definition:</b> vector.hpp:406</div></div>
-<div class="ttc" id="aa00088_html_ab312fad048da79f297c3b1d9103236b9"><div class="ttname"><a href="a00088.html#ab312fad048da79f297c3b1d9103236b9">svector::Vector::operator/=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator/=(const T other)</div><div class="ttdoc">In-place scalar division.</div><div class="ttdef"><b>Definition:</b> vector.hpp:386</div></div>
-<div class="ttc" id="aa00088_html_ad6fcb661236fce31717f1e2d1282574e"><div class="ttname"><a href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">svector::Vector::operator*=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator*=(const T other)</div><div class="ttdoc">In-place scalar multiplication.</div><div class="ttdef"><b>Definition:</b> vector.hpp:371</div></div>
-<div class="ttc" id="aa00088_html_adbdec14f43e66c6b2204317f041d7185"><div class="ttname"><a href="a00088.html#adbdec14f43e66c6b2204317f041d7185">svector::Vector::reverse_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::reverse_iterator reverse_iterator</div><div class="ttdoc">An std::array::reverse_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:55</div></div>
-<div class="ttc" id="aa00088_html_adf62ce931622e9acb55614b4170442e8"><div class="ttname"><a href="a00088.html#adf62ce931622e9acb55614b4170442e8">svector::Vector::operator[]</a></div><div class="ttdeci">T &amp; operator[](const std::size_t index)</div><div class="ttdoc">Sets value of a certain component.</div><div class="ttdef"><b>Definition:</b> vector.hpp:480</div></div>
-<div class="ttc" id="aa00088_html_ae5a6f649b2cb3df258e180b4a31ba497"><div class="ttname"><a href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">svector::Vector::isZero</a></div><div class="ttdeci">bool isZero() const</div><div class="ttdoc">Determines whether the current vector is a zero vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:457</div></div>
-<div class="ttc" id="aa00088_html_aea758be24ad30640ebe49a801b775945"><div class="ttname"><a href="a00088.html#aea758be24ad30640ebe49a801b775945">svector::Vector::begin</a></div><div class="ttdeci">const_iterator begin() const noexcept</div><div class="ttdoc">Const interator of first element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:529</div></div>
-<div class="ttc" id="aa00088_html_aef620526e8001af494bd793ea4a8f044"><div class="ttname"><a href="a00088.html#aef620526e8001af494bd793ea4a8f044">svector::Vector::at</a></div><div class="ttdeci">T &amp; at(const std::size_t index)</div><div class="ttdoc">Sets value of a certain component.</div><div class="ttdef"><b>Definition:</b> vector.hpp:507</div></div>
-<div class="ttc" id="aa00088_html_af6b51d8b845952b1c693e430c77ab220"><div class="ttname"><a href="a00088.html#af6b51d8b845952b1c693e430c77ab220">svector::Vector::numDimensions</a></div><div class="ttdeci">constexpr std::size_t numDimensions() const</div><div class="ttdoc">Gets the number of dimensions.</div><div class="ttdef"><b>Definition:</b> vector.hpp:450</div></div>
-<div class="ttc" id="aa00088_html_afb5cb2cd0cab52f59df195d7809ba1ad"><div class="ttname"><a href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">svector::Vector::operator[]</a></div><div class="ttdeci">const T &amp; operator[](const std::size_t index) const</div><div class="ttdoc">Value of a certain component of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:469</div></div>
+<div class="ttc" id="aa00088_html_a90b984cf25cbc2043736a5673f03444a"><div class="ttname"><a href="a00088.html#a90b984cf25cbc2043736a5673f03444a">svector::Vector::end</a></div><div class="ttdeci">iterator end() noexcept</div><div class="ttdoc">Interator of last element + 1.</div><div class="ttdef"><b>Definition:</b> vector.hpp:549</div></div>
+<div class="ttc" id="aa00088_html_a90e54dd0178d253b9a1945448836f2a5"><div class="ttname"><a href="a00088.html#a90e54dd0178d253b9a1945448836f2a5">svector::Vector::Vector</a></div><div class="ttdeci">Vector(const Vector&lt; D, T &gt; &amp;other)</div><div class="ttdoc">Copy constructor.</div><div class="ttdef"><b>Definition:</b> vector.hpp:101</div></div>
+<div class="ttc" id="aa00088_html_aa16867012cbc61db8d2296b49afec291"><div class="ttname"><a href="a00088.html#aa16867012cbc61db8d2296b49afec291">svector::Vector::m_components</a></div><div class="ttdeci">std::array&lt; T, D &gt; m_components</div><div class="ttdoc">An array of components for the vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:630</div></div>
+<div class="ttc" id="aa00088_html_aa8c5febe15949c0b06bf9161ecc7cc98"><div class="ttname"><a href="a00088.html#aa8c5febe15949c0b06bf9161ecc7cc98">svector::Vector::dot</a></div><div class="ttdeci">T dot(const Vector&lt; D, T &gt; &amp;other) const</div><div class="ttdoc">Dot product.</div><div class="ttdef"><b>Definition:</b> vector.hpp:409</div></div>
+<div class="ttc" id="aa00088_html_ab312fad048da79f297c3b1d9103236b9"><div class="ttname"><a href="a00088.html#ab312fad048da79f297c3b1d9103236b9">svector::Vector::operator/=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator/=(const T other)</div><div class="ttdoc">In-place scalar division.</div><div class="ttdef"><b>Definition:</b> vector.hpp:389</div></div>
+<div class="ttc" id="aa00088_html_ad6fcb661236fce31717f1e2d1282574e"><div class="ttname"><a href="a00088.html#ad6fcb661236fce31717f1e2d1282574e">svector::Vector::operator*=</a></div><div class="ttdeci">Vector&lt; D, T &gt; &amp; operator*=(const T other)</div><div class="ttdoc">In-place scalar multiplication.</div><div class="ttdef"><b>Definition:</b> vector.hpp:374</div></div>
+<div class="ttc" id="aa00088_html_adbdec14f43e66c6b2204317f041d7185"><div class="ttname"><a href="a00088.html#adbdec14f43e66c6b2204317f041d7185">svector::Vector::reverse_iterator</a></div><div class="ttdeci">std::array&lt; T, D &gt;::reverse_iterator reverse_iterator</div><div class="ttdoc">An std::array::reverse_iterator.</div><div class="ttdef"><b>Definition:</b> vector.hpp:58</div></div>
+<div class="ttc" id="aa00088_html_adf62ce931622e9acb55614b4170442e8"><div class="ttname"><a href="a00088.html#adf62ce931622e9acb55614b4170442e8">svector::Vector::operator[]</a></div><div class="ttdeci">T &amp; operator[](const std::size_t index)</div><div class="ttdoc">Sets value of a certain component.</div><div class="ttdef"><b>Definition:</b> vector.hpp:483</div></div>
+<div class="ttc" id="aa00088_html_ae5a6f649b2cb3df258e180b4a31ba497"><div class="ttname"><a href="a00088.html#ae5a6f649b2cb3df258e180b4a31ba497">svector::Vector::isZero</a></div><div class="ttdeci">bool isZero() const</div><div class="ttdoc">Determines whether the current vector is a zero vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:460</div></div>
+<div class="ttc" id="aa00088_html_aea758be24ad30640ebe49a801b775945"><div class="ttname"><a href="a00088.html#aea758be24ad30640ebe49a801b775945">svector::Vector::begin</a></div><div class="ttdeci">const_iterator begin() const noexcept</div><div class="ttdoc">Const interator of first element.</div><div class="ttdef"><b>Definition:</b> vector.hpp:532</div></div>
+<div class="ttc" id="aa00088_html_aef620526e8001af494bd793ea4a8f044"><div class="ttname"><a href="a00088.html#aef620526e8001af494bd793ea4a8f044">svector::Vector::at</a></div><div class="ttdeci">T &amp; at(const std::size_t index)</div><div class="ttdoc">Sets value of a certain component.</div><div class="ttdef"><b>Definition:</b> vector.hpp:510</div></div>
+<div class="ttc" id="aa00088_html_af6b51d8b845952b1c693e430c77ab220"><div class="ttname"><a href="a00088.html#af6b51d8b845952b1c693e430c77ab220">svector::Vector::numDimensions</a></div><div class="ttdeci">constexpr std::size_t numDimensions() const</div><div class="ttdoc">Gets the number of dimensions.</div><div class="ttdef"><b>Definition:</b> vector.hpp:453</div></div>
+<div class="ttc" id="aa00088_html_afb5cb2cd0cab52f59df195d7809ba1ad"><div class="ttname"><a href="a00088.html#afb5cb2cd0cab52f59df195d7809ba1ad">svector::Vector::operator[]</a></div><div class="ttdeci">const T &amp; operator[](const std::size_t index) const</div><div class="ttdoc">Value of a certain component of a vector.</div><div class="ttdef"><b>Definition:</b> vector.hpp:472</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

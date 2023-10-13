@@ -429,6 +429,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 
 <p>Calculates the dot product of two vectors. </p>
 <dl class="section note"><dt>Note</dt><dd>The dimensions of the two vectors must be the same.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>First vector. </td></tr>
@@ -504,6 +511,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 </div><div class="memdoc">
 
 <p>Determines whether a vector is a zero vector. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether the given vector is a zero vector. </dd></dl>
 
 </div>
@@ -535,6 +549,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 </div><div class="memdoc">
 
 <p>Gets the magnitude of the vector. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The vector to get magnitude of.</td></tr>
@@ -565,6 +586,13 @@ template&lt;std::size_t D, typename T &gt; </div>
 
 <p>Creates a vector from an initializer list. </p>
 <p>The initializer list should represent the components of the vector in each dimension. If the size of the initializer list is greater than the number of dimensions given, then the vector only initializes with the first D elements in the list, where D is the number of dimensions. If the size of the initializer list is less than the number of dimensions given, then the vector fills the rest of the dimensions with the value 0.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">args</td><td>the initializer list.</td></tr>
@@ -594,6 +622,13 @@ template&lt;std::size_t D, typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Creates a vector from an std::array. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">array</td><td>An array.</td></tr>
@@ -625,6 +660,13 @@ template&lt;std::size_t D, typename T &gt; </div>
 <p>Creates a vector from a std::vetor. </p>
 <p>If the given std::vector has fewer elements than the specified dimensions, then this function will fill up the first elements of the vector with those in the given std::vector. The rest of the elements would be 0.</p>
 <p>If the given std::vector has more elements than the specified dimensions, then the resulting vector would ignore the numbers in those dimensions.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vector</td><td>A std::vector.</td></tr>
@@ -664,6 +706,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 <p>Normalizes a vector. </p>
 <p>Finds the unit vector with the same direction angle as the current vector.</p>
 <dl class="section note"><dt>Note</dt><dd>This method will result in undefined behavior if the vector is a zero vector (if the magnitude equals zero).</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The vector to normalize.</td></tr>
@@ -714,6 +763,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd>
 <dd>
 The dimensions of the two vectors must be the same.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
@@ -764,6 +820,14 @@ template&lt;typename T , typename T2 , std::size_t D&gt; </div>
 <p>Scalar multiplication. </p>
 <p>Performs scalar multiplication and returns a new vector representing the product.</p>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type. </td></tr>
+    <tr><td class="paramname">T2</td><td>Scalar multiplication type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
@@ -816,6 +880,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd>
 <dd>
 The dimensions of the two vectors must be the same.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
@@ -868,6 +939,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd>
 <dd>
 The dimensions of the two vectors must be the same.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
@@ -918,6 +996,14 @@ template&lt;typename T , typename T2 , std::size_t D&gt; </div>
 <p>Scalar division. </p>
 <p>Performs scalar division and returns a new vector representing the quotient.</p>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type. </td></tr>
+    <tr><td class="paramname">T2</td><td>Scalar division type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
@@ -969,6 +1055,13 @@ template&lt;typename T , std::size_t D&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>This method is only used if SVECTOR_USE_CLASS_OPERATORS is not defined. Otherwise, the operators in <a class="el" href="a00088.html" title="A base vector representation.">svector::Vector</a> are used.</dd>
 <dd>
 The dimensions of the two vectors must be the same.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">D</td><td>The number of dimensions. </td></tr>
+    <tr><td class="paramname">T</td><td>Vector type.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lhs</td><td>The first vector. </td></tr>
