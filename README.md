@@ -6,13 +6,13 @@ Simple, embeddable, and extendable vector implementations in C++.
 
 **Note**: This is mostly tested on MacOS 12.6 with C++11, clang 13.0.0, CMake 3.22.2, and GNU make 3.81.
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jonyboi396825/simplevectors/test.yml)
-![GitHub Docs Status](https://img.shields.io/github/actions/workflow/status/jonyboi396825/simplevectors/doc.yml?label=docs)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jonathanhliu21/simplevectors/test.yml)
+![GitHub Docs Status](https://img.shields.io/github/actions/workflow/status/jonathanhliu21/simplevectors/doc.yml?label=docs)
 
 ## Links
 
-- Source Code: <https://github.com/jonyboi396825/simplevectors>
-- Documentation: <https://jonyboi396825.github.io/simplevectors/index.html>
+- Source Code: <https://github.com/jonathanhliu21/simplevectors>
+- Documentation: <https://jonathanhliu21.github.io/simplevectors/index.html>
 
 ## Quickstart
 
